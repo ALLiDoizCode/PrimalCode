@@ -10,6 +10,8 @@ State = State or {}
 Handlers.add("Init", Handlers.utils.hasTag("Action", "Init"), function(msg)
   if msg.From ~= ao.owner then return end -- Only creator can init
   local data = json.decode(msg.Data or "{}")
+  State.name = data.name
+  State.desciption = data.desciption
   State.trainer = data.trainer or nil
   local baseStats = data.stats or { hp = 20, attack = 5, defense = 3, speed = 5, crit = 0.05 }
   State.stats = baseStats
@@ -231,8 +233,8 @@ end)
 -- 🔹 Credit Notice (Capture Flow)
 Handlers.add("Credit-Notice", Handlers.utils.hasTag("Credit-Notice", "true"), function(msg)
   if State.trainer ~= nil then return end -- Already caught
-  local amount = tonumber(msg.Tags.Amount or "0")
-  local trainer = msg.Tags.Sender or msg.Tags["X-Sender"] or msg.Sender
+  local amount = tonumber(msg.Quantity or "0")
+  local trainer = msg.Sender
   local sourceProcess = msg.From
   local modifier = State.primalModifiers[sourceProcess]
 
@@ -270,9 +272,9 @@ Handlers.add("Credit-Notice", Handlers.utils.hasTag("Credit-Notice", "true"), fu
 
   if math.random() <= scaledChance then
     State.trainer = trainer
-    ao.send({ Target = trainer, Tags = { Component = "CatchResult" }, Data = json.encode({ success = %1, id = ao.id }) })
+    ao.send({ Target = trainer, Tags = { Component = "CatchResult" }, Data = json.encode({ success = true, id = ao.id }) })
   else
-    ao.send({ Target = trainer, Tags = { Component = "CatchResult" }, Data = json.encode({ success = false, id = ao.id, token = token }) })
+    ao.send({ Target = trainer, Tags = { Component = "CatchResult" }, Data = json.encode({ success = false, id = ao.id}) })
   end
 end)
 
