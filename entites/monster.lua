@@ -8,7 +8,7 @@ State = State or {}
 
 -- 🔹 Init Handler
 Handlers.add("Init", Handlers.utils.hasTag("Action", "Init"), function(msg)
-  if msg.From ~= ao.owner then return end -- Only creator can init
+  if msg.From ~= ao.Owner then return end -- Only creator can init
   local data = json.decode(msg.Data or "{}")
   State.name = data.name
   State.desciption = data.desciption
@@ -16,6 +16,10 @@ Handlers.add("Init", Handlers.utils.hasTag("Action", "Init"), function(msg)
   local baseStats = data.stats or { hp = 20, attack = 5, defense = 3, speed = 5, crit = 0.05 }
   State.stats = baseStats
   State.hp = baseStats.hp
+  State.attack = baseStats.attack
+  State.defense = baseStats.defense
+  State.speed = baseStats.speed
+  State.crit = baseStats.crit
   State.status = nil
   State.moves = data.moves or { "Tackle", "Growl" }
   State.opponent = nil
@@ -116,14 +120,19 @@ end)
 Handlers.add("UseMove", Handlers.utils.hasTag("Action", "UseMove"), function(msg)
   if not State.inBattle or not State.turn or State.fainted then return end
   if msg.From ~= State.trainer then return end
-
+  if State.pendingMove ~= nil then return end
   local payload = json.decode(msg.Data or "{}")
   local move = payload.move
   local moveProcess = payload.moveProcess
   if not move or not moveProcess then return end
 
   local allowed = false
-  for _, m in ipairs(State.moves) do if m == move then allowed = true break end end
+  for _, m in ipairs(State.moves) do
+    if m == move then
+      allowed = true
+      break
+    end
+  end
   if not allowed then return end
 
   -- Request opponent's stats before executing move
@@ -139,13 +148,18 @@ Handlers.add("RequestStats", Handlers.utils.hasTag("Action", "RequestStats"), fu
   if msg.From ~= State.opponent then return end
   ao.send({
     Target = msg.From,
-    Tags = { Component = "DefenderStats" },
-    Data = json.encode({ hp = State.stats.hp, defense = State.stats.defense, speed = State.stats.speed, crit = State.stats.crit })
+    Tags = { Action = "DefenderStats" },
+    Data = json.encode({
+      hp = State.stats.hp,
+      defense = State.stats.defense,
+      speed = State.stats.speed,
+      crit = State.stats.crit
+    })
   })
 end)
 
 -- 🔹 Handle defender stats and execute move
-Handlers.add("DefenderStats", Handlers.utils.hasTag("Component", "DefenderStats"), function(msg)
+Handlers.add("DefenderStats", Handlers.utils.hasTag("Action", "DefenderStats"), function(msg)
   if msg.From ~= State.opponent then return end
   if not State.pendingMove then return end
   local stats = json.decode(msg.Data or "{}")
@@ -158,7 +172,7 @@ Handlers.add("DefenderStats", Handlers.utils.hasTag("Component", "DefenderStats"
       ReplyTo = State.opponent
     },
     Data = json.encode({
-      attackerStats = { attack = State.stats.attack, hp = State.stats.hp },
+      attackerStats = State.stats,
       defenderStats = stats
     })
   })
@@ -167,19 +181,25 @@ Handlers.add("DefenderStats", Handlers.utils.hasTag("Component", "DefenderStats"
 end)
 
 -- 🔹 Receive Result from Opponent's Move
-Handlers.add("ReceiveMove", Handlers.utils.hasTag("Component", "MoveResult"), function(msg)
+Handlers.add("ReceiveMove", Handlers.utils.hasTag("Action", "MoveResult"), function(msg)
   if not State.inBattle or State.fainted then return end
-  local result = json.decode(msg.Data or "{}")
-  if result.damage then
-    State.stats.hp = math.max(0, State.stats.hp - result.damage)
-    if State.stats.hp == 0 then
-      State.fainted = true
-      State.inBattle = false
-      -- Optional: notify trainer or opponent
+  local data = json.decode(msg.Data or "{}")
+  if data.statChanges then
+    for stat, newVal in pairs(data.statChanges) do
+      if State[stat] then
+        State[stat] = newVal
+      end
     end
   end
-  if result.status then
-    State.status = result.status
+  if State.stats.hp == 0 then
+    State.fainted = true
+    State.inBattle = false
+    ao.send({
+      Target = State.opponent,
+      Tags = {
+        Action = "VictoryNotice",
+      }
+    })
   end
   if not State.fainted then
     State.turn = true -- Now it's this monster's turn
@@ -192,6 +212,12 @@ Handlers.add("Forfeit", Handlers.utils.hasTag("Action", "Forfeit"), function(msg
   State.fainted = true
   State.inBattle = false
   -- Optional: notify opponent
+  ao.send({
+    Target = State.opponent,
+    Tags = {
+      Action = "VictoryNotice",
+    }
+  })
 end)
 
 -- 🔹 Reject Challenge
@@ -220,7 +246,7 @@ Handlers.add("GetChallenges", Handlers.utils.hasTag("Action", "GetChallenges"), 
 
   ao.send({
     Target = msg.From,
-    Tags = { Component = "PendingChallenges" },
+    Tags = { Action = "PendingChallenges" },
     Data = json.encode({
       page = page,
       pageSize = pageSize,
@@ -257,10 +283,10 @@ Handlers.add("Credit-Notice", Handlers.utils.hasTag("Credit-Notice", "true"), fu
     ao.send({
       Target = sourceProcess,
       Tags = {
-      Action = "Transfer",
-      Recipient = trainer,
-      Quantity = tostring(amount)
-    }
+        Action = "Transfer",
+        Recipient = trainer,
+        Quantity = tostring(amount)
+      }
     })
     return
   end
@@ -272,9 +298,9 @@ Handlers.add("Credit-Notice", Handlers.utils.hasTag("Credit-Notice", "true"), fu
 
   if math.random() <= scaledChance then
     State.trainer = trainer
-    ao.send({ Target = trainer, Tags = { Component = "CatchResult" }, Data = json.encode({ success = true, id = ao.id }) })
+    ao.send({ Target = trainer, Tags = { Action = "CatchResult" }, Data = json.encode({ success = true, id = ao.id }) })
   else
-    ao.send({ Target = trainer, Tags = { Component = "CatchResult" }, Data = json.encode({ success = false, id = ao.id}) })
+    ao.send({ Target = trainer, Tags = { Action = "CatchResult" }, Data = json.encode({ success = false, id = ao.id }) })
   end
 end)
 
@@ -287,7 +313,7 @@ end)
 Handlers.add("GetState", Handlers.utils.hasTag("Action", "GetState"), function(msg)
   ao.send({
     Target = msg.From,
-    Tags = { Component = "State" },
+    Tags = { Action = "State" },
     Data = json.encode({
       hp = State.stats.hp,
       attack = State.stats.attack,
@@ -301,4 +327,16 @@ Handlers.add("GetState", Handlers.utils.hasTag("Action", "GetState"), function(m
       fainted = State.fainted
     })
   })
+end)
+
+-- Handler: Receive notification when this monster wins a battle
+Handlers.add("VictoryNotice", Handlers.utils.hasTag("Action", "VictoryNotice"), function(msg)
+  -- Only allow known opponent to confirm this victory
+  if msg.From ~= State.currentOpponent then return end
+
+  State.victories = (State.victories or 0) + 1
+
+  -- Reset battle-related state
+  State.currentOpponent = nil
+  State.pendingMove = nil
 end)

@@ -2,47 +2,35 @@ local json = require('json');
 local bint = require('.bint')(256)
 local utils = require(".utils")
 
--- MOVE: GROWL (Lowers Opponent's Attack)
+-- 🐾 GROWL MOVE PROCESS
+
+-- Growl lowers the target's attack stat by 10% (minimum 1)
+
 Handlers.add("Execute", Handlers.utils.hasTag("Action", "Execute"), function(msg)
-  local attacker = msg.Tags["Attacker"]
-  local defender = msg.Tags["Defender"]
-  local replyTo = msg.Tags["ReplyTo"]
-  if not attacker or not defender or not replyTo then return end
+    local data = json.decode(msg.Data or "{}")
+    if msg.From ~= data.attacker then return end
 
-  ao.send({
-    Target = attacker,
-    Tags = { Action = "GetComponent", Component = "Moves", ReplyTo = ao.id },
-    Data = json.encode({
-      moveName = "Growl",
-      attacker = attacker,
-      defender = defender,
-      replyTo = replyTo,
-      stats = msg.Data and json.decode(msg.Data) or {}
+    local attacker = data.attacker
+    local defender = data.defender
+    local defenderStats = data.defenderStats or {}
+
+    -- Reduce attack by 10%, minimum 1
+    local newAttack = math.max(1, math.floor(defenderStats.attack * 0.9))
+
+    -- Send effect result to defender (with updated stat intent)
+    -- The monster receiving this should apply all statChanges keys to its State
+    ao.send({
+        Target = defender,
+        Tags = { Action = "ReceiveMove" },
+        Data = json.encode({
+            attacker = attacker,
+            move = "Growl",
+            type = "Normal",
+            effect = "StatDown",
+            statChanges = {
+                attack = newAttack
+            },
+            target = defender
+        })
     })
-  })
-end)
-
-Handlers.add("ComponentResponse", Handlers.utils.hasTag("Component", "Moves"), function(msg)
-  local payload = json.decode(msg.Data or "{}")
-  local moveName = payload.moveName or ""
-  if moveName ~= "Growl" then return end
-
-  local stats = payload.stats or {}
-  local attacker = payload.attacker
-  local defender = payload.defender
-  local replyTo = payload.replyTo
-
-  local allowed = false
-  local moves = msg.Data and json.decode(msg.Data or "{}") or {}
-  for _, mv in ipairs(moves or {}) do if mv == moveName then allowed = true break end end
-  if not allowed then return end
-
-  local currentAtk = stats.defenderStats and stats.defenderStats.attack or 5
-  local newAtk = math.max(1, currentAtk - 1)
-
-  ao.send({
-    Target = replyTo,
-    Tags = { Component = "MoveResult", Move = "Growl" },
-    Data = json.encode({ damage = 0, statMod = { stat = "attack", newValue = newAtk }, message = "The opponent's attack fell!" })
-  })
 end)
