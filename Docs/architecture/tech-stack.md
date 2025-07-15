@@ -6,7 +6,8 @@
 |----------|------------|---------|---------|-----------|
 | MCP Server Language | TypeScript | 5.0+ | MCP tool development | Type safety, excellent tooling, FastMCP compatibility |
 | MCP Framework | FastMCP | Latest | MCP server npm package | Rapid development, proven patterns, active community |
-| Monster AI Language | Lua | 5.4+ | AO process implementation | Native AO language, lightweight, proven for blockchain |
+| Monster AI Language | Teal | 0.24+ | AO process implementation | Typed Lua, development safety, professional workflow |
+| AO Process Runtime | Lua | 5.4+ | AO process execution | Native AO runtime, lightweight, proven for blockchain |
 | AI Decision Engine | Claude API | 3.5+ | Monster intelligence | Superior reasoning, context awareness, cost-effective |
 | Persistence Layer | AO Processes | Latest | Autonomous creature state | Decentralized persistence, no gas fees, true autonomy |
 | Permanent Storage | Arweave | Latest | Long-term data backup | Immutable history, decentralized, cost-effective |
@@ -34,3 +35,9 @@
 | Process Monitoring | Prometheus Client | 15.0+ | Runtime metrics | Application metrics, performance tracking |
 | Configuration Management | Helm | 3.12+ | Kubernetes deployment | Configuration templating, version management |
 | Development Tools | Nodemon | 3.0+ | Development workflow | Auto-restart, development efficiency |
+| **AO Process Development** | | | | |
+| Teal Language | Teal | 0.24+ | AO process development | Typed Lua, compile-time safety, professional workflow |
+| Teal Compiler | Cyan | Latest | Teal compilation | Official Teal compiler, squishy integration |
+| AO Process Builder | Squishy | Latest | File amalgamation | Single-file AO process generation |
+| Lua Package Manager | LuaRocks | 3.9+ | Teal dependencies | Standard Lua package management |
+| AO Development Tools | teal-ao-starter | Latest | AO process templates | Standardized AO development workflow |

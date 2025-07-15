@@ -3131,3 +3131,991 @@
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.438Z"}
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:17.754Z"}
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:17.755Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.662Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:54:46.664Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.666Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:54:46.666Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.666Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:54:46.667Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.667Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:54:46.667Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.668Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:54:46.668Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.668Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:54:46.669Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.669Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:54:46.669Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:54:46.676Z"}
+{"component":"HealthCheck","level":"error","message":"Health check failed: Mock error","stack":"Error: Mock error\n    at process.<anonymous> (/Users/jonathangreen/Documents/PrimalCode/tests/unit/tools/health-check.test.ts:95:15)\n    at /Users/jonathangreen/Documents/PrimalCode/node_modules/jest-mock/build/index.js:397:39\n    at process.<anonymous> (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-mock/build/index.js:404:13)\n    at process.mockConstructor [as uptime] (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-mock/build/index.js:148:19)\n    at Object.execute (/Users/jonathangreen/Documents/PrimalCode/src/tools/health-check.ts:47:38)\n    at Object.<anonymous> (/Users/jonathangreen/Documents/PrimalCode/tests/unit/tools/health-check.test.ts:98:46)\n    at Promise.then.completed (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/utils.js:298:28)\n    at new Promise (<anonymous>)\n    at callAsyncCircusFn (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/utils.js:231:10)\n    at _callCircusTest (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/run.js:316:40)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at _runTest (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/run.js:252:3)\n    at _runTestsForDescribeBlock (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/run.js:126:9)\n    at _runTestsForDescribeBlock (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/run.js:121:9)\n    at _runTestsForDescribeBlock (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/run.js:121:9)\n    at run (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/run.js:71:3)\n    at runAndTransformResultsToJestFormat (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)\n    at jestAdapter (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)\n    at runTestInternal (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-runner/build/runTest.js:367:16)\n    at runTest (/Users/jonathangreen/Documents/PrimalCode/node_modules/jest-runner/build/runTest.js:444:34)","timestamp":"2025-07-15T20:54:46.677Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.967Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.969Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.971Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.971Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.972Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.972Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.972Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.972Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.973Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.973Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.974Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.974Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.974Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.974Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:55:37.976Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:55:37.976Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.263Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.267Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.269Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.269Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.271Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.271Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.271Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.272Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.272Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.272Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.273Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.273Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.273Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.273Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:56:02.275Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:56:02.275Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.551Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.554Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.556Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.556Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.556Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.557Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.557Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.557Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.558Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.558Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.558Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.558Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.563Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.564Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T20:57:15.565Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T20:57:15.565Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.453Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.455Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.457Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.457Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.458Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.458Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.458Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.458Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.459Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.459Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.460Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.460Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.460Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.460Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:01:03.462Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:01:03.462Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.957Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.959Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.961Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.961Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.961Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.962Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.962Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.962Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.963Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.963Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.964Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.964Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.964Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.964Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:14.966Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:14.966Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.428Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.430Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.432Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.432Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.432Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.432Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.433Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.433Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.434Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.434Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.434Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.434Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.435Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.435Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:05:28.436Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:05:28.436Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:10:35.035Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T21:10:35.046Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T21:10:35.046Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:10:35.038Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:10:35.040Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:10:35.040Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:10:35.041Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:10:35.041Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:10:35.050Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:10:35.050Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:10:35.051Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:10:35.051Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:11:40.300Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T21:11:40.313Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T21:11:40.315Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:11:40.307Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:11:40.309Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:11:40.310Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:11:40.311Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:11:40.311Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:11:40.317Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:11:40.318Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:11:40.318Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:11:40.319Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:00.219Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T21:12:00.234Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:00.228Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:00.230Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:00.231Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:00.232Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:00.232Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:00.237Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:00.237Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:00.238Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:00.238Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T21:12:00.235Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.709Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.711Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.715Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.715Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.716Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.716Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.717Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.717Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.717Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.718Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.718Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.718Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.719Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.719Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.720Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.721Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.721Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.721Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:12:19.722Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:12:19.722Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.729Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.731Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.734Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.734Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.735Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.735Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.736Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.736Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.736Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.737Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.737Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.737Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.738Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.738Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.739Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.739Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.740Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.740Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:13.741Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:13.741Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.761Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.763Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.765Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.765Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.766Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.766Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.767Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.767Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.767Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.768Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.768Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.768Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.768Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.768Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.770Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.770Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.771Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.771Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:13:29.771Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:13:29.771Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.733Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.735Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.737Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.737Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.738Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.738Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.738Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.786Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.787Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.826Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.827Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.866Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.867Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.867Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.869Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.869Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.870Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.910Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.911Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.954Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.955Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:51.994Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:51.995Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:52.042Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:52.042Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:52.086Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.742Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.755Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.758Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.759Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.760Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.761Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.764Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.823Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.825Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.882Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.883Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.930Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.931Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.931Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.933Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.933Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.934Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.985Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.985Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:58.987Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:58.999Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:59.001Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.038Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:59.039Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.050Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:59.051Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.052Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:59.057Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.057Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:59.058Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.058Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T21:14:59.054Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T21:14:59.055Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.094Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:59.095Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.137Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:14:59.138Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:14:59.191Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.571Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.579Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.584Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.571Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.580Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.582Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.582Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.583Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.586Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.587Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.649Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.649Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.650Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.651Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.652Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.658Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.659Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.659Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.660Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T21:15:47.654Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T21:15:47.655Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.723Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.724Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.776Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.777Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.778Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.780Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.781Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.782Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.843Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.844Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:47.965Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:47.966Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:48.037Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:48.038Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:48.103Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T21:15:48.104Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T21:15:48.168Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:47.927Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:47.952Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:47.957Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:47.958Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.002Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.004Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.008Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.149Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.154Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.226Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.228Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.194Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.219Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.221Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.286Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.287Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.287Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.290Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.292Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.294Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.301Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.306Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.309Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.318Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.320Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.321Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.321Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T22:04:48.315Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T22:04:48.315Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.432Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.433Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.493Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.495Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.585Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.587Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.644Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:04:48.645Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:04:48.699Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.398Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.435Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.506Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.508Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.529Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.534Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.535Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.673Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.675Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.709Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.722Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.725Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.750Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.751Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.768Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.770Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.771Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.801Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.802Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.803Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.803Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T22:06:36.774Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T22:06:36.775Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.824Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.826Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.828Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.833Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.833Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.835Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:36.950Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:36.951Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:37.003Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:37.004Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:37.042Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:37.043Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:37.079Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:06:37.080Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:06:37.135Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.548Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.560Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.562Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.641Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.643Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.643Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.652Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.654Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.655Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.656Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T22:07:38.646Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T22:07:38.648Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.890Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.901Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.903Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.903Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.904Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.905Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.906Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:38.986Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:38.987Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.049Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.050Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.101Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.102Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.103Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.105Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.105Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.106Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.169Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.170Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.218Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.219Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.365Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.367Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.420Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:07:39.421Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:07:39.473Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.612Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.633Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.634Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.636Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.647Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.648Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.649Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.650Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.650Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.651Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.699Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.700Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.701Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.701Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.702Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.708Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.709Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.710Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.710Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T22:11:14.705Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T22:11:14.706Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.818Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.819Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.875Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.876Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.877Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.879Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.880Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.881Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.930Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.930Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:14.968Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:14.968Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:15.013Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:15.014Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:15.058Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:11:15.059Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:11:15.100Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.432Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.463Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.472Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.474Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.476Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.483Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.484Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.573Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.575Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.610Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.623Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.629Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.646Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.647Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.692Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.695Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.695Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.701Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.701Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.702Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.702Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T22:12:08.698Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T22:12:08.698Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.807Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.817Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.818Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.826Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.828Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.829Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.910Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.911Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:08.978Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:08.980Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:09.051Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:09.052Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:09.100Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:12:09.102Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:12:09.159Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.102Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.120Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.123Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.168Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.181Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.187Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.188Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.189Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.190Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.191Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.267Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.267Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.268Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.269Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.269Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.276Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.277Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.277Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.278Z"}
+{"component":"Test Component","level":"info","message":"Test message","timestamp":"2025-07-15T22:13:01.272Z"}
+{"component":"Test Component","level":"error","message":"Test error message","timestamp":"2025-07-15T22:13:01.272Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.325Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.326Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.395Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.396Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.396Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.399Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.399Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.400Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.453Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.454Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.517Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.518Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.581Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.582Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.650Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:13:01.651Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:13:01.784Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:16.857Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:16.874Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:16.882Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:16.884Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:16.886Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:16.886Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:16.887Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.001Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.003Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.175Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.179Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.264Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.268Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.272Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.278Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.280Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.284Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.346Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.348Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.432Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.433Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.497Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.498Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.546Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:17.547Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:17.680Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:54.617Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:54.635Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:54.637Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:54.638Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:54.639Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:54.640Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:54.641Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:54.714Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:54.716Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:55.018Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:55.022Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:55.098Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:55.099Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:55.101Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:55.106Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:55.107Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:55.109Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:55.156Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:55.157Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:55.239Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:55.244Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:55.421Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:55.422Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.490Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:35:55.530Z"}
+{"component":"EcosystemObserver","focus":"monsters","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.532Z"}
+{"component":"EcosystemObserver","focus":"environment","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.533Z"}
+{"component":"EcosystemObserver","focus":"interactions","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.535Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.535Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.537Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.538Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"test_route","timestamp":"2025-07-15T22:35:55.539Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.541Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.541Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.542Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.543Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"forest_path_001","timestamp":"2025-07-15T22:35:55.544Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.544Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.545Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:35:55.547Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:57.560Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:35:57.573Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:35:57.719Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.374Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.393Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.396Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.397Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.398Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.399Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.400Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.362Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:36:19.389Z"}
+{"component":"EcosystemObserver","focus":"monsters","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.391Z"}
+{"component":"EcosystemObserver","focus":"environment","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.393Z"}
+{"component":"EcosystemObserver","focus":"interactions","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.395Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.396Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.398Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.399Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"test_route","timestamp":"2025-07-15T22:36:19.401Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.403Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.404Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.405Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.406Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"forest_path_001","timestamp":"2025-07-15T22:36:19.407Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.409Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.415Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.417Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.541Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.542Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.605Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.606Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.670Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.671Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.671Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.673Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.674Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.675Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.743Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.745Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.817Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.817Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.773Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"nonexistent_monster","route_id":"route_001","timestamp":"2025-07-15T22:36:19.792Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"nonexistent_route","timestamp":"2025-07-15T22:36:19.802Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_002","timestamp":"2025-07-15T22:36:19.803Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.805Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_7","route_id":"route_001","timestamp":"2025-07-15T22:36:19.805Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_8","route_id":"route_001","timestamp":"2025-07-15T22:36:19.806Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.806Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.807Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.808Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.809Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.810Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.813Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.814Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.815Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.815Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.816Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.816Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"test_monster","route_id":"test_route","timestamp":"2025-07-15T22:36:19.818Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.818Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:19.819Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_1","route_id":"route_001","timestamp":"2025-07-15T22:36:19.820Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.868Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.869Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:19.916Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:19.917Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.844Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:36:19.862Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.864Z"}
+{"component":"EnvironmentChecker","focus":"resources","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.872Z"}
+{"component":"EnvironmentChecker","focus":"structures","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.875Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.877Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.877Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.878Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.878Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.879Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.880Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.881Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.882Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.882Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.883Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.885Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.885Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.886Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.887Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.887Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.888Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.888Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.889Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"test_route","timestamp":"2025-07-15T22:36:19.890Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.890Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"mountain_pass_001","timestamp":"2025-07-15T22:36:19.894Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.894Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.895Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:19.896Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:20.096Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.277Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.314Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.320Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.320Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.323Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.324Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.325Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.391Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.393Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.481Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.497Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.572Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.576Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.578Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.586Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.587Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.588Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.718Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.719Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.900Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.901Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.843Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"nonexistent_monster","route_id":"route_001","timestamp":"2025-07-15T22:36:48.868Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"nonexistent_route","timestamp":"2025-07-15T22:36:48.878Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_002","timestamp":"2025-07-15T22:36:48.879Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.881Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_7","route_id":"route_001","timestamp":"2025-07-15T22:36:48.881Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_8","route_id":"route_001","timestamp":"2025-07-15T22:36:48.882Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.882Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.883Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.884Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.885Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.886Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.887Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.888Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.889Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.890Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.891Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.892Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"test_monster","route_id":"test_route","timestamp":"2025-07-15T22:36:48.893Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.898Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:36:48.899Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_1","route_id":"route_001","timestamp":"2025-07-15T22:36:48.902Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:48.954Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:48.955Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.888Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:36:48.907Z"}
+{"component":"EcosystemObserver","focus":"monsters","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.909Z"}
+{"component":"EcosystemObserver","focus":"environment","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.910Z"}
+{"component":"EcosystemObserver","focus":"interactions","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.911Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.912Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.913Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.914Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"test_route","timestamp":"2025-07-15T22:36:48.915Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.925Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.926Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.927Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.927Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"forest_path_001","timestamp":"2025-07-15T22:36:48.928Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.931Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.933Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.934Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.885Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:36:48.907Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.908Z"}
+{"component":"EnvironmentChecker","focus":"resources","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.919Z"}
+{"component":"EnvironmentChecker","focus":"structures","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.920Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.922Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.923Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.924Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.924Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.925Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.927Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.927Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.928Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.929Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.934Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.935Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.936Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.936Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.937Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.938Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.938Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.939Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.939Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"test_route","timestamp":"2025-07-15T22:36:48.940Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.941Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"mountain_pass_001","timestamp":"2025-07-15T22:36:48.942Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.942Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.943Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:36:48.943Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:49.006Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:36:49.007Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:36:49.047Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:04.996Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.041Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.044Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.050Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.052Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.053Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.054Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.188Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.192Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:04.997Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:42:05.047Z"}
+{"component":"EcosystemObserver","focus":"monsters","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.051Z"}
+{"component":"EcosystemObserver","focus":"environment","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.052Z"}
+{"component":"EcosystemObserver","focus":"interactions","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.054Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.073Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.076Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.078Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"test_route","timestamp":"2025-07-15T22:42:05.079Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.098Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.101Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.103Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.105Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"forest_path_001","timestamp":"2025-07-15T22:42:05.106Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.107Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.110Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.111Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.424Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.426Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.572Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.575Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.576Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.578Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.578Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.585Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.645Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.645Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.711Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.713Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.645Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"nonexistent_monster","route_id":"route_001","timestamp":"2025-07-15T22:42:05.664Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"nonexistent_route","timestamp":"2025-07-15T22:42:05.673Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_002","timestamp":"2025-07-15T22:42:05.674Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.677Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_7","route_id":"route_001","timestamp":"2025-07-15T22:42:05.678Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_8","route_id":"route_001","timestamp":"2025-07-15T22:42:05.679Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.680Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.681Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.682Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.683Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.684Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.685Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.686Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.688Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.688Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.690Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.690Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"test_monster","route_id":"test_route","timestamp":"2025-07-15T22:42:05.691Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.698Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:42:05.700Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_1","route_id":"route_001","timestamp":"2025-07-15T22:42:05.701Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.822Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.823Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.881Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:42:05.883Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.826Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:42:05.853Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.854Z"}
+{"component":"EnvironmentChecker","focus":"resources","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.864Z"}
+{"component":"EnvironmentChecker","focus":"structures","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.865Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.866Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.867Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.867Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.868Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.869Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.870Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.872Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.874Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.876Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.880Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.881Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.882Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.884Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.887Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.888Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.888Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.889Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.890Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"test_route","timestamp":"2025-07-15T22:42:05.891Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.891Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"mountain_pass_001","timestamp":"2025-07-15T22:42:05.892Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.893Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.894Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:42:05.895Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:42:05.950Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:42:57.602Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:07.919Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:07.936Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:07.942Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:07.943Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:07.946Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:07.946Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:07.947Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.040Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.042Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.121Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.122Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.192Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.193Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.193Z"}
+{"component":"HealthCheck","detailed":false,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.195Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.195Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.197Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.352Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.355Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.432Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.439Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.501Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.502Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.410Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.409Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:44:08.436Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.440Z"}
+{"component":"EnvironmentChecker","focus":"resources","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.459Z"}
+{"component":"EnvironmentChecker","focus":"structures","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.460Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.461Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.464Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.465Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.465Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.467Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.468Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.469Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.470Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.471Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.473Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.476Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.477Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.478Z"}
+{"component":"EnvironmentChecker","focus":"weather","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.479Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.480Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.484Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.485Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.486Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"test_route","timestamp":"2025-07-15T22:44:08.487Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.488Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"mountain_pass_001","timestamp":"2025-07-15T22:44:08.489Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.490Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.490Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.492Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"nonexistent_monster","route_id":"route_001","timestamp":"2025-07-15T22:44:08.435Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"nonexistent_route","timestamp":"2025-07-15T22:44:08.451Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_002","timestamp":"2025-07-15T22:44:08.452Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.455Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_7","route_id":"route_001","timestamp":"2025-07-15T22:44:08.457Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_8","route_id":"route_001","timestamp":"2025-07-15T22:44:08.458Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.459Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.460Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.465Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.467Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.468Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.470Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.472Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.474Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.476Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.476Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.477Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"test_monster","route_id":"test_route","timestamp":"2025-07-15T22:44:08.478Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.480Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_6","route_id":"route_001","timestamp":"2025-07-15T22:44:08.483Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_1","route_id":"route_001","timestamp":"2025-07-15T22:44:08.487Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.572Z"}
+{"component":"HealthCheck","detailed":true,"level":"info","message":"Health check requested","timestamp":"2025-07-15T22:44:08.573Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.507Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"nonexistent_route","timestamp":"2025-07-15T22:44:08.526Z"}
+{"component":"EcosystemObserver","focus":"monsters","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.527Z"}
+{"component":"EcosystemObserver","focus":"environment","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.528Z"}
+{"component":"EcosystemObserver","focus":"interactions","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.529Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.530Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.531Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.532Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"test_route","timestamp":"2025-07-15T22:44:08.533Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.534Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.535Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.536Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.536Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"forest_path_001","timestamp":"2025-07-15T22:44:08.540Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.541Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.549Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:08.550Z"}
+{"component":"HealthCheck","level":"info","message":"Health check completed successfully","timestamp":"2025-07-15T22:44:08.637Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:33.522Z"}
+{"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_1","route_id":"route_001","timestamp":"2025-07-15T22:44:55.169Z"}
+{"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:55.298Z"}
+{"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:55.376Z"}

@@ -78,19 +78,105 @@ PrimalCode/
 │       │   └── types.ts
 │       ├── package.json
 │       └── README.md
-├── ao-processes/              # AO process implementations
-│   ├── monster-process.lua
-│   ├── environment-process.lua
-│   ├── player-process.lua
-│   ├── marketplace-core.lua
-│   ├── provider-registry.lua
-│   ├── reputation-manager.lua
-│   ├── token-payment-handler.lua
-│   └── shared/
-│       ├── message-handlers.lua
-│       ├── ai-integration.lua
-│       ├── token-blueprint.lua
-│       └── utils.lua
+├── ao-processes/              # AO process implementations (Teal-based)
+│   ├── monster/               # Monster creature process
+│   │   ├── src/
+│   │   │   ├── main.tl        # Main Teal entry point
+│   │   │   ├── handlers/
+│   │   │   │   ├── credit-notice.tl
+│   │   │   │   ├── debit-notice.tl
+│   │   │   │   └── decision-making.tl
+│   │   │   ├── types/
+│   │   │   │   └── monster.d.tl
+│   │   │   └── utils/
+│   │   │       └── payment-utils.tl
+│   │   ├── packages/          # Custom Lua modules
+│   │   ├── build/             # Compiled output
+│   │   ├── scripts/           # Build/deploy scripts
+│   │   ├── tlconfig.lua       # Teal configuration
+│   │   ├── package.json       # Build dependencies
+│   │   └── README.md          # Process-specific docs
+│   ├── environment/           # Environment process
+│   │   ├── src/
+│   │   │   ├── main.tl
+│   │   │   ├── handlers/
+│   │   │   │   ├── weather-system.tl
+│   │   │   │   ├── resource-management.tl
+│   │   │   │   └── structure-tracking.tl
+│   │   │   ├── types/
+│   │   │   │   └── environment.d.tl
+│   │   │   └── utils/
+│   │   │       └── ecosystem-utils.tl
+│   │   ├── packages/
+│   │   ├── build/
+│   │   ├── scripts/
+│   │   ├── tlconfig.lua
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── player/                # Player process
+│   │   ├── src/
+│   │   │   ├── main.tl
+│   │   │   ├── handlers/
+│   │   │   │   ├── tool-authorization.tl
+│   │   │   │   ├── influence-tracking.tl
+│   │   │   │   └── resource-management.tl
+│   │   │   ├── types/
+│   │   │   │   └── player.d.tl
+│   │   │   └── utils/
+│   │   │       └── auth-utils.tl
+│   │   ├── packages/
+│   │   ├── build/
+│   │   ├── scripts/
+│   │   ├── tlconfig.lua
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── marketplace/           # Marketplace processes
+│   │   ├── registry/          # Provider registry
+│   │   │   ├── src/
+│   │   │   │   ├── main.tl
+│   │   │   │   ├── handlers/
+│   │   │   │   │   ├── provider-registration.tl
+│   │   │   │   │   ├── service-discovery.tl
+│   │   │   │   │   └── reputation-tracking.tl
+│   │   │   │   ├── types/
+│   │   │   │   │   └── registry.d.tl
+│   │   │   │   └── utils/
+│   │   │   │       └── validation-utils.tl
+│   │   │   ├── packages/
+│   │   │   ├── build/
+│   │   │   ├── scripts/
+│   │   │   ├── tlconfig.lua
+│   │   │   ├── package.json
+│   │   │   └── README.md
+│   │   └── payment/           # Payment handler
+│   │       ├── src/
+│   │       │   ├── main.tl
+│   │       │   ├── handlers/
+│   │       │   │   ├── token-transfer.tl
+│   │       │   │   ├── payment-validation.tl
+│   │       │   │   └── refund-processing.tl
+│   │       │   ├── types/
+│   │       │   │   └── payment.d.tl
+│   │       │   └── utils/
+│   │       │       └── token-utils.tl
+│   │       ├── packages/
+│   │       ├── build/
+│   │       ├── scripts/
+│   │       ├── tlconfig.lua
+│   │       ├── package.json
+│   │       └── README.md
+│   ├── shared/                # Shared AO utilities
+│   │   ├── src/
+│   │   │   ├── ao-types.d.tl  # Common AO type definitions
+│   │   │   ├── common-handlers.tl # Shared message handlers
+│   │   │   ├── token-blueprint.tl # Token contract utilities
+│   │   │   └── utils.tl       # Common utility functions
+│   │   └── packages/
+│   └── scripts/               # Global AO scripts
+│       ├── build-all.sh       # Build all processes
+│       ├── deploy-all.sh      # Deploy all processes
+│       ├── test-processes.sh  # Test all processes
+│       └── setup-teal.sh      # Setup Teal development environment
 ├── tests/                     # Comprehensive test suite
 │   ├── unit/
 │   │   ├── tools/

@@ -14,7 +14,8 @@ src/
 ├── ao-integration/          # AO process communication layer
 │   ├── ao-client.ts
 │   ├── message-schemas.ts
-│   └── process-manager.ts
+│   ├── process-manager.ts
+│   └── teal-process-client.ts
 └── ecosystem/              # Game logic and state management
     ├── monster-state.ts
     ├── environment-state.ts
@@ -61,11 +62,11 @@ export async function observeEcosystemHandler(request: MCPToolRequest): Promise<
 ## Database Architecture
 
 ### Schema Design
-```lua
--- AO Process Schema (Lua state variables)
+```teal
+-- AO Process Schema (Teal type definitions)
 
 -- Monster Process Schema
-local monster_schema = {
+local monster_schema: MonsterSchema = {
   id = "string",
   species = "string",
   stats = {
@@ -97,7 +98,7 @@ local monster_schema = {
 }
 
 -- Environment Process Schema
-local environment_schema = {
+local environment_schema: EnvironmentSchema = {
   route_id = "string",
   structures = "table",
   resources = "table", 
@@ -113,13 +114,13 @@ local environment_schema = {
 
 ### Data Access Layer
 ```typescript
-// Repository Pattern for AO Process Access
-export class MonsterRepository {
-  constructor(private aoClient: AOClient) {}
+// Repository Pattern for Teal AO Process Access
+export class TealMonsterRepository {
+  constructor(private tealClient: TealProcessClient) {}
   
   async findById(monsterId: string): Promise<Monster | null> {
     try {
-      const process = await this.aoClient.getProcess(monsterId);
+      const process = await this.tealClient.getProcess(monsterId);
       const result = await process.dryRun({
         Action: "Get-State",
         Data: { query: "full_state" }
@@ -133,7 +134,7 @@ export class MonsterRepository {
   }
   
   async updateState(monsterId: string, stateUpdate: Partial<Monster>): Promise<void> {
-    const process = await this.aoClient.getProcess(monsterId);
+    const process = await this.tealClient.getProcess(monsterId);
     await process.message({
       Action: "Update-State",
       Data: stateUpdate
@@ -141,7 +142,7 @@ export class MonsterRepository {
   }
   
   async findByRoute(routeId: string): Promise<Monster[]> {
-    const monsters = await this.aoClient.queryProcessesByTag("route", routeId);
+    const monsters = await this.tealClient.queryProcessesByTag("route", routeId);
     return Promise.all(monsters.map(id => this.findById(id)));
   }
 }
