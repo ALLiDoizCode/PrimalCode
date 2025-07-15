@@ -44,6 +44,9 @@ const health_check_1 = require("./tools/health-check");
 const ecosystem_observer_1 = require("./tools/ecosystem-observer");
 const monster_analyzer_1 = require("./tools/monster-analyzer");
 const environment_checker_1 = require("./tools/environment-checker");
+const place_food_1 = require("./tools/place-food");
+const modify_weather_1 = require("./tools/modify-weather");
+const build_shelter_1 = require("./tools/build-shelter");
 const mock_monster_system_1 = require("./ecosystem/mock-monster-system");
 const mock_environment_state_1 = require("./ecosystem/mock-environment-state");
 const logger_1 = __importDefault(require("./utils/logger"));
@@ -55,6 +58,9 @@ class PrimalCodeMCPServer {
     ecosystemObserverTool;
     monsterAnalyzerTool;
     environmentCheckerTool;
+    placeFoodTool;
+    modifyWeatherTool;
+    buildShelterTool;
     monsterSystem;
     environmentState;
     constructor() {
@@ -76,6 +82,9 @@ class PrimalCodeMCPServer {
         this.ecosystemObserverTool = new ecosystem_observer_1.EcosystemObserverTool(this.monsterSystem, this.environmentState);
         this.monsterAnalyzerTool = new monster_analyzer_1.MonsterAnalyzerTool(this.monsterSystem);
         this.environmentCheckerTool = new environment_checker_1.EnvironmentCheckerTool(this.environmentState, this.monsterSystem);
+        this.placeFoodTool = new place_food_1.PlaceFoodTool(this.monsterSystem, this.environmentState);
+        this.modifyWeatherTool = new modify_weather_1.ModifyWeatherTool(this.monsterSystem, this.environmentState);
+        this.buildShelterTool = new build_shelter_1.BuildShelterTool(this.monsterSystem, this.environmentState);
         this.setupHandlers();
         this.registerTools();
     }
@@ -88,6 +97,9 @@ class PrimalCodeMCPServer {
                     this.ecosystemObserverTool.getToolDefinition(),
                     this.monsterAnalyzerTool.getToolDefinition(),
                     this.environmentCheckerTool.getToolDefinition(),
+                    this.placeFoodTool.getToolDefinition(),
+                    this.modifyWeatherTool.getToolDefinition(),
+                    this.buildShelterTool.getToolDefinition(),
                 ],
             };
         });
@@ -140,6 +152,39 @@ class PrimalCodeMCPServer {
                             ],
                         };
                     }
+                    case 'place_food': {
+                        const result = await this.placeFoodTool.execute(args || {});
+                        return {
+                            content: [
+                                {
+                                    type: 'text',
+                                    text: result,
+                                },
+                            ],
+                        };
+                    }
+                    case 'modify_weather': {
+                        const result = await this.modifyWeatherTool.execute(args || {});
+                        return {
+                            content: [
+                                {
+                                    type: 'text',
+                                    text: result,
+                                },
+                            ],
+                        };
+                    }
+                    case 'build_shelter': {
+                        const result = await this.buildShelterTool.execute(args || {});
+                        return {
+                            content: [
+                                {
+                                    type: 'text',
+                                    text: result,
+                                },
+                            ],
+                        };
+                    }
                     default:
                         throw new Error(`Unknown tool: ${name}`);
                 }
@@ -163,6 +208,9 @@ class PrimalCodeMCPServer {
         this.healthCheckTool.registerTool('observe_ecosystem');
         this.healthCheckTool.registerTool('analyze_monster');
         this.healthCheckTool.registerTool('check_environment');
+        this.healthCheckTool.registerTool('place_food');
+        this.healthCheckTool.registerTool('modify_weather');
+        this.healthCheckTool.registerTool('build_shelter');
         logger_1.default.info('All tools registered successfully');
     }
     async start() {

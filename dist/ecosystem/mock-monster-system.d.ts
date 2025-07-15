@@ -27,5 +27,9 @@ export declare class MockMonsterSystem {
     removeMonster(monsterId: string): boolean;
     getMonstersByPersonality(personalityType: MonsterPersonalityType): Monster[];
     getMonstersByRoute(route: string): Monster[];
+    notifyEnvironmentalChange(routeId: string, changeType: string, location: {
+        x: number;
+        y: number;
+    }): void;
 }
 //# sourceMappingURL=mock-monster-system.d.ts.map

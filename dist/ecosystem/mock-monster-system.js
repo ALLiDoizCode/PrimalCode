@@ -328,6 +328,37 @@ class MockMonsterSystem {
         return Array.from(this.monsters.values())
             .filter(monster => monster.stats.position.route === route);
     }
+    notifyEnvironmentalChange(routeId, changeType, location) {
+        const monstersInRoute = this.getMonstersByRoute(routeId);
+        monstersInRoute.forEach(monster => {
+            const distance = Math.sqrt(Math.pow(monster.stats.position.x - location.x, 2) +
+                Math.pow(monster.stats.position.y - location.y, 2));
+            if (distance <= 25) {
+                monster.environmental_awareness.threat_awareness = Math.min(1, monster.environmental_awareness.threat_awareness + 0.1);
+                if (changeType === 'food_placed') {
+                    monster.environmental_awareness.resource_memory.push({
+                        type: 'food',
+                        location: {
+                            x: location.x,
+                            y: location.y,
+                            route: routeId
+                        },
+                        quality: 0.8,
+                        last_visited: Date.now()
+                    });
+                }
+                else if (changeType === 'shelter_built') {
+                    monster.environmental_awareness.detected_structures.push('shelter');
+                }
+                monster.last_updated = Date.now();
+            }
+        });
+        this.logger.info(`Notified ${monstersInRoute.length} monsters of environmental change`, {
+            routeId,
+            changeType,
+            location
+        });
+    }
 }
 exports.MockMonsterSystem = MockMonsterSystem;
 //# sourceMappingURL=mock-monster-system.js.map

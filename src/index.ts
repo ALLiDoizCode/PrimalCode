@@ -6,6 +6,9 @@ import { HealthCheckTool } from './tools/health-check';
 import { EcosystemObserverTool } from './tools/ecosystem-observer';
 import { MonsterAnalyzerTool } from './tools/monster-analyzer';
 import { EnvironmentCheckerTool } from './tools/environment-checker';
+import { PlaceFoodTool } from './tools/place-food';
+import { ModifyWeatherTool } from './tools/modify-weather';
+import { BuildShelterTool } from './tools/build-shelter';
 import { MockMonsterSystem } from './ecosystem/mock-monster-system';
 import { MockEnvironmentState } from './ecosystem/mock-environment-state';
 import logger from './utils/logger';
@@ -19,6 +22,9 @@ class PrimalCodeMCPServer {
   private ecosystemObserverTool: EcosystemObserverTool;
   private monsterAnalyzerTool: MonsterAnalyzerTool;
   private environmentCheckerTool: EnvironmentCheckerTool;
+  private placeFoodTool: PlaceFoodTool;
+  private modifyWeatherTool: ModifyWeatherTool;
+  private buildShelterTool: BuildShelterTool;
   private monsterSystem: MockMonsterSystem;
   private environmentState: MockEnvironmentState;
 
@@ -47,6 +53,9 @@ class PrimalCodeMCPServer {
     this.ecosystemObserverTool = new EcosystemObserverTool(this.monsterSystem, this.environmentState);
     this.monsterAnalyzerTool = new MonsterAnalyzerTool(this.monsterSystem);
     this.environmentCheckerTool = new EnvironmentCheckerTool(this.environmentState, this.monsterSystem);
+    this.placeFoodTool = new PlaceFoodTool(this.monsterSystem, this.environmentState);
+    this.modifyWeatherTool = new ModifyWeatherTool(this.monsterSystem, this.environmentState);
+    this.buildShelterTool = new BuildShelterTool(this.monsterSystem, this.environmentState);
     
     this.setupHandlers();
     this.registerTools();
@@ -62,6 +71,9 @@ class PrimalCodeMCPServer {
           this.ecosystemObserverTool.getToolDefinition(),
           this.monsterAnalyzerTool.getToolDefinition(),
           this.environmentCheckerTool.getToolDefinition(),
+          this.placeFoodTool.getToolDefinition(),
+          this.modifyWeatherTool.getToolDefinition(),
+          this.buildShelterTool.getToolDefinition(),
         ],
       };
     });
@@ -121,6 +133,42 @@ class PrimalCodeMCPServer {
             };
           }
           
+          case 'place_food': {
+            const result = await this.placeFoodTool.execute(args || {});
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: result,
+                },
+              ],
+            };
+          }
+          
+          case 'modify_weather': {
+            const result = await this.modifyWeatherTool.execute(args || {});
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: result,
+                },
+              ],
+            };
+          }
+          
+          case 'build_shelter': {
+            const result = await this.buildShelterTool.execute(args || {});
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: result,
+                },
+              ],
+            };
+          }
+          
           default:
             throw new Error(`Unknown tool: ${name}`);
         }
@@ -145,6 +193,9 @@ class PrimalCodeMCPServer {
     this.healthCheckTool.registerTool('observe_ecosystem');
     this.healthCheckTool.registerTool('analyze_monster');
     this.healthCheckTool.registerTool('check_environment');
+    this.healthCheckTool.registerTool('place_food');
+    this.healthCheckTool.registerTool('modify_weather');
+    this.healthCheckTool.registerTool('build_shelter');
     logger.info('All tools registered successfully');
   }
 

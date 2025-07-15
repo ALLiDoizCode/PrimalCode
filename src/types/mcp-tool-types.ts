@@ -44,6 +44,31 @@ export interface EnvironmentCheckerArgs {
   route_id?: string;
 }
 
+export interface PlaceFoodArgs {
+  route_id: string;
+  location: { x: number; y: number };
+  food_type: string;
+}
+
+export interface ModifyWeatherArgs {
+  route_id: string;
+  weather_type: string;
+  intensity: number;
+}
+
+export interface BuildShelterArgs {
+  route_id: string;
+  location: { x: number; y: number };
+  shelter_type: string;
+}
+
+export interface EnvironmentalModificationResult {
+  placementConfirmation: string;
+  behavioralPredictions: string;
+  ecosystemImpact: string;
+  timestamp: number;
+}
+
 export const DEFAULT_ANALYSIS_DEPTH = 'standard';
 export const DEFAULT_FOCUS_AREA = 'all';
 

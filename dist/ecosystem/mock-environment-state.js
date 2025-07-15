@@ -325,6 +325,94 @@ class MockEnvironmentState {
         environment.simulation_time += timeIncrement;
         environment.last_modified = Date.now();
     }
+    addFoodSource(routeId, location, foodType) {
+        const environment = this.environments.get(routeId);
+        if (!environment) {
+            throw new Error(`Environment for route ${routeId} not found`);
+        }
+        const foodResource = {
+            id: `food_${this.resourceIdCounter++}`,
+            type: environment_types_1.ResourceType.FOOD,
+            quality: 0.7 + Math.random() * 0.3,
+            quantity: 50 + Math.random() * 50,
+            regeneration_rate: RESOURCE_GENERATION_RATES[environment_types_1.ResourceType.FOOD],
+            last_accessed: Date.now(),
+            position: {
+                x: location.x,
+                y: location.y
+            }
+        };
+        environment.resources.push(foodResource);
+        environment.last_modified = Date.now();
+        this.logger.info(`Added food source to route ${routeId}`, {
+            foodType,
+            location,
+            quality: foodResource.quality
+        });
+        return foodResource;
+    }
+    modifyWeather(routeId, weatherType, intensity) {
+        const environment = this.environments.get(routeId);
+        if (!environment) {
+            throw new Error(`Environment for route ${routeId} not found`);
+        }
+        const weatherConditions = {
+            rain: environment_types_1.WeatherCondition.RAIN,
+            heat: environment_types_1.WeatherCondition.CLEAR,
+            storm: environment_types_1.WeatherCondition.STORM,
+            normal: environment_types_1.WeatherCondition.CLEAR
+        };
+        const newCondition = weatherConditions[weatherType] || environment_types_1.WeatherCondition.CLEAR;
+        const currentWeather = environment.weather_state;
+        const newWeather = {
+            condition: newCondition,
+            temperature: newCondition === environment_types_1.WeatherCondition.CLEAR ? 15 + (intensity * 15) : currentWeather.temperature,
+            humidity: newCondition === environment_types_1.WeatherCondition.RAIN ? 0.7 + (intensity * 0.3) : currentWeather.humidity,
+            wind_speed: newCondition === environment_types_1.WeatherCondition.STORM ? 15 + (intensity * 15) : currentWeather.wind_speed,
+            visibility: newCondition === environment_types_1.WeatherCondition.RAIN ? 0.5 - (intensity * 0.3) : currentWeather.visibility,
+            forecast: this.generateWeatherForecast(newCondition)
+        };
+        environment.weather_state = newWeather;
+        environment.last_modified = Date.now();
+        this.logger.info(`Modified weather for route ${routeId}`, {
+            weatherType,
+            intensity,
+            newCondition
+        });
+        return newWeather;
+    }
+    buildShelter(routeId, location, shelterType) {
+        const environment = this.environments.get(routeId);
+        if (!environment) {
+            throw new Error(`Environment for route ${routeId} not found`);
+        }
+        const shelterStructures = {
+            cave: environment_types_1.StructureType.CAVE,
+            burrow: environment_types_1.StructureType.BURROW,
+            tree: environment_types_1.StructureType.TREE,
+            rock: environment_types_1.StructureType.ROCK
+        };
+        const shelter = {
+            id: `shelter_${this.structureIdCounter++}`,
+            type: shelterStructures[shelterType] || environment_types_1.StructureType.CAVE,
+            position: {
+                x: location.x,
+                y: location.y
+            },
+            capacity: 2 + Math.floor(Math.random() * 3),
+            occupied: false,
+            stability: 0.8 + Math.random() * 0.2,
+            last_modified: Date.now()
+        };
+        environment.structures.push(shelter);
+        environment.last_modified = Date.now();
+        this.logger.info(`Built shelter in route ${routeId}`, {
+            shelterType,
+            location,
+            capacity: shelter.capacity
+        });
+        return shelter;
+    }
 }
 exports.MockEnvironmentState = MockEnvironmentState;
 //# sourceMappingURL=mock-environment-state.js.map

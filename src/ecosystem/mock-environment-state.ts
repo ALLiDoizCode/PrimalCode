@@ -415,4 +415,110 @@ export class MockEnvironmentState {
     environment.simulation_time += timeIncrement;
     environment.last_modified = Date.now();
   }
+
+  addFoodSource(routeId: string, location: { x: number; y: number }, foodType: string): Resource {
+    const environment = this.environments.get(routeId);
+    if (!environment) {
+      throw new Error(`Environment for route ${routeId} not found`);
+    }
+
+    const foodResource: Resource = {
+      id: `food_${this.resourceIdCounter++}`,
+      type: ResourceType.FOOD,
+      quality: 0.7 + Math.random() * 0.3,
+      quantity: 50 + Math.random() * 50,
+      regeneration_rate: RESOURCE_GENERATION_RATES[ResourceType.FOOD],
+      last_accessed: Date.now(),
+      position: {
+        x: location.x,
+        y: location.y
+      }
+    };
+
+    environment.resources.push(foodResource);
+    environment.last_modified = Date.now();
+
+    this.logger.info(`Added food source to route ${routeId}`, {
+      foodType,
+      location,
+      quality: foodResource.quality
+    });
+
+    return foodResource;
+  }
+
+  modifyWeather(routeId: string, weatherType: string, intensity: number): WeatherState {
+    const environment = this.environments.get(routeId);
+    if (!environment) {
+      throw new Error(`Environment for route ${routeId} not found`);
+    }
+
+    const weatherConditions: Record<string, WeatherCondition> = {
+      rain: WeatherCondition.RAIN,
+      heat: WeatherCondition.CLEAR,
+      storm: WeatherCondition.STORM,
+      normal: WeatherCondition.CLEAR
+    };
+
+    const newCondition = weatherConditions[weatherType] || WeatherCondition.CLEAR;
+    const currentWeather = environment.weather_state;
+
+    const newWeather: WeatherState = {
+      condition: newCondition,
+      temperature: newCondition === WeatherCondition.CLEAR ? 15 + (intensity * 15) : currentWeather.temperature,
+      humidity: newCondition === WeatherCondition.RAIN ? 0.7 + (intensity * 0.3) : currentWeather.humidity,
+      wind_speed: newCondition === WeatherCondition.STORM ? 15 + (intensity * 15) : currentWeather.wind_speed,
+      visibility: newCondition === WeatherCondition.RAIN ? 0.5 - (intensity * 0.3) : currentWeather.visibility,
+      forecast: this.generateWeatherForecast(newCondition)
+    };
+
+    environment.weather_state = newWeather;
+    environment.last_modified = Date.now();
+
+    this.logger.info(`Modified weather for route ${routeId}`, {
+      weatherType,
+      intensity,
+      newCondition
+    });
+
+    return newWeather;
+  }
+
+  buildShelter(routeId: string, location: { x: number; y: number }, shelterType: string): Structure {
+    const environment = this.environments.get(routeId);
+    if (!environment) {
+      throw new Error(`Environment for route ${routeId} not found`);
+    }
+
+    const shelterStructures: Record<string, StructureType> = {
+      cave: StructureType.CAVE,
+      burrow: StructureType.BURROW,
+      tree: StructureType.TREE,
+      rock: StructureType.ROCK
+    };
+
+    const shelter: Structure = {
+      id: `shelter_${this.structureIdCounter++}`,
+      type: shelterStructures[shelterType] || StructureType.CAVE,
+      position: {
+        x: location.x,
+        y: location.y
+      },
+      capacity: 2 + Math.floor(Math.random() * 3),
+      occupied: false,
+      stability: 0.8 + Math.random() * 0.2,
+      last_modified: Date.now()
+    };
+
+    environment.structures.push(shelter);
+    environment.last_modified = Date.now();
+
+    this.logger.info(`Built shelter in route ${routeId}`, {
+      shelterType,
+      location,
+      capacity: shelter.capacity
+    });
+
+    return shelter;
+  }
 }
