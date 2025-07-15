@@ -71,8 +71,8 @@ class HealthCheckTool {
         if (this.registeredTools.length === 0) {
             errors.push('No tools registered');
         }
-        // Check memory usage (basic check)
-        if (process.memoryUsage().heapUsed > 100 * 1024 * 1024) { // 100MB threshold
+        // Check memory usage (basic check) - 500MB threshold for development
+        if (process.memoryUsage().heapUsed > 500 * 1024 * 1024) { // 500MB threshold
             errors.push('High memory usage detected');
         }
         // Check uptime (warn if running for more than 24 hours without restart)

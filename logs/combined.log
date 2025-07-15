@@ -140,3 +140,263 @@
 {"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:30:17.193Z"}
 {"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:30:17.193Z"}
 {"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:30:17.193Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.445Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.453Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.453Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.454Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.454Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.457Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.457Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.457Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.458Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.458Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.459Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.459Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.459Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.459Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.460Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.461Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.461Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.461Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.461Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.462Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.462Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.462Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.463Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.463Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.463Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:49:03.463Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.780Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.789Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.790Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.791Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.791Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.792Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.793Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.793Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.793Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.794Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.794Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.795Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.798Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.798Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.799Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.799Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.800Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.800Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.800Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.801Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.801Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.801Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.802Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.802Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.803Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:56:14.804Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.067Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.076Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.077Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.078Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.078Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.079Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.080Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.080Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.081Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.082Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.082Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.082Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.083Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.083Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.087Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.087Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.088Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.088Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.089Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.090Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.090Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.090Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.091Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.091Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.092Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:57:45.093Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.659Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.667Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.668Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.671Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.672Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.672Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.673Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.673Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.674Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.675Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.675Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.675Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.676Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.676Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.677Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.677Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.677Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.678Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.678Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.679Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.679Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.679Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.679Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.680Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.680Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:58:38.680Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.180Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.188Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.188Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.189Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.190Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.190Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.191Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.191Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.191Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.192Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.192Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.193Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.193Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.193Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.194Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.194Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.195Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.195Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.195Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.199Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.199Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.200Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.200Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.201Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.201Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T03:59:00.201Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.814Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.822Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.823Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.824Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.824Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.825Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.825Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.826Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.828Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.830Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.830Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.830Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.831Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.831Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.832Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.832Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.833Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.833Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.833Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.834Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.834Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.835Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.835Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.835Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.836Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:04:53.836Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.298Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.307Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.308Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.309Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.309Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.310Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.311Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.311Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.311Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.312Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.313Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.313Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.313Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.314Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.315Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.315Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.315Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.315Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.316Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.317Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.317Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.317Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.318Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.318Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.318Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:05:53.318Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.014Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.016Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.017Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.017Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.018Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.018Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.018Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.018Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.019Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.020Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.020Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.020Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.020Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.020Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.022Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.022Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.022Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.022Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.022Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.023Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.023Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.023Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.024Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.024Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.024Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:06:30.024Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.224Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.232Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.233Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.234Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.234Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.235Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.236Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.236Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.236Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.237Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.238Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.238Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.238Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.239Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.243Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.244Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.245Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.246Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.246Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.247Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.247Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.248Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.249Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.249Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.250Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:08:35.250Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.742Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.752Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.753Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.755Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.757Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.757Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.758Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.759Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.759Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.761Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.761Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.762Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.762Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.763Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.764Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.764Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.764Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.765Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.765Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.767Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.767Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.768Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.769Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.769Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.770Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:10:35.773Z"}

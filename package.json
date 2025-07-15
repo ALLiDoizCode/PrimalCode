@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "PrimalCode - Autonomous Ecosystem Management MCP Server",
   "main": "dist/index.js",
+  "bin": {
+    "primalcode": "dist/index.js"
+  },
   "directories": {
     "doc": "docs"
   },
