@@ -221,6 +221,17 @@ graph TB
 | Documentation | TypeDoc | 0.25+ | API documentation | TypeScript-native documentation generation |
 | Linting | ESLint | 8.0+ | Code quality | Standard linting, TypeScript support |
 | Formatting | Prettier | 3.0+ | Code formatting | Consistent formatting, team collaboration |
+| **Epic 5 Additions** | | | | |
+| Inference Provider Runtime | Node.js | 18.0+ | Provider applications | LTS support, async performance, container compatibility |
+| Container Platform | Docker | 24.0+ | Provider deployment | Standardized deployment, environment isolation |
+| Container Orchestration | Docker Compose | 2.20+ | Multi-provider deployment | Development orchestration, service coordination |
+| Monitoring Stack | Prometheus | 2.45+ | Metrics collection | Time-series monitoring, alerting, industry standard |
+| Cache Layer | Redis | 7.0+ | Provider performance | High-performance caching, session management |
+| AI Service Integration | OpenAI API | 1.0+ | Alternative AI provider | Competitive AI services, fallback options |
+| Load Balancing | Nginx | 1.25+ | Provider traffic distribution | High availability, request routing |
+| Process Monitoring | Prometheus Client | 15.0+ | Runtime metrics | Application metrics, performance tracking |
+| Configuration Management | Helm | 3.12+ | Kubernetes deployment | Configuration templating, version management |
+| Development Tools | Nodemon | 3.0+ | Development workflow | Auto-restart, development efficiency |
 
 ## Data Models
 
@@ -796,6 +807,220 @@ interface DebitNoticeMessage {
 **Technology Stack:** Node.js, TypeScript, AO SDK, AI service clients
 
 **Architecture Pattern:** Event-driven microservice with AO message handling
+
+### Marketplace Service Discovery Enhancement
+
+**Responsibility:** Advanced service discovery and provider matching system that intelligently routes AI inference requests to optimal providers based on requirements, performance history, and real-time availability.
+
+**Key Interfaces:**
+- Intelligent provider matching based on service requirements and constraints
+- Dynamic provider scoring with multi-factor optimization (cost, speed, quality, reliability)
+- Real-time provider availability monitoring and failover routing
+- Historical performance analysis and trend prediction for provider selection
+- Service requirement parsing and capability matching
+- Load balancing and request distribution optimization
+
+**Service Discovery Architecture:**
+```typescript
+// Enhanced Service Discovery with Intelligent Routing
+export class MarketplaceServiceDiscovery {
+  private providerCapabilities: Map<string, ProviderCapability[]> = new Map();
+  private performanceHistory: Map<string, PerformanceData> = new Map();
+  private realTimeMetrics: Map<string, RealTimeMetrics> = new Map();
+  
+  async discoverOptimalProvider(
+    serviceRequest: ServiceRequest
+  ): Promise<ProviderSelection> {
+    // Multi-stage provider discovery process
+    const candidates = await this.findCandidateProviders(serviceRequest);
+    const scored = await this.scoreProviders(candidates, serviceRequest);
+    const optimized = await this.optimizeSelection(scored, serviceRequest);
+    
+    return {
+      primaryProvider: optimized.primary,
+      backupProviders: optimized.backups,
+      routingReason: optimized.reasoning,
+      expectedPerformance: optimized.performance,
+      costEstimate: optimized.cost,
+      fallbackStrategy: optimized.fallback
+    };
+  }
+  
+  private async findCandidateProviders(
+    request: ServiceRequest
+  ): Promise<ProviderCandidate[]> {
+    const candidates: ProviderCandidate[] = [];
+    
+    for (const [providerId, capabilities] of this.providerCapabilities) {
+      const matchingCapabilities = capabilities.filter(cap => 
+        cap.serviceType === request.serviceType &&
+        this.meetsRequirements(cap, request.requirements)
+      );
+      
+      if (matchingCapabilities.length > 0) {
+        candidates.push({
+          providerId,
+          capabilities: matchingCapabilities,
+          availability: await this.checkProviderAvailability(providerId),
+          currentLoad: await this.getCurrentLoad(providerId)
+        });
+      }
+    }
+    
+    return candidates;
+  }
+  
+  private async scoreProviders(
+    candidates: ProviderCandidate[],
+    request: ServiceRequest
+  ): Promise<ScoredProvider[]> {
+    const scored: ScoredProvider[] = [];
+    
+    for (const candidate of candidates) {
+      const performance = this.performanceHistory.get(candidate.providerId);
+      const realTime = this.realTimeMetrics.get(candidate.providerId);
+      
+      const qualityScore = this.calculateQualityScore(performance, request);
+      const speedScore = this.calculateSpeedScore(performance, realTime, request);
+      const costScore = this.calculateCostScore(candidate, request);
+      const reliabilityScore = this.calculateReliabilityScore(performance);
+      const availabilityScore = this.calculateAvailabilityScore(candidate, realTime);
+      
+      const totalScore = (
+        qualityScore * request.weights.quality +
+        speedScore * request.weights.speed +
+        costScore * request.weights.cost +
+        reliabilityScore * request.weights.reliability +
+        availabilityScore * request.weights.availability
+      );
+      
+      scored.push({
+        candidate,
+        score: totalScore,
+        breakdown: {
+          quality: qualityScore,
+          speed: speedScore,
+          cost: costScore,
+          reliability: reliabilityScore,
+          availability: availabilityScore
+        }
+      });
+    }
+    
+    return scored.sort((a, b) => b.score - a.score);
+  }
+  
+  private async optimizeSelection(
+    scored: ScoredProvider[],
+    request: ServiceRequest
+  ): Promise<OptimizedSelection> {
+    const primary = scored[0];
+    const backups = scored.slice(1, 3);
+    
+    return {
+      primary: primary.candidate,
+      backups: backups.map(s => s.candidate),
+      reasoning: this.generateSelectionReasoning(primary, request),
+      performance: this.predictPerformance(primary, request),
+      cost: this.calculateExpectedCost(primary, request),
+      fallback: this.createFallbackStrategy(backups, request)
+    };
+  }
+}
+```
+
+**Provider Capability Matching:**
+```typescript
+// Advanced Capability Matching System
+export class ProviderCapabilityMatcher {
+  async matchCapabilities(
+    serviceType: string,
+    requirements: ServiceRequirements
+  ): Promise<CapabilityMatch[]> {
+    const availableProviders = await this.getAvailableProviders();
+    const matches: CapabilityMatch[] = [];
+    
+    for (const provider of availableProviders) {
+      const capability = provider.capabilities.find(c => c.serviceType === serviceType);
+      if (!capability) continue;
+      
+      const compatibilityScore = this.calculateCompatibilityScore(
+        capability,
+        requirements
+      );
+      
+      if (compatibilityScore > 0.7) { // Minimum compatibility threshold
+        matches.push({
+          providerId: provider.id,
+          capability,
+          compatibilityScore,
+          estimatedPerformance: await this.estimatePerformance(provider, requirements),
+          pricing: await this.calculatePricing(provider, requirements)
+        });
+      }
+    }
+    
+    return matches.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
+  }
+  
+  private calculateCompatibilityScore(
+    capability: ProviderCapability,
+    requirements: ServiceRequirements
+  ): number {
+    let score = 0;
+    let maxScore = 0;
+    
+    // Quality tier matching
+    if (requirements.qualityTier) {
+      maxScore += 0.3;
+      if (capability.supportedQualityTiers.includes(requirements.qualityTier)) {
+        score += 0.3;
+      }
+    }
+    
+    // Response time requirements
+    if (requirements.maxResponseTime) {
+      maxScore += 0.2;
+      if (capability.avgResponseTime <= requirements.maxResponseTime) {
+        score += 0.2;
+      }
+    }
+    
+    // Cost constraints
+    if (requirements.maxCost) {
+      maxScore += 0.2;
+      if (capability.pricing <= requirements.maxCost) {
+        score += 0.2;
+      }
+    }
+    
+    // Availability requirements
+    if (requirements.availabilityRequirement) {
+      maxScore += 0.15;
+      if (capability.availability >= requirements.availabilityRequirement) {
+        score += 0.15;
+      }
+    }
+    
+    // Feature compatibility
+    if (requirements.features) {
+      maxScore += 0.15;
+      const matchedFeatures = requirements.features.filter(f => 
+        capability.supportedFeatures.includes(f)
+      );
+      score += 0.15 * (matchedFeatures.length / requirements.features.length);
+    }
+    
+    return maxScore > 0 ? score / maxScore : 0;
+  }
+}
+```
+
+**Dependencies:** Provider Registry, Reputation Manager, Real-time Metrics Collector, Performance Analytics
+
+**Technology Stack:** TypeScript, AO SDK, Performance Analytics, Machine Learning Models
+
+**Architecture Pattern:** Intelligent routing with multi-factor optimization and real-time adaptation
 
 ## Components Diagrams
 
@@ -2442,6 +2667,66 @@ describe('Complete Ecosystem Management Flow', () => {
 | Variables | camelCase | snake_case | `ecosystemState` / `ecosystem_state` |
 | AO Messages | kebab-case | kebab-case | `Environment-Change` |
 
+### Terminology Standardization
+
+**Core Terminology Alignment Between Architecture and PRD:**
+
+**MCP Tools (consistent snake_case naming):**
+- `observe_ecosystem` - Primary ecosystem observation tool
+- `modify_environment` - Environmental modification tool
+- `analyze_monster` - Individual monster analysis tool
+- `navigate_routes` - Route management and navigation tool
+- `track_influence` - Influence point tracking and management tool
+- `capture_creature` - Monster capture mechanics tool
+- `inference_marketplace` - AI marketplace interaction tool
+
+**Component Naming (consistent PascalCase):**
+- `EcosystemObserverTool` - Ecosystem observation component
+- `EnvironmentModifierTool` - Environmental modification component
+- `MonsterAnalyzerTool` - Monster analysis component
+- `RouteNavigatorTool` - Route management component
+- `InfluenceTrackerTool` - Influence tracking component
+- `CaptureCaptureTool` - Capture mechanics component
+- `InferenceMarketplaceTool` - Marketplace interaction component
+
+**Process Naming (consistent kebab-case for AO messages):**
+- `Monster-Decision` - Monster AI decision requests
+- `Environment-Change` - Environmental modification events
+- `Player-Action` - Player interaction events
+- `Process-Health` - Process health monitoring
+- `AI-Inference-Request` - AI marketplace service requests
+- `Provider-Registration` - Provider service registration
+- `Credit-Notice` / `Debit-Notice` - Token transfer notifications
+
+**File Structure Naming (consistent kebab-case):**
+- `ecosystem-observer.ts` - Ecosystem observation implementation
+- `environment-modifier.ts` - Environmental modification implementation
+- `monster-analyzer.ts` - Monster analysis implementation
+- `route-navigator.ts` - Route management implementation
+- `influence-tracker.ts` - Influence tracking implementation
+- `capture-mechanics.ts` - Capture mechanics implementation
+- `inference-marketplace.ts` - Marketplace interaction implementation
+
+**Epic and Story Terminology:**
+- **Epic 1**: "MCP Foundation & Proof of Concept" 
+- **Epic 2**: "Autonomous Monster Integration"
+- **Epic 3**: "Full Ecosystem Experience"
+- **Epic 5**: "Inference Provider Infrastructure"
+
+**Technical Stack Terminology:**
+- **MCP Server**: FastMCP-based TypeScript application
+- **AO Processes**: Lua-based autonomous processes on Arweave
+- **Inference Providers**: Node.js applications handling AI marketplace requests
+- **Service Discovery**: Intelligent provider matching and routing system
+
+**Quality Assurance Terminology:**
+- **Integration Verification (IV)**: Acceptance criteria validation points
+- **Performance Benchmarks**: Quantified performance requirements
+- **Fallback Hierarchy**: AI service degradation levels
+- **Error Recovery**: Graceful degradation and recovery mechanisms
+
+This standardization ensures consistent terminology across all documentation, code, and communication, supporting clear development workflows and reducing confusion between architecture and PRD specifications.
+
 ## Error Handling Strategy
 
 ### Error Flow
@@ -2586,5 +2871,320 @@ end
 - Environmental modification success rate
 - Player engagement metrics
 - Ecosystem balance indicators
+
+## Epic 5: Inference Provider Infrastructure
+
+### Provider Application Architecture
+
+**Overview:** Epic 5 extends the inference marketplace with comprehensive Node.js-based inference provider applications that can be independently deployed and operated by third-party providers or the PrimalCode team.
+
+#### Core Provider Application Components
+
+**1. Provider Application Framework**
+```typescript
+// Multi-Provider Application Architecture
+export class InferenceProviderFramework {
+  private providers: Map<string, InferenceProvider> = new Map();
+  private aoClient: AOClient;
+  private marketplaceClient: MarketplaceClient;
+  
+  constructor(config: ProviderFrameworkConfig) {
+    this.aoClient = new AOClient(config.walletPath);
+    this.marketplaceClient = new MarketplaceClient(config.marketplaceConfig);
+  }
+  
+  async registerProvider(provider: InferenceProvider): Promise<void> {
+    await provider.initialize();
+    this.providers.set(provider.id, provider);
+    
+    // Register with marketplace
+    await this.marketplaceClient.registerProvider({
+      providerId: provider.id,
+      capabilities: provider.capabilities,
+      pricing: provider.pricing,
+      qualityTier: provider.qualityTier
+    });
+  }
+  
+  async startAllProviders(): Promise<void> {
+    for (const [id, provider] of this.providers) {
+      await provider.start();
+      console.log(`Provider ${id} started successfully`);
+    }
+  }
+}
+```
+
+**2. Multi-AI Service Support**
+```typescript
+// Pluggable AI Service Architecture
+export interface AIServiceAdapter {
+  name: string;
+  supportedServiceTypes: string[];
+  costPerRequest: Record<string, number>;
+  
+  generateDecision(context: DecisionContext): Promise<DecisionResult>;
+  generateText(context: TextContext): Promise<TextResult>;
+  analyzeImage(context: ImageContext): Promise<AnalysisResult>;
+}
+
+export class ClaudeServiceAdapter implements AIServiceAdapter {
+  name = "claude-3-sonnet";
+  supportedServiceTypes = ["decision-making", "text-generation"];
+  costPerRequest = { "decision-making": 0.015, "text-generation": 0.01 };
+  
+  async generateDecision(context: DecisionContext): Promise<DecisionResult> {
+    // Claude-specific implementation
+  }
+}
+
+export class OpenAIServiceAdapter implements AIServiceAdapter {
+  name = "gpt-4";
+  supportedServiceTypes = ["decision-making", "text-generation", "image-analysis"];
+  costPerRequest = { "decision-making": 0.03, "text-generation": 0.02, "image-analysis": 0.04 };
+  
+  async generateDecision(context: DecisionContext): Promise<DecisionResult> {
+    // OpenAI-specific implementation
+  }
+}
+```
+
+**3. Provider Economics and Optimization**
+```typescript
+// Dynamic Pricing and Cost Optimization
+export class ProviderEconomics {
+  private demandHistory: DemandDataPoint[] = [];
+  private competitorPricing: Map<string, PricingData> = new Map();
+  
+  async optimizePricing(serviceType: string): Promise<OptimizedPricing> {
+    const demand = this.analyzeDemand(serviceType);
+    const competition = this.analyzeCompetition(serviceType);
+    const costs = this.calculateOperationalCosts(serviceType);
+    
+    return {
+      basePrice: costs.operational * 1.2, // 20% margin
+      demandMultiplier: demand.multiplier,
+      competitiveAdjustment: competition.adjustment,
+      finalPrice: this.calculateFinalPrice(costs, demand, competition)
+    };
+  }
+  
+  private analyzeDemand(serviceType: string): DemandAnalysis {
+    // Implement demand analysis logic
+    return {
+      currentDemand: 1.0,
+      trendMultiplier: 1.1,
+      multiplier: 1.05
+    };
+  }
+}
+```
+
+#### Provider Deployment Architecture
+
+**Container-Based Multi-Provider Deployment**
+```yaml
+# docker-compose.yml for Provider Infrastructure
+version: '3.8'
+services:
+  claude-provider:
+    build: ./inference-providers/claude-provider
+    environment:
+      - PROVIDER_ID=claude-provider-001
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+      - ARWEAVE_WALLET_PATH=/app/wallet/wallet.json
+    volumes:
+      - ./wallets/claude-provider:/app/wallet:ro
+    depends_on:
+      - redis
+      - prometheus
+    
+  openai-provider:
+    build: ./inference-providers/openai-provider
+    environment:
+      - PROVIDER_ID=openai-provider-001
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ARWEAVE_WALLET_PATH=/app/wallet/wallet.json
+    volumes:
+      - ./wallets/openai-provider:/app/wallet:ro
+    depends_on:
+      - redis
+      - prometheus
+    
+  local-llm-provider:
+    build: ./inference-providers/local-llm-provider
+    environment:
+      - PROVIDER_ID=local-llm-provider-001
+      - MODEL_PATH=/app/models/llama-2-7b
+    volumes:
+      - ./models:/app/models:ro
+      - ./wallets/local-provider:/app/wallet:ro
+    runtime: nvidia
+    
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+```
+
+#### Provider Monitoring and Analytics
+
+**Comprehensive Provider Metrics**
+```typescript
+// Provider Performance Monitoring
+export class ProviderMetrics {
+  private metrics: Map<string, MetricData> = new Map();
+  
+  async recordInferenceRequest(
+    providerId: string,
+    serviceType: string,
+    responseTime: number,
+    quality: number,
+    cost: number
+  ): Promise<void> {
+    const key = `${providerId}-${serviceType}`;
+    const existing = this.metrics.get(key) || this.createEmptyMetrics();
+    
+    existing.requestCount++;
+    existing.totalResponseTime += responseTime;
+    existing.avgResponseTime = existing.totalResponseTime / existing.requestCount;
+    existing.qualityScores.push(quality);
+    existing.totalCost += cost;
+    
+    this.metrics.set(key, existing);
+    
+    // Send to monitoring system
+    await this.sendToMonitoring(providerId, serviceType, existing);
+  }
+  
+  async generatePerformanceReport(providerId: string): Promise<ProviderReport> {
+    const providerMetrics = Array.from(this.metrics.entries())
+      .filter(([key]) => key.startsWith(providerId))
+      .map(([key, data]) => ({ serviceType: key.split('-')[1], ...data }));
+    
+    return {
+      providerId,
+      totalRequests: providerMetrics.reduce((sum, m) => sum + m.requestCount, 0),
+      avgResponseTime: this.calculateWeightedAverage(providerMetrics, 'avgResponseTime'),
+      avgQuality: this.calculateWeightedAverage(providerMetrics, 'avgQuality'),
+      totalRevenue: providerMetrics.reduce((sum, m) => sum + m.totalCost, 0),
+      serviceBreakdown: providerMetrics
+    };
+  }
+}
+```
+
+### Service Discovery and Registry Enhancement
+
+**Advanced Service Discovery**
+```typescript
+// Enhanced Service Discovery with Intelligent Matching
+export class EnhancedServiceDiscovery {
+  private providerRegistry: Map<string, EnhancedProviderInfo> = new Map();
+  private requestHistory: RequestHistoryEntry[] = [];
+  
+  async findOptimalProvider(
+    serviceType: string,
+    requirements: ServiceRequirements
+  ): Promise<ProviderRecommendation> {
+    const candidates = this.filterProviders(serviceType, requirements);
+    const scored = await this.scoreProviders(candidates, requirements);
+    
+    return {
+      primaryProvider: scored[0],
+      backupProviders: scored.slice(1, 3),
+      reasoning: this.generateRecommendationReasoning(scored[0], requirements)
+    };
+  }
+  
+  private async scoreProviders(
+    providers: EnhancedProviderInfo[],
+    requirements: ServiceRequirements
+  ): Promise<ScoredProvider[]> {
+    const scored: ScoredProvider[] = [];
+    
+    for (const provider of providers) {
+      const score = await this.calculateProviderScore(provider, requirements);
+      scored.push({ provider, score, breakdown: score.breakdown });
+    }
+    
+    return scored.sort((a, b) => b.score.total - a.score.total);
+  }
+  
+  private async calculateProviderScore(
+    provider: EnhancedProviderInfo,
+    requirements: ServiceRequirements
+  ): Promise<ProviderScore> {
+    const qualityScore = provider.reputation.quality_score * 0.3;
+    const speedScore = this.calculateSpeedScore(provider, requirements) * 0.25;
+    const costScore = this.calculateCostScore(provider, requirements) * 0.20;
+    const reliabilityScore = provider.reputation.completion_rate * 0.15;
+    const availabilityScore = provider.metadata.availability * 0.10;
+    
+    return {
+      total: qualityScore + speedScore + costScore + reliabilityScore + availabilityScore,
+      breakdown: {
+        quality: qualityScore,
+        speed: speedScore,
+        cost: costScore,
+        reliability: reliabilityScore,
+        availability: availabilityScore
+      }
+    };
+  }
+}
+```
+
+### Provider Template System
+
+**Standardized Provider Templates**
+```typescript
+// Provider Template Generator
+export class ProviderTemplateGenerator {
+  async generateProviderTemplate(
+    aiService: string,
+    capabilities: string[],
+    config: ProviderTemplateConfig
+  ): Promise<GeneratedProviderCode> {
+    const template = await this.loadTemplate(aiService);
+    const customized = await this.customizeTemplate(template, capabilities, config);
+    
+    return {
+      sourceCode: customized.sourceCode,
+      dockerfile: customized.dockerfile,
+      packageJson: customized.packageJson,
+      configFiles: customized.configFiles,
+      documentation: customized.documentation
+    };
+  }
+  
+  private async loadTemplate(aiService: string): Promise<ProviderTemplate> {
+    const templatePath = `./provider-templates/${aiService}-template`;
+    return await this.loadTemplateFiles(templatePath);
+  }
+  
+  private async customizeTemplate(
+    template: ProviderTemplate,
+    capabilities: string[],
+    config: ProviderTemplateConfig
+  ): Promise<CustomizedTemplate> {
+    // Template customization logic
+    return {
+      sourceCode: this.generateSourceCode(template, capabilities),
+      dockerfile: this.generateDockerfile(template, config),
+      packageJson: this.generatePackageJson(template, config),
+      configFiles: this.generateConfigFiles(template, config),
+      documentation: this.generateDocumentation(template, capabilities)
+    };
+  }
+}
+```
 
 This architecture document provides the complete technical foundation for building PrimalCode's autonomous monster ecosystem game. The design prioritizes natural language interaction, autonomous creature behavior, and decentralized persistence while maintaining system reliability and engaging gameplay.

@@ -3116,3 +3116,18 @@
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.566Z"}
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.705Z"}
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.707Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.146Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.147Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.148Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.148Z"}
+{"level":"info","message":"Tool registered: place_food","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.148Z"}
+{"level":"info","message":"Tool registered: modify_weather","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.148Z"}
+{"level":"info","message":"Tool registered: build_shelter","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.148Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.148Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.149Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.159Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.159Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.438Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:16.438Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:17.754Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T19:28:17.755Z"}
