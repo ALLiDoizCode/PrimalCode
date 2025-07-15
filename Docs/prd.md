@@ -592,3 +592,81 @@ so that I can build a collection while maintaining thriving autonomous ecosystem
 - IV1: Capture mechanics require strategic thinking and environmental mastery
 - IV2: Multi-route system supports complex ecosystem management without performance degradation
 - IV3: Collection and progression systems encourage long-term engagement and mastery development
+
+### Epic 5: Inference Provider Infrastructure
+
+**Epic Goal:** Develop comprehensive Node.js-based inference provider applications that participate in the AI marketplace, offering various AI services (decision-making, text generation, image analysis) to monster processes and other AO consumers while maintaining competitive pricing and service quality.
+
+**Integration Requirements:** Credit-Notice message handling, AI service integration (Claude API), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
+
+#### Story 5.1: Core Inference Provider Application
+
+As a service provider,
+I want to deploy a functional inference provider application that can receive and process Credit-Notice messages,
+so that I can participate in the AI marketplace and earn tokens for AI services.
+
+**Acceptance Criteria:**
+1. Node.js application framework with Credit-Notice message handling
+2. Integration with AO Client for message processing and token operations
+3. Standardized X-prefix metadata parsing for service requests
+4. Error handling and automatic refund processing for invalid requests
+5. Service type routing for different AI inference capabilities
+
+**Integration Verification:**
+- IV1: Application successfully processes Credit-Notice messages and executes AI inference requests
+- IV2: Provider correctly handles payment validation and refund processing
+- IV3: Service routing accurately directs requests to appropriate AI processing modules
+
+#### Story 5.2: AI Service Integration and Quality Management
+
+As an inference provider,
+I want to integrate with Claude API and other AI services with quality tiers and optimization,
+so that I can deliver high-quality AI inference while managing costs and response times.
+
+**Acceptance Criteria:**
+1. Claude API integration with context-aware prompt generation
+2. Quality tier system (standard, premium, enterprise) with differentiated pricing
+3. Response time optimization and timeout handling
+4. Cost management and API usage tracking
+5. AI service fallback mechanisms for availability issues
+
+**Integration Verification:**
+- IV1: AI integration delivers consistent, high-quality inference results across service types
+- IV2: Quality tiers provide meaningful differentiation in response quality and speed
+- IV3: Cost management maintains profitable operations while offering competitive pricing
+
+#### Story 5.3: Service Registration and Marketplace Integration
+
+As a marketplace participant,
+I want to register my inference provider with the marketplace registry and maintain service discovery,
+so that monster processes and other consumers can find and utilize my services.
+
+**Acceptance Criteria:**
+1. Service registration with capability description and pricing information
+2. Heartbeat system for provider availability monitoring
+3. Reputation tracking and service quality metrics
+4. Dynamic pricing adjustment based on demand and competition
+5. Service discovery optimization for consumer matching
+
+**Integration Verification:**
+- IV1: Provider registration enables successful service discovery by AI marketplace consumers
+- IV2: Heartbeat system maintains accurate provider availability status
+- IV3: Reputation system reflects service quality and influences consumer selection
+
+#### Story 5.4: Provider Operations and Deployment Infrastructure
+
+As a provider operator,
+I want containerized deployment with monitoring and scaling capabilities,
+so that I can maintain reliable service operations and scale based on demand.
+
+**Acceptance Criteria:**
+1. Docker containerization with environment configuration management
+2. Service monitoring with metrics collection and alerting
+3. Horizontal scaling capabilities for high-demand periods
+4. Log aggregation and debugging tools for operational support
+5. Automated deployment and update processes
+
+**Integration Verification:**
+- IV1: Containerized deployment supports reliable service operation across environments
+- IV2: Monitoring systems provide actionable insights for service optimization
+- IV3: Scaling infrastructure handles demand fluctuations without service disruption

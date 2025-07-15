@@ -78,107 +78,13 @@ so that I can begin influencing monster behavior patterns in the ecosystem.
 - IV2: MCP tools provide clear feedback on successful modifications and their effects
 - IV3: System demonstrates how environmental changes influence mock monster decision patterns
 
-## Epic 2: AI Inference Marketplace
-
-**Epic Goal:** Create a token-based AI inference marketplace where AO processes can request AI inference services by transferring Primal tokens to providers, with an automated registry system for provider discovery and reputation management.
-
-**Integration Requirements:** Extends existing token economy and AO message passing to support inference requests/responses, integrates with monster AI decision-making, and provides organic transaction activity through monster processes.
-
-### Story 2.1: Inference Request Protocol - Brownfield Addition
-
-As an AO process developer,
-I want to request AI inference services from marketplace providers by transferring Primal tokens along with context data,
-so that my process can access distributed AI capabilities while creating organic transaction activity.
-
-**Story Context:**
-- Integrates with: AO process message passing system and Primal token transfer mechanisms (Story 1.3)
-- Technology: Lua (AO processes), TypeScript (MCP server), marketplace AI system
-- Follows pattern: Current monster-to-monster communication and marketplace decision-making
-- Touch points: AO message schemas, token transfer handlers, marketplace fallback system
-
-**Acceptance Criteria:**
-1. AO processes can send `AI-Inference-Request` messages containing context data and token transfers to provider processes
-2. Provider processes can respond with `AI-Inference-Response` messages containing inference results
-3. Request/response protocol includes proper error handling for timeouts and invalid requests
-4. Existing monster AI decision-making continues to work unchanged with marketplace integration
-5. New inference protocol follows existing AO message schema patterns
-6. Integration with current token economy maintains existing influence point mechanics
-7. Protocol is covered by unit tests for message validation and error handling
-8. AO process communication documentation updated with new message types
-9. No regression in existing monster autonomy or AI decision performance verified
-
-**Integration Verification:**
-- IV1: Inference request/response message schemas implemented and tested
-- IV2: Token transfer validation integrated with requests functions correctly
-- IV3: Error handling for provider failures and timeouts works as expected
-- IV4: Existing monster AI functionality continues unchanged
-
-### Story 2.2: Provider Registry System - Brownfield Addition
-
-As an AI inference provider,
-I want to register my service with reputation metrics and discovery capabilities,
-so that AO processes can find and evaluate my inference services based on performance history.
-
-**Story Context:**
-- Integrates with: AO process state management and player progression tracking
-- Technology: Lua (registry process), TypeScript (MCP discovery tools), existing reputation patterns
-- Follows pattern: Player mastery tracking and ecosystem balance monitoring
-- Touch points: AO process registry, reputation scoring, MCP tool interfaces
-
-**Acceptance Criteria:**
-1. Provider registry AO process maintains list of active inference providers with service metadata
-2. Reputation system tracks provider response times, success rates, and service quality metrics
-3. Discovery mechanism allows processes to query available providers by capability and reputation
-4. Registry system follows existing AO process state management patterns
-5. Reputation tracking integrates with current player progression and mastery systems
-6. MCP tools provide natural language interface for provider discovery and monitoring
-7. Registry operations covered by comprehensive unit tests
-8. Provider discovery documented with usage examples
-9. Reputation scoring maintains consistency with existing ecosystem metrics
-
-**Integration Verification:**
-- IV1: Provider registry AO process deployed and functional
-- IV2: Reputation metrics calculation and persistence implemented correctly
-- IV3: Discovery API accessible via MCP tools with natural language interface
-- IV4: Registry performance tested with multiple providers
-
-### Story 2.3: Monster Process AI Marketplace Integration - Brownfield Addition
-
-As a monster process,
-I want to optionally use marketplace inference providers for decision-making while maintaining existing AI capabilities,
-so that I create organic transaction activity and demonstrate marketplace usage without disrupting autonomous behavior.
-
-**Story Context:**
-- Integrates with: Monster AI decision-making, token economy, and autonomous behavior cycles
-- Technology: Lua (monster processes), marketplace AI integration patterns, decision caching
-- Follows pattern: Current monster decision workflow with marketplace fallback hierarchy
-- Touch points: Monster decision cycles, marketplace integration engine, token economy
-
-**Acceptance Criteria:**
-1. Monster processes can optionally request inference from marketplace providers during decision cycles
-2. Marketplace requests include decision context and transfer appropriate Primal tokens
-3. Decision fallback maintains existing hierarchy: Marketplace → Cached → Rule-based
-4. Existing monster autonomy and decision-making behavior remains unchanged
-5. Marketplace integration follows current AI decision patterns and timing
-6. Token transfers for inference integrate with existing influence point economy
-7. Marketplace decision flow tested alongside existing AI decision tests
-8. Monster behavior consistency verified across all decision sources
-9. Performance impact measured and confirmed within acceptable bounds
-
-**Integration Verification:**
-- IV1: Marketplace inference option integrated into monster decision cycle
-- IV2: Token transfer for inference requests implemented and tested
-- IV3: Decision fallback hierarchy maintains existing behavior patterns
-- IV4: Monster autonomy and timing verified unchanged with organic transaction activity demonstrated
-
-
-## Epic 3: Autonomous Monster Integration
+## Epic 2: Autonomous Monster Integration
 
 **Epic Goal:** Replace mock monster system with real AO processes featuring AI-driven autonomous decision-making, establishing the core technical architecture for authentic autonomous creature behavior while maintaining the conversational MCP interface.
 
-**Integration Requirements:** AO process development and deployment, AI marketplace integration, real-time communication between MCP server and AO monster processes, and robust fallback systems for AI service disruptions. **Depends on Epic 2 AI marketplace infrastructure.**
+**Integration Requirements:** AO process development and deployment, AI integration with Claude API, real-time communication between MCP server and AO monster processes, and robust fallback systems for AI service disruptions.
 
-### Story 3.1: Single AO Monster Process Implementation
+### Story 2.1: Single AO Monster Process Implementation
 
 As a system architect,
 I want to implement a functional AO process that maintains persistent monster state and makes autonomous decisions,
@@ -196,26 +102,25 @@ so that the foundation for real autonomous creature behavior is established.
 - IV2: Monster state persists correctly across process restarts and network interruptions
 - IV3: Process responds reliably to external state query messages
 
-### Story 3.2: AI Decision Integration with Marketplace and Fallback Systems
+### Story 2.2: AI Decision Integration with Fallback Systems
 
 As a monster AI system,
-I want to make intelligent autonomous decisions using the AI marketplace with robust fallback mechanisms,
-so that creature behavior remains engaging and logical while creating organic transaction activity.
+I want to make intelligent autonomous decisions using Claude API with robust fallback mechanisms,
+so that creature behavior remains engaging and logical even during AI service disruptions.
 
 **Acceptance Criteria:**
-1. AI marketplace integration for monster decision-making with contextual prompts and token transfers
-2. Decision fallback hierarchy: AI Marketplace → Cached decisions → Rule-based AI → Static behavior
+1. Claude API integration for monster decision-making with contextual prompts
+2. Decision fallback hierarchy: Claude API → Cached decisions → Rule-based AI → Static behavior
 3. AI prompt optimization for cost efficiency and response quality
 4. Decision logging and replay capability for debugging and analysis
-5. Configurable decision frequency and AI complexity levels with marketplace provider selection
+5. Configurable decision frequency and AI complexity levels
 
 **Integration Verification:**
-- IV1: AI decisions complete within 5-second timeout with graceful fallback activation through all levels
+- IV1: AI decisions complete within 5-second timeout with graceful fallback activation
 - IV2: Monster behavior remains logical and engaging across all fallback levels
-- IV3: Token-based marketplace transactions integrate seamlessly with existing influence point economy
-- IV4: AI cost tracking accurately monitors marketplace usage expenses
+- IV3: AI cost tracking accurately monitors and controls API usage expenses
 
-### Story 3.3: MCP Server to AO Process Communication
+### Story 2.3: MCP Server to AO Process Communication
 
 As an MCP server,
 I want to communicate reliably with AO monster processes to provide real-time ecosystem information,
@@ -233,7 +138,7 @@ so that players receive accurate, up-to-date information about autonomous creatu
 - IV2: Communication layer handles AO network issues gracefully without crashing MCP server
 - IV3: System performance supports querying 5+ monsters simultaneously without degradation
 
-### Story 3.4: Enhanced MCP Tools with Real Monster Data
+### Story 2.4: Enhanced MCP Tools with Real Monster Data
 
 As a player,
 I want to interact with real autonomous monsters through MCP tools with the same conversational interface,
@@ -251,13 +156,13 @@ so that the ecosystem management experience feels authentic and engaging.
 - IV2: Environmental modifications create observable, logical responses in monster AI behavior
 - IV3: Conversational interface remains responsive despite real-time AO process communication
 
-## Epic 4: Full Ecosystem Experience
+## Epic 3: Full Ecosystem Experience
 
 **Epic Goal:** Deliver complete autonomous ecosystem management experience with multiple monster types, advanced environmental tools, inter-monster communication, adaptation learning, and capture mechanics, creating the full vision of the autonomous creature ecosystem game.
 
 **Integration Requirements:** Multi-monster AO process coordination, advanced MCP tool development, monster adaptation and learning systems, complex environmental persistence, and comprehensive ecosystem monitoring capabilities.
 
-### Story 4.1: Multiple Monster Types and Inter-Process Communication
+### Story 3.1: Multiple Monster Types and Inter-Process Communication
 
 As an ecosystem,
 I want multiple monster types to interact autonomously with each other through AO message passing,
@@ -275,7 +180,7 @@ so that complex territorial dynamics and pack behaviors emerge naturally.
 - IV2: Inter-process communication performs reliably with 10+ simultaneous monsters
 - IV3: Ecosystem maintains balance without manual intervention for 48+ hours
 
-### Story 4.2: Advanced Environmental Modification Tools
+### Story 3.2: Advanced Environmental Modification Tools
 
 As a player,
 I want sophisticated environmental tools for complex ecosystem management strategies,
@@ -293,7 +198,7 @@ so that I can create intricate influence chains and adapt to monster counter-str
 - IV2: Environmental modifications persist correctly with defined duration and decay patterns
 - IV3: Influence point economy balances strategic depth with accessibility
 
-### Story 4.3: Monster Adaptation and Learning Systems
+### Story 3.3: Monster Adaptation and Learning Systems
 
 As a monster AI,
 I want to learn from and adapt to repeated player strategies,
@@ -311,7 +216,7 @@ so that the ecosystem remains challenging and engaging through counter-adaptatio
 - IV2: Adaptation systems maintain game balance without making strategies ineffective
 - IV3: Learning data persists correctly across process restarts and system updates
 
-### Story 4.4: Capture Mechanics and Route Management
+### Story 3.4: Capture Mechanics and Route Management
 
 As a player,
 I want to capture monsters through strategic environmental setup and manage multiple ecosystem routes,
@@ -328,3 +233,81 @@ so that I can build a collection while maintaining thriving autonomous ecosystem
 - IV1: Capture mechanics require strategic thinking and environmental mastery
 - IV2: Multi-route system supports complex ecosystem management without performance degradation
 - IV3: Collection and progression systems encourage long-term engagement and mastery development
+
+## Epic 5: Inference Provider Infrastructure
+
+**Epic Goal:** Develop comprehensive Node.js-based inference provider applications that participate in the AI marketplace, offering various AI services (decision-making, text generation, image analysis) to monster processes and other AO consumers while maintaining competitive pricing and service quality.
+
+**Integration Requirements:** Credit-Notice message handling, AI service integration (Claude API), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
+
+### Story 5.1: Core Inference Provider Application
+
+As a service provider,
+I want to deploy a functional inference provider application that can receive and process Credit-Notice messages,
+so that I can participate in the AI marketplace and earn tokens for AI services.
+
+**Acceptance Criteria:**
+1. Node.js application framework with Credit-Notice message handling
+2. Integration with AO Client for message processing and token operations
+3. Standardized X-prefix metadata parsing for service requests
+4. Error handling and automatic refund processing for invalid requests
+5. Service type routing for different AI inference capabilities
+
+**Integration Verification:**
+- IV1: Application successfully processes Credit-Notice messages and executes AI inference requests
+- IV2: Provider correctly handles payment validation and refund processing
+- IV3: Service routing accurately directs requests to appropriate AI processing modules
+
+### Story 5.2: AI Service Integration and Quality Management
+
+As an inference provider,
+I want to integrate with Claude API and other AI services with quality tiers and optimization,
+so that I can deliver high-quality AI inference while managing costs and response times.
+
+**Acceptance Criteria:**
+1. Claude API integration with context-aware prompt generation
+2. Quality tier system (standard, premium, enterprise) with differentiated pricing
+3. Response time optimization and timeout handling
+4. Cost management and API usage tracking
+5. AI service fallback mechanisms for availability issues
+
+**Integration Verification:**
+- IV1: AI integration delivers consistent, high-quality inference results across service types
+- IV2: Quality tiers provide meaningful differentiation in response quality and speed
+- IV3: Cost management maintains profitable operations while offering competitive pricing
+
+### Story 5.3: Service Registration and Marketplace Integration
+
+As a marketplace participant,
+I want to register my inference provider with the marketplace registry and maintain service discovery,
+so that monster processes and other consumers can find and utilize my services.
+
+**Acceptance Criteria:**
+1. Service registration with capability description and pricing information
+2. Heartbeat system for provider availability monitoring
+3. Reputation tracking and service quality metrics
+4. Dynamic pricing adjustment based on demand and competition
+5. Service discovery optimization for consumer matching
+
+**Integration Verification:**
+- IV1: Provider registration enables successful service discovery by AI marketplace consumers
+- IV2: Heartbeat system maintains accurate provider availability status
+- IV3: Reputation system reflects service quality and influences consumer selection
+
+### Story 5.4: Provider Operations and Deployment Infrastructure
+
+As a provider operator,
+I want containerized deployment with monitoring and scaling capabilities,
+so that I can maintain reliable service operations and scale based on demand.
+
+**Acceptance Criteria:**
+1. Docker containerization with environment configuration management
+2. Service monitoring with metrics collection and alerting
+3. Horizontal scaling capabilities for high-demand periods
+4. Log aggregation and debugging tools for operational support
+5. Automated deployment and update processes
+
+**Integration Verification:**
+- IV1: Containerized deployment supports reliable service operation across environments
+- IV2: Monitoring systems provide actionable insights for service optimization
+- IV3: Scaling infrastructure handles demand fluctuations without service disruption
