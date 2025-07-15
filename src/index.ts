@@ -3,6 +3,11 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { HealthCheckTool } from './tools/health-check';
+import { EcosystemObserverTool } from './tools/ecosystem-observer';
+import { MonsterAnalyzerTool } from './tools/monster-analyzer';
+import { EnvironmentCheckerTool } from './tools/environment-checker';
+import { MockMonsterSystem } from './ecosystem/mock-monster-system';
+import { MockEnvironmentState } from './ecosystem/mock-environment-state';
 import logger from './utils/logger';
 import * as dotenv from 'dotenv';
 
@@ -11,6 +16,11 @@ dotenv.config();
 class PrimalCodeMCPServer {
   private server: Server;
   private healthCheckTool: HealthCheckTool;
+  private ecosystemObserverTool: EcosystemObserverTool;
+  private monsterAnalyzerTool: MonsterAnalyzerTool;
+  private environmentCheckerTool: EnvironmentCheckerTool;
+  private monsterSystem: MockMonsterSystem;
+  private environmentState: MockEnvironmentState;
 
   constructor() {
     const serverName = process.env.SERVER_NAME || 'PrimalCode';
@@ -28,7 +38,16 @@ class PrimalCodeMCPServer {
       }
     );
 
+    // Initialize mock systems
+    this.monsterSystem = new MockMonsterSystem(logger);
+    this.environmentState = new MockEnvironmentState(logger);
+    
+    // Initialize tools
     this.healthCheckTool = new HealthCheckTool(serverName, serverVersion);
+    this.ecosystemObserverTool = new EcosystemObserverTool(this.monsterSystem, this.environmentState);
+    this.monsterAnalyzerTool = new MonsterAnalyzerTool(this.monsterSystem);
+    this.environmentCheckerTool = new EnvironmentCheckerTool(this.environmentState, this.monsterSystem);
+    
     this.setupHandlers();
     this.registerTools();
   }
@@ -40,6 +59,9 @@ class PrimalCodeMCPServer {
       return {
         tools: [
           this.healthCheckTool.getToolDefinition(),
+          this.ecosystemObserverTool.getToolDefinition(),
+          this.monsterAnalyzerTool.getToolDefinition(),
+          this.environmentCheckerTool.getToolDefinition(),
         ],
       };
     });
@@ -53,6 +75,42 @@ class PrimalCodeMCPServer {
         switch (name) {
           case 'health_check': {
             const result = await this.healthCheckTool.execute(args || {});
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: result,
+                },
+              ],
+            };
+          }
+          
+          case 'observe_ecosystem': {
+            const result = await this.ecosystemObserverTool.execute(args || {});
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: result,
+                },
+              ],
+            };
+          }
+          
+          case 'analyze_monster': {
+            const result = await this.monsterAnalyzerTool.execute(args || {});
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: result,
+                },
+              ],
+            };
+          }
+          
+          case 'check_environment': {
+            const result = await this.environmentCheckerTool.execute(args || {});
             return {
               content: [
                 {
@@ -84,6 +142,9 @@ class PrimalCodeMCPServer {
 
   private registerTools(): void {
     this.healthCheckTool.registerTool('health_check');
+    this.healthCheckTool.registerTool('observe_ecosystem');
+    this.healthCheckTool.registerTool('analyze_monster');
+    this.healthCheckTool.registerTool('check_environment');
     logger.info('All tools registered successfully');
   }
 

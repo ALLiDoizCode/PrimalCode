@@ -1,0 +1,61 @@
+import { Tool } from '@modelcontextprotocol/sdk/types.js';
+
+export interface EcosystemObservation {
+  currentState: string;
+  monsterBehaviors: string[];
+  suggestedActions: string[];
+  route: string;
+  timestamp: number;
+}
+
+export interface MonsterAnalysis {
+  behavioralInsights: string;
+  personalityTraits: string;
+  currentState: string;
+  predictions: string[];
+  timestamp: number;
+}
+
+export interface EnvironmentCheck {
+  environmentalDetails: string;
+  weatherConditions: string;
+  resourceAvailability: string;
+  recommendations: string[];
+  route: string;
+  timestamp: number;
+}
+
+export interface MCPToolBase {
+  getToolDefinition(): Tool;
+  execute(args: Record<string, unknown>): Promise<string>;
+}
+
+export interface EcosystemObserverArgs {
+  route_id?: string;
+  focus?: string;
+}
+
+export interface MonsterAnalyzerArgs {
+  monster_id?: string;
+  analysis_depth?: string;
+}
+
+export interface EnvironmentCheckerArgs {
+  route_id?: string;
+}
+
+export const DEFAULT_ANALYSIS_DEPTH = 'standard';
+export const DEFAULT_FOCUS_AREA = 'all';
+
+export enum AnalysisDepth {
+  BASIC = 'basic',
+  STANDARD = 'standard',
+  DETAILED = 'detailed'
+}
+
+export enum FocusArea {
+  ALL = 'all',
+  MONSTERS = 'monsters',
+  ENVIRONMENT = 'environment',
+  INTERACTIONS = 'interactions'
+}
