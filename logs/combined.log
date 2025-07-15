@@ -2247,3 +2247,872 @@
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T14:24:46.759Z"}
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T14:24:46.828Z"}
 {"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T14:24:46.829Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:07:08.431Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:07:08.435Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:07:31.528Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:07:31.544Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.533Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.559Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.568Z"}
+{"capacity":2,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:56:56.572Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.573Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.611Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.611Z"}
+{"args":{"location":{"x":30,"y":30},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.612Z"}
+{"capacity":3,"level":"info","location":{"x":30,"y":30},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:56:56.617Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":30,"y":30},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.618Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.621Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.622Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.622Z"}
+{"capacity":4,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:56:56.623Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.623Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.624Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.624Z"}
+{"args":{"location":{"x":60,"y":60},"route_id":"test_route","shelter_type":"rock"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.625Z"}
+{"capacity":2,"level":"info","location":{"x":60,"y":60},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"rock","timestamp":"2025-07-15T15:56:56.625Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":60,"y":60},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.625Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.626Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.628Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.628Z"}
+{"args":{"location":{"x":20,"y":20},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.629Z"}
+{"capacity":4,"level":"info","location":{"x":20,"y":20},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:56:56.629Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":20,"y":20},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.629Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.630Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.630Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.631Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.631Z"}
+{"capacity":2,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:56:56.631Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.631Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.632Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.632Z"}
+{"args":{"location":{"x":10,"y":10},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.632Z"}
+{"capacity":2,"level":"info","location":{"x":10,"y":10},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:56:56.633Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":10,"y":10},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.633Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.634Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.634Z"}
+{"level":"info","message":"Generated cautious_forager ember_hawk monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.644Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.647Z"}
+{"capacity":2,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:56:56.647Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.647Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.648Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.648Z"}
+{"args":{"location":{"x":40,"y":40},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.649Z"}
+{"capacity":3,"level":"info","location":{"x":40,"y":40},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:56:56.650Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.650Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.651Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.651Z"}
+{"args":{"location":{"x":35,"y":35},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.651Z"}
+{"capacity":4,"level":"info","location":{"x":35,"y":35},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:56:56.651Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":35,"y":35},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.652Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.652Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.652Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"invalid_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.653Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"invalid_route","shelter_type":"cave"},"error":{},"level":"error","message":"Error executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.653Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.655Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.656Z"}
+{"args":{"location":{"x":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.657Z"}
+{"args":{"location":{"x":50},"route_id":"test_route","shelter_type":"cave"},"error":{},"level":"error","message":"Error executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.658Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.659Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.659Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.660Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"empty_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.660Z"}
+{"capacity":2,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route empty_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:56:56.661Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.661Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.662Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.662Z"}
+{"args":{"location":{"x":45,"y":45},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.662Z"}
+{"capacity":3,"level":"info","location":{"x":45,"y":45},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:56:56.672Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":45,"y":45},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.673Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.674Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.674Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.676Z"}
+{"capacity":3,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:56:56.676Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.676Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.678Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.678Z"}
+{"args":{"location":{"x":40,"y":40},"route_id":"test_route","shelter_type":"rock"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.679Z"}
+{"capacity":2,"level":"info","location":{"x":40,"y":40},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"rock","timestamp":"2025-07-15T15:56:56.679Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.679Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.680Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.681Z"}
+{"level":"info","message":"Generated aggressive_hunter stone_serpent monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.681Z"}
+{"args":{"location":{"x":35,"y":35},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.681Z"}
+{"capacity":2,"level":"info","location":{"x":35,"y":35},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:56:56.682Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":35,"y":35},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.682Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.684Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.684Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.685Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_3","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.685Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_4","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.686Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_5","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.686Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_6","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.686Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_7","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.686Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.687Z"}
+{"capacity":4,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:56:56.687Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 7 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.687Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.700Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.700Z"}
+{"args":{"location":{"x":55,"y":55},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.715Z"}
+{"capacity":4,"level":"info","location":{"x":55,"y":55},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:56:56.717Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":55,"y":55},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.718Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.977Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.980Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.980Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route test_route","quality":0.7625115635328068,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.983Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.984Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.986Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.987Z"}
+{"args":{"food_type":"plants","location":{"x":30,"y":30},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.987Z"}
+{"foodType":"plants","level":"info","location":{"x":30,"y":30},"message":"Added food source to route test_route","quality":0.9076742619811462,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.988Z"}
+{"changeType":"food_placed","level":"info","location":{"x":30,"y":30},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.988Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.989Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.990Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.990Z"}
+{"args":{"food_type":"plants","location":{"x":20,"y":20},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.990Z"}
+{"foodType":"plants","level":"info","location":{"x":20,"y":20},"message":"Added food source to route test_route","quality":0.8265699576947376,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.991Z"}
+{"changeType":"food_placed","level":"info","location":{"x":20,"y":20},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.992Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.992Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.994Z"}
+{"args":{"food_type":"meat","location":{"x":10,"y":10},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.995Z"}
+{"foodType":"meat","level":"info","location":{"x":10,"y":10},"message":"Added food source to route test_route","quality":0.9372707407364365,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:56.996Z"}
+{"changeType":"food_placed","level":"info","location":{"x":10,"y":10},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.000Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.003Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.004Z"}
+{"args":{"food_type":"water","location":{"x":25,"y":25},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.005Z"}
+{"foodType":"water","level":"info","location":{"x":25,"y":25},"message":"Added food source to route test_route","quality":0.7501839908309113,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.006Z"}
+{"changeType":"food_placed","level":"info","location":{"x":25,"y":25},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.015Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.035Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.038Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"invalid_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.038Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"invalid_route"},"error":{},"level":"error","message":"Error executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.040Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.042Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.043Z"}
+{"args":{"food_type":"meat","location":{"x":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.043Z"}
+{"args":{"food_type":"meat","location":{"x":50},"route_id":"test_route"},"error":{},"level":"error","message":"Error executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.043Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.044Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.044Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.044Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"empty_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.045Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route empty_route","quality":0.7168748629778111,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.047Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.048Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.053Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.054Z"}
+{"args":{"food_type":"meat","location":{"x":40,"y":40},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.056Z"}
+{"foodType":"meat","level":"info","location":{"x":40,"y":40},"message":"Added food source to route test_route","quality":0.9851929470257936,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.057Z"}
+{"changeType":"food_placed","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.057Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.058Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.058Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.059Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route test_route","quality":0.7352086155423713,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.060Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.062Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.063Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.064Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.064Z"}
+{"args":{"food_type":"meat","location":{"x":25,"y":25},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.066Z"}
+{"foodType":"meat","level":"info","location":{"x":25,"y":25},"message":"Added food source to route test_route","quality":0.9093983681386022,"service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.067Z"}
+{"changeType":"food_placed","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.067Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.178Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.180Z"}
+{"args":{"intensity":0.7,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.180Z"}
+{"intensity":0.7,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.182Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.182Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.183Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.183Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.183Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.184Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.184Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.191Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.191Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.191Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.191Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.191Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.192Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.192Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.192Z"}
+{"args":{"intensity":0.6,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.193Z"}
+{"intensity":0.6,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.193Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.193Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.193Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.194Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.194Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.194Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.194Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.195Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.195Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.195Z"}
+{"args":{"intensity":0.5,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.196Z"}
+{"intensity":0.5,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.196Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.196Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.197Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.197Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.197Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.197Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.198Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.198Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.199Z"}
+{"args":{"intensity":0.5,"route_id":"invalid_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.205Z"}
+{"args":{"intensity":0.5,"route_id":"invalid_route","weather_type":"rain"},"error":{},"level":"error","message":"Error executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.206Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.206Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.206Z"}
+{"args":{"intensity":1.5,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.206Z"}
+{"args":{"intensity":1.5,"route_id":"test_route","weather_type":"rain"},"error":{},"level":"error","message":"Error executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.207Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.207Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.207Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.207Z"}
+{"args":{"intensity":0.4,"route_id":"empty_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.208Z"}
+{"intensity":0.4,"level":"info","message":"Modified weather for route empty_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.208Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.208Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.209Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.209Z"}
+{"args":{"intensity":0.2,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.209Z"}
+{"intensity":0.2,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.209Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.210Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.210Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.211Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.211Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.213Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.213Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.214Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.214Z"}
+{"args":{"intensity":0.6,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.215Z"}
+{"intensity":0.6,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.215Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.215Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.216Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.216Z"}
+{"args":{"intensity":0.5,"route_id":"test_route","weather_type":"normal"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.217Z"}
+{"intensity":0.5,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.218Z","weatherType":"normal"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.218Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.219Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.219Z"}
+{"args":{"intensity":0.7,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.219Z"}
+{"intensity":0.7,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.220Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.220Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.220Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.221Z"}
+{"level":"info","message":"Generated pack_leader ember_hawk monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.221Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.221Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.223Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.223Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.353Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.384Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.385Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.386Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.392Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.393Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.400Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.400Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.401Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.402Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.403Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.405Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.407Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.407Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.411Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.412Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.412Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.412Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.413Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.419Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.419Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.420Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.421Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.428Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.432Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.438Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.400Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:56:57.479Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:58:51.423Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:58:51.426Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:02.454Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:02.501Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.573Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.604Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.606Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.609Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.610Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.612Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.613Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.613Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.617Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.621Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.622Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.623Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.623Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.624Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.625Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.625Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.626Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.626Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.626Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.628Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.629Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.630Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.674Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.682Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.683Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.684Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.376Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.482Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.492Z"}
+{"capacity":2,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:03.495Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.497Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.534Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.535Z"}
+{"args":{"location":{"x":30,"y":30},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.535Z"}
+{"capacity":4,"level":"info","location":{"x":30,"y":30},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:03.536Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":30,"y":30},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.538Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.549Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.551Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.551Z"}
+{"capacity":4,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:59:03.552Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.555Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.556Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.560Z"}
+{"args":{"location":{"x":60,"y":60},"route_id":"test_route","shelter_type":"rock"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.566Z"}
+{"capacity":2,"level":"info","location":{"x":60,"y":60},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"rock","timestamp":"2025-07-15T15:59:03.568Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":60,"y":60},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.568Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.592Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.592Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.593Z"}
+{"args":{"location":{"x":20,"y":20},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.593Z"}
+{"capacity":3,"level":"info","location":{"x":20,"y":20},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:03.593Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":20,"y":20},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.594Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.594Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.595Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.595Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.595Z"}
+{"capacity":2,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:03.595Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.596Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.598Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.602Z"}
+{"args":{"location":{"x":10,"y":10},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.603Z"}
+{"capacity":3,"level":"info","location":{"x":10,"y":10},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:03.604Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":10,"y":10},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.605Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.606Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.606Z"}
+{"level":"info","message":"Generated cautious_forager ember_hawk monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.607Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.607Z"}
+{"capacity":2,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:03.607Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.608Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.608Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.608Z"}
+{"args":{"location":{"x":40,"y":40},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.609Z"}
+{"capacity":3,"level":"info","location":{"x":40,"y":40},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:59:03.610Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.610Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.635Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.640Z"}
+{"args":{"location":{"x":35,"y":35},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.642Z"}
+{"capacity":4,"level":"info","location":{"x":35,"y":35},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:03.643Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":35,"y":35},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.654Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.656Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.657Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"invalid_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.657Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"invalid_route","shelter_type":"cave"},"error":{},"level":"error","message":"Error executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.657Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.659Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.660Z"}
+{"args":{"location":{"x":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.661Z"}
+{"args":{"location":{"x":50},"route_id":"test_route","shelter_type":"cave"},"error":{},"level":"error","message":"Error executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.662Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.664Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.665Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.666Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"empty_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.667Z"}
+{"capacity":2,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route empty_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:03.668Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.669Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.670Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.683Z"}
+{"args":{"location":{"x":45,"y":45},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.684Z"}
+{"capacity":3,"level":"info","location":{"x":45,"y":45},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:03.684Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":45,"y":45},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.684Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.685Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.685Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.690Z"}
+{"capacity":2,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:03.691Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.698Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.712Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.712Z"}
+{"args":{"location":{"x":40,"y":40},"route_id":"test_route","shelter_type":"rock"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.712Z"}
+{"capacity":2,"level":"info","location":{"x":40,"y":40},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"rock","timestamp":"2025-07-15T15:59:03.720Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.724Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.725Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.725Z"}
+{"level":"info","message":"Generated aggressive_hunter stone_serpent monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.726Z"}
+{"args":{"location":{"x":35,"y":35},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.726Z"}
+{"capacity":4,"level":"info","location":{"x":35,"y":35},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:59:03.726Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":35,"y":35},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.727Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.727Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.727Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.728Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_3","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.728Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_4","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.728Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_5","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.728Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_6","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.729Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_7","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.729Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.729Z"}
+{"capacity":2,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:03.729Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 7 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.730Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.730Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.730Z"}
+{"args":{"location":{"x":55,"y":55},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.731Z"}
+{"capacity":4,"level":"info","location":{"x":55,"y":55},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:03.731Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":55,"y":55},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:03.731Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.898Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.904Z"}
+{"args":{"intensity":0.7,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.907Z"}
+{"intensity":0.7,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.921Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.921Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.930Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.932Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.933Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.935Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.936Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.937Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.938Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.939Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.940Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.941Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.944Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.945Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.945Z"}
+{"args":{"intensity":0.6,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.945Z"}
+{"intensity":0.6,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.946Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.946Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.947Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.947Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.947Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.948Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.948Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.948Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.949Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.950Z"}
+{"args":{"intensity":0.5,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.950Z"}
+{"intensity":0.5,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.955Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.958Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.959Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.960Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.961Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.962Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.966Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.966Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.967Z"}
+{"args":{"intensity":0.5,"route_id":"invalid_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.967Z"}
+{"args":{"intensity":0.5,"route_id":"invalid_route","weather_type":"rain"},"error":{},"level":"error","message":"Error executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.967Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.967Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.968Z"}
+{"args":{"intensity":1.5,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.968Z"}
+{"args":{"intensity":1.5,"route_id":"test_route","weather_type":"rain"},"error":{},"level":"error","message":"Error executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.968Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.969Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.969Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.969Z"}
+{"args":{"intensity":0.4,"route_id":"empty_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.970Z"}
+{"intensity":0.4,"level":"info","message":"Modified weather for route empty_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.970Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.970Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.971Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.971Z"}
+{"args":{"intensity":0.2,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.971Z"}
+{"intensity":0.2,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.971Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.972Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.972Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.973Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.973Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.973Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.974Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.975Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.975Z"}
+{"args":{"intensity":0.6,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.976Z"}
+{"intensity":0.6,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.976Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.977Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.981Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.981Z"}
+{"args":{"intensity":0.5,"route_id":"test_route","weather_type":"normal"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.982Z"}
+{"intensity":0.5,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.982Z","weatherType":"normal"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.982Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.983Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.983Z"}
+{"args":{"intensity":0.7,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.983Z"}
+{"intensity":0.7,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.984Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.984Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.985Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.985Z"}
+{"level":"info","message":"Generated pack_leader ember_hawk monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.985Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.986Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.986Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.986Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.939Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.959Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.963Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route test_route","quality":0.8987832315728551,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.966Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.967Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.983Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.984Z"}
+{"args":{"food_type":"plants","location":{"x":30,"y":30},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.985Z"}
+{"foodType":"plants","level":"info","location":{"x":30,"y":30},"message":"Added food source to route test_route","quality":0.9722013028494403,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.986Z"}
+{"changeType":"food_placed","level":"info","location":{"x":30,"y":30},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.990Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.994Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.995Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.996Z"}
+{"args":{"food_type":"plants","location":{"x":20,"y":20},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.997Z"}
+{"foodType":"plants","level":"info","location":{"x":20,"y":20},"message":"Added food source to route test_route","quality":0.9250128955772112,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.998Z"}
+{"changeType":"food_placed","level":"info","location":{"x":20,"y":20},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:04.999Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.001Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.003Z"}
+{"args":{"food_type":"meat","location":{"x":10,"y":10},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.004Z"}
+{"foodType":"meat","level":"info","location":{"x":10,"y":10},"message":"Added food source to route test_route","quality":0.7764178380074078,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.006Z"}
+{"changeType":"food_placed","level":"info","location":{"x":10,"y":10},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.006Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.007Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.008Z"}
+{"args":{"food_type":"water","location":{"x":25,"y":25},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.008Z"}
+{"foodType":"water","level":"info","location":{"x":25,"y":25},"message":"Added food source to route test_route","quality":0.7141265207348018,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.009Z"}
+{"changeType":"food_placed","level":"info","location":{"x":25,"y":25},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.009Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.011Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.013Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"invalid_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.014Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"invalid_route"},"error":{},"level":"error","message":"Error executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.014Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.015Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.029Z"}
+{"args":{"food_type":"meat","location":{"x":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.031Z"}
+{"args":{"food_type":"meat","location":{"x":50},"route_id":"test_route"},"error":{},"level":"error","message":"Error executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.032Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.034Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.034Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.035Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"empty_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.039Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route empty_route","quality":0.7086905896121222,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.041Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.042Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.044Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.045Z"}
+{"args":{"food_type":"meat","location":{"x":40,"y":40},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.046Z"}
+{"foodType":"meat","level":"info","location":{"x":40,"y":40},"message":"Added food source to route test_route","quality":0.738380312407099,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.046Z"}
+{"changeType":"food_placed","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.047Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.048Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.049Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.052Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route test_route","quality":0.8513973147345595,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.053Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.053Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.057Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.057Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.057Z"}
+{"args":{"food_type":"meat","location":{"x":25,"y":25},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.058Z"}
+{"foodType":"meat","level":"info","location":{"x":25,"y":25},"message":"Added food source to route test_route","quality":0.8843629530859934,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.058Z"}
+{"changeType":"food_placed","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:05.058Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.699Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.718Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.719Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.720Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.722Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.731Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.733Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.734Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.735Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.738Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.739Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.739Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.740Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.741Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.743Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.743Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.744Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.744Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.744Z"}
+{"level":"info","message":"Tool registered: test_tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.746Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.747Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.748Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.751Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.752Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.752Z"}
+{"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.752Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.851Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.912Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.916Z"}
+{"capacity":3,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:27.921Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.921Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.955Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.956Z"}
+{"args":{"location":{"x":30,"y":30},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.957Z"}
+{"capacity":4,"level":"info","location":{"x":30,"y":30},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:27.957Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":30,"y":30},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.959Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.960Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.962Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.963Z"}
+{"capacity":4,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:59:27.965Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.965Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.966Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.967Z"}
+{"args":{"location":{"x":60,"y":60},"route_id":"test_route","shelter_type":"rock"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.967Z"}
+{"capacity":4,"level":"info","location":{"x":60,"y":60},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"rock","timestamp":"2025-07-15T15:59:27.967Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":60,"y":60},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.968Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.969Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.970Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.971Z"}
+{"args":{"location":{"x":20,"y":20},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.979Z"}
+{"capacity":4,"level":"info","location":{"x":20,"y":20},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:27.980Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":20,"y":20},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.981Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.982Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.982Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.982Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.982Z"}
+{"capacity":2,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:27.983Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.984Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.984Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.985Z"}
+{"args":{"location":{"x":10,"y":10},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.985Z"}
+{"capacity":4,"level":"info","location":{"x":10,"y":10},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:27.985Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":10,"y":10},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.986Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.987Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.988Z"}
+{"level":"info","message":"Generated cautious_forager ember_hawk monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.989Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.989Z"}
+{"capacity":4,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:27.990Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.991Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.992Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.993Z"}
+{"args":{"location":{"x":40,"y":40},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.993Z"}
+{"capacity":4,"level":"info","location":{"x":40,"y":40},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:59:27.993Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.993Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.995Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.995Z"}
+{"args":{"location":{"x":35,"y":35},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.996Z"}
+{"capacity":4,"level":"info","location":{"x":35,"y":35},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:27.996Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":35,"y":35},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:27.996Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.002Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.003Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"invalid_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.004Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"invalid_route","shelter_type":"cave"},"error":{},"level":"error","message":"Error executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.004Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.005Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.006Z"}
+{"args":{"location":{"x":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.006Z"}
+{"args":{"location":{"x":50},"route_id":"test_route","shelter_type":"cave"},"error":{},"level":"error","message":"Error executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.006Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.007Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.007Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.007Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"empty_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.008Z"}
+{"capacity":4,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route empty_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:28.008Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.009Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.009Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.010Z"}
+{"args":{"location":{"x":45,"y":45},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.010Z"}
+{"capacity":3,"level":"info","location":{"x":45,"y":45},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:28.010Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":45,"y":45},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.011Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.011Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.012Z"}
+{"args":{"location":{"x":50,"y":50},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.012Z"}
+{"capacity":3,"level":"info","location":{"x":50,"y":50},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:28.013Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.013Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.014Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.015Z"}
+{"args":{"location":{"x":40,"y":40},"route_id":"test_route","shelter_type":"rock"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.015Z"}
+{"capacity":3,"level":"info","location":{"x":40,"y":40},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"rock","timestamp":"2025-07-15T15:59:28.015Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.016Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.016Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.016Z"}
+{"level":"info","message":"Generated aggressive_hunter stone_serpent monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.031Z"}
+{"args":{"location":{"x":35,"y":35},"route_id":"test_route","shelter_type":"tree"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.031Z"}
+{"capacity":3,"level":"info","location":{"x":35,"y":35},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"tree","timestamp":"2025-07-15T15:59:28.031Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":35,"y":35},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.032Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.034Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.034Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.035Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_3","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.035Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_4","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.035Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_5","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.035Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_6","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.035Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_7","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.036Z"}
+{"args":{"location":{"x":25,"y":25},"route_id":"test_route","shelter_type":"cave"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.036Z"}
+{"capacity":4,"level":"info","location":{"x":25,"y":25},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"cave","timestamp":"2025-07-15T15:59:28.036Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":25,"y":25},"message":"Notified 7 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.036Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.045Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.045Z"}
+{"args":{"location":{"x":55,"y":55},"route_id":"test_route","shelter_type":"burrow"},"level":"info","message":"Executing build_shelter tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.046Z"}
+{"capacity":4,"level":"info","location":{"x":55,"y":55},"message":"Built shelter in route test_route","service":"primalcode-mcp","shelterType":"burrow","timestamp":"2025-07-15T15:59:28.046Z"}
+{"changeType":"shelter_built","level":"info","location":{"x":55,"y":55},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.046Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.034Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.043Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.044Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route test_route","quality":0.8404822715479344,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.046Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.046Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.047Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.047Z"}
+{"args":{"food_type":"plants","location":{"x":30,"y":30},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.047Z"}
+{"foodType":"plants","level":"info","location":{"x":30,"y":30},"message":"Added food source to route test_route","quality":0.8395965825152072,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.048Z"}
+{"changeType":"food_placed","level":"info","location":{"x":30,"y":30},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.048Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.052Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.053Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.053Z"}
+{"args":{"food_type":"plants","location":{"x":20,"y":20},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.053Z"}
+{"foodType":"plants","level":"info","location":{"x":20,"y":20},"message":"Added food source to route test_route","quality":0.8719674529341968,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.054Z"}
+{"changeType":"food_placed","level":"info","location":{"x":20,"y":20},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.054Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.055Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.055Z"}
+{"args":{"food_type":"meat","location":{"x":10,"y":10},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.055Z"}
+{"foodType":"meat","level":"info","location":{"x":10,"y":10},"message":"Added food source to route test_route","quality":0.9979700954443291,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.056Z"}
+{"changeType":"food_placed","level":"info","location":{"x":10,"y":10},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.056Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.056Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.057Z"}
+{"args":{"food_type":"water","location":{"x":25,"y":25},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.057Z"}
+{"foodType":"water","level":"info","location":{"x":25,"y":25},"message":"Added food source to route test_route","quality":0.7000601689526723,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.057Z"}
+{"changeType":"food_placed","level":"info","location":{"x":25,"y":25},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.057Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.058Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.058Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"invalid_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.058Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"invalid_route"},"error":{},"level":"error","message":"Error executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.059Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.059Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.059Z"}
+{"args":{"food_type":"meat","location":{"x":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.060Z"}
+{"args":{"food_type":"meat","location":{"x":50},"route_id":"test_route"},"error":{},"level":"error","message":"Error executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.060Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.060Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.061Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.061Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"empty_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.061Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route empty_route","quality":0.9339531916892877,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.062Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.067Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.068Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.068Z"}
+{"args":{"food_type":"meat","location":{"x":40,"y":40},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.068Z"}
+{"foodType":"meat","level":"info","location":{"x":40,"y":40},"message":"Added food source to route test_route","quality":0.710076431529209,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.069Z"}
+{"changeType":"food_placed","level":"info","location":{"x":40,"y":40},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.071Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.072Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.073Z"}
+{"args":{"food_type":"meat","location":{"x":50,"y":50},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.074Z"}
+{"foodType":"meat","level":"info","location":{"x":50,"y":50},"message":"Added food source to route test_route","quality":0.9577338109114425,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.076Z"}
+{"changeType":"food_placed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.077Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.079Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.079Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.080Z"}
+{"args":{"food_type":"meat","location":{"x":25,"y":25},"route_id":"test_route"},"level":"info","message":"Executing place_food tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.080Z"}
+{"foodType":"meat","level":"info","location":{"x":25,"y":25},"message":"Added food source to route test_route","quality":0.7603120250509325,"service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.080Z"}
+{"changeType":"food_placed","level":"info","location":{"x":25,"y":25},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.081Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.093Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.110Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.082Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.096Z"}
+{"args":{"intensity":0.7,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.102Z"}
+{"intensity":0.7,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.104Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.105Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.113Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.114Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.115Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.115Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.116Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.116Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.117Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.117Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.117Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.117Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.118Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.118Z"}
+{"level":"info","message":"Generated cautious_forager wind_stag monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.119Z"}
+{"args":{"intensity":0.6,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.119Z"}
+{"intensity":0.6,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.119Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.123Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.123Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.124Z"}
+{"level":"info","message":"Generated pack_leader frost_bear monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.124Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.124Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.125Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.125Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.125Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.125Z"}
+{"args":{"intensity":0.5,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.126Z"}
+{"intensity":0.5,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.126Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.126Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.127Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.128Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.128Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.128Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.128Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.129Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.129Z"}
+{"args":{"intensity":0.5,"route_id":"invalid_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.129Z"}
+{"args":{"intensity":0.5,"route_id":"invalid_route","weather_type":"rain"},"error":{},"level":"error","message":"Error executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.130Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.130Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.130Z"}
+{"args":{"intensity":1.5,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.131Z"}
+{"args":{"intensity":1.5,"route_id":"test_route","weather_type":"rain"},"error":{},"level":"error","message":"Error executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.131Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.131Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.131Z"}
+{"level":"info","message":"Generated environment for route empty_route","routeName":"Empty Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.132Z"}
+{"args":{"intensity":0.4,"route_id":"empty_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.132Z"}
+{"intensity":0.4,"level":"info","message":"Modified weather for route empty_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.132Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 0 monsters of environmental change","routeId":"empty_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.132Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.136Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.136Z"}
+{"args":{"intensity":0.2,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.136Z"}
+{"intensity":0.2,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.137Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.137Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.138Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.138Z"}
+{"args":{"intensity":0.9,"route_id":"test_route","weather_type":"heat"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.138Z"}
+{"intensity":0.9,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.138Z","weatherType":"heat"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.139Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.139Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.139Z"}
+{"args":{"intensity":0.6,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.140Z"}
+{"intensity":0.6,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.140Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.140Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.141Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.141Z"}
+{"args":{"intensity":0.5,"route_id":"test_route","weather_type":"normal"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.141Z"}
+{"intensity":0.5,"level":"info","message":"Modified weather for route test_route","newCondition":"clear","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.141Z","weatherType":"normal"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.142Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.143Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.144Z"}
+{"args":{"intensity":0.7,"route_id":"test_route","weather_type":"rain"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.144Z"}
+{"intensity":0.7,"level":"info","message":"Modified weather for route test_route","newCondition":"rain","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.144Z","weatherType":"rain"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 1 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.144Z"}
+{"level":"info","message":"Generated environment for route test_route","routeName":"Test Forest","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.145Z"}
+{"level":"info","message":"Generated aggressive_hunter shadow_wolf monster","monsterId":"monster_1","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.145Z"}
+{"level":"info","message":"Generated pack_leader ember_hawk monster","monsterId":"monster_2","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.145Z"}
+{"args":{"intensity":0.8,"route_id":"test_route","weather_type":"storm"},"level":"info","message":"Executing modify_weather tool","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.146Z"}
+{"intensity":0.8,"level":"info","message":"Modified weather for route test_route","newCondition":"storm","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.146Z","weatherType":"storm"}
+{"changeType":"weather_changed","level":"info","location":{"x":50,"y":50},"message":"Notified 2 monsters of environmental change","routeId":"test_route","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:28.146Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:52.667Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T15:59:52.678Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T16:00:13.925Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T16:00:13.940Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T16:00:43.611Z"}
+{"0":"Unknown action: Invalid-Action","level":"error","message":"Invalid message schema for Invalid-Action:","service":"primalcode-mcp","timestamp":"2025-07-15T16:00:43.613Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.090Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.092Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.092Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.092Z"}
+{"level":"info","message":"Tool registered: place_food","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.093Z"}
+{"level":"info","message":"Tool registered: modify_weather","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.093Z"}
+{"level":"info","message":"Tool registered: build_shelter","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.093Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.093Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.094Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.120Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.121Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.124Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.127Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.532Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:01.533Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:02.331Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:02.334Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.266Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.268Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.269Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.269Z"}
+{"level":"info","message":"Tool registered: place_food","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.269Z"}
+{"level":"info","message":"Tool registered: modify_weather","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.270Z"}
+{"level":"info","message":"Tool registered: build_shelter","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.270Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.270Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.272Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.286Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.287Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.919Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:23.920Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:24.057Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:24.057Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.147Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.148Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.148Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.149Z"}
+{"level":"info","message":"Tool registered: place_food","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.149Z"}
+{"level":"info","message":"Tool registered: modify_weather","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.149Z"}
+{"level":"info","message":"Tool registered: build_shelter","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.149Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.149Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.150Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.157Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.158Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.564Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.566Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.705Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T16:08:33.707Z"}
