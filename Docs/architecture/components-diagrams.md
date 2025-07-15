@@ -14,6 +14,10 @@ graph TB
         MP[Monster Processes]
         ENV[Environment Manager]
         PLY[Player State]
+        MARKETPLACE[Marketplace Core]
+        REGISTRY[Provider Registry]
+        REPUTATION[Reputation Manager]
+        TOKEN[Token Payment Handler]
         MSG[Message Router]
     end
     
@@ -33,11 +37,25 @@ graph TB
     MSG --> MP
     MSG --> ENV
     MSG --> PLY
+    MSG --> MARKETPLACE
+    MSG --> REGISTRY
+    MSG --> REPUTATION
+    MSG --> TOKEN
     
     AI --> CLAUDE
     AI --> CACHE
     
+    MARKETPLACE --> REGISTRY
+    MARKETPLACE --> REPUTATION
+    MARKETPLACE --> TOKEN
+    REGISTRY --> REPUTATION
+    TOKEN --> MARKETPLACE
+    
     MP --> ARWEAVE
     ENV --> ARWEAVE
     PLY --> ARWEAVE
+    MARKETPLACE --> ARWEAVE
+    REGISTRY --> ARWEAVE
+    REPUTATION --> ARWEAVE
+    TOKEN --> ARWEAVE
 ```

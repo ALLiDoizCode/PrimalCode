@@ -2,7 +2,11 @@
 
 ## Technical Summary
 
-PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP boilerplate** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. This architecture creates a truly unique gaming experience that combines decentralized autonomous agents with natural language interaction patterns.
+PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP boilerplate** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. 
+
+**Epic 2 Enhancement:** The architecture now includes an **AI Inference Marketplace** that enables autonomous processes to request AI inference services by transferring Primal tokens to providers, with automated registry and reputation management. This creates a token-based economy for AI services while maintaining the core autonomous creature experience.
+
+This architecture creates a truly unique gaming experience that combines decentralized autonomous agents with natural language interaction patterns and a distributed AI services economy.
 
 ## Platform and Infrastructure Choice
 
@@ -53,6 +57,7 @@ graph TB
             CAP[Capture Mechanics]
             NAV[Route Navigator]
             INF[Influence Tracker]
+            MARKET[Inference Marketplace]
         end
         
         subgraph "Integration Layer"
@@ -68,6 +73,9 @@ graph TB
         MP3[Monster Process N]
         ENV[Environment Manager]
         PLY[Player State Process]
+        MARKETPLACE[Marketplace Core]
+        REGISTRY[Provider Registry]
+        REPUTATION[Reputation Manager]
         
         subgraph "Process Communication"
             MSG[Message Bus]
@@ -97,6 +105,7 @@ graph TB
     MCP --> CAP
     MCP --> NAV
     MCP --> INF
+    MCP --> MARKET
     
     OBS --> AO_CLIENT
     MOD --> AO_CLIENT
@@ -104,18 +113,25 @@ graph TB
     CAP --> AO_CLIENT
     NAV --> AO_CLIENT
     INF --> AO_CLIENT
+    MARKET --> AO_CLIENT
     
     AO_CLIENT --> MP1
     AO_CLIENT --> MP2
     AO_CLIENT --> MP3
     AO_CLIENT --> ENV
     AO_CLIENT --> PLY
+    AO_CLIENT --> MARKETPLACE
+    AO_CLIENT --> REGISTRY
+    AO_CLIENT --> REPUTATION
     
     MP1 --> MSG
     MP2 --> MSG
     MP3 --> MSG
     ENV --> MSG
     PLY --> MSG
+    MARKETPLACE --> MSG
+    REGISTRY --> MSG
+    REPUTATION --> MSG
     
     MSG --> COORD
     
@@ -133,6 +149,9 @@ graph TB
     MP3 --> AO
     ENV --> AO
     PLY --> AO
+    MARKETPLACE --> AO
+    REGISTRY --> AO
+    REPUTATION --> AO
     
     AO --> AR
     AO --> BACKUP
@@ -146,3 +165,5 @@ graph TB
 - **Event-Driven Communication:** AO message passing for inter-process coordination - _Rationale:_ Enables complex creature interactions while maintaining process isolation
 - **Decentralized Persistence:** State management through AO processes with Arweave backup - _Rationale:_ Provides permanent, tamper-proof game state without traditional database costs
 - **Tool-Based Architecture:** MCP tools as primary interface abstraction - _Rationale:_ Standardizes natural language interactions while maintaining extensibility
+- **Token-Based Marketplace Pattern:** AO Token Blueprint with Credit-Notice/Debit-Notice handlers - _Rationale:_ Creates organic economic activity through AI inference service trading
+- **X-Prefix Forwarding Pattern:** Extensible metadata passing through token transfers - _Rationale:_ Enables contextual information flow in marketplace transactions

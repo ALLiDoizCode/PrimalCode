@@ -65,3 +65,42 @@ sequenceDiagram
     MONSTERS->>MONSTERS: Learn modification patterns
     MONSTERS->>ENV: React to environmental cues
 ```
+
+## AI Inference Marketplace Workflow
+
+```mermaid
+sequenceDiagram
+    participant MONSTER as Monster Process
+    participant TOKEN as Primal Token Process
+    participant MARKETPLACE as Marketplace Core
+    participant REGISTRY as Provider Registry
+    participant PROVIDER as AI Provider
+    participant REPUTATION as Reputation Manager
+    
+    Note over MONSTER: Monster needs AI inference for decision
+    MONSTER->>REGISTRY: Query providers for service_type
+    REGISTRY-->>MONSTER: Available providers with pricing
+    MONSTER->>MONSTER: Select provider based on cost/reputation
+    
+    MONSTER->>TOKEN: Transfer(Provider, Amount, X-Service-Type="ai-inference")
+    TOKEN->>PROVIDER: Credit-Notice(X-Service-Type, X-Request-ID, X-Context-Data)
+    TOKEN->>MONSTER: Debit-Notice(X-Service-Type, X-Request-ID)
+    
+    PROVIDER->>MARKETPLACE: AI-Inference-Request(request_id, context_data)
+    MARKETPLACE->>PROVIDER: Request routing and validation
+    PROVIDER->>PROVIDER: Process AI inference request
+    
+    alt Successful Inference
+        PROVIDER->>MARKETPLACE: AI-Inference-Response(results, quality_score)
+        MARKETPLACE->>MONSTER: Forward inference results
+        MARKETPLACE->>REPUTATION: Update provider metrics (positive)
+    else Timeout or Failure
+        MARKETPLACE->>TOKEN: Initiate refund process
+        TOKEN->>MONSTER: Credit-Notice(refund)
+        TOKEN->>PROVIDER: Debit-Notice(refund)
+        MARKETPLACE->>REPUTATION: Update provider metrics (negative)
+    end
+    
+    MONSTER->>MONSTER: Use inference results for decision
+    REPUTATION->>REGISTRY: Update provider rankings
+```

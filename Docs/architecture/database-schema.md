@@ -109,4 +109,100 @@ Player = {
     session_history = {},
     last_active = 1640995800
 }
+
+-- Inference Marketplace Provider Process State Variables
+InferenceProvider = {
+    provider_id = "ai_provider_001",
+    capabilities = {
+        "text-generation",
+        "image-analysis",
+        "decision-making"
+    },
+    pricing = {
+        ["text-generation"] = "100",
+        ["image-analysis"] = "500",
+        ["decision-making"] = "250"
+    },
+    reputation = {
+        response_time_avg = 2.5,
+        quality_score = 0.92,
+        completion_rate = 0.98,
+        total_requests = 1250
+    },
+    metadata = {
+        last_seen = 1640995800,
+        x_tags_supported = {"X-Context-Data", "X-Quality-Tier", "X-Timeout"},
+        description = "High-performance AI inference provider"
+    },
+    status = "active"
+}
+
+-- Marketplace Core Process State Variables
+MarketplaceCore = {
+    active_requests = {
+        ["req_12345"] = {
+            request_id = "req_12345",
+            requester = "monster_12345",
+            provider_id = "ai_provider_001",
+            service_type = "decision-making",
+            payment_amount = "250",
+            x_metadata = {
+                ["X-Service-Type"] = "ai-inference",
+                ["X-Request-ID"] = "req_12345",
+                ["X-Context-Data"] = "hunting_decision_context"
+            },
+            status = "processing",
+            created_at = 1640995700,
+            timeout_at = 1640995730
+        }
+    },
+    transaction_history = {
+        {
+            transaction_id = "txn_67890",
+            request_id = "req_12345",
+            from_process = "monster_12345",
+            to_process = "ai_provider_001",
+            amount = "250",
+            service_type = "decision-making",
+            success = true,
+            timestamp = 1640995700,
+            credit_notice_sent = true,
+            debit_notice_sent = true
+        }
+    },
+    provider_registry = {
+        ["ai_provider_001"] = {
+            last_heartbeat = 1640995800,
+            request_count = 1250,
+            avg_response_time = 2.5
+        }
+    }
+}
+
+-- Reputation Manager Process State Variables
+ReputationManager = {
+    provider_metrics = {
+        ["ai_provider_001"] = {
+            response_times = {2.1, 2.3, 2.8, 2.2, 2.7}, -- Last 5 responses
+            quality_scores = {0.95, 0.88, 0.92, 0.94, 0.89}, -- Last 5 quality scores
+            completion_history = {
+                total_requests = 1250,
+                successful_requests = 1225,
+                failed_requests = 25,
+                timeout_requests = 15
+            },
+            reputation_trend = {
+                {date = 1640995200, score = 0.90},
+                {date = 1640995500, score = 0.91},
+                {date = 1640995800, score = 0.92}
+            }
+        }
+    },
+    ranking_cache = {
+        ["text-generation"] = {
+            {provider_id = "ai_provider_001", score = 0.92},
+            {provider_id = "ai_provider_002", score = 0.88}
+        }
+    }
+}
 ```

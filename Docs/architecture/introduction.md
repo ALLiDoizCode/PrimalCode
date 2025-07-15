@@ -21,3 +21,4 @@ This choice constrains the architecture to TypeScript-based MCP server patterns 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
 | 2025-07-15 | 1.0 | Initial architecture document creation | Winston (Architect) |
+| 2025-07-15 | 1.1 | Added Inference Marketplace (Epic 2) architecture | Winston (Architect) |

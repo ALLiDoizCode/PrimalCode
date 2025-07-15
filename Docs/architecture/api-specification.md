@@ -45,6 +45,23 @@ const modifyEnvironmentTool: MCPTool = {
     required: ["route_id", "modification_type", "location"]
   }
 };
+
+// Inference Marketplace Tool
+const inferenceMarketplaceTool: MCPTool = {
+  name: "inference_marketplace",
+  description: "Interact with AI inference marketplace - discover providers, request services, check reputation",
+  inputSchema: {
+    type: "object",
+    properties: {
+      action: { type: "string", enum: ["discover_providers", "request_inference", "check_reputation", "view_transactions"] },
+      service_type: { type: "string", description: "Type of AI service needed" },
+      provider_id: { type: "string", description: "Specific provider ID (optional)" },
+      context_data: { type: "object", description: "Inference parameters and context" },
+      max_cost: { type: "string", description: "Maximum tokens willing to spend" }
+    },
+    required: ["action"]
+  }
+};
 ```
 
 ## AO Message Schemas
@@ -91,6 +108,86 @@ interface MonsterCommunicationMessage {
     target_id?: string;
     content: Record<string, any>;
     urgency: "low" | "medium" | "high";
+  };
+}
+
+// AI Inference Request Message
+interface AIInferenceRequestMessage {
+  Action: "AI-Inference-Request";
+  Data: {
+    request_id: string;
+    service_type: string;
+    context_data: any;
+    payment_amount: string;
+    timeout: number;
+  };
+  Tags: {
+    "X-Service-Type": string;
+    "X-Request-ID": string;
+    "X-Provider-ID": string;
+    "X-Context-Data": string;
+    "X-Quality-Tier": string;
+    "X-Timeout": string;
+  };
+}
+
+// AI Inference Response Message  
+interface AIInferenceResponseMessage {
+  Action: "AI-Inference-Response";
+  Data: {
+    request_id: string;
+    inference_result: any;
+    quality_score: number;
+    response_time: number;
+  };
+  Tags: {
+    "X-Request-ID": string;
+    "X-Provider-ID": string;
+    "X-Quality-Score": string;
+  };
+}
+
+// Provider Registration Message
+interface ProviderRegistrationMessage {
+  Action: "Provider-Registration";
+  Data: {
+    provider_id: string;
+    capabilities: string[];
+    pricing: Record<string, string>;
+    description: string;
+    x_tags_supported: string[];
+  };
+}
+
+// Credit-Notice Message (AO Token Blueprint)
+interface CreditNoticeMessage {
+  Action: "Credit-Notice";
+  Data: {
+    sender: string;
+    quantity: string;
+    message: string;
+  };
+  Tags: {
+    "X-Service-Type"?: string;
+    "X-Request-ID"?: string;
+    "X-Provider-ID"?: string;
+    [key: string]: string | undefined; // Additional X-prefixed tags
+  };
+}
+
+// Debit-Notice Message (AO Token Blueprint)
+interface DebitNoticeMessage {
+  Action: "Debit-Notice";
+  Data: {
+    recipient: string;
+    quantity: string;
+    message: string;
+  };
+  Tags: {
+    "X-Service-Type"?: string;
+    "X-Request-ID"?: string;
+    "X-Provider-ID"?: string;
+    [key: string]: string | undefined; // Additional X-prefixed tags
   };
 }
 ```

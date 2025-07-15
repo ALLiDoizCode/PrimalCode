@@ -69,3 +69,63 @@
 **Dependencies:** Arweave wallet, Player AO Process
 
 **Technology Stack:** TypeScript, Arweave SDK, AO integration
+
+## Inference Marketplace Core
+
+**Responsibility:** Manages AI inference marketplace operations including request routing, payment processing, and provider coordination
+
+**Key Interfaces:**
+- AI inference request processing and routing
+- Token payment validation using Credit-Notice/Debit-Notice handlers
+- Provider discovery and capability matching
+- Request timeout and error handling
+- X-prefix metadata forwarding
+
+**Dependencies:** AO Token Blueprint, Provider Registry, Reputation Manager, Primal Token Process
+
+**Technology Stack:** Lua (AO Process), AO Token Blueprint patterns
+
+## Provider Registry
+
+**Responsibility:** Maintains registry of AI inference providers with capabilities, pricing, and availability status
+
+**Key Interfaces:**
+- Provider registration and capability advertising
+- Service discovery and provider matching
+- Pricing information management
+- Provider status monitoring and health checks
+- Capability validation and testing
+
+**Dependencies:** Marketplace Core, Reputation Manager
+
+**Technology Stack:** Lua (AO Process), JSON schema validation
+
+## Reputation Manager
+
+**Responsibility:** Tracks provider performance metrics, quality scores, and reputation indicators
+
+**Key Interfaces:**
+- Response time monitoring and averaging
+- Quality score calculation and tracking
+- Completion rate statistics
+- Provider ranking and recommendation
+- Reputation history and trends
+
+**Dependencies:** Marketplace Core, Provider Registry
+
+**Technology Stack:** Lua (AO Process), statistical analysis algorithms
+
+## Token Payment Handler
+
+**Responsibility:** Processes Primal token payments for AI inference services using AO Token Blueprint patterns
+
+**Key Interfaces:**
+- Credit-Notice processing for incoming payments
+- Debit-Notice processing for outgoing payments
+- X-prefix tag forwarding for marketplace context
+- Payment validation and authorization
+- Refund processing for failed requests
+
+**Dependencies:** AO Token Blueprint, Primal Token Process, Marketplace Core
+
+**Technology Stack:** Lua (AO Process), AO Token Blueprint handlers

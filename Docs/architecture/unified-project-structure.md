@@ -14,7 +14,8 @@ PrimalCode/
 │   │   ├── monster-analyzer.ts
 │   │   ├── route-manager.ts
 │   │   ├── influence-tracker.ts
-│   │   └── capture-mechanics.ts
+│   │   ├── capture-mechanics.ts
+│   │   └── inference-marketplace.ts
 │   ├── ao-integration/         # AO process communication
 │   │   ├── ao-client.ts
 │   │   ├── message-schemas.ts
@@ -25,6 +26,11 @@ PrimalCode/
 │   │   ├── environment-state.ts
 │   │   ├── game-logic.ts
 │   │   └── adaptation-engine.ts
+│   ├── marketplace/            # Inference marketplace components
+│   │   ├── marketplace-client.ts
+│   │   ├── provider-registry.ts
+│   │   ├── reputation-manager.ts
+│   │   └── token-handler.ts
 │   ├── ai-integration/         # AI decision systems
 │   │   ├── claude-client.ts
 │   │   ├── decision-cache.ts
@@ -34,7 +40,8 @@ PrimalCode/
 │   │   ├── monster-types.ts
 │   │   ├── environment-types.ts
 │   │   ├── mcp-tool-types.ts
-│   │   └── ao-message-types.ts
+│   │   ├── ao-message-types.ts
+│   │   └── marketplace-types.ts
 │   ├── utils/                  # Shared utilities
 │   │   ├── logging.ts
 │   │   ├── validation.ts
@@ -44,9 +51,14 @@ PrimalCode/
 │   ├── monster-process.lua
 │   ├── environment-process.lua
 │   ├── player-process.lua
+│   ├── marketplace-core.lua
+│   ├── provider-registry.lua
+│   ├── reputation-manager.lua
+│   ├── token-payment-handler.lua
 │   └── shared/
 │       ├── message-handlers.lua
 │       ├── ai-integration.lua
+│       ├── token-blueprint.lua
 │       └── utils.lua
 ├── tests/                     # Comprehensive test suite
 │   ├── unit/

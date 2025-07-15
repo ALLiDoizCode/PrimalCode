@@ -23,12 +23,17 @@ This choice constrains the architecture to TypeScript-based MCP server patterns 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
 | 2025-07-15 | 1.0 | Initial architecture document creation | Winston (Architect) |
+| 2025-07-15 | 1.1 | Added Inference Marketplace (Epic 2) architecture | Winston (Architect) |
 
 ## High Level Architecture
 
 ### Technical Summary
 
-PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP boilerplate** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. This architecture creates a truly unique gaming experience that combines decentralized autonomous agents with natural language interaction patterns.
+PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP boilerplate** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. 
+
+**Epic 2 Enhancement:** The architecture now includes an **AI Inference Marketplace** that enables autonomous processes to request AI inference services by transferring Primal tokens to providers, with automated registry and reputation management. This creates a token-based economy for AI services while maintaining the core autonomous creature experience.
+
+This architecture creates a truly unique gaming experience that combines decentralized autonomous agents with natural language interaction patterns and a distributed AI services economy.
 
 ### Platform and Infrastructure Choice
 
@@ -79,6 +84,7 @@ graph TB
             CAP[Capture Mechanics]
             NAV[Route Navigator]
             INF[Influence Tracker]
+            MARKET[Inference Marketplace]
         end
         
         subgraph "Integration Layer"
@@ -94,6 +100,9 @@ graph TB
         MP3[Monster Process N]
         ENV[Environment Manager]
         PLY[Player State Process]
+        MARKETPLACE[Marketplace Core]
+        REGISTRY[Provider Registry]
+        REPUTATION[Reputation Manager]
         
         subgraph "Process Communication"
             MSG[Message Bus]
@@ -123,6 +132,7 @@ graph TB
     MCP --> CAP
     MCP --> NAV
     MCP --> INF
+    MCP --> MARKET
     
     OBS --> AO_CLIENT
     MOD --> AO_CLIENT
@@ -130,18 +140,25 @@ graph TB
     CAP --> AO_CLIENT
     NAV --> AO_CLIENT
     INF --> AO_CLIENT
+    MARKET --> AO_CLIENT
     
     AO_CLIENT --> MP1
     AO_CLIENT --> MP2
     AO_CLIENT --> MP3
     AO_CLIENT --> ENV
     AO_CLIENT --> PLY
+    AO_CLIENT --> MARKETPLACE
+    AO_CLIENT --> REGISTRY
+    AO_CLIENT --> REPUTATION
     
     MP1 --> MSG
     MP2 --> MSG
     MP3 --> MSG
     ENV --> MSG
     PLY --> MSG
+    MARKETPLACE --> MSG
+    REGISTRY --> MSG
+    REPUTATION --> MSG
     
     MSG --> COORD
     
@@ -159,6 +176,9 @@ graph TB
     MP3 --> AO
     ENV --> AO
     PLY --> AO
+    MARKETPLACE --> AO
+    REGISTRY --> AO
+    REPUTATION --> AO
     
     AO --> AR
     AO --> BACKUP
@@ -172,6 +192,8 @@ graph TB
 - **Event-Driven Communication:** AO message passing for inter-process coordination - _Rationale:_ Enables complex creature interactions while maintaining process isolation
 - **Decentralized Persistence:** State management through AO processes with Arweave backup - _Rationale:_ Provides permanent, tamper-proof game state without traditional database costs
 - **Tool-Based Architecture:** MCP tools as primary interface abstraction - _Rationale:_ Standardizes natural language interactions while maintaining extensibility
+- **Token-Based Marketplace Pattern:** AO Token Blueprint with Credit-Notice/Debit-Notice handlers - _Rationale:_ Creates organic economic activity through AI inference service trading
+- **X-Prefix Forwarding Pattern:** Extensible metadata passing through token transfers - _Rationale:_ Enables contextual information flow in marketplace transactions
 
 ## Tech Stack
 
@@ -316,6 +338,119 @@ interface Player {
 - Owns multiple Captured Monsters (1:N)
 - Modifies multiple Environments (N:N)
 - Earns Influence Points through successful management
+- Participates in Inference Marketplace (1:N)
+
+### Inference Marketplace Provider
+
+**Purpose:** Represents an AI inference service provider in the marketplace with capabilities, pricing, and reputation
+
+**Key Attributes:**
+- provider_id: string - Unique identifier for the AI service provider
+- capabilities: string[] - Types of AI services offered
+- pricing: PricingModel - Token costs per service type
+- reputation: ReputationMetrics - Quality and performance indicators
+- metadata: ProviderMetadata - Additional provider information
+
+#### TypeScript Interface
+
+```typescript
+interface InferenceProvider {
+  provider_id: string;
+  capabilities: string[];
+  pricing: {
+    [service_type: string]: string; // tokens per request
+  };
+  reputation: {
+    response_time_avg: number;
+    quality_score: number;
+    completion_rate: number;
+    total_requests: number;
+  };
+  metadata: {
+    last_seen: number;
+    x_tags_supported: string[];
+    description: string;
+  };
+  status: "active" | "inactive" | "suspended";
+}
+```
+
+#### Relationships
+- Handles multiple Inference Requests (1:N)
+- Has Reputation History (1:N)
+- Managed by Marketplace Core (N:1)
+
+### Inference Request
+
+**Purpose:** Represents a request for AI inference services with payment and context information
+
+**Key Attributes:**
+- request_id: string - Unique identifier for the inference request
+- requester: string - AO process ID making the request
+- provider_id: string - Target AI service provider
+- service_type: string - Type of AI service requested
+- context_data: any - Inference parameters and context
+- payment_amount: string - Token amount for the service
+- x_metadata: XMetadata - X-prefix forwarded tags
+
+#### TypeScript Interface
+
+```typescript
+interface InferenceRequest {
+  request_id: string;
+  requester: string;
+  provider_id: string;
+  service_type: string;
+  context_data: any;
+  payment_amount: string;
+  x_metadata: {
+    [key: string]: string; // X-prefixed tags
+  };
+  status: "pending" | "processing" | "completed" | "failed";
+  created_at: number;
+  timeout_at: number;
+}
+```
+
+#### Relationships
+- Issued by Monster Process (N:1)
+- Processed by Inference Provider (N:1)
+- Tracked by Marketplace Core (N:1)
+
+### Marketplace Transaction
+
+**Purpose:** Records token transfers and AI service transactions for audit and reputation tracking
+
+**Key Attributes:**
+- transaction_id: string - Unique identifier for the transaction
+- request_id: string - Associated inference request
+- from_process: string - Token sender (requester)
+- to_process: string - Token recipient (provider)
+- amount: string - Token amount transferred
+- service_type: string - Type of AI service
+- success: boolean - Transaction completion status
+
+#### TypeScript Interface
+
+```typescript
+interface MarketplaceTransaction {
+  transaction_id: string;
+  request_id: string;
+  from_process: string;
+  to_process: string;
+  amount: string;
+  service_type: string;
+  success: boolean;
+  timestamp: number;
+  credit_notice_sent: boolean;
+  debit_notice_sent: boolean;
+}
+```
+
+#### Relationships
+- Associated with Inference Request (1:1)
+- Tracked by Reputation Manager (N:1)
+- Logged by Marketplace Core (N:1)
 
 ## API Specification
 
@@ -364,6 +499,23 @@ const modifyEnvironmentTool: MCPTool = {
     required: ["route_id", "modification_type", "location"]
   }
 };
+
+// Inference Marketplace Tool
+const inferenceMarketplaceTool: MCPTool = {
+  name: "inference_marketplace",
+  description: "Interact with AI inference marketplace - discover providers, request services, check reputation",
+  inputSchema: {
+    type: "object",
+    properties: {
+      action: { type: "string", enum: ["discover_providers", "request_inference", "check_reputation", "view_transactions"] },
+      service_type: { type: "string", description: "Type of AI service needed" },
+      provider_id: { type: "string", description: "Specific provider ID (optional)" },
+      context_data: { type: "object", description: "Inference parameters and context" },
+      max_cost: { type: "string", description: "Maximum tokens willing to spend" }
+    },
+    required: ["action"]
+  }
+};
 ```
 
 ### AO Message Schemas
@@ -410,6 +562,86 @@ interface MonsterCommunicationMessage {
     target_id?: string;
     content: Record<string, any>;
     urgency: "low" | "medium" | "high";
+  };
+}
+
+// AI Inference Request Message
+interface AIInferenceRequestMessage {
+  Action: "AI-Inference-Request";
+  Data: {
+    request_id: string;
+    service_type: string;
+    context_data: any;
+    payment_amount: string;
+    timeout: number;
+  };
+  Tags: {
+    "X-Service-Type": string;
+    "X-Request-ID": string;
+    "X-Provider-ID": string;
+    "X-Context-Data": string;
+    "X-Quality-Tier": string;
+    "X-Timeout": string;
+  };
+}
+
+// AI Inference Response Message  
+interface AIInferenceResponseMessage {
+  Action: "AI-Inference-Response";
+  Data: {
+    request_id: string;
+    inference_result: any;
+    quality_score: number;
+    response_time: number;
+  };
+  Tags: {
+    "X-Request-ID": string;
+    "X-Provider-ID": string;
+    "X-Quality-Score": string;
+  };
+}
+
+// Provider Registration Message
+interface ProviderRegistrationMessage {
+  Action: "Provider-Registration";
+  Data: {
+    provider_id: string;
+    capabilities: string[];
+    pricing: Record<string, string>;
+    description: string;
+    x_tags_supported: string[];
+  };
+}
+
+// Credit-Notice Message (AO Token Blueprint)
+interface CreditNoticeMessage {
+  Action: "Credit-Notice";
+  Data: {
+    sender: string;
+    quantity: string;
+    message: string;
+  };
+  Tags: {
+    "X-Service-Type"?: string;
+    "X-Request-ID"?: string;
+    "X-Provider-ID"?: string;
+    [key: string]: string | undefined; // Additional X-prefixed tags
+  };
+}
+
+// Debit-Notice Message (AO Token Blueprint)
+interface DebitNoticeMessage {
+  Action: "Debit-Notice";
+  Data: {
+    recipient: string;
+    quantity: string;
+    message: string;
+  };
+  Tags: {
+    "X-Service-Type"?: string;
+    "X-Request-ID"?: string;
+    "X-Provider-ID"?: string;
+    [key: string]: string | undefined; // Additional X-prefixed tags
   };
 }
 ```
@@ -486,6 +718,66 @@ interface MonsterCommunicationMessage {
 
 **Technology Stack:** TypeScript, Arweave SDK, AO integration
 
+### Inference Marketplace Core
+
+**Responsibility:** Manages AI inference marketplace operations including request routing, payment processing, and provider coordination
+
+**Key Interfaces:**
+- AI inference request processing and routing
+- Token payment validation using Credit-Notice/Debit-Notice handlers
+- Provider discovery and capability matching
+- Request timeout and error handling
+- X-prefix metadata forwarding
+
+**Dependencies:** AO Token Blueprint, Provider Registry, Reputation Manager, Primal Token Process
+
+**Technology Stack:** Lua (AO Process), AO Token Blueprint patterns
+
+### Provider Registry
+
+**Responsibility:** Maintains registry of AI inference providers with capabilities, pricing, and availability status
+
+**Key Interfaces:**
+- Provider registration and capability advertising
+- Service discovery and provider matching
+- Pricing information management
+- Provider status monitoring and health checks
+- Capability validation and testing
+
+**Dependencies:** Marketplace Core, Reputation Manager
+
+**Technology Stack:** Lua (AO Process), JSON schema validation
+
+### Reputation Manager
+
+**Responsibility:** Tracks provider performance metrics, quality scores, and reputation indicators
+
+**Key Interfaces:**
+- Response time monitoring and averaging
+- Quality score calculation and tracking
+- Completion rate statistics
+- Provider ranking and recommendation
+- Reputation history and trends
+
+**Dependencies:** Marketplace Core, Provider Registry
+
+**Technology Stack:** Lua (AO Process), statistical analysis algorithms
+
+### Token Payment Handler
+
+**Responsibility:** Processes Primal token payments for AI inference services using AO Token Blueprint patterns
+
+**Key Interfaces:**
+- Credit-Notice processing for incoming payments
+- Debit-Notice processing for outgoing payments
+- X-prefix tag forwarding for marketplace context
+- Payment validation and authorization
+- Refund processing for failed requests
+
+**Dependencies:** AO Token Blueprint, Primal Token Process, Marketplace Core
+
+**Technology Stack:** Lua (AO Process), AO Token Blueprint handlers
+
 ## Components Diagrams
 
 ```mermaid
@@ -502,6 +794,10 @@ graph TB
         MP[Monster Processes]
         ENV[Environment Manager]
         PLY[Player State]
+        MARKETPLACE[Marketplace Core]
+        REGISTRY[Provider Registry]
+        REPUTATION[Reputation Manager]
+        TOKEN[Token Payment Handler]
         MSG[Message Router]
     end
     
@@ -521,13 +817,27 @@ graph TB
     MSG --> MP
     MSG --> ENV
     MSG --> PLY
+    MSG --> MARKETPLACE
+    MSG --> REGISTRY
+    MSG --> REPUTATION
+    MSG --> TOKEN
     
     AI --> CLAUDE
     AI --> CACHE
     
+    MARKETPLACE --> REGISTRY
+    MARKETPLACE --> REPUTATION
+    MARKETPLACE --> TOKEN
+    REGISTRY --> REPUTATION
+    TOKEN --> MARKETPLACE
+    
     MP --> ARWEAVE
     ENV --> ARWEAVE
     PLY --> ARWEAVE
+    MARKETPLACE --> ARWEAVE
+    REGISTRY --> ARWEAVE
+    REPUTATION --> ARWEAVE
+    TOKEN --> ARWEAVE
 ```
 
 ## Core Workflows
@@ -596,6 +906,45 @@ sequenceDiagram
     Note over MONSTERS: Ongoing adaptation to modification
     MONSTERS->>MONSTERS: Learn modification patterns
     MONSTERS->>ENV: React to environmental cues
+```
+
+### AI Inference Marketplace Workflow
+
+```mermaid
+sequenceDiagram
+    participant MONSTER as Monster Process
+    participant TOKEN as Primal Token Process
+    participant MARKETPLACE as Marketplace Core
+    participant REGISTRY as Provider Registry
+    participant PROVIDER as AI Provider
+    participant REPUTATION as Reputation Manager
+    
+    Note over MONSTER: Monster needs AI inference for decision
+    MONSTER->>REGISTRY: Query providers for service_type
+    REGISTRY-->>MONSTER: Available providers with pricing
+    MONSTER->>MONSTER: Select provider based on cost/reputation
+    
+    MONSTER->>TOKEN: Transfer(Provider, Amount, X-Service-Type="ai-inference")
+    TOKEN->>PROVIDER: Credit-Notice(X-Service-Type, X-Request-ID, X-Context-Data)
+    TOKEN->>MONSTER: Debit-Notice(X-Service-Type, X-Request-ID)
+    
+    PROVIDER->>MARKETPLACE: AI-Inference-Request(request_id, context_data)
+    MARKETPLACE->>PROVIDER: Request routing and validation
+    PROVIDER->>PROVIDER: Process AI inference request
+    
+    alt Successful Inference
+        PROVIDER->>MARKETPLACE: AI-Inference-Response(results, quality_score)
+        MARKETPLACE->>MONSTER: Forward inference results
+        MARKETPLACE->>REPUTATION: Update provider metrics (positive)
+    else Timeout or Failure
+        MARKETPLACE->>TOKEN: Initiate refund process
+        TOKEN->>MONSTER: Credit-Notice(refund)
+        TOKEN->>PROVIDER: Debit-Notice(refund)
+        MARKETPLACE->>REPUTATION: Update provider metrics (negative)
+    end
+    
+    MONSTER->>MONSTER: Use inference results for decision
+    REPUTATION->>REGISTRY: Update provider rankings
 ```
 
 ## Database Schema
@@ -709,6 +1058,102 @@ Player = {
     session_history = {},
     last_active = 1640995800
 }
+
+-- Inference Marketplace Provider Process State Variables
+InferenceProvider = {
+    provider_id = "ai_provider_001",
+    capabilities = {
+        "text-generation",
+        "image-analysis",
+        "decision-making"
+    },
+    pricing = {
+        ["text-generation"] = "100",
+        ["image-analysis"] = "500",
+        ["decision-making"] = "250"
+    },
+    reputation = {
+        response_time_avg = 2.5,
+        quality_score = 0.92,
+        completion_rate = 0.98,
+        total_requests = 1250
+    },
+    metadata = {
+        last_seen = 1640995800,
+        x_tags_supported = {"X-Context-Data", "X-Quality-Tier", "X-Timeout"},
+        description = "High-performance AI inference provider"
+    },
+    status = "active"
+}
+
+-- Marketplace Core Process State Variables
+MarketplaceCore = {
+    active_requests = {
+        ["req_12345"] = {
+            request_id = "req_12345",
+            requester = "monster_12345",
+            provider_id = "ai_provider_001",
+            service_type = "decision-making",
+            payment_amount = "250",
+            x_metadata = {
+                ["X-Service-Type"] = "ai-inference",
+                ["X-Request-ID"] = "req_12345",
+                ["X-Context-Data"] = "hunting_decision_context"
+            },
+            status = "processing",
+            created_at = 1640995700,
+            timeout_at = 1640995730
+        }
+    },
+    transaction_history = {
+        {
+            transaction_id = "txn_67890",
+            request_id = "req_12345",
+            from_process = "monster_12345",
+            to_process = "ai_provider_001",
+            amount = "250",
+            service_type = "decision-making",
+            success = true,
+            timestamp = 1640995700,
+            credit_notice_sent = true,
+            debit_notice_sent = true
+        }
+    },
+    provider_registry = {
+        ["ai_provider_001"] = {
+            last_heartbeat = 1640995800,
+            request_count = 1250,
+            avg_response_time = 2.5
+        }
+    }
+}
+
+-- Reputation Manager Process State Variables
+ReputationManager = {
+    provider_metrics = {
+        ["ai_provider_001"] = {
+            response_times = {2.1, 2.3, 2.8, 2.2, 2.7}, -- Last 5 responses
+            quality_scores = {0.95, 0.88, 0.92, 0.94, 0.89}, -- Last 5 quality scores
+            completion_history = {
+                total_requests = 1250,
+                successful_requests = 1225,
+                failed_requests = 25,
+                timeout_requests = 15
+            },
+            reputation_trend = {
+                {date = 1640995200, score = 0.90},
+                {date = 1640995500, score = 0.91},
+                {date = 1640995800, score = 0.92}
+            }
+        }
+    },
+    ranking_cache = {
+        ["text-generation"] = {
+            {provider_id = "ai_provider_001", score = 0.92},
+            {provider_id = "ai_provider_002", score = 0.88}
+        }
+    }
+}
 ```
 
 ## Frontend Architecture
@@ -725,7 +1170,8 @@ src/tools/
 ├── monster-analyzer.ts       # Individual creature analysis
 ├── route-manager.ts          # Multi-habitat navigation
 ├── influence-tracker.ts      # Resource management
-└── capture-mechanics.ts      # Monster collection tools
+├── capture-mechanics.ts      # Monster collection tools
+└── inference-marketplace.ts  # AI inference marketplace interaction
 ```
 
 #### Component Template
@@ -1147,7 +1593,8 @@ PrimalCode/
 │   │   ├── monster-analyzer.ts
 │   │   ├── route-manager.ts
 │   │   ├── influence-tracker.ts
-│   │   └── capture-mechanics.ts
+│   │   ├── capture-mechanics.ts
+│   │   └── inference-marketplace.ts
 │   ├── ao-integration/         # AO process communication
 │   │   ├── ao-client.ts
 │   │   ├── message-schemas.ts
@@ -1158,6 +1605,11 @@ PrimalCode/
 │   │   ├── environment-state.ts
 │   │   ├── game-logic.ts
 │   │   └── adaptation-engine.ts
+│   ├── marketplace/            # Inference marketplace components
+│   │   ├── marketplace-client.ts
+│   │   ├── provider-registry.ts
+│   │   ├── reputation-manager.ts
+│   │   └── token-handler.ts
 │   ├── ai-integration/         # AI decision systems
 │   │   ├── claude-client.ts
 │   │   ├── decision-cache.ts
@@ -1167,7 +1619,8 @@ PrimalCode/
 │   │   ├── monster-types.ts
 │   │   ├── environment-types.ts
 │   │   ├── mcp-tool-types.ts
-│   │   └── ao-message-types.ts
+│   │   ├── ao-message-types.ts
+│   │   └── marketplace-types.ts
 │   ├── utils/                  # Shared utilities
 │   │   ├── logging.ts
 │   │   ├── validation.ts
@@ -1177,9 +1630,14 @@ PrimalCode/
 │   ├── monster-process.lua
 │   ├── environment-process.lua
 │   ├── player-process.lua
+│   ├── marketplace-core.lua
+│   ├── provider-registry.lua
+│   ├── reputation-manager.lua
+│   ├── token-payment-handler.lua
 │   └── shared/
 │       ├── message-handlers.lua
 │       ├── ai-integration.lua
+│       ├── token-blueprint.lua
 │       └── utils.lua
 ├── tests/                     # Comprehensive test suite
 │   ├── unit/

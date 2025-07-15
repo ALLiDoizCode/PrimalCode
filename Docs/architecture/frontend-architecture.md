@@ -12,7 +12,8 @@ src/tools/
 ├── monster-analyzer.ts       # Individual creature analysis
 ├── route-manager.ts          # Multi-habitat navigation
 ├── influence-tracker.ts      # Resource management
-└── capture-mechanics.ts      # Monster collection tools
+├── capture-mechanics.ts      # Monster collection tools
+└── inference-marketplace.ts  # AI inference marketplace interaction
 ```
 
 ### Component Template
