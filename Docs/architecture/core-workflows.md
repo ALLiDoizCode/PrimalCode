@@ -72,9 +72,9 @@ sequenceDiagram
 sequenceDiagram
     participant MONSTER as Monster Process
     participant TOKEN as Primal Token Process
-    participant MARKETPLACE as Marketplace Core
     participant REGISTRY as Provider Registry
-    participant PROVIDER as AI Provider
+    participant PROVIDER as AI Provider Node.js App
+    participant AI_SERVICE as AI Service (Claude/OpenAI)
     participant REPUTATION as Reputation Manager
     
     Note over MONSTER: Monster needs AI inference for decision
@@ -86,19 +86,20 @@ sequenceDiagram
     TOKEN->>PROVIDER: Credit-Notice(X-Service-Type, X-Request-ID, X-Context-Data)
     TOKEN->>MONSTER: Debit-Notice(X-Service-Type, X-Request-ID)
     
-    PROVIDER->>MARKETPLACE: AI-Inference-Request(request_id, context_data)
-    MARKETPLACE->>PROVIDER: Request routing and validation
-    PROVIDER->>PROVIDER: Process AI inference request
+    Note over PROVIDER: Credit-Notice received by Node.js app
+    PROVIDER->>PROVIDER: Parse X-prefix metadata
+    PROVIDER->>PROVIDER: Extract context data and service type
+    PROVIDER->>AI_SERVICE: Process AI inference request
     
     alt Successful Inference
-        PROVIDER->>MARKETPLACE: AI-Inference-Response(results, quality_score)
-        MARKETPLACE->>MONSTER: Forward inference results
-        MARKETPLACE->>REPUTATION: Update provider metrics (positive)
+        AI_SERVICE-->>PROVIDER: AI inference results
+        PROVIDER->>MONSTER: AI-Inference-Response(results, quality_score)
+        PROVIDER->>REPUTATION: Report successful completion
     else Timeout or Failure
-        MARKETPLACE->>TOKEN: Initiate refund process
+        PROVIDER->>TOKEN: Initiate refund via Transfer
         TOKEN->>MONSTER: Credit-Notice(refund)
         TOKEN->>PROVIDER: Debit-Notice(refund)
-        MARKETPLACE->>REPUTATION: Update provider metrics (negative)
+        PROVIDER->>REPUTATION: Report failure
     end
     
     MONSTER->>MONSTER: Use inference results for decision

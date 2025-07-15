@@ -129,3 +129,21 @@
 **Dependencies:** AO Token Blueprint, Primal Token Process, Marketplace Core
 
 **Technology Stack:** Lua (AO Process), AO Token Blueprint handlers
+
+## Inference Provider Node.js Applications
+
+**Responsibility:** External Node.js applications that provide AI inference services and handle Credit-Notice payments from the marketplace
+
+**Key Interfaces:**
+- Credit-Notice message listener from Primal Token Process
+- AI inference processing (Claude API, OpenAI, etc.)
+- X-prefix metadata parsing and context extraction
+- Response delivery to requesting Monster Process
+- Service registration with Provider Registry
+- Health monitoring and availability reporting
+
+**Dependencies:** AO SDK, AI Service APIs (Claude, OpenAI), Provider Registry, Reputation Manager
+
+**Technology Stack:** Node.js, TypeScript, AO SDK, AI service clients
+
+**Architecture Pattern:** Event-driven microservice with AO message handling

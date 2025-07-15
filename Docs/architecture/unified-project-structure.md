@@ -47,6 +47,37 @@ PrimalCode/
 │   │   ├── validation.ts
 │   │   └── error-handling.ts
 │   └── index.ts               # MCP server entry point
+├── inference-providers/       # External Node.js Inference Provider Apps
+│   ├── claude-provider/       # Claude-based inference provider
+│   │   ├── src/
+│   │   │   ├── index.ts       # Main application entry point
+│   │   │   ├── credit-notice-handler.ts # Credit-Notice message handler
+│   │   │   ├── claude-client.ts # Claude API integration
+│   │   │   ├── ao-client.ts    # AO process communication
+│   │   │   ├── service-registry.ts # Registry integration
+│   │   │   └── types.ts       # Provider-specific types
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── openai-provider/       # OpenAI-based inference provider
+│   │   ├── src/
+│   │   │   ├── index.ts
+│   │   │   ├── credit-notice-handler.ts
+│   │   │   ├── openai-client.ts
+│   │   │   ├── ao-client.ts
+│   │   │   ├── service-registry.ts
+│   │   │   └── types.ts
+│   │   ├── package.json
+│   │   └── README.md
+│   └── provider-template/     # Template for new inference providers
+│       ├── src/
+│       │   ├── index.ts
+│       │   ├── credit-notice-handler.ts
+│       │   ├── ai-client.ts
+│       │   ├── ao-client.ts
+│       │   ├── service-registry.ts
+│       │   └── types.ts
+│       ├── package.json
+│       └── README.md
 ├── ao-processes/              # AO process implementations
 │   ├── monster-process.lua
 │   ├── environment-process.lua

@@ -24,6 +24,7 @@ This choice constrains the architecture to TypeScript-based MCP server patterns 
 |------|---------|-------------|--------|
 | 2025-07-15 | 1.0 | Initial architecture document creation | Winston (Architect) |
 | 2025-07-15 | 1.1 | Added Inference Marketplace (Epic 2) architecture | Winston (Architect) |
+| 2025-07-15 | 1.2 | Added Node.js Inference Provider architecture and Credit-Notice flow | Winston (Architect) |
 
 ## High Level Architecture
 
@@ -778,6 +779,24 @@ interface DebitNoticeMessage {
 
 **Technology Stack:** Lua (AO Process), AO Token Blueprint handlers
 
+### Inference Provider Node.js Applications
+
+**Responsibility:** External Node.js applications that provide AI inference services and handle Credit-Notice payments from the marketplace
+
+**Key Interfaces:**
+- Credit-Notice message listener from Primal Token Process
+- AI inference processing (Claude API, OpenAI, etc.)
+- X-prefix metadata parsing and context extraction
+- Response delivery to requesting Monster Process
+- Service registration with Provider Registry
+- Health monitoring and availability reporting
+
+**Dependencies:** AO SDK, AI Service APIs (Claude, OpenAI), Provider Registry, Reputation Manager
+
+**Technology Stack:** Node.js, TypeScript, AO SDK, AI service clients
+
+**Architecture Pattern:** Event-driven microservice with AO message handling
+
 ## Components Diagrams
 
 ```mermaid
@@ -801,10 +820,18 @@ graph TB
         MSG[Message Router]
     end
     
+    subgraph "External Inference Providers"
+        PROVIDER1[AI Provider 1 - Node.js]
+        PROVIDER2[AI Provider 2 - Node.js]
+        PROVIDER3[AI Provider N - Node.js]
+    end
+    
     subgraph "External Services"
         CLAUDE[Claude API]
+        OPENAI[OpenAI API]
         ARWEAVE[Arweave Network]
         CLIENTS[AI Clients]
+        PRIMAL_TOKEN[Primal Token Process]
     end
     
     CLIENTS --> MCP
@@ -831,6 +858,25 @@ graph TB
     REGISTRY --> REPUTATION
     TOKEN --> MARKETPLACE
     
+    %% Token Payment Flow
+    MP --> PRIMAL_TOKEN
+    PRIMAL_TOKEN --> PROVIDER1
+    PRIMAL_TOKEN --> PROVIDER2
+    PRIMAL_TOKEN --> PROVIDER3
+    
+    %% Inference Provider Connections
+    PROVIDER1 --> CLAUDE
+    PROVIDER2 --> OPENAI
+    PROVIDER3 --> CLAUDE
+    
+    PROVIDER1 --> REGISTRY
+    PROVIDER2 --> REGISTRY
+    PROVIDER3 --> REGISTRY
+    
+    PROVIDER1 --> MP
+    PROVIDER2 --> MP
+    PROVIDER3 --> MP
+    
     MP --> ARWEAVE
     ENV --> ARWEAVE
     PLY --> ARWEAVE
@@ -838,6 +884,7 @@ graph TB
     REGISTRY --> ARWEAVE
     REPUTATION --> ARWEAVE
     TOKEN --> ARWEAVE
+    PRIMAL_TOKEN --> ARWEAVE
 ```
 
 ## Core Workflows
@@ -914,9 +961,9 @@ sequenceDiagram
 sequenceDiagram
     participant MONSTER as Monster Process
     participant TOKEN as Primal Token Process
-    participant MARKETPLACE as Marketplace Core
     participant REGISTRY as Provider Registry
-    participant PROVIDER as AI Provider
+    participant PROVIDER as AI Provider Node.js App
+    participant AI_SERVICE as AI Service (Claude/OpenAI)
     participant REPUTATION as Reputation Manager
     
     Note over MONSTER: Monster needs AI inference for decision
@@ -928,19 +975,20 @@ sequenceDiagram
     TOKEN->>PROVIDER: Credit-Notice(X-Service-Type, X-Request-ID, X-Context-Data)
     TOKEN->>MONSTER: Debit-Notice(X-Service-Type, X-Request-ID)
     
-    PROVIDER->>MARKETPLACE: AI-Inference-Request(request_id, context_data)
-    MARKETPLACE->>PROVIDER: Request routing and validation
-    PROVIDER->>PROVIDER: Process AI inference request
+    Note over PROVIDER: Credit-Notice received by Node.js app
+    PROVIDER->>PROVIDER: Parse X-prefix metadata
+    PROVIDER->>PROVIDER: Extract context data and service type
+    PROVIDER->>AI_SERVICE: Process AI inference request
     
     alt Successful Inference
-        PROVIDER->>MARKETPLACE: AI-Inference-Response(results, quality_score)
-        MARKETPLACE->>MONSTER: Forward inference results
-        MARKETPLACE->>REPUTATION: Update provider metrics (positive)
+        AI_SERVICE-->>PROVIDER: AI inference results
+        PROVIDER->>MONSTER: AI-Inference-Response(results, quality_score)
+        PROVIDER->>REPUTATION: Report successful completion
     else Timeout or Failure
-        MARKETPLACE->>TOKEN: Initiate refund process
+        PROVIDER->>TOKEN: Initiate refund via Transfer
         TOKEN->>MONSTER: Credit-Notice(refund)
         TOKEN->>PROVIDER: Debit-Notice(refund)
-        MARKETPLACE->>REPUTATION: Update provider metrics (negative)
+        PROVIDER->>REPUTATION: Report failure
     end
     
     MONSTER->>MONSTER: Use inference results for decision
@@ -1361,6 +1409,356 @@ export class EcosystemService {
 }
 ```
 
+## Node.js Inference Provider Architecture
+
+### Credit-Notice Flow Implementation
+
+**Architecture Pattern:** Event-driven microservice that listens for Credit-Notice messages from the Primal Token Process and provides AI inference services.
+
+#### Core Components
+
+**1. Credit-Notice Message Handler**
+```typescript
+// Credit-Notice Handler for Inference Providers
+export class CreditNoticeHandler {
+  constructor(
+    private aoClient: AOClient,
+    private aiClient: AIClient,
+    private serviceRegistry: ServiceRegistry
+  ) {}
+
+  async handleCreditNotice(message: CreditNoticeMessage): Promise<void> {
+    try {
+      // Parse X-prefix metadata
+      const metadata = this.parseXMetadata(message.Tags);
+      
+      // Validate payment amount
+      if (!this.validatePayment(message.Data.quantity, metadata.serviceType)) {
+        await this.initiateRefund(message.Data.sender, message.Data.quantity);
+        return;
+      }
+
+      // Process inference request
+      const inferenceResult = await this.processInferenceRequest(
+        metadata.serviceType,
+        metadata.contextData,
+        metadata.requestId
+      );
+
+      // Send response to monster process
+      await this.sendInferenceResponse(
+        message.Data.sender,
+        metadata.requestId,
+        inferenceResult
+      );
+
+      // Report successful completion
+      await this.reportCompletion(metadata.requestId, true);
+    } catch (error) {
+      await this.handleError(message, error);
+    }
+  }
+
+  private parseXMetadata(tags: Record<string, string>): InferenceMetadata {
+    return {
+      serviceType: tags["X-Service-Type"],
+      requestId: tags["X-Request-ID"],
+      contextData: JSON.parse(tags["X-Context-Data"] || "{}"),
+      qualityTier: tags["X-Quality-Tier"] || "standard",
+      timeout: parseInt(tags["X-Timeout"] || "30000")
+    };
+  }
+
+  private async processInferenceRequest(
+    serviceType: string,
+    contextData: any,
+    requestId: string
+  ): Promise<InferenceResult> {
+    // Process based on service type
+    switch (serviceType) {
+      case "decision-making":
+        return await this.aiClient.generateDecision(contextData);
+      case "text-generation":
+        return await this.aiClient.generateText(contextData);
+      case "image-analysis":
+        return await this.aiClient.analyzeImage(contextData);
+      default:
+        throw new Error(`Unsupported service type: ${serviceType}`);
+    }
+  }
+}
+```
+
+**2. AI Service Integration**
+```typescript
+// Claude Client for Inference Providers
+export class ClaudeInferenceClient {
+  constructor(private apiKey: string) {}
+
+  async generateDecision(context: MonsterDecisionContext): Promise<DecisionResult> {
+    const prompt = this.buildDecisionPrompt(context);
+    
+    const response = await this.claude.messages.create({
+      model: "claude-3-sonnet-20240229",
+      max_tokens: 1000,
+      messages: [{ role: "user", content: prompt }]
+    });
+
+    return this.parseDecisionResponse(response.content[0].text);
+  }
+
+  private buildDecisionPrompt(context: MonsterDecisionContext): string {
+    return `
+      You are an AI helping a monster make a decision in PrimalCode.
+      
+      Monster State: ${JSON.stringify(context.monsterState)}
+      Environment: ${JSON.stringify(context.environment)}
+      Nearby Monsters: ${JSON.stringify(context.nearbyMonsters)}
+      
+      Based on this context, what should the monster do next?
+      Respond with a JSON object containing:
+      - action: string (hunt, rest, explore, flee, etc.)
+      - reasoning: string
+      - confidence: number (0-1)
+      - duration: number (seconds)
+    `;
+  }
+}
+```
+
+**3. Service Registration**
+```typescript
+// Service Registry Integration
+export class InferenceProviderRegistry {
+  async registerProvider(config: ProviderConfig): Promise<void> {
+    const registrationMessage = {
+      Action: "Provider-Registration",
+      Data: {
+        provider_id: config.providerId,
+        capabilities: config.capabilities,
+        pricing: config.pricing,
+        description: config.description,
+        x_tags_supported: config.supportedXTags
+      }
+    };
+
+    await this.aoClient.sendMessage(
+      config.registryProcessId,
+      registrationMessage
+    );
+  }
+
+  async sendHeartbeat(providerId: string): Promise<void> {
+    const heartbeatMessage = {
+      Action: "Provider-Heartbeat",
+      Data: {
+        provider_id: providerId,
+        timestamp: Date.now(),
+        status: "active"
+      }
+    };
+
+    await this.aoClient.sendMessage(
+      this.registryProcessId,
+      heartbeatMessage
+    );
+  }
+}
+```
+
+**4. Main Application Structure**
+```typescript
+// Main Inference Provider Application
+export class InferenceProviderApp {
+  private creditNoticeHandler: CreditNoticeHandler;
+  private serviceRegistry: InferenceProviderRegistry;
+  private aoClient: AOClient;
+
+  constructor(config: InferenceProviderConfig) {
+    this.aoClient = new AOClient(config.walletPath);
+    this.creditNoticeHandler = new CreditNoticeHandler(
+      this.aoClient,
+      new ClaudeInferenceClient(config.claudeApiKey),
+      this.serviceRegistry
+    );
+  }
+
+  async start(): Promise<void> {
+    // Register with the marketplace
+    await this.serviceRegistry.registerProvider({
+      providerId: this.config.providerId,
+      capabilities: ["decision-making", "text-generation"],
+      pricing: {
+        "decision-making": "250",
+        "text-generation": "100"
+      },
+      description: "High-quality AI inference using Claude API",
+      supportedXTags: ["X-Context-Data", "X-Quality-Tier", "X-Timeout"]
+    });
+
+    // Start listening for Credit-Notice messages
+    await this.aoClient.subscribe({
+      Action: "Credit-Notice",
+      Handler: this.creditNoticeHandler.handleCreditNotice.bind(this.creditNoticeHandler)
+    });
+
+    // Start heartbeat
+    setInterval(async () => {
+      await this.serviceRegistry.sendHeartbeat(this.config.providerId);
+    }, 30000);
+
+    console.log(`Inference Provider ${this.config.providerId} started`);
+  }
+}
+```
+
+### Deployment Architecture
+
+**Container Structure:**
+```dockerfile
+# Inference Provider Dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy source code
+COPY dist/ ./dist/
+COPY config/ ./config/
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/health || exit 1
+
+EXPOSE 3000
+
+CMD ["node", "dist/index.js"]
+```
+
+**Kubernetes Deployment:**
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: claude-inference-provider
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: claude-inference-provider
+  template:
+    metadata:
+      labels:
+        app: claude-inference-provider
+    spec:
+      containers:
+      - name: provider
+        image: primalcode/claude-inference-provider:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: CLAUDE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: claude-api-secret
+              key: api-key
+        - name: PROVIDER_ID
+          value: "claude-provider-001"
+        - name: ARWEAVE_WALLET_PATH
+          value: "/app/wallet/wallet.json"
+        volumeMounts:
+        - name: wallet-volume
+          mountPath: /app/wallet
+          readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+      - name: wallet-volume
+        secret:
+          secretName: arweave-wallet-secret
+```
+
+### Error Handling and Resilience
+
+**Timeout Handling:**
+```typescript
+export class TimeoutManager {
+  private activeRequests: Map<string, NodeJS.Timeout> = new Map();
+
+  async processWithTimeout<T>(
+    requestId: string,
+    timeout: number,
+    operation: () => Promise<T>
+  ): Promise<T> {
+    return new Promise((resolve, reject) => {
+      const timeoutId = setTimeout(() => {
+        this.activeRequests.delete(requestId);
+        reject(new Error(`Request ${requestId} timed out after ${timeout}ms`));
+      }, timeout);
+
+      this.activeRequests.set(requestId, timeoutId);
+
+      operation()
+        .then(result => {
+          clearTimeout(timeoutId);
+          this.activeRequests.delete(requestId);
+          resolve(result);
+        })
+        .catch(error => {
+          clearTimeout(timeoutId);
+          this.activeRequests.delete(requestId);
+          reject(error);
+        });
+    });
+  }
+}
+```
+
+**Retry Logic:**
+```typescript
+export class RetryManager {
+  async executeWithRetry<T>(
+    operation: () => Promise<T>,
+    maxRetries: number = 3,
+    baseDelay: number = 1000
+  ): Promise<T> {
+    let lastError: Error;
+
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        return await operation();
+      } catch (error) {
+        lastError = error;
+        
+        if (attempt === maxRetries) {
+          throw lastError;
+        }
+
+        // Exponential backoff
+        const delay = baseDelay * Math.pow(2, attempt);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
+    }
+
+    throw lastError;
+  }
+}
+```
+
 ## Backend Architecture
 
 ### Service Architecture
@@ -1626,6 +2024,37 @@ PrimalCode/
 │   │   ├── validation.ts
 │   │   └── error-handling.ts
 │   └── index.ts               # MCP server entry point
+├── inference-providers/       # External Node.js Inference Provider Apps
+│   ├── claude-provider/       # Claude-based inference provider
+│   │   ├── src/
+│   │   │   ├── index.ts       # Main application entry point
+│   │   │   ├── credit-notice-handler.ts # Credit-Notice message handler
+│   │   │   ├── claude-client.ts # Claude API integration
+│   │   │   ├── ao-client.ts    # AO process communication
+│   │   │   ├── service-registry.ts # Registry integration
+│   │   │   └── types.ts       # Provider-specific types
+│   │   ├── package.json
+│   │   └── README.md
+│   ├── openai-provider/       # OpenAI-based inference provider
+│   │   ├── src/
+│   │   │   ├── index.ts
+│   │   │   ├── credit-notice-handler.ts
+│   │   │   ├── openai-client.ts
+│   │   │   ├── ao-client.ts
+│   │   │   ├── service-registry.ts
+│   │   │   └── types.ts
+│   │   ├── package.json
+│   │   └── README.md
+│   └── provider-template/     # Template for new inference providers
+│       ├── src/
+│       │   ├── index.ts
+│       │   ├── credit-notice-handler.ts
+│       │   ├── ai-client.ts
+│       │   ├── ao-client.ts
+│       │   ├── service-registry.ts
+│       │   └── types.ts
+│       ├── package.json
+│       └── README.md
 ├── ao-processes/              # AO process implementations
 │   ├── monster-process.lua
 │   ├── environment-process.lua

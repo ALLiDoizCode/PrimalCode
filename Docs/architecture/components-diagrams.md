@@ -21,10 +21,18 @@ graph TB
         MSG[Message Router]
     end
     
+    subgraph "External Inference Providers"
+        PROVIDER1[AI Provider 1 - Node.js]
+        PROVIDER2[AI Provider 2 - Node.js]
+        PROVIDER3[AI Provider N - Node.js]
+    end
+    
     subgraph "External Services"
         CLAUDE[Claude API]
+        OPENAI[OpenAI API]
         ARWEAVE[Arweave Network]
         CLIENTS[AI Clients]
+        PRIMAL_TOKEN[Primal Token Process]
     end
     
     CLIENTS --> MCP
@@ -51,6 +59,25 @@ graph TB
     REGISTRY --> REPUTATION
     TOKEN --> MARKETPLACE
     
+    %% Token Payment Flow
+    MP --> PRIMAL_TOKEN
+    PRIMAL_TOKEN --> PROVIDER1
+    PRIMAL_TOKEN --> PROVIDER2
+    PRIMAL_TOKEN --> PROVIDER3
+    
+    %% Inference Provider Connections
+    PROVIDER1 --> CLAUDE
+    PROVIDER2 --> OPENAI
+    PROVIDER3 --> CLAUDE
+    
+    PROVIDER1 --> REGISTRY
+    PROVIDER2 --> REGISTRY
+    PROVIDER3 --> REGISTRY
+    
+    PROVIDER1 --> MP
+    PROVIDER2 --> MP
+    PROVIDER3 --> MP
+    
     MP --> ARWEAVE
     ENV --> ARWEAVE
     PLY --> ARWEAVE
@@ -58,4 +85,5 @@ graph TB
     REGISTRY --> ARWEAVE
     REPUTATION --> ARWEAVE
     TOKEN --> ARWEAVE
+    PRIMAL_TOKEN --> ARWEAVE
 ```

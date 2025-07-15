@@ -38,7 +38,6 @@
       - [Story 1.3: Core Ecosystem Observation MCP Tools](./epic-details.md#story-13-core-ecosystem-observation-mcp-tools)
       - [Story 1.4: Basic Environmental Modification MCP Tools](./epic-details.md#story-14-basic-environmental-modification-mcp-tools)
     - [Epic 2: Autonomous Monster Integration](./epic-details.md#epic-2-autonomous-monster-integration)
-      - [Story 2.1: Single AO Monster Process Implementation](./epic-details.md#story-21-single-ao-monster-process-implementation)
       - [Story 2.2: AI Decision Integration with Fallback Systems](./epic-details.md#story-22-ai-decision-integration-with-fallback-systems)
       - [Story 2.3: MCP Server to AO Process Communication](./epic-details.md#story-23-mcp-server-to-ao-process-communication)
       - [Story 2.4: Enhanced MCP Tools with Real Monster Data](./epic-details.md#story-24-enhanced-mcp-tools-with-real-monster-data)
