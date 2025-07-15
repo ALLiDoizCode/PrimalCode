@@ -1,10 +1,8 @@
 import { z } from 'zod';
-import { createLogger } from '../utils/logging';
 import { MockEnvironmentState } from '../ecosystem/environment-state';
 import { MockMonsterRepository } from '../ecosystem/monster-state';
 import { Environment, ResourceType } from '../types/environment-types';
 
-const logger = createLogger('EnvironmentChecker');
 
 // Environment checker input schema
 const EnvironmentCheckerInput = z.object({
@@ -47,10 +45,6 @@ export class EnvironmentCheckerTool {
 
   async execute(input: z.infer<typeof EnvironmentCheckerInput>): Promise<EnvironmentCheckerOutput> {
     try {
-      logger.info('Environment check requested', { 
-        route_id: input.route_id, 
-        focus: input.focus 
-      });
 
       const environment = this.environmentState.getEnvironment(input.route_id);
       
@@ -63,7 +57,6 @@ export class EnvironmentCheckerTool {
       return this.generateEnvironmentAnalysis(environment, input.focus);
 
     } catch (error) {
-      logger.error('Environment check failed:', error);
       return {
         route_id: input.route_id,
         overallConditions: 'Unable to assess environmental conditions due to technical difficulties',

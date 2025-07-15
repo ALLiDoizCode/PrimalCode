@@ -21,7 +21,8 @@
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/types/no-console.d.ts"
   ],
   "exclude": [
     "node_modules",

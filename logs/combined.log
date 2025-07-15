@@ -4119,3 +4119,19 @@
 {"component":"MonsterAnalyzer","level":"info","message":"Monster analysis requested","monster_id":"monster_1","route_id":"route_001","timestamp":"2025-07-15T22:44:55.169Z"}
 {"component":"EcosystemObserver","level":"info","message":"Ecosystem observation requested","route_id":"route_001","timestamp":"2025-07-15T22:44:55.298Z"}
 {"component":"EnvironmentChecker","level":"info","message":"Environment check requested","route_id":"route_001","timestamp":"2025-07-15T22:44:55.376Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T22:54:59.707Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully","timestamp":"2025-07-15T22:55:00.721Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T22:58:28.344Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully","timestamp":"2025-07-15T22:59:28.460Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T23:05:11.151Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully","timestamp":"2025-07-15T23:05:12.167Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T23:10:59.457Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully","timestamp":"2025-07-15T23:11:00.496Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T23:12:56.929Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully","timestamp":"2025-07-15T23:12:57.943Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T23:15:33.765Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully","timestamp":"2025-07-15T23:15:34.779Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T23:17:36.861Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully on port 3000","timestamp":"2025-07-15T23:17:36.868Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server starting with 4 tools registered...","timestamp":"2025-07-15T23:20:48.333Z"}
+{"component":"MCP Server","level":"info","message":"PrimalCode MCP Server started successfully","timestamp":"2025-07-15T23:20:49.350Z"}

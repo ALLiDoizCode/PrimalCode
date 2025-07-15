@@ -1,11 +1,9 @@
 import { z } from 'zod';
-import { createLogger } from '../utils/logging';
 import { MockMonsterRepository } from '../ecosystem/monster-state';
 import { MockEnvironmentState } from '../ecosystem/environment-state';
 import { Monster, MonsterState, MonsterSpecies } from '../types/monster-types';
 import { Environment } from '../types/environment-types';
 
-const logger = createLogger('MonsterAnalyzer');
 
 // Monster analyzer input schema
 const MonsterAnalyzerInput = z.object({
@@ -46,10 +44,6 @@ export class MonsterAnalyzerTool {
 
   async execute(input: z.infer<typeof MonsterAnalyzerInput>): Promise<MonsterAnalyzerOutput> {
     try {
-      logger.info('Monster analysis requested', { 
-        monster_id: input.monster_id, 
-        route_id: input.route_id 
-      });
 
       const monster = this.monsterRepository.getMonster(input.monster_id);
       const environment = this.environmentState.getEnvironment(input.route_id);
@@ -70,7 +64,6 @@ export class MonsterAnalyzerTool {
       return this.generateAnalysis(monster, environment);
 
     } catch (error) {
-      logger.error('Monster analysis failed:', error);
       return {
         monster_id: input.monster_id,
         species: 'Unknown',

@@ -1,11 +1,9 @@
 import { z } from 'zod';
-import { createLogger } from '../utils/logging';
 import packageJson from '../../package.json';
 import { cpus } from 'os';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 
-const logger = createLogger('HealthCheck');
 const execAsync = promisify(exec);
 
 // Health check input schema
@@ -64,7 +62,6 @@ export const healthCheck = {
     const errors: HealthCheckOutput['errors'] = [];
 
     try {
-      logger.info('Health check requested', { detailed: input.detailed ?? false });
 
       let uptime: string;
       try {
@@ -177,11 +174,9 @@ export const healthCheck = {
         baseResponse.errors = errors;
       }
 
-      logger.info('Health check completed successfully');
       return JSON.stringify(baseResponse, null, 2);
 
     } catch (error) {
-      logger.error('Health check failed:', error);
       
       let uptime: string;
       try {

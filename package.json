@@ -20,7 +20,9 @@
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write src/**/*.ts tests/**/*.ts",
-    "format:check": "prettier --check src/**/*.ts tests/**/*.ts"
+    "format:check": "prettier --check src/**/*.ts tests/**/*.ts",
+    "pre-commit": "npm run check-no-logging && npm run lint",
+    "check-no-logging": "if grep -r 'console\\.' src/ || grep -r 'process\\.stdout\\.' src/ || grep -r 'process\\.stderr\\.' src/; then echo 'ERROR: Console logging detected in src/. MCP servers using stdio cannot use console logging.'; exit 1; fi"
   },
   "keywords": [
     "mcp",
@@ -36,7 +38,6 @@
     "axios": "^1.10.0",
     "dotenv": "^16.6.1",
     "fastmcp": "^3.9.0",
-    "winston": "^3.17.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {

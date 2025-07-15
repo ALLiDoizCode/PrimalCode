@@ -1,11 +1,9 @@
 import { z } from 'zod';
-import { createLogger } from '../utils/logging';
 import { MockMonsterRepository } from '../ecosystem/monster-state';
 import { MockEnvironmentState } from '../ecosystem/environment-state';
 import { Monster, MonsterState } from '../types/monster-types';
 import { Environment, WeatherCondition } from '../types/environment-types';
 
-const logger = createLogger('EcosystemObserver');
 
 // Ecosystem observer input schema
 const EcosystemObserverInput = z.object({
@@ -43,10 +41,6 @@ export class EcosystemObserverTool {
 
   async execute(input: z.infer<typeof EcosystemObserverInput>): Promise<EcosystemObserverOutput> {
     try {
-      logger.info('Ecosystem observation requested', { 
-        route_id: input.route_id, 
-        focus: input.focus 
-      });
 
       const environment = this.environmentState.getEnvironment(input.route_id);
       const monsters = this.monsterRepository.getMonstersByRoute(input.route_id);
@@ -60,7 +54,6 @@ export class EcosystemObserverTool {
       return this.generateObservation(environment, monsters, input.focus);
 
     } catch (error) {
-      logger.error('Ecosystem observation failed:', error);
       return {
         currentState: 'Unable to observe ecosystem due to technical difficulties',
         monsterBehaviors: [],

@@ -1,5 +1,4 @@
 import { healthCheck } from '../../src/tools/health-check';
-import { createLogger } from '../../src/utils/logging';
 
 describe('Server Integration Tests', () => {
   describe('Health Check Tool Integration', () => {
@@ -45,23 +44,6 @@ describe('Server Integration Tests', () => {
     });
   });
 
-  describe('Logging Integration', () => {
-    it('should create logger successfully', () => {
-      const logger = createLogger('Test Component');
-      expect(logger).toBeDefined();
-      expect(logger.info).toBeDefined();
-      expect(logger.error).toBeDefined();
-    });
-
-    it('should handle logging without errors', () => {
-      const logger = createLogger('Test Component');
-      
-      expect(() => {
-        logger.info('Test message');
-        logger.error('Test error message');
-      }).not.toThrow();
-    });
-  });
 
   describe('Tool Configuration', () => {
     it('should have proper health check tool configuration', () => {
@@ -87,7 +69,6 @@ describe('Server Integration Tests', () => {
     it('should have all required dependencies available', () => {
       // Test that our dependencies are properly loaded
       expect(healthCheck).toBeDefined();
-      expect(createLogger).toBeDefined();
     });
 
     it('should handle process information access', () => {

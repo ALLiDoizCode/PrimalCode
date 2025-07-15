@@ -13,7 +13,19 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
-    'no-console': 'warn',
+    'no-console': 'error',
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          '**/logging*',
+          '**/logger*',
+          'winston*',
+          'pino*',
+          'bunyan*'
+        ]
+      }
+    ],
   },
   env: {
     node: true,
