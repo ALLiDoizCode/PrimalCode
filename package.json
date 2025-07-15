@@ -22,14 +22,22 @@
     "format": "prettier --write src/**/*.ts tests/**/*.ts",
     "format:check": "prettier --check src/**/*.ts tests/**/*.ts"
   },
-  "keywords": ["mcp", "server", "ecosystem", "autonomous", "typescript"],
+  "keywords": [
+    "mcp",
+    "server",
+    "ecosystem",
+    "autonomous",
+    "typescript"
+  ],
   "author": "PrimalCode Team",
   "license": "ISC",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.15.1",
     "axios": "^1.10.0",
     "dotenv": "^16.6.1",
-    "winston": "^3.17.0"
+    "fastmcp": "^3.9.0",
+    "winston": "^3.17.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",

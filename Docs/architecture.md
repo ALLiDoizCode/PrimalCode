@@ -8,7 +8,7 @@ This unified approach combines what would traditionally be separate backend and 
 
 ### Starter Template or Existing Project
 
-**Base Framework:** FastMCP boilerplate (https://github.com/punkpeye/fastmcp)
+**Base Framework:** FastMCP npm package (https://www.npmjs.com/package/fastmcp)
 
 The project leverages FastMCP as the foundation for MCP server development, providing:
 - Pre-configured TypeScript setup optimized for MCP tool development
@@ -23,16 +23,16 @@ This choice constrains the architecture to TypeScript-based MCP server patterns 
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
 | 2025-07-15 | 1.0 | Initial architecture document creation | Winston (Architect) |
-| 2025-07-15 | 1.1 | Added Inference Marketplace (Epic 2) architecture | Winston (Architect) |
+| 2025-07-15 | 1.1 | Added Inference Marketplace (Epic 4) architecture | Winston (Architect) |
 | 2025-07-15 | 1.2 | Added Node.js Inference Provider architecture and Credit-Notice flow | Winston (Architect) |
 
 ## High Level Architecture
 
 ### Technical Summary
 
-PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP boilerplate** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. 
+PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP npm package** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. 
 
-**Epic 2 Enhancement:** The architecture now includes an **AI Inference Marketplace** that enables autonomous processes to request AI inference services by transferring Primal tokens to providers, with automated registry and reputation management. This creates a token-based economy for AI services while maintaining the core autonomous creature experience.
+**Epic 4 Enhancement:** The architecture now includes an **AI Inference Marketplace** that enables autonomous processes to request AI inference services by transferring Primal tokens to providers, with automated registry and reputation management. This creates a token-based economy for AI services while maintaining the core autonomous creature experience.
 
 This architecture creates a truly unique gaming experience that combines decentralized autonomous agents with natural language interaction patterns and a distributed AI services economy.
 
@@ -203,7 +203,7 @@ graph TB
 | Category | Technology | Version | Purpose | Rationale |
 |----------|------------|---------|---------|-----------|
 | MCP Server Language | TypeScript | 5.0+ | MCP tool development | Type safety, excellent tooling, FastMCP compatibility |
-| MCP Framework | FastMCP | Latest | MCP server boilerplate | Rapid development, proven patterns, active community |
+| MCP Framework | FastMCP | Latest | MCP server npm package | Rapid development, proven patterns, active community |
 | Monster AI Language | Lua | 5.4+ | AO process implementation | Native AO language, lightweight, proven for blockchain |
 | AI Decision Engine | Claude API | 3.5+ | Monster intelligence | Superior reasoning, context awareness, cost-effective |
 | Persistence Layer | AO Processes | Latest | Autonomous creature state | Decentralized persistence, no gas fees, true autonomy |
@@ -672,7 +672,7 @@ interface DebitNoticeMessage {
 
 **Dependencies:** FastMCP framework, AO Client, Winston logging
 
-**Technology Stack:** TypeScript, FastMCP boilerplate, WebSocket connections
+**Technology Stack:** TypeScript, FastMCP npm package, WebSocket connections
 
 ### AO Process Manager
 

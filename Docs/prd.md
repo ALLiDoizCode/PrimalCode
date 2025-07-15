@@ -234,8 +234,8 @@ The MCP server will provide natural language tools that enable intuitive ecosyst
 
 ### Existing Technology Stack - MCP Server Architecture
 
-**Languages:** TypeScript/JavaScript (MCP server using FastMCP boilerplate), Lua (AO processes)  
-**Backend Framework:** FastMCP boilerplate (https://github.com/punkpeye/fastmcp)  
+**Languages:** TypeScript/JavaScript (MCP server using FastMCP npm package), Lua (AO processes)  
+**Backend Framework:** FastMCP npm package (https://www.npmjs.com/package/fastmcp)  
 **AI Client Interface:** Claude Desktop, potentially other MCP-compatible AI clients  
 **Database/Persistence:** AO process state management  
 **Infrastructure:** Arweave/AO network + MCP server hosting  
@@ -244,7 +244,7 @@ The MCP server will provide natural language tools that enable intuitive ecosyst
 ### Integration Approach - MCP SERVER ARCHITECTURE
 
 **MCP Server Integration Strategy:** 
-- Build on FastMCP boilerplate (https://github.com/punkpeye/fastmcp) providing ecosystem management tools and monster observation functions
+- Build on FastMCP npm package (https://www.npmjs.com/package/fastmcp) providing ecosystem management tools and monster observation functions
 - Define MCP tools for environmental modification, monster querying, and ecosystem state management
 - Leverage FastMCP's TypeScript framework for rapid MCP tool development
 - Create natural language interfaces for all game interactions through MCP protocol
@@ -267,7 +267,7 @@ The MCP server will provide natural language tools that enable intuitive ecosyst
 
 ### Code Organization and Standards - FastMCP Structure
 
-**File Structure Approach (based on FastMCP boilerplate):**
+**File Structure Approach (based on FastMCP npm package):**
 ```
 /src/
   /tools/           # MCP tool implementations (FastMCP structure)
@@ -313,7 +313,7 @@ package.json      # FastMCP dependencies and scripts
 - MCP protocol adoption and client compatibility limitations
 - Text-based interaction complexity for sophisticated ecosystem management
 - AO process communication latency affecting natural language responsiveness
-- FastMCP boilerplate dependency and maintenance concerns
+- FastMCP npm package dependency and maintenance concerns
 
 **Integration Risks:**
 - MCP server downtime affecting all AI client access to ecosystem
@@ -332,7 +332,7 @@ package.json      # FastMCP dependencies and scripts
 - Design text interactions that feel engaging and provide rich ecosystem information
 - Create robust AO process error handling and recovery systems
 - Develop clear MCP tool documentation and setup guides for various AI clients
-- Maintain FastMCP boilerplate fork with project-specific customizations
+- Use FastMCP npm package with project-specific customizations
 - Implement extensive automated testing for MCP tool functionality
 
 ## Epic and Story Structure
@@ -345,7 +345,7 @@ Based on my analysis of your existing project and the MCP server architectural a
 
 **Epic 1: MCP Foundation & Proof of Concept (3-4 weeks)**
 - Validate MCP architecture and natural language interactions with mock data
-- Establish FastMCP boilerplate foundation and Claude Desktop integration
+- Establish FastMCP npm package foundation and Claude Desktop integration
 
 **Epic 2: Autonomous Monster Integration (4-5 weeks)**  
 - Prove autonomous creature + MCP tool integration with single monster
@@ -363,16 +363,16 @@ Based on my analysis of your existing project and the MCP server architectural a
 
 **Epic Goal:** Establish FastMCP-based conversational interface foundation and validate natural language ecosystem management patterns through mock data, proving the MCP architecture approach before committing to complex AO process integration.
 
-**Integration Requirements:** FastMCP boilerplate setup, Claude Desktop configuration, mock data systems for ecosystem testing, and foundational MCP tool architecture that will support real monster integration in Epic 2.
+**Integration Requirements:** FastMCP npm package setup, Claude Desktop configuration, mock data systems for ecosystem testing, and foundational MCP tool architecture that will support real monster integration in Epic 2.
 
 #### Story 1.1: FastMCP Server Setup and Configuration
 
 As a developer,
-I want to set up the FastMCP boilerplate with PrimalCode-specific configurations,
+I want to set up the FastMCP npm package with PrimalCode-specific configurations,
 so that I have a solid foundation for building ecosystem management MCP tools.
 
 **Acceptance Criteria:**
-1. FastMCP boilerplate successfully installed and configured for PrimalCode project
+1. FastMCP npm package successfully installed and configured for PrimalCode project
 2. Basic TypeScript project structure established with ecosystem-specific directories
 3. Development environment configured with proper build and test scripts
 4. Initial package.json configured with FastMCP dependencies and project metadata
@@ -593,11 +593,107 @@ so that I can build a collection while maintaining thriving autonomous ecosystem
 - IV2: Multi-route system supports complex ecosystem management without performance degradation
 - IV3: Collection and progression systems encourage long-term engagement and mastery development
 
+### Epic 4: AI Inference Marketplace Core
+
+**Epic Goal:** Implement the foundational AI inference marketplace with token-based payments, provider registry, reputation management, and service discovery, enabling autonomous monster processes to request and pay for AI services while creating a sustainable economic ecosystem for AI inference providers.
+
+**Integration Requirements:** AO Token Blueprint integration, Credit-Notice/Debit-Notice message handlers, marketplace core AO processes, provider registry with service discovery, reputation tracking and quality metrics, and MCP marketplace interaction tools.
+
+#### Story 4.1: Marketplace Core Process Implementation
+
+As a marketplace system,
+I want to implement the core marketplace AO process that handles AI inference requests and coordinates provider selection,
+so that autonomous monsters can request AI services through a standardized marketplace interface.
+
+**Acceptance Criteria:**
+1. AO marketplace core process with request routing and provider matching logic
+2. Standardized AI inference request message schema with X-prefix metadata support
+3. Provider selection algorithm based on capability matching and availability
+4. Request queuing and timeout handling for provider response management
+5. Integration with token payment system for service transaction processing
+
+**Integration Verification:**
+- IV1: Marketplace process successfully receives and routes AI inference requests to appropriate providers
+- IV2: Provider selection algorithm efficiently matches requests with optimal providers based on capabilities
+- IV3: Request handling maintains performance with 10+ concurrent AI inference requests
+
+#### Story 4.2: Provider Registry and Service Discovery
+
+As an AI inference provider,
+I want to register my services with capability descriptions and pricing information,
+so that the marketplace can discover and route appropriate requests to my inference services.
+
+**Acceptance Criteria:**
+1. Provider registry AO process with capability registration and service discovery
+2. Standardized provider capability schema including AI service types and pricing tiers
+3. Heartbeat system for provider availability monitoring and status updates
+4. Service discovery optimization with capability-based filtering and provider matching
+5. Dynamic provider ranking based on availability, performance, and reputation metrics
+
+**Integration Verification:**
+- IV1: Provider registration enables accurate service discovery and request routing
+- IV2: Heartbeat system maintains real-time provider availability status
+- IV3: Service discovery performs efficiently with 20+ registered providers
+
+#### Story 4.3: Reputation Management and Quality Tracking
+
+As a marketplace consumer,
+I want provider reputation and quality metrics to influence service selection,
+so that I receive reliable, high-quality AI inference services with predictable performance.
+
+**Acceptance Criteria:**
+1. Reputation manager AO process with provider quality scoring and history tracking
+2. Request outcome tracking including response time, accuracy, and service completion rates
+3. Reputation scoring algorithm incorporating historical performance and user feedback
+4. Quality metrics dashboard accessible through MCP tools for provider performance analysis
+5. Reputation-based provider ranking and selection bias in marketplace routing
+
+**Integration Verification:**
+- IV1: Reputation system accurately reflects provider performance through quality metrics
+- IV2: Provider selection incorporates reputation scores for improved service quality
+- IV3: Quality tracking provides meaningful insights for marketplace optimization
+
+#### Story 4.4: Credit-Notice Payment Processing Integration
+
+As a marketplace transaction system,
+I want to process Credit-Notice payments from consumers and Debit-Notice payments to providers,
+so that AI inference services operate within a token-based economic model.
+
+**Acceptance Criteria:**
+1. Credit-Notice message handlers for incoming AI service payments with X-prefix metadata parsing
+2. Debit-Notice processing for provider payment distribution and marketplace fee collection
+3. Payment validation and fraud prevention with automatic refund processing for failed services
+4. Transaction logging and audit trail for marketplace financial operations
+5. Integration with Primal token processes for seamless payment flow and balance management
+
+**Integration Verification:**
+- IV1: Credit-Notice processing correctly handles AI service payments with metadata preservation
+- IV2: Provider payment distribution operates reliably with appropriate fee collection
+- IV3: Payment validation prevents fraud while maintaining efficient transaction processing
+
+#### Story 4.5: MCP Marketplace Interaction Tools
+
+As a player,
+I want to interact with the AI inference marketplace through natural language MCP tools,
+so that I can monitor marketplace activity, provider performance, and influence point spending on AI services.
+
+**Acceptance Criteria:**
+1. "marketplace_status" MCP tool providing natural language marketplace activity summaries
+2. "provider_analysis" MCP tool with provider performance metrics and reputation insights
+3. "ai_service_request" MCP tool for manually triggering AI inference requests for testing
+4. "marketplace_economics" MCP tool showing token flows, costs, and marketplace financial health
+5. Integration with existing influence point tracking for marketplace transaction monitoring
+
+**Integration Verification:**
+- IV1: MCP marketplace tools provide engaging, informative natural language marketplace insights
+- IV2: Tools integrate seamlessly with existing MCP ecosystem observation and management tools
+- IV3: Marketplace interaction tools maintain responsive performance despite complex backend operations
+
 ### Epic 5: Inference Provider Infrastructure
 
 **Epic Goal:** Develop comprehensive Node.js-based inference provider applications that participate in the AI marketplace, offering various AI services (decision-making, text generation, image analysis) to monster processes and other AO consumers while maintaining competitive pricing and service quality.
 
-**Integration Requirements:** Credit-Notice message handling, AI service integration (Claude API), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
+**Integration Requirements:** Epic 4 marketplace core completion, Credit-Notice message handling, AI service integration (Claude API), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
 
 #### Story 5.1: Core Inference Provider Application
 
