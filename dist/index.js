@@ -41,12 +41,22 @@ const index_js_1 = require("@modelcontextprotocol/sdk/server/index.js");
 const stdio_js_1 = require("@modelcontextprotocol/sdk/server/stdio.js");
 const types_js_1 = require("@modelcontextprotocol/sdk/types.js");
 const health_check_1 = require("./tools/health-check");
+const ecosystem_observer_1 = require("./tools/ecosystem-observer");
+const monster_analyzer_1 = require("./tools/monster-analyzer");
+const environment_checker_1 = require("./tools/environment-checker");
+const mock_monster_system_1 = require("./ecosystem/mock-monster-system");
+const mock_environment_state_1 = require("./ecosystem/mock-environment-state");
 const logger_1 = __importDefault(require("./utils/logger"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 class PrimalCodeMCPServer {
     server;
     healthCheckTool;
+    ecosystemObserverTool;
+    monsterAnalyzerTool;
+    environmentCheckerTool;
+    monsterSystem;
+    environmentState;
     constructor() {
         const serverName = process.env.SERVER_NAME || 'PrimalCode';
         const serverVersion = process.env.SERVER_VERSION || '1.0.0';
@@ -58,7 +68,14 @@ class PrimalCodeMCPServer {
                 tools: {},
             },
         });
+        // Initialize mock systems
+        this.monsterSystem = new mock_monster_system_1.MockMonsterSystem(logger_1.default);
+        this.environmentState = new mock_environment_state_1.MockEnvironmentState(logger_1.default);
+        // Initialize tools
         this.healthCheckTool = new health_check_1.HealthCheckTool(serverName, serverVersion);
+        this.ecosystemObserverTool = new ecosystem_observer_1.EcosystemObserverTool(this.monsterSystem, this.environmentState);
+        this.monsterAnalyzerTool = new monster_analyzer_1.MonsterAnalyzerTool(this.monsterSystem);
+        this.environmentCheckerTool = new environment_checker_1.EnvironmentCheckerTool(this.environmentState, this.monsterSystem);
         this.setupHandlers();
         this.registerTools();
     }
@@ -68,6 +85,9 @@ class PrimalCodeMCPServer {
             return {
                 tools: [
                     this.healthCheckTool.getToolDefinition(),
+                    this.ecosystemObserverTool.getToolDefinition(),
+                    this.monsterAnalyzerTool.getToolDefinition(),
+                    this.environmentCheckerTool.getToolDefinition(),
                 ],
             };
         });
@@ -78,6 +98,39 @@ class PrimalCodeMCPServer {
                 switch (name) {
                     case 'health_check': {
                         const result = await this.healthCheckTool.execute(args || {});
+                        return {
+                            content: [
+                                {
+                                    type: 'text',
+                                    text: result,
+                                },
+                            ],
+                        };
+                    }
+                    case 'observe_ecosystem': {
+                        const result = await this.ecosystemObserverTool.execute(args || {});
+                        return {
+                            content: [
+                                {
+                                    type: 'text',
+                                    text: result,
+                                },
+                            ],
+                        };
+                    }
+                    case 'analyze_monster': {
+                        const result = await this.monsterAnalyzerTool.execute(args || {});
+                        return {
+                            content: [
+                                {
+                                    type: 'text',
+                                    text: result,
+                                },
+                            ],
+                        };
+                    }
+                    case 'check_environment': {
+                        const result = await this.environmentCheckerTool.execute(args || {});
                         return {
                             content: [
                                 {
@@ -107,6 +160,9 @@ class PrimalCodeMCPServer {
     }
     registerTools() {
         this.healthCheckTool.registerTool('health_check');
+        this.healthCheckTool.registerTool('observe_ecosystem');
+        this.healthCheckTool.registerTool('analyze_monster');
+        this.healthCheckTool.registerTool('check_environment');
         logger_1.default.info('All tools registered successfully');
     }
     async start() {

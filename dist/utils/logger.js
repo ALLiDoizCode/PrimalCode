@@ -38,18 +38,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const winston_1 = __importDefault(require("winston"));
 const dotenv = __importStar(require("dotenv"));
+const path = __importStar(require("path"));
+const fs = __importStar(require("fs"));
 dotenv.config();
 const logLevel = process.env.LOG_LEVEL || 'info';
+// Ensure logs directory exists
+const logsDir = path.join(__dirname, '../../logs');
+if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+}
 const logger = winston_1.default.createLogger({
     level: logLevel,
     format: winston_1.default.format.combine(winston_1.default.format.timestamp(), winston_1.default.format.errors({ stack: true }), winston_1.default.format.json()),
     defaultMeta: { service: 'primalcode-mcp' },
     transports: [
-        new winston_1.default.transports.File({ filename: 'logs/error.log', level: 'error' }),
-        new winston_1.default.transports.File({ filename: 'logs/combined.log' }),
+        new winston_1.default.transports.File({ filename: path.join(logsDir, 'error.log'), level: 'error' }),
+        new winston_1.default.transports.File({ filename: path.join(logsDir, 'combined.log') }),
     ],
 });
-if (process.env.NODE_ENV !== 'production') {
+// Only add console logging in development mode without colors for MCP compatibility
+if (process.env.NODE_ENV !== 'production' && !process.env.MCP_MODE) {
     logger.add(new winston_1.default.transports.Console({
         format: winston_1.default.format.combine(winston_1.default.format.colorize(), winston_1.default.format.simple())
     }));

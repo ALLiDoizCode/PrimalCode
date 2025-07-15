@@ -1,0 +1,3 @@
+{"args":{"focus":"all","route_id":"mountain_ridge"},"error":{},"level":"error","message":"Error executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:18.202Z"}
+{"args":{"focus":"all","route_id":"forest"},"error":{},"level":"error","message":"Error executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:21.749Z"}
+{"args":{"focus":"all","route_id":"route1"},"error":{},"level":"error","message":"Error executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:24.730Z"}

@@ -452,3 +452,67 @@
 {"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:41:06.651Z"}
 {"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T04:41:06.651Z"}
 {"level":"info","message":"Health check completed: unhealthy","service":"primalcode-mcp","timestamp":"2025-07-15T04:41:06.652Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T04:53:41.650Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T04:53:41.651Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T04:53:41.652Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T04:53:41.652Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T04:53:41.652Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T04:53:41.653Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T05:02:43.017Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:02:43.019Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T05:02:43.019Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T05:02:43.019Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:02:43.020Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:02:43.020Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T05:05:33.729Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:05:33.731Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T05:05:33.731Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T05:05:33.731Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:05:33.731Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:05:33.732Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.100Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.102Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.103Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.103Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.103Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.106Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.142Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.144Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.608Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.609Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.939Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:06:03.940Z"}
+{"level":"info","message":"Received CallTool request: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T05:07:28.878Z"}
+{"level":"info","message":"Performing health check...","service":"primalcode-mcp","timestamp":"2025-07-15T05:07:28.879Z"}
+{"level":"info","message":"Health check completed: healthy","service":"primalcode-mcp","timestamp":"2025-07-15T05:07:28.881Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:07:28.913Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:07:28.913Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:15.866Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:15.868Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:15.868Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:15.868Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:15.868Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:15.869Z"}
+{"level":"info","message":"Received CallTool request: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:18.200Z"}
+{"args":{"focus":"all","route_id":"mountain_ridge"},"level":"info","message":"Executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:18.201Z"}
+{"args":{"focus":"all","route_id":"mountain_ridge"},"error":{},"level":"error","message":"Error executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:18.202Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:18.262Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:18.262Z"}
+{"level":"info","message":"Received CallTool request: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:21.749Z"}
+{"args":{"focus":"all","route_id":"forest"},"level":"info","message":"Executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:21.749Z"}
+{"args":{"focus":"all","route_id":"forest"},"error":{},"level":"error","message":"Error executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:21.749Z"}
+{"level":"info","message":"Received CallTool request: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:24.730Z"}
+{"args":{"focus":"all","route_id":"route1"},"level":"info","message":"Executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:24.730Z"}
+{"args":{"focus":"all","route_id":"route1"},"error":{},"level":"error","message":"Error executing ecosystem observation","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:24.730Z"}
+{"level":"info","message":"Tool registered: health_check","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.788Z"}
+{"level":"info","message":"Tool registered: observe_ecosystem","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.790Z"}
+{"level":"info","message":"Tool registered: analyze_monster","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.791Z"}
+{"level":"info","message":"Tool registered: check_environment","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.791Z"}
+{"level":"info","message":"All tools registered successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.792Z"}
+{"level":"info","message":"PrimalCode MCP Server started successfully","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.796Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.821Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:48.821Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:49.235Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:49.236Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:49.746Z"}
+{"level":"info","message":"Received ListTools request","service":"primalcode-mcp","timestamp":"2025-07-15T05:08:49.746Z"}
