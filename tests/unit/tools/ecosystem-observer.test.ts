@@ -267,6 +267,11 @@ describe('EcosystemObserverTool', () => {
     it('should provide default suggestions when no specific conditions detected', async () => {
       // Arrange
       const routeId = 'route_001';
+      // Create an environment with high balance to avoid triggering low balance conditions
+      const environment = mockEnvironmentState.generateEnvironment(routeId);
+      environment.ecosystem_balance = 0.8; // High balance to avoid triggering suggestions
+      mockEnvironmentState.updateEnvironment(routeId, environment);
+      
       const input = { route_id: routeId };
 
       // Act

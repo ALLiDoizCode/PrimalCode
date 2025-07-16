@@ -14,6 +14,9 @@ describe('BuildShelterTool', () => {
     
     // Reset token balance for each test
     tokenService.resetBalance(1000);
+    
+    // Reset environment state to ensure test isolation
+    environmentState.createEnvironment('route_001');
   });
 
   describe('execute', () => {
@@ -54,7 +57,7 @@ describe('BuildShelterTool', () => {
     it('should use default capacity when not specified', async () => {
       const requestWithoutCapacity = {
         route_id: 'route_001',
-        location: { x: 300, y: 300 },
+        location: { x: 400, y: 400 },
         shelter_type: 'tree_hollow' as const
       };
 
@@ -121,7 +124,8 @@ describe('BuildShelterTool', () => {
     });
 
     it('should generate appropriate ecosystem impacts', async () => {
-      const result = await tool.execute(validRequest);
+      const uniqueRequest = { ...validRequest, location: { x: 800, y: 800 } };
+      const result = await tool.execute(uniqueRequest);
 
       expect(result.ecosystem_impact.some(impact => /stability|nesting|survival/i.test(impact))).toBe(true);
       expect(result.ecosystem_impact.length).toBeGreaterThanOrEqual(3);
@@ -129,7 +133,8 @@ describe('BuildShelterTool', () => {
 
     it('should record token transaction correctly', async () => {
       const initialBalance = tokenService.getCurrentBalance();
-      const result = await tool.execute(validRequest);
+      const uniqueRequest = { ...validRequest, location: { x: 600, y: 600 } };
+      const result = await tool.execute(uniqueRequest);
 
       expect(result.token_transaction.cost).toBe(50);
       expect(result.token_transaction.new_balance).toBe(initialBalance - 50);
@@ -193,6 +198,8 @@ describe('BuildShelterTool', () => {
         const shelter = shelterTypes[i];
         // Create a fresh environment state for each test
         const freshEnvironmentState = new MockEnvironmentState();
+        // Initialize clean environment for isolation
+        freshEnvironmentState.createEnvironment('route_001');
         const freshTool = new BuildShelterTool(tokenService, freshEnvironmentState);
 
         const request = {
