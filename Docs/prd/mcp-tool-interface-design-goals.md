@@ -17,7 +17,7 @@ The MCP server will provide natural language tools that enable intuitive ecosyst
 2. **Environmental Modification Tools** - Commands for placing structures, managing resources, and triggering weather events
 3. **Monster Analysis Tools** - Detailed reports on individual creature AI personality traits and behavioral patterns
 4. **Route Management Tools** - Navigation and ecosystem switching commands for different habitats and biomes
-5. **Influence Point Tools** - Resource tracking and allocation management for environmental modifications
+5. **Primal Token Tools** - Resource tracking and allocation management for environmental modifications
 6. **Adaptation Monitoring Tools** - Analysis of monster learning patterns and counter-adaptation strategies
 7. **Capture Mechanics Tools** - Strategic guidance and execution for monster collection activities
 

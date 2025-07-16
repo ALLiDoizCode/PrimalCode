@@ -62,7 +62,7 @@ export class MCPToolErrorHandler {
   private generateUserFriendlyMessage(error: Error, toolName: string): string {
     const errorMappings = {
       'AOProcessTimeout': 'The ecosystem is currently processing other changes. Please try again in a moment.',
-      'InsufficientInfluencePoints': 'You need more influence points to make this environmental change. Try observing the ecosystem to earn more points.',
+      'InsufficientPrimalTokens': 'You need more Primal tokens to make this environmental change. Try observing the ecosystem to earn more tokens.',
       'MonsterNotFound': 'That creature seems to have moved to a different area. Use observe_ecosystem to get the current status.',
       'WeatherSystemBusy': 'The weather system is currently active. Please wait for the current weather event to complete.'
     };

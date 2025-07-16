@@ -56,7 +56,7 @@ graph TB
             ANA[Monster Analyzer]
             CAP[Capture Mechanics]
             NAV[Route Navigator]
-            INF[Influence Tracker]
+            INF[Primal Token Tracker]
             MARKET[Inference Marketplace]
         end
         
@@ -84,7 +84,7 @@ graph TB
     end
     
     subgraph "AI Decision Layer"
-        API[Claude API]
+        API[marketplace AI inference]
         FALLBACK[Rule-based Fallback]
         STATIC[Static Behaviors]
     end

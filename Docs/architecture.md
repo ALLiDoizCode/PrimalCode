@@ -43,12 +43,12 @@ This architecture creates a truly unique gaming experience that combines decentr
 **Key Services:**
 - **MCP Server Hosting:** AWS/Vercel with auto-scaling capabilities
 - **Autonomous Processes:** AO Runtime on Arweave network
-- **AI Integration:** Claude API with intelligent fallback systems
+- **AI Integration:** Marketplace AI inference with intelligent fallback systems
 - **Monitoring:** CloudWatch + Custom AO process health monitoring
 - **Storage:** AO process state + Arweave permanent backup
 
 **Deployment Host and Regions:** 
-- Primary: US-East (Virginia) for low latency to Claude API
+- Primary: US-East (Virginia) for low latency to marketplace AI inference
 - Secondary: EU-West (Ireland) for global accessibility
 - AO Network: Global decentralized deployment
 
@@ -112,7 +112,7 @@ graph TB
     end
     
     subgraph "AI Decision Layer"
-        API[Claude API]
+        API[Marketplace AI Inference]
         FALLBACK[Rule-based Fallback]
         STATIC[Static Behaviors]
     end
@@ -205,7 +205,7 @@ graph TB
 | MCP Server Language | TypeScript | 5.0+ | MCP tool development | Type safety, excellent tooling, FastMCP compatibility |
 | MCP Framework | FastMCP | Latest | MCP server npm package | Rapid development, proven patterns, active community |
 | Monster AI Language | Lua | 5.4+ | AO process implementation | Native AO language, lightweight, proven for blockchain |
-| AI Decision Engine | Claude API | 3.5+ | Monster intelligence | Superior reasoning, context awareness, cost-effective |
+| AI Decision Engine | Marketplace AI Inference | 3.5+ | Monster intelligence | Superior reasoning, context awareness, cost-effective |
 | Persistence Layer | AO Processes | Latest | Autonomous creature state | Decentralized persistence, no gas fees, true autonomy |
 | Permanent Storage | Arweave | Latest | Long-term data backup | Immutable history, decentralized, cost-effective |
 | Client Interface | Claude Desktop | Latest | Player interaction | Native MCP support, natural language interface |
@@ -320,7 +320,7 @@ interface Environment {
 
 ### Player
 
-**Purpose:** Tracks player progression, influence points, and ecosystem management history
+**Purpose:** Tracks player progression, Primal tokens, and ecosystem management history
 
 **Key Attributes:**
 - wallet_address: string - Arweave wallet for authentication
@@ -349,7 +349,7 @@ interface Player {
 #### Relationships
 - Owns multiple Captured Monsters (1:N)
 - Modifies multiple Environments (N:N)
-- Earns Influence Points through successful management
+- Earns Primal tokens through successful management
 - Participates in Inference Marketplace (1:N)
 
 ### Inference Marketplace Provider
@@ -693,14 +693,14 @@ interface DebitNoticeMessage {
 **Responsibility:** Provides intelligent decision-making for autonomous creatures with fallback systems
 
 **Key Interfaces:**
-- Claude API integration with context optimization
+- Marketplace AI inference integration with context optimization
 - Decision caching and pattern recognition
 - Rule-based fallback for API failures
 - Behavioral adaptation and learning
 
-**Dependencies:** Claude API, Decision Cache, Monster State
+**Dependencies:** Marketplace AI Inference, Decision Cache, Monster State
 
-**Technology Stack:** TypeScript, Claude API, Redis caching
+**Technology Stack:** TypeScript, Marketplace AI Inference, Redis caching
 
 ### Environment Manager
 
@@ -718,11 +718,11 @@ interface DebitNoticeMessage {
 
 ### Player State Manager
 
-**Responsibility:** Tracks player progress, influence points, and ecosystem mastery
+**Responsibility:** Tracks player progress, Primal tokens, and ecosystem mastery
 
 **Key Interfaces:**
 - Wallet authentication and authorization
-- Influence point economy management
+- Primal token economy management
 - Progression tracking and tool unlocks
 - Session management and history
 
@@ -796,7 +796,7 @@ interface DebitNoticeMessage {
 
 **Key Interfaces:**
 - Credit-Notice message listener from Primal Token Process
-- AI inference processing (Claude API, OpenAI, etc.)
+- AI inference processing (marketplace AI inference, OpenAI, etc.)
 - X-prefix metadata parsing and context extraction
 - Response delivery to requesting Monster Process
 - Service registration with Provider Registry
@@ -1052,7 +1052,7 @@ graph TB
     end
     
     subgraph "External Services"
-        CLAUDE[Claude API]
+        CLAUDE[Marketplace AI Inference]
         OPENAI[OpenAI API]
         ARWEAVE[Arweave Network]
         CLIENTS[AI Clients]
@@ -1120,7 +1120,7 @@ graph TB
 sequenceDiagram
     participant MP as Monster Process
     participant AI as AI Engine
-    participant CLAUDE as Claude API
+    participant CLAUDE as Marketplace AI Inference
     participant CACHE as Decision Cache
     participant ENV as Environment
     participant OTHER as Other Monsters
@@ -1161,7 +1161,7 @@ sequenceDiagram
     participant MONSTERS as Monster Processes
     
     CLIENT->>MCP: modify_environment tool call
-    MCP->>PLAYER: Validate influence points
+    MCP->>PLAYER: Validate Primal tokens
     PLAYER-->>MCP: Authorization status
     alt Insufficient Points
         MCP-->>CLIENT: Error: insufficient resources
@@ -1171,7 +1171,7 @@ sequenceDiagram
         ENV->>MONSTERS: Broadcast environment change
         MONSTERS->>MONSTERS: Adapt behavior to change
         ENV-->>MCP: Modification confirmation
-        MCP->>PLAYER: Deduct influence points
+        MCP->>PLAYER: Deduct Primal tokens
         MCP-->>CLIENT: Success with impact preview
     end
     
@@ -1551,7 +1551,7 @@ export class ToolAuthorization {
       return false;
     }
     
-    // Check influence points for resource-consuming tools
+    // Check Primal tokens for resource-consuming tools
     if (this.isResourceTool(toolName)) {
       const cost = this.getToolCost(toolName);
       return player.influence_points >= cost;
@@ -1817,7 +1817,7 @@ export class InferenceProviderApp {
         "decision-making": "250",
         "text-generation": "100"
       },
-      description: "High-quality AI inference using Claude API",
+      description: "High-quality AI inference using marketplace AI inference",
       supportedXTags: ["X-Context-Data", "X-Quality-Tier", "X-Timeout"]
     });
 
@@ -2192,7 +2192,7 @@ export class AuthMiddleware {
     
     const toolCost = this.getToolCost(toolName);
     if (player.influence_points < toolCost) {
-      return { authorized: false, reason: "Insufficient influence points" };
+      return { authorized: false, reason: "Insufficient Primal tokens" };
     }
     
     return { authorized: true };
@@ -2254,7 +2254,7 @@ PrimalCode/
 │   │   ├── src/
 │   │   │   ├── index.ts       # Main application entry point
 │   │   │   ├── credit-notice-handler.ts # Credit-Notice message handler
-│   │   │   ├── claude-client.ts # Claude API integration
+│   │   │   ├── marketplace-client.ts # Marketplace AI inference integration
 │   │   │   ├── ao-client.ts    # AO process communication
 │   │   │   ├── service-registry.ts # Registry integration
 │   │   │   └── types.ts       # Provider-specific types
@@ -2654,7 +2654,7 @@ describe('Complete Ecosystem Management Flow', () => {
 - **Performance Budgets:** AI API calls must complete within 5 seconds or fall back to cached decisions
 - **Security First:** All player inputs must be validated and sanitized before AO process communication
 - **Autonomous Integrity:** Monster decisions must never be directly controlled by players
-- **Resource Management:** Influence point economy must be enforced at every environmental modification
+- **Resource Management:** Primal token economy must be enforced at every environmental modification
 
 ### Naming Conventions
 
@@ -2676,7 +2676,7 @@ describe('Complete Ecosystem Management Flow', () => {
 - `modify_environment` - Environmental modification tool
 - `analyze_monster` - Individual monster analysis tool
 - `navigate_routes` - Route management and navigation tool
-- `track_influence` - Influence point tracking and management tool
+- `track_primal_tokens` - Primal token tracking and management tool
 - `capture_creature` - Monster capture mechanics tool
 - `inference_marketplace` - AI marketplace interaction tool
 
@@ -2791,7 +2791,7 @@ export class MCPToolErrorHandler {
   private generateUserFriendlyMessage(error: Error, toolName: string): string {
     const errorMappings = {
       'AOProcessTimeout': 'The ecosystem is currently processing other changes. Please try again in a moment.',
-      'InsufficientInfluencePoints': 'You need more influence points to make this environmental change. Try observing the ecosystem to earn more points.',
+      'InsufficientPrimalTokens': 'You need more Primal tokens to make this environmental change. Try observing the ecosystem to earn more tokens.',
       'MonsterNotFound': 'That creature seems to have moved to a different area. Use observe_ecosystem to get the current status.',
       'WeatherSystemBusy': 'The weather system is currently active. Please wait for the current weather event to complete.'
     };
@@ -2861,7 +2861,7 @@ end
 - Process health and uptime
 
 **AI Integration Metrics:**
-- Claude API response time
+- Marketplace AI inference response time
 - Fallback activation rate
 - Decision cache hit rate
 - API cost per decision

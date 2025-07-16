@@ -21,7 +21,7 @@
 - Process health and uptime
 
 **AI Integration Metrics:**
-- Claude API response time
+- marketplace AI inference response time
 - Fallback activation rate
 - Decision cache hit rate
 - API cost per decision

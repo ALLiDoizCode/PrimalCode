@@ -4,7 +4,7 @@
 
 **FR1:** The system shall implement autonomous monster processes where each creature operates as an independent AO process with persistent state including health, hunger, energy, position, and AI personality traits.
 
-**FR2:** Monster processes shall make autonomous decisions every 30-60 seconds using AI integration (Claude API with fallback to rule-based systems) for behaviors including hunting, fleeing, resting, and territorial actions.
+**FR2:** Monster processes shall make autonomous decisions every 30-60 seconds using AI integration (marketplace AI inference with fallback to rule-based systems) for behaviors including hunting, fleeing, resting, and territorial actions.
 
 **FR3:** The system shall support 3-5 distinct monster types with unique AI personalities (Aggressive Hunter, Cautious Forager, Pack Leader, Opportunistic Scavenger, Territorial Guardian) in the MVP phase.
 
@@ -16,7 +16,7 @@
 
 **FR7:** The MCP server shall provide text-based descriptions of monster positions, actions, and environmental changes through natural language MCP tools accessible to AI clients.
 
-**FR8:** The system shall implement influence point economy for players to manage environmental modification costs and strategic resource allocation.
+**FR8:** The system shall implement Primal token economy for players to manage environmental modification costs and strategic resource allocation.
 
 **FR9:** Monster AI shall develop adaptation patterns and resistance to repeated player strategies through learning mechanisms and behavioral counter-adaptation.
 
@@ -56,7 +56,7 @@
 
 **FR14:** The system shall define standardized AO message schemas for monster-to-monster communication including position updates, threat warnings, and resource claims.
 
-**FR15:** Player progression data including influence points, unlocked tools, and ecosystem mastery levels shall persist in player-owned AO processes.
+**FR15:** Player progression data including Primal tokens, unlocked tools, and ecosystem mastery levels shall persist in player-owned AO processes.
 
 **NFR1-Revised:** Monster decision-making shall occur in 30-60 second intervals with AI processing completing within 5 seconds of decision trigger, falling back to cached decisions if AI unavailable.
 

@@ -1,0 +1,22 @@
+{
+  "name": "marketplace-payment-handler",
+  "version": "1.0.0",
+  "description": "Credit-Notice and Debit-Notice payment processing for AI inference marketplace",
+  "main": "build/main.lua",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "deploy:local": "node scripts/deploy-local.js",
+    "test": "busted tests/",
+    "clean": "rm -rf build/",
+    "check": "tl check src/main.tl"
+  },
+  "keywords": ["ao", "marketplace", "payment", "credit-notice", "debit-notice", "teal"],
+  "author": "PrimalCode Dev Team",
+  "license": "MIT",
+  "devDependencies": {
+    "busted": "^2.0.0"
+  },
+  "dependencies": {
+    "teal": "^0.24.0"
+  }
+}

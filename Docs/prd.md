@@ -59,7 +59,7 @@ The draft PRD reveals an ambitious and innovative game concept that leverages cu
 
 **FR1:** The system shall implement autonomous monster processes where each creature operates as an independent AO process with persistent state including health, hunger, energy, position, and AI personality traits.
 
-**FR2:** Monster processes shall make autonomous decisions every 30-60 seconds using AI integration (Claude API with fallback to rule-based systems) for behaviors including hunting, fleeing, resting, and territorial actions.
+**FR2:** Monster processes shall make autonomous decisions every 30-60 seconds using AI integration (marketplace AI inference with fallback to rule-based systems) for behaviors including hunting, fleeing, resting, and territorial actions.
 
 **FR3:** The system shall support 3-5 distinct monster types with unique AI personalities (Aggressive Hunter, Cautious Forager, Pack Leader, Opportunistic Scavenger, Territorial Guardian) in the MVP phase.
 
@@ -71,7 +71,7 @@ The draft PRD reveals an ambitious and innovative game concept that leverages cu
 
 **FR7:** The MCP server shall provide text-based descriptions of monster positions, actions, and environmental changes through natural language MCP tools accessible to AI clients.
 
-**FR8:** The system shall implement influence point economy for players to manage environmental modification costs and strategic resource allocation.
+**FR8:** The system shall implement Primal token economy for players to manage environmental modification costs and strategic resource allocation.
 
 **FR9:** Monster AI shall develop adaptation patterns and resistance to repeated player strategies through learning mechanisms and behavioral counter-adaptation.
 
@@ -111,7 +111,7 @@ The draft PRD reveals an ambitious and innovative game concept that leverages cu
 
 **FR14:** The system shall define standardized AO message schemas for monster-to-monster communication including position updates, threat warnings, and resource claims.
 
-**FR15:** Player progression data including influence points, unlocked tools, and ecosystem mastery levels shall persist in player-owned AO processes.
+**FR15:** Player progression data including Primal tokens, unlocked tools, and ecosystem mastery levels shall persist in player-owned AO processes.
 
 **NFR1-Revised:** Monster decision-making shall occur in 30-60 second intervals with AI processing completing within 5 seconds of decision trigger, falling back to cached decisions if AI unavailable.
 
@@ -143,7 +143,7 @@ Based on comprehensive team review, the following critical requirements addition
 
 **NFR10:** The system shall support incremental scaling with performance benchmarks: 5 monsters (MVP), 15 monsters (Beta), 50+ monsters (Production) with defined infrastructure requirements for each tier.
 
-**NFR11:** AI integration shall implement response time SLA with fallback hierarchy: Claude API (5s) → Cached decisions (1s) → Rule-based AI (0.1s) → Static behavior (immediate).
+**NFR11:** AI integration shall implement response time SLA with fallback hierarchy: Marketplace AI inference (5s) → Cached decisions (1s) → Rule-based AI (0.1s) → Static behavior (immediate).
 
 **NFR12:** Monster behavior shall maintain deterministic replay capability for debugging with logging of all decision inputs and AI responses.
 
@@ -176,11 +176,11 @@ Based on team analysis, development phases have been restructured to deliver ear
 **Phase 1b - Minimal Viable Experience (3 weeks)**
 - Rule-based monster AI with 3 behavior types
 - 2-3 MCP tools for environmental modifications
-- Basic player influence point tracking via MCP tools
+- Basic player Primal token tracking via MCP tools
 - Route navigation through text-based MCP commands
 
 **Phase 2 - AI Integration Foundation (4 weeks)**
-- Claude API integration with comprehensive fallback for monster AI
+- Marketplace AI inference integration with comprehensive fallback for monster AI
 - Monster adaptation patterns accessible through MCP monitoring tools
 - Enhanced MCP tool descriptions and natural language interaction
 - Cross-monster communication observable through MCP ecosystem tools
@@ -212,7 +212,7 @@ The MCP server will provide natural language tools that enable intuitive ecosyst
 2. **Environmental Modification Tools** - Commands for placing structures, managing resources, and triggering weather events
 3. **Monster Analysis Tools** - Detailed reports on individual creature AI personality traits and behavioral patterns
 4. **Route Management Tools** - Navigation and ecosystem switching commands for different habitats and biomes
-5. **Influence Point Tools** - Resource tracking and allocation management for environmental modifications
+5. **Primal Token Tools** - Resource tracking and allocation management for environmental modifications
 6. **Adaptation Monitoring Tools** - Analysis of monster learning patterns and counter-adaptation strategies
 7. **Capture Mechanics Tools** - Strategic guidance and execution for monster collection activities
 
@@ -449,7 +449,7 @@ so that I can begin influencing monster behavior patterns in the ecosystem.
 
 **Epic Goal:** Replace mock monster system with real AO processes featuring AI-driven autonomous decision-making, establishing the core technical architecture for authentic autonomous creature behavior while maintaining the conversational MCP interface.
 
-**Integration Requirements:** AO process development and deployment, AI integration with Claude API, real-time communication between MCP server and AO monster processes, and robust fallback systems for AI service disruptions.
+**Integration Requirements:** AO process development and deployment, AI integration with marketplace AI inference, real-time communication between MCP server and AO monster processes, and robust fallback systems for AI service disruptions.
 
 #### Story 2.1: Single AO Monster Process Implementation
 
@@ -472,12 +472,12 @@ so that the foundation for real autonomous creature behavior is established.
 #### Story 2.2: AI Decision Integration with Fallback Systems
 
 As a monster AI system,
-I want to make intelligent autonomous decisions using Claude API with robust fallback mechanisms,
+I want to make intelligent autonomous decisions using marketplace AI inference with robust fallback mechanisms,
 so that creature behavior remains engaging and logical even during AI service disruptions.
 
 **Acceptance Criteria:**
-1. Claude API integration for monster decision-making with contextual prompts
-2. Decision fallback hierarchy: Claude API → Cached decisions → Rule-based AI → Static behavior
+1. Marketplace AI inference integration for monster decision-making with contextual prompts
+2. Decision fallback hierarchy: Marketplace AI inference → Cached decisions → Rule-based AI → Static behavior
 3. AI prompt optimization for cost efficiency and response quality
 4. Decision logging and replay capability for debugging and analysis
 5. Configurable decision frequency and AI complexity levels
@@ -557,13 +557,13 @@ so that I can create intricate influence chains and adapt to monster counter-str
 1. Advanced MCP tools: observation towers, barrier walls, scent trail networks, weather control
 2. Environmental effect duration and decay systems with automatic cleanup
 3. Tool combination effects and strategic interaction patterns
-4. Influence point economy for resource management and strategic planning
+4. Primal token economy for resource management and strategic planning
 5. Environmental persistence across player sessions and monster adaptations
 
 **Integration Verification:**
 - IV1: Advanced tools create meaningful strategic choices and complex ecosystem interactions
 - IV2: Environmental modifications persist correctly with defined duration and decay patterns
-- IV3: Influence point economy balances strategic depth with accessibility
+- IV3: Primal token economy balances strategic depth with accessibility
 
 #### Story 3.3: Monster Adaptation and Learning Systems
 
@@ -683,14 +683,14 @@ so that AI inference services operate within a token-based economic model.
 
 As a player,
 I want to interact with the AI inference marketplace through natural language MCP tools,
-so that I can monitor marketplace activity, provider performance, and influence point spending on AI services.
+so that I can monitor marketplace activity, provider performance, and Primal token spending on AI services.
 
 **Acceptance Criteria:**
 1. "marketplace_status" MCP tool providing natural language marketplace activity summaries
 2. "provider_analysis" MCP tool with provider performance metrics and reputation insights
 3. "ai_service_request" MCP tool for manually triggering AI inference requests for testing
 4. "marketplace_economics" MCP tool showing token flows, costs, and marketplace financial health
-5. Integration with existing influence point tracking for marketplace transaction monitoring
+5. Integration with existing Primal token tracking for marketplace transaction monitoring
 
 **Integration Verification:**
 - IV1: MCP marketplace tools provide engaging, informative natural language marketplace insights
@@ -701,7 +701,7 @@ so that I can monitor marketplace activity, provider performance, and influence 
 
 **Epic Goal:** Develop comprehensive Node.js-based inference provider applications that participate in the AI marketplace, offering various AI services (decision-making, text generation, image analysis) to monster processes and other AO consumers while maintaining competitive pricing and service quality.
 
-**Integration Requirements:** Epic 4 marketplace core completion, Credit-Notice message handling, AI service integration (Claude API), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
+**Integration Requirements:** Epic 4 marketplace core completion, Credit-Notice message handling, AI service integration (marketplace AI inference), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
 
 #### Story 5.1: Core Inference Provider Application
 
@@ -724,11 +724,11 @@ so that I can participate in the AI marketplace and earn tokens for AI services.
 #### Story 5.2: AI Service Integration and Quality Management
 
 As an inference provider,
-I want to integrate with Claude API and other AI services with quality tiers and optimization,
+I want to integrate with marketplace AI inference and other AI services with quality tiers and optimization,
 so that I can deliver high-quality AI inference while managing costs and response times.
 
 **Acceptance Criteria:**
-1. Claude API integration with context-aware prompt generation
+1. Marketplace AI inference integration with context-aware prompt generation
 2. Quality tier system (standard, premium, enterprise) with differentiated pricing
 3. Response time optimization and timeout handling
 4. Cost management and API usage tracking

@@ -10,7 +10,7 @@
 - stats: MonsterStats - Health, hunger, energy, position tracking
 - ai_personality: PersonalityTraits - Aggression, intelligence, pack tendency
 - environmental_awareness: EnvironmentalData - Detected structures, resource memory
-- influence_resistance: AdaptationData - Learned patterns, counter-strategies
+- primal_token_resistance: AdaptationData - Learned patterns, counter-strategies
 
 ### TypeScript Interface
 
@@ -38,7 +38,7 @@ interface Monster {
     resource_memory: ResourceMemory[];
     weather_adaptation: number;
   };
-  influence_resistance: {
+  primal_token_resistance: {
     learned_patterns: Record<string, number>;
     adaptation_history: AdaptationEvent[];
   };
@@ -89,7 +89,7 @@ interface Environment {
 
 **Key Attributes:**
 - wallet_address: string - Arweave wallet for authentication
-- influence_points: number - Available resources for modifications
+- primal_token_balance: number - Available resources for modifications
 - unlocked_tools: string[] - Available environmental modification tools
 - ecosystem_mastery: MasteryLevel[] - Expertise in different routes
 - capture_collection: string[] - Owned monster IDs

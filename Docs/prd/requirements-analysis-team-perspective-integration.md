@@ -18,7 +18,7 @@ Based on comprehensive team review, the following critical requirements addition
 
 **NFR10:** The system shall support incremental scaling with performance benchmarks: 5 monsters (MVP), 15 monsters (Beta), 50+ monsters (Production) with defined infrastructure requirements for each tier.
 
-**NFR11:** AI integration shall implement response time SLA with fallback hierarchy: Claude API (5s) → Cached decisions (1s) → Rule-based AI (0.1s) → Static behavior (immediate).
+**NFR11:** AI integration shall implement response time SLA with fallback hierarchy: marketplace AI inference (5s) → Cached decisions (1s) → Rule-based AI (0.1s) → Static behavior (immediate).
 
 **NFR12:** Monster behavior shall maintain deterministic replay capability for debugging with logging of all decision inputs and AI responses.
 
@@ -51,11 +51,11 @@ Based on team analysis, development phases have been restructured to deliver ear
 **Phase 1b - Minimal Viable Experience (3 weeks)**
 - Rule-based monster AI with 3 behavior types
 - 2-3 MCP tools for environmental modifications
-- Basic player influence point tracking via MCP tools
+- Basic player Primal token tracking via MCP tools
 - Route navigation through text-based MCP commands
 
 **Phase 2 - AI Integration Foundation (4 weeks)**
-- Claude API integration with comprehensive fallback for monster AI
+- marketplace AI inference integration with comprehensive fallback for monster AI
 - Monster adaptation patterns accessible through MCP monitoring tools
 - Enhanced MCP tool descriptions and natural language interaction
 - Cross-monster communication observable through MCP ecosystem tools

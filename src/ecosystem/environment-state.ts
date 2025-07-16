@@ -2,7 +2,7 @@ import {
   Environment,
   EnvironmentalStructure,
   ResourcePool,
-  InfluencePoint,
+  PrimalTokenPoint,
   WeatherState,
   WeatherCondition,
   ResourceType
@@ -129,16 +129,16 @@ export class MockEnvironmentState {
     return rates[resourceType];
   }
 
-  private generateInfluencePoints(): InfluencePoint[] {
-    const influencePoints: InfluencePoint[] = [];
-    const pointCount = 2 + Math.floor(Math.random() * 4); // 2-5 influence points
+  private generateInfluencePoints(): PrimalTokenPoint[] {
+    const influencePoints: PrimalTokenPoint[] = [];
+    const pointCount = 2 + Math.floor(Math.random() * 4); // 2-5 Primal tokens
 
     for (let i = 0; i < pointCount; i++) {
       const createdAt = new Date(Date.now() - Math.random() * 86400000 * 3); // Up to 3 days ago
       const duration = 86400000 * (1 + Math.random() * 6); // 1-7 days duration
       
       influencePoints.push({
-        id: `influence_${i + 1}`,
+        id: `primal_token_${i + 1}`,
         position: {
           x: Math.floor(Math.random() * 1000),
           y: Math.floor(Math.random() * 1000)
@@ -282,13 +282,13 @@ export class MockEnvironmentState {
     });
   }
 
-  addInfluencePoint(routeId: string, point: Omit<InfluencePoint, 'id'>): boolean {
+  addInfluencePoint(routeId: string, point: Omit<PrimalTokenPoint, 'id'>): boolean {
     const environment = this.environments.get(routeId);
     if (!environment) return false;
 
-    const newPoint: InfluencePoint = {
+    const newPoint: PrimalTokenPoint = {
       ...point,
-      id: `influence_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      id: `primal_token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
     };
 
     const updatedInfluencePoints = [...environment.influence_points, newPoint];

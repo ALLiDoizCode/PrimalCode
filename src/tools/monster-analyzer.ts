@@ -479,7 +479,7 @@ export class MonsterAnalyzerTool {
           Math.abs(ip.position.y - monster.stats.position.y) < 100
         );
         if (nearbyInfluence.length > 0) {
-          behavior += `${nearbyInfluence.length} influence point(s) in its territory may be triggering this behavior. `;
+          behavior += `${nearbyInfluence.length} Primal token(s) in its territory may be triggering this behavior. `;
         }
         break;
       }
@@ -522,17 +522,17 @@ export class MonsterAnalyzerTool {
     const currentWeather = environment.weather_state.current_condition;
     interactions.push(`${this.getWeatherInteractionDescription(currentWeather, weatherAdaptation)}`);
 
-    // Influence point interactions
+    // Primal token interactions
     const nearbyInfluence = environment.influence_points.filter(ip => {
       const distance = Math.sqrt(
         Math.pow(monster.stats.position.x - ip.position.x, 2) +
         Math.pow(monster.stats.position.y - ip.position.y, 2)
       );
-      return distance < ip.strength * 200; // Influence radius based on strength
+      return distance < ip.strength * 200; // Primal token radius based on strength
     });
 
     if (nearbyInfluence.length > 0) {
-      interactions.push(`Currently influenced by ${nearbyInfluence.length} environmental modification(s) affecting its behavior`);
+      interactions.push(`Currently influenced by ${nearbyInfluence.length} Primal token modification(s) affecting its behavior`);
     }
 
     return interactions.length > 0 ? interactions : ['No significant environmental interactions detected'];
@@ -587,7 +587,7 @@ export class MonsterAnalyzerTool {
     }
 
     // Adaptation predictions
-    const recentAdaptations = monster.influence_resistance.adaptation_history.filter(
+    const recentAdaptations = monster.primal_token_resistance.adaptation_history.filter(
       event => Date.now() - event.timestamp.getTime() < 7 * 24 * 60 * 60 * 1000 // Last week
     );
     
@@ -633,12 +633,12 @@ export class MonsterAnalyzerTool {
       insights.push(`Knows about ${sharedResources.length} resource location(s) that overlap with current environment - potential for competition`);
     }
 
-    // Influence resistance insights
-    const learnedPatterns = Object.entries(monster.influence_resistance.learned_patterns);
+    // Primal token resistance insights
+    const learnedPatterns = Object.entries(monster.primal_token_resistance.learned_patterns);
     const strongResistance = learnedPatterns.filter(([, resistance]) => resistance > 0.7);
     
     if (strongResistance.length > 0) {
-      insights.push(`Has developed strong resistance to ${strongResistance.length} influence pattern(s) - difficult to manipulate`);
+      insights.push(`Has developed strong resistance to ${strongResistance.length} Primal token pattern(s) - difficult to manipulate`);
     }
 
     // Environmental adaptation insights
@@ -679,12 +679,12 @@ export class MonsterAnalyzerTool {
       suggestions.push('Monitor resource locations this creature frequents for environmental planning');
     }
 
-    // Influence suggestions
-    const resistancePatterns = Object.entries(monster.influence_resistance.learned_patterns);
+    // Primal token suggestions
+    const resistancePatterns = Object.entries(monster.primal_token_resistance.learned_patterns);
     const weakResistance = resistancePatterns.filter(([, resistance]) => resistance < 0.3);
     
     if (weakResistance.length > 0) {
-      suggestions.push(`Creature shows low resistance to ${weakResistance[0][0]} - potential influence opportunity`);
+      suggestions.push(`Creature shows low resistance to ${weakResistance[0][0]} - potential Primal token opportunity`);
     }
 
     // Observation suggestions

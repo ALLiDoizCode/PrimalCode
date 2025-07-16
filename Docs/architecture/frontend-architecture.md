@@ -11,7 +11,7 @@ src/tools/
 ├── environment-modifier.ts    # Environmental change tools
 ├── monster-analyzer.ts       # Individual creature analysis
 ├── route-manager.ts          # Multi-habitat navigation
-├── influence-tracker.ts      # Resource management
+├── primal-token-tracker.ts      # Resource management
 ├── capture-mechanics.ts      # Monster collection tools
 └── inference-marketplace.ts  # AI inference marketplace interaction
 ```
@@ -103,7 +103,7 @@ MCP Tools (No traditional routing - tool-based architecture)
 ├── modify_environment         # Environmental modifications
 ├── analyze_monster           # Individual creature analysis
 ├── manage_weather            # Weather control systems
-├── track_influence           # Resource and point management
+├── track_primal_tokens           # Resource and point management
 ├── capture_creature          # Monster collection mechanics
 └── navigate_routes           # Multi-habitat management
 ```
@@ -120,10 +120,10 @@ export class ToolAuthorization {
       return false;
     }
     
-    // Check influence points for resource-consuming tools
+    // Check Primal tokens for resource-consuming tools
     if (this.isResourceTool(toolName)) {
       const cost = this.getToolCost(toolName);
-      return player.influence_points >= cost;
+      return player.primal_tokens >= cost;
     }
     
     return true;

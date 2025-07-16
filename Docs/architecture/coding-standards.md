@@ -18,7 +18,7 @@
 | Tools | snake_case | - | `observe_ecosystem` |
 | Functions | camelCase | snake_case | `generateNarrative` / `make_decision` |
 | Types | PascalCase | snake_case | `MonsterState` / `monster_state` |
-| Constants | UPPER_SNAKE_CASE | UPPER_SNAKE_CASE | `MAX_INFLUENCE_POINTS` |
+| Constants | UPPER_SNAKE_CASE | UPPER_SNAKE_CASE | `MAX_PRIMAL_TOKENS` |
 | Variables | camelCase | snake_case | `ecosystemState` / `ecosystem_state` |
 | AO Messages | kebab-case | kebab-case | `Environment-Change` |
 
@@ -31,7 +31,7 @@
 - `modify_environment` - Environmental modification tool
 - `analyze_monster` - Individual monster analysis tool
 - `navigate_routes` - Route management and navigation tool
-- `track_influence` - Influence point tracking and management tool
+- `track_primal_tokens` - Primal token tracking and management tool
 - `capture_creature` - Monster capture mechanics tool
 - `inference_marketplace` - AI marketplace interaction tool
 
@@ -40,7 +40,7 @@
 - `EnvironmentModifierTool` - Environmental modification component
 - `MonsterAnalyzerTool` - Monster analysis component
 - `RouteNavigatorTool` - Route management component
-- `InfluenceTrackerTool` - Influence tracking component
+- `PrimalTokenTrackerTool` - Primal token tracking component
 - `CaptureCaptureTool` - Capture mechanics component
 - `InferenceMarketplaceTool` - Marketplace interaction component
 
@@ -58,7 +58,7 @@
 - `environment-modifier.ts` - Environmental modification implementation
 - `monster-analyzer.ts` - Monster analysis implementation
 - `route-navigator.ts` - Route management implementation
-- `influence-tracker.ts` - Influence tracking implementation
+- `primal-token-tracker.ts` - Primal token tracking implementation
 - `capture-mechanics.ts` - Capture mechanics implementation
 - `inference-marketplace.ts` - Marketplace interaction implementation
 

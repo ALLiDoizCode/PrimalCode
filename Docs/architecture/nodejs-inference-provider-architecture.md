@@ -80,8 +80,8 @@ export class CreditNoticeHandler {
 
 **2. AI Service Integration**
 ```typescript
-// Claude Client for Inference Providers
-export class ClaudeInferenceClient {
+// marketplace AI inference Client for Inference Providers
+export class MarketplaceInferenceClient {
   constructor(private apiKey: string) {}
 
   async generateDecision(context: MonsterDecisionContext): Promise<DecisionResult> {
@@ -167,7 +167,7 @@ export class InferenceProviderApp {
     this.aoClient = new AOClient(config.walletPath);
     this.creditNoticeHandler = new CreditNoticeHandler(
       this.aoClient,
-      new ClaudeInferenceClient(config.claudeApiKey),
+      new MarketplaceInferenceClient(config.claudeApiKey),
       this.serviceRegistry
     );
   }
@@ -181,7 +181,7 @@ export class InferenceProviderApp {
         "decision-making": "250",
         "text-generation": "100"
       },
-      description: "High-quality AI inference using Claude API",
+      description: "High-quality AI inference using marketplace AI inference",
       supportedXTags: ["X-Context-Data", "X-Quality-Tier", "X-Timeout"]
     });
 

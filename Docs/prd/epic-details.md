@@ -109,12 +109,12 @@ so that the foundation for real autonomous creature behavior is established.
 ### Story 2.2: AI Decision Integration with Fallback Systems
 
 As a monster AI system,
-I want to make intelligent autonomous decisions using Claude API with robust fallback mechanisms,
+I want to make intelligent autonomous decisions using marketplace AI inference with robust fallback mechanisms,
 so that creature behavior remains engaging and logical even during AI service disruptions.
 
 **Acceptance Criteria:**
-1. Claude API integration for monster decision-making with contextual prompts
-2. Decision fallback hierarchy: Claude API → Cached decisions → Rule-based AI → Static behavior
+1. Marketplace AI inference integration for monster decision-making with contextual prompts
+2. Decision fallback hierarchy: Marketplace AI inference → Cached decisions → Rule-based AI → Static behavior
 3. AI prompt optimization for cost efficiency and response quality
 4. Decision logging and replay capability for debugging and analysis
 5. Configurable decision frequency and AI complexity levels
@@ -194,13 +194,13 @@ so that I can create intricate influence chains and adapt to monster counter-str
 1. Advanced MCP tools: observation towers, barrier walls, scent trail networks, weather control
 2. Environmental effect duration and decay systems with automatic cleanup
 3. Tool combination effects and strategic interaction patterns
-4. Influence point economy for resource management and strategic planning
+4. Primal token economy for resource management and strategic planning
 5. Environmental persistence across player sessions and monster adaptations
 
 **Integration Verification:**
 - IV1: Advanced tools create meaningful strategic choices and complex ecosystem interactions
 - IV2: Environmental modifications persist correctly with defined duration and decay patterns
-- IV3: Influence point economy balances strategic depth with accessibility
+- IV3: Primal token economy balances strategic depth with accessibility
 
 ### Story 3.3: Monster Adaptation and Learning Systems
 
@@ -322,14 +322,14 @@ so that AI inference services operate within a token-based economic model.
 
 As a player,
 I want to interact with the AI inference marketplace through natural language MCP tools,
-so that I can monitor marketplace activity, provider performance, and influence point spending on AI services.
+so that I can monitor marketplace activity, provider performance, and Primal token spending on AI services.
 
 **Acceptance Criteria:**
 1. "marketplace_status" MCP tool providing natural language marketplace activity summaries
 2. "provider_analysis" MCP tool with provider performance metrics and reputation insights
 3. "ai_service_request" MCP tool for manually triggering AI inference requests for testing
 4. "marketplace_economics" MCP tool showing token flows, costs, and marketplace financial health
-5. Integration with existing influence point tracking for marketplace transaction monitoring
+5. Integration with existing Primal token tracking for marketplace transaction monitoring
 
 **Integration Verification:**
 - IV1: MCP marketplace tools provide engaging, informative natural language marketplace insights
@@ -340,7 +340,7 @@ so that I can monitor marketplace activity, provider performance, and influence 
 
 **Epic Goal:** Develop comprehensive Node.js-based inference provider applications that participate in the AI marketplace, offering various AI services (decision-making, text generation, image analysis) to monster processes and other AO consumers while maintaining competitive pricing and service quality.
 
-**Integration Requirements:** Epic 4 marketplace core completion, Credit-Notice message handling, AI service integration (Claude API), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
+**Integration Requirements:** Epic 4 marketplace core completion, Credit-Notice message handling, AI service integration (marketplace AI inference), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
 
 **Priority:** This epic has been moved to position 3 to follow marketplace core establishment and precede monster AI integration.
 
@@ -365,11 +365,11 @@ so that I can participate in the AI marketplace and earn tokens for AI services.
 ### Story 5.2: AI Service Integration and Quality Management
 
 As an inference provider,
-I want to integrate with Claude API and other AI services with quality tiers and optimization,
+I want to integrate with marketplace AI inference and other AI services with quality tiers and optimization,
 so that I can deliver high-quality AI inference while managing costs and response times.
 
 **Acceptance Criteria:**
-1. Claude API integration with context-aware prompt generation
+1. Marketplace AI inference integration with context-aware prompt generation
 2. Quality tier system (standard, premium, enterprise) with differentiated pricing
 3. Response time optimization and timeout handling
 4. Cost management and API usage tracking

@@ -38,7 +38,7 @@ export interface ResourcePool {
   last_accessed: Date;
 }
 
-export interface InfluencePoint {
+export interface PrimalTokenPoint {
   id: string;
   position: {
     x: number;
@@ -65,7 +65,7 @@ export interface Environment {
   structures: EnvironmentalStructure[];
   resources: ResourcePool[];
   weather_state: WeatherState;
-  influence_points: InfluencePoint[];
+  influence_points: PrimalTokenPoint[];
   ecosystem_balance: number; // 0-1 scale
   last_modified: Date;
 }
@@ -76,7 +76,7 @@ export interface EnvironmentUpdate {
     structures?: Partial<EnvironmentalStructure>[];
     resources?: Partial<ResourcePool>[];
     weather?: Partial<WeatherState>;
-    influence_points?: Partial<InfluencePoint>[];
+    influence_points?: Partial<PrimalTokenPoint>[];
     ecosystem_balance?: number;
   };
   timestamp: Date;

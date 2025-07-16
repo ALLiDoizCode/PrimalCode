@@ -13,7 +13,7 @@ PrimalCode/
 │   │   ├── environment-modifier.ts
 │   │   ├── monster-analyzer.ts
 │   │   ├── route-manager.ts
-│   │   ├── influence-tracker.ts
+│   │   ├── primal-token-tracker.ts
 │   │   ├── capture-mechanics.ts
 │   │   └── inference-marketplace.ts
 │   ├── ao-integration/         # AO process communication
@@ -32,7 +32,7 @@ PrimalCode/
 │   │   ├── reputation-manager.ts
 │   │   └── token-handler.ts
 │   ├── ai-integration/         # AI decision systems
-│   │   ├── claude-client.ts
+│   │   ├── marketplace-client.ts
 │   │   ├── decision-cache.ts
 │   │   ├── fallback-ai.ts
 │   │   └── prompt-optimizer.ts
@@ -48,11 +48,11 @@ PrimalCode/
 │   │   └── error-handling.ts
 │   └── index.ts               # MCP server entry point
 ├── inference-providers/       # External Node.js Inference Provider Apps
-│   ├── claude-provider/       # Claude-based inference provider
+│   ├── marketplace-provider/       # marketplace-based inference provider
 │   │   ├── src/
 │   │   │   ├── index.ts       # Main application entry point
 │   │   │   ├── credit-notice-handler.ts # Credit-Notice message handler
-│   │   │   ├── claude-client.ts # Claude API integration
+│   │   │   ├── marketplace-client.ts # marketplace AI inference integration
 │   │   │   ├── ao-client.ts    # AO process communication
 │   │   │   ├── service-registry.ts # Registry integration
 │   │   │   └── types.ts       # Provider-specific types
@@ -118,7 +118,7 @@ PrimalCode/
 │   │   │   ├── main.tl
 │   │   │   ├── handlers/
 │   │   │   │   ├── tool-authorization.tl
-│   │   │   │   ├── influence-tracking.tl
+│   │   │   │   ├── primal-token-tracking.tl
 │   │   │   │   └── resource-management.tl
 │   │   │   ├── types/
 │   │   │   │   └── player.d.tl

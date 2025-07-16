@@ -10,7 +10,8 @@ module.exports = {
     'eslint:recommended',
   ],
   rules: {
-    '@typescript-eslint/no-unused-vars': 'error',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'warn',
     'no-console': 'error',

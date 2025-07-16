@@ -28,7 +28,7 @@ graph TB
     end
     
     subgraph "External Services"
-        CLAUDE[Claude API]
+        CLAUDE[marketplace AI inference]
         OPENAI[OpenAI API]
         ARWEAVE[Arweave Network]
         CLIENTS[AI Clients]

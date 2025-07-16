@@ -126,7 +126,7 @@ export class EcosystemObserverTool {
            `with ${humidity}% humidity and ${visibility}% visibility. Wind speed is ${windSpeed} km/h. ` +
            `The area contains ${structureTypes.join(', ')} structures and ` +
            `${resourceTypes.join(', ')} resource types. ` +
-           `There are ${environment.influence_points.length} active influence points affecting creature behavior.`;
+           `There are ${environment.influence_points.length} active Primal tokens affecting creature behavior.`;
   }
 
   private generateInterestingObservations(environment: Environment, monsters: Monster[]): string[] {
@@ -159,7 +159,7 @@ export class EcosystemObserverTool {
       Date.now() - ip.created_at.getTime() < 86400000 // Last 24 hours
     );
     if (recentInfluence.length > 0) {
-      observations.push(`Recent environmental modifications detected: ${recentInfluence.length} new influence point(s)`);
+      observations.push(`Recent environmental modifications detected: ${recentInfluence.length} new Primal token(s)`);
     }
 
     // Weather impact observations

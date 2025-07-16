@@ -111,7 +111,7 @@ export class EnvironmentCheckerTool {
     let conditions = `The ${routeName} is experiencing ${weather} conditions at ${temperature}°C. `;
     
     conditions += `The environment contains ${structureCount} structures, ${resourceCount} resource pools, `;
-    conditions += `and ${influenceCount} active influence points. `;
+    conditions += `and ${influenceCount} active Primal tokens. `;
     
     if (balance > 0.8) {
       conditions += 'The ecosystem is thriving with excellent balance and stability.';
@@ -293,7 +293,7 @@ export class EnvironmentCheckerTool {
     health += `Resource health: ${Math.round(resourceHealth * 100)}%, `;
     health += `Structure stability: ${Math.round(structureHealth * 100)}%, `;
     health += `Weather impact: ${Math.round(weatherImpact * 100)}%, `;
-    health += `Influence pressure: ${Math.round(influenceImpact * 100)}%. `;
+    health += `Primal token pressure: ${Math.round(influenceImpact * 100)}%. `;
 
     // Health trend analysis
     const monsters = this.monsterRepository.getMonstersByRoute(environment.route_id);
@@ -320,12 +320,12 @@ export class EnvironmentCheckerTool {
     const influences = environment.influence_points;
     
     if (influences.length === 0) {
-      return 'No active influence points detected - environment operating under natural conditions.';
+      return 'No active Primal tokens detected - environment operating under natural conditions.';
     }
 
-    let activity = `${influences.length} active influence point(s) detected. `;
+    let activity = `${influences.length} active Primal token(s) detected. `;
     
-    // Influence type analysis
+    // Primal token type analysis
     const influenceTypes = new Map<string, number>();
     influences.forEach(influence => {
       influenceTypes.set(influence.type, (influenceTypes.get(influence.type) || 0) + 1);
@@ -336,9 +336,9 @@ export class EnvironmentCheckerTool {
       .join(', ');
     activity += `Types: ${typeDescriptions}. `;
 
-    // Influence strength analysis
+    // Primal token strength analysis
     const avgStrength = influences.reduce((sum, i) => sum + i.strength, 0) / influences.length;
-    activity += `Average influence strength: ${Math.round(avgStrength * 100)}%. `;
+    activity += `Average Primal token strength: ${Math.round(avgStrength * 100)}%. `;
 
     // Temporal analysis
     const recent = influences.filter(i => Date.now() - i.created_at.getTime() < 24 * 60 * 60 * 1000);
@@ -347,19 +347,19 @@ export class EnvironmentCheckerTool {
     );
 
     if (recent.length > 0) {
-      activity += `${recent.length} influence point(s) created in last 24 hours. `;
+      activity += `${recent.length} Primal token(s) created in last 24 hours. `;
     }
     
     if (expiringSoon.length > 0) {
-      activity += `${expiringSoon.length} influence point(s) expiring within 24 hours. `;
+      activity += `${expiringSoon.length} Primal token(s) expiring within 24 hours. `;
     }
 
     // Ownership analysis
     const owned = influences.filter(i => i.owner_id);
     if (owned.length > 0) {
-      activity += `${owned.length} influence point(s) have specific owners, indicating directed environmental modifications.`;
+      activity += `${owned.length} Primal token(s) have specific owners, indicating directed environmental modifications.`;
     } else {
-      activity += 'All influence points are unowned, indicating natural environmental phenomena.';
+      activity += 'All Primal tokens are unowned, indicating natural environmental phenomena.';
     }
 
     return activity;
@@ -388,13 +388,13 @@ export class EnvironmentCheckerTool {
       trends.push('Weather volatility trend - frequent changes stressing ecosystem inhabitants');
     }
 
-    // Influence trends
+    // Primal token trends
     const recentInfluences = environment.influence_points.filter(i => 
       Date.now() - i.created_at.getTime() < 7 * 24 * 60 * 60 * 1000
     );
     
     if (recentInfluences.length > environment.influence_points.length * 0.7) {
-      trends.push('Increasing environmental modification trend - significant recent human intervention');
+      trends.push('Increasing environmental modification trend - significant recent Primal token intervention');
     }
 
     // Structure modification trends
@@ -431,9 +431,9 @@ export class EnvironmentCheckerTool {
     const weatherImpact = this.calculateWeatherImpact(environment);
     factors.push(`Weather conditions: ${Math.round(weatherImpact * 100)}% favorable`);
     
-    // Influence pressure factors
+    // Primal token pressure factors
     const influenceBalance = this.calculateInfluenceBalance(environment);
-    factors.push(`Influence pressure: ${Math.round(influenceBalance * 100)}% sustainable`);
+    factors.push(`Primal token pressure: ${Math.round(influenceBalance * 100)}% sustainable`);
     
     // Inhabitant impact factors
     const monsters = this.monsterRepository.getMonstersByRoute(environment.route_id);
@@ -479,7 +479,7 @@ export class EnvironmentCheckerTool {
       i.expires_at && i.expires_at.getTime() - Date.now() < 24 * 60 * 60 * 1000
     );
     if (expiring.length > 0) {
-      suggestions.push(`${expiring.length} influence point(s) expiring soon - consider renewal if needed`);
+      suggestions.push(`${expiring.length} Primal token(s) expiring soon - consider renewal if needed`);
     }
 
     // Resource-specific suggestions

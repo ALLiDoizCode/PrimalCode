@@ -136,7 +136,7 @@
 
 **Key Interfaces:**
 - Credit-Notice message listener from Primal Token Process
-- AI inference processing (Claude API, OpenAI, etc.)
+- AI inference processing (marketplace AI inference, OpenAI, etc.)
 - X-prefix metadata parsing and context extraction
 - Response delivery to requesting Monster Process
 - Service registration with Provider Registry

@@ -6,7 +6,7 @@
 sequenceDiagram
     participant MP as Monster Process
     participant AI as AI Engine
-    participant CLAUDE as Claude API
+    participant AI_MARKETPLACE as marketplace AI inference
     participant CACHE as Decision Cache
     participant ENV as Environment
     participant OTHER as Other Monsters
@@ -22,9 +22,9 @@ sequenceDiagram
         CACHE-->>AI: Cached decision
         AI-->>MP: Decision with confidence score
     else Cache Miss
-        AI->>CLAUDE: Request intelligent decision
+        AI->>AI_MARKETPLACE: Request intelligent decision
         alt API Success
-            CLAUDE-->>AI: Contextual decision
+            AI_MARKETPLACE-->>AI: Contextual decision
             AI->>CACHE: Store decision pattern
         else API Failure
             AI->>AI: Fallback to rule-based system

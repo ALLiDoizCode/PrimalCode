@@ -123,7 +123,7 @@ export class MockSimulationEngine {
       this.environmentState.updateResources(environment.route_id);
     }
 
-    // Clean up expired influence points
+    // Clean up expired Primal tokens
     this.environmentState.cleanupExpiredInfluencePoints(environment.route_id);
   }
 
@@ -247,7 +247,7 @@ export class MockDecisionEngine {
     if (environment.influence_points.length > 2) {
       return {
         action: 'territorial',
-        reasoning: 'Multiple influence points detected, asserting territory',
+        reasoning: 'Multiple Primal tokens detected, asserting territory',
         confidence: 0.6 + monster.ai_personality.aggression * 0.3
       };
     }
@@ -293,7 +293,7 @@ export class MockDecisionEngine {
     if (environment.influence_points.some(ip => ip.type === 'territorial')) {
       return {
         action: 'flee',
-        reasoning: 'Territorial influence detected, avoiding conflict',
+        reasoning: 'Territorial Primal token detected, avoiding conflict',
         confidence: 0.8
       };
     }
@@ -338,7 +338,7 @@ export class MockDecisionEngine {
     if (environment.influence_points.length > 3) {
       return {
         action: 'territorial',
-        reasoning: 'Multiple influences require pack territory management',
+        reasoning: 'Multiple Primal tokens require pack territory management',
         confidence: 0.9
       };
     }
@@ -354,7 +354,7 @@ export class MockDecisionEngine {
     return {
       resource_availability: environment.resources.reduce((sum, r) => sum + r.quantity, 0) / environment.resources.length / 100,
       weather_favorability: this.getWeatherFavorability(environment.weather_state.current_condition),
-      territorial_pressure: environment.influence_points.length / 10,
+      primal_token_pressure: environment.influence_points.length / 10,
       ecosystem_health: environment.ecosystem_balance,
       structure_density: environment.structures.length / 10
     };

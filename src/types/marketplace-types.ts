@@ -81,9 +81,9 @@ export interface MarketplaceStats {
 }
 
 export interface MarketplaceClient {
-  submitInferenceRequest(request: InferenceRequest): Promise<InferenceRequestResponse>;
-  getRequestStatus(request_id: string): Promise<RequestStatus>;
-  registerProvider(provider: Provider): Promise<ProviderRegistrationResponse>;
+  submitInferenceRequest(_request: InferenceRequest): Promise<InferenceRequestResponse>;
+  getRequestStatus(_request_id: string): Promise<RequestStatus>;
+  registerProvider(_provider: Provider): Promise<ProviderRegistrationResponse>;
   healthCheck(): Promise<HealthCheckResponse>;
   getMarketplaceStats(): Promise<MarketplaceStats>;
   isProcessAvailable(): Promise<boolean>;

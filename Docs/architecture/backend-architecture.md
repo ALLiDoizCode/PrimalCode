@@ -206,8 +206,8 @@ export class AuthMiddleware {
     }
     
     const toolCost = this.getToolCost(toolName);
-    if (player.influence_points < toolCost) {
-      return { authorized: false, reason: "Insufficient influence points" };
+    if (player.primal_tokens < toolCost) {
+      return { authorized: false, reason: "Insufficient Primal tokens" };
     }
     
     return { authorized: true };
