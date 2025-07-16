@@ -15,12 +15,12 @@ This architecture creates a truly unique gaming experience that combines decentr
 **Key Services:**
 - **MCP Server Hosting:** AWS/Vercel with auto-scaling capabilities
 - **Autonomous Processes:** AO Runtime on Arweave network
-- **AI Integration:** Claude API with intelligent fallback systems
+- **AI Integration:** Marketplace API with intelligent fallback systems
 - **Monitoring:** CloudWatch + Custom AO process health monitoring
 - **Storage:** AO process state + Arweave permanent backup
 
 **Deployment Host and Regions:** 
-- Primary: US-East (Virginia) for low latency to Claude API
+- Primary: US-East (Virginia) for low latency to marketplace providers
 - Secondary: EU-West (Ireland) for global accessibility
 - AO Network: Global decentralized deployment
 

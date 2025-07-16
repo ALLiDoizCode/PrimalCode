@@ -8,7 +8,7 @@
 | MCP Framework | FastMCP | Latest | MCP server npm package | Rapid development, proven patterns, active community |
 | Monster AI Language | Teal | 0.24+ | AO process implementation | Typed Lua, development safety, professional workflow |
 | AO Process Runtime | Lua | 5.4+ | AO process execution | Native AO runtime, lightweight, proven for blockchain |
-| AI Decision Engine | Claude API | 3.5+ | Monster intelligence | Superior reasoning, context awareness, cost-effective |
+| AI Decision Engine | Marketplace API | Latest | Monster intelligence | Multi-provider AI services, cost optimization, reliability |
 | Persistence Layer | AO Processes | Latest | Autonomous creature state | Decentralized persistence, no gas fees, true autonomy |
 | Permanent Storage | Arweave | Latest | Long-term data backup | Immutable history, decentralized, cost-effective |
 | Client Interface | Claude Desktop | Latest | Player interaction | Native MCP support, natural language interface |

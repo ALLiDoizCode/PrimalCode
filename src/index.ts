@@ -5,9 +5,9 @@ import { healthCheck } from './tools/health-check';
 import { observeEcosystem } from './tools/ecosystem-observer';
 import { analyzeMonster } from './tools/monster-analyzer';
 import { checkEnvironment } from './tools/environment-checker';
-import { PlaceFoodTool } from './tools/place-food';
-import { ModifyWeatherTool } from './tools/modify-weather';
-import { BuildShelterTool } from './tools/build-shelter';
+import { PlaceFoodTool, PlaceFoodRequest } from './tools/place-food';
+import { ModifyWeatherTool, ModifyWeatherRequest } from './tools/modify-weather';
+import { BuildShelterTool, BuildShelterRequest } from './tools/build-shelter';
 import { PrimalTokenService } from './utils/primal-token-service';
 import { MockEnvironmentState } from './ecosystem/environment-state';
 import packageJson from '../package.json';
@@ -41,9 +41,9 @@ async function main(): Promise<void> {
     // Register environmental modification tools
     server.addTool({
       ...PlaceFoodTool.getToolDefinition(),
-      execute: async (request: any) => {
+      execute: async (request: unknown) => {
         try {
-          const result = await placeFoodTool.execute(request);
+          const result = await placeFoodTool.execute(request as PlaceFoodRequest);
           return JSON.stringify(result, null, 2);
         } catch (error) {
           throw new Error(`Place Food Tool Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -53,9 +53,9 @@ async function main(): Promise<void> {
 
     server.addTool({
       ...ModifyWeatherTool.getToolDefinition(),
-      execute: async (request: any) => {
+      execute: async (request: unknown) => {
         try {
-          const result = await modifyWeatherTool.execute(request);
+          const result = await modifyWeatherTool.execute(request as ModifyWeatherRequest);
           return JSON.stringify(result, null, 2);
         } catch (error) {
           throw new Error(`Modify Weather Tool Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -65,9 +65,9 @@ async function main(): Promise<void> {
 
     server.addTool({
       ...BuildShelterTool.getToolDefinition(),
-      execute: async (request: any) => {
+      execute: async (request: unknown) => {
         try {
-          const result = await buildShelterTool.execute(request);
+          const result = await buildShelterTool.execute(request as BuildShelterRequest);
           return JSON.stringify(result, null, 2);
         } catch (error) {
           throw new Error(`Build Shelter Tool Error: ${error instanceof Error ? error.message : 'Unknown error'}`);

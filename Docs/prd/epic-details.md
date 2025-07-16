@@ -6,6 +6,8 @@
 
 **Integration Requirements:** FastMCP npm package setup, Claude Desktop configuration, mock data systems for ecosystem testing, and foundational MCP tool architecture that will support real monster integration in Epic 2.
 
+**Note:** Epic ordering has been updated - Epic 2 (Autonomous Monster Integration) has been moved to position 4 to ensure marketplace foundation (Epic 4 & 5) is established first.
+
 ### Story 1.1: FastMCP Server Setup and Configuration
 
 As a developer,
@@ -78,11 +80,13 @@ so that I can begin influencing monster behavior patterns in the ecosystem.
 - IV2: MCP tools provide clear feedback on successful modifications and their effects
 - IV3: System demonstrates how environmental changes influence mock monster decision patterns
 
-## Epic 2: Autonomous Monster Integration
+## Epic 2: Autonomous Monster Integration *(Now Epic 4 - Moved after marketplace foundation)*
 
 **Epic Goal:** Replace mock monster system with real AO processes featuring AI-driven autonomous decision-making, establishing the core technical architecture for authentic autonomous creature behavior while maintaining the conversational MCP interface.
 
-**Integration Requirements:** AO process development and deployment, AI integration with Claude API, real-time communication between MCP server and AO monster processes, and robust fallback systems for AI service disruptions.
+**Integration Requirements:** AO process development and deployment, AI integration with marketplace API, real-time communication between MCP server and AO monster processes, and robust fallback systems for AI service disruptions.
+
+**Prerequisites:** Epic 4 (AI Inference Marketplace Core) and Epic 5 (Inference Provider Infrastructure) must be completed first.
 
 ### Story 2.1: Single AO Monster Process Implementation
 
@@ -234,11 +238,13 @@ so that I can build a collection while maintaining thriving autonomous ecosystem
 - IV2: Multi-route system supports complex ecosystem management without performance degradation
 - IV3: Collection and progression systems encourage long-term engagement and mastery development
 
-## Epic 4: AI Inference Marketplace Core
+## Epic 4: AI Inference Marketplace Core *(Now Epic 2 - Prioritized before monster integration)*
 
 **Epic Goal:** Implement the foundational AI inference marketplace with token-based payments, provider registry, reputation management, and service discovery, enabling autonomous monster processes to request and pay for AI services while creating a sustainable economic ecosystem for AI inference providers.
 
 **Integration Requirements:** AO Token Blueprint integration, Credit-Notice/Debit-Notice message handlers, marketplace core AO processes, provider registry with service discovery, reputation tracking and quality metrics, and MCP marketplace interaction tools.
+
+**Priority:** This epic has been moved to position 2 to establish marketplace foundation before monster AI integration.
 
 ### Story 4.1: Marketplace Core Process Implementation
 
@@ -330,11 +336,13 @@ so that I can monitor marketplace activity, provider performance, and influence 
 - IV2: Tools integrate seamlessly with existing MCP ecosystem observation and management tools
 - IV3: Marketplace interaction tools maintain responsive performance despite complex backend operations
 
-## Epic 5: Inference Provider Infrastructure
+## Epic 5: Inference Provider Infrastructure *(Now Epic 3 - Moved after marketplace core)*
 
 **Epic Goal:** Develop comprehensive Node.js-based inference provider applications that participate in the AI marketplace, offering various AI services (decision-making, text generation, image analysis) to monster processes and other AO consumers while maintaining competitive pricing and service quality.
 
 **Integration Requirements:** Epic 4 marketplace core completion, Credit-Notice message handling, AI service integration (Claude API), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
+
+**Priority:** This epic has been moved to position 3 to follow marketplace core establishment and precede monster AI integration.
 
 ### Story 5.1: Core Inference Provider Application
 

@@ -258,7 +258,7 @@ export function createEnvironmentChangeMessage(
   modification: {
     type: string;
     location: { x: number; y: number };
-    parameters: Record<string, any>;
+    parameters: Record<string, unknown>;
     duration?: number;
   },
   playerId: string = "mcp_player"

@@ -33,14 +33,14 @@
 **Responsibility:** Provides intelligent decision-making for autonomous creatures with fallback systems
 
 **Key Interfaces:**
-- Claude API integration with context optimization
+- AI inference marketplace integration with context optimization
 - Decision caching and pattern recognition
-- Rule-based fallback for API failures
+- Rule-based fallback for marketplace failures
 - Behavioral adaptation and learning
 
-**Dependencies:** Claude API, Decision Cache, Monster State
+**Dependencies:** Marketplace API, Decision Cache, Monster State
 
-**Technology Stack:** TypeScript, Claude API, Redis caching
+**Technology Stack:** TypeScript, Marketplace API, Redis caching
 
 ## Environment Manager
 
