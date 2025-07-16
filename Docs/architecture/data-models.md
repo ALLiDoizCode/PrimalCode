@@ -72,7 +72,7 @@ interface Environment {
   structures: EnvironmentalStructure[];
   resources: ResourcePool[];
   weather_state: WeatherCondition;
-  influence_points: InfluencePoint[];
+  primal_token_deposits: PrimalTokenDeposit[];
   ecosystem_balance: number;
   last_modified: Date;
 }
@@ -99,7 +99,7 @@ interface Environment {
 ```typescript
 interface Player {
   wallet_address: string;
-  influence_points: number;
+  primal_token_balance: number;
   unlocked_tools: EnvironmentalTool[];
   ecosystem_mastery: {
     route_id: string;
@@ -108,13 +108,30 @@ interface Player {
   }[];
   capture_collection: string[];
   session_history: SessionData[];
+  token_transaction_history: PrimalTokenTransaction[];
+}
+
+interface PrimalTokenDeposit {
+  amount: number;
+  deposited_by: string;
+  deposited_at: Date;
+  purpose: "environmental_modification" | "future_use";
+}
+
+interface PrimalTokenTransaction {
+  transaction_id: string;
+  amount: number;
+  type: "deduction" | "deposit" | "refund";
+  purpose: string;
+  timestamp: Date;
+  modification_id?: string;
 }
 ```
 
 ### Relationships
 - Owns multiple Captured Monsters (1:N)
 - Modifies multiple Environments (N:N)
-- Earns Influence Points through successful management
+- Spends Primal Tokens for environmental modifications
 - Participates in Inference Marketplace (1:N)
 
 ## Inference Marketplace Provider

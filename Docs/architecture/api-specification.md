@@ -33,7 +33,7 @@ const observeEcosystemTool: MCPTool = {
 // Environment Modifier Tool
 const modifyEnvironmentTool: MCPTool = {
   name: "modify_environment",
-  description: "Make strategic environmental changes to influence monster behavior",
+  description: "Make strategic environmental changes to influence monster behavior (Requires Primal tokens)",
   inputSchema: {
     type: "object",
     properties: {

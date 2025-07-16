@@ -9,7 +9,7 @@
 - **Performance Budgets:** AI API calls must complete within 5 seconds or fall back to cached decisions
 - **Security First:** All player inputs must be validated and sanitized before AO process communication
 - **Autonomous Integrity:** Monster decisions must never be directly controlled by players
-- **Resource Management:** Influence point economy must be enforced at every environmental modification
+- **Resource Management:** Primal token economy must be enforced at every environmental modification
 
 ## Naming Conventions
 

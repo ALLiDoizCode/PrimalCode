@@ -58,11 +58,11 @@
 
 ## Player State Manager
 
-**Responsibility:** Tracks player progress, influence points, and ecosystem mastery
+**Responsibility:** Tracks player progress, Primal token balance, and ecosystem mastery
 
 **Key Interfaces:**
 - Wallet authentication and authorization
-- Influence point economy management
+- Primal token economy management
 - Progression tracking and tool unlocks
 - Session management and history
 

@@ -47,9 +47,9 @@ sequenceDiagram
     participant MONSTERS as Monster Processes
     
     CLIENT->>MCP: modify_environment tool call
-    MCP->>PLAYER: Validate influence points
+    MCP->>PLAYER: Validate Primal token balance
     PLAYER-->>MCP: Authorization status
-    alt Insufficient Points
+    alt Insufficient Tokens
         MCP-->>CLIENT: Error: insufficient resources
     else Authorized
         MCP->>ENV: Apply modification
@@ -57,7 +57,7 @@ sequenceDiagram
         ENV->>MONSTERS: Broadcast environment change
         MONSTERS->>MONSTERS: Adapt behavior to change
         ENV-->>MCP: Modification confirmation
-        MCP->>PLAYER: Deduct influence points
+        MCP->>PLAYER: Deduct Primal tokens
         MCP-->>CLIENT: Success with impact preview
     end
     
