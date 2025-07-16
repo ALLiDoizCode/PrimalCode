@@ -108,6 +108,7 @@
       - [MCP Tool Test](./testing-strategy.md#mcp-tool-test)
       - [AO Process Test](./testing-strategy.md#ao-process-test)
       - [E2E Test](./testing-strategy.md#e2e-test)
+  - [AO Process Testing with AOLite](../ao-testing-with-aolite.md)
   - [Coding Standards](./coding-standards.md)
     - [Critical Fullstack Rules](./coding-standards.md#critical-fullstack-rules)
     - [Naming Conventions](./coding-standards.md#naming-conventions)
