@@ -3,6 +3,7 @@ import { MockMonsterRepository } from '../ecosystem/monster-state';
 import { MockEnvironmentState } from '../ecosystem/environment-state';
 import { Monster, MonsterState, MonsterSpecies } from '../types/monster-types';
 import { Environment } from '../types/environment-types';
+import { aoClientManager } from '../ao-integration';
 
 
 // Monster analyzer input schema
@@ -31,20 +32,35 @@ interface MonsterAnalyzerOutput {
 export class MonsterAnalyzerTool {
   private monsterRepository: MockMonsterRepository;
   private environmentState: MockEnvironmentState;
+  private useAOIntegration: boolean;
 
-  constructor(monsterRepository?: MockMonsterRepository, environmentState?: MockEnvironmentState) {
+  constructor(
+    monsterRepository?: MockMonsterRepository, 
+    environmentState?: MockEnvironmentState,
+    useAOIntegration: boolean = true
+  ) {
     this.monsterRepository = monsterRepository || new MockMonsterRepository();
     this.environmentState = environmentState || new MockEnvironmentState();
+    this.useAOIntegration = useAOIntegration;
     
-    // Initialize with some monsters for demonstration
-    if (this.monsterRepository.getMonsterCount() === 0) {
+    // Initialize with some monsters for demonstration when using mock data
+    if (!useAOIntegration && this.monsterRepository.getMonsterCount() === 0) {
       this.monsterRepository.generateAndAddMultiple(5);
     }
   }
 
   async execute(input: z.infer<typeof MonsterAnalyzerInput>): Promise<MonsterAnalyzerOutput> {
     try {
+      // Try AO integration first if enabled
+      if (this.useAOIntegration) {
+        const aoResult = await this.analyzeWithAOIntegration(input);
+        if (aoResult) {
+          return aoResult;
+        }
+        // Fall back to mock data if AO integration fails
+      }
 
+      // Use mock data (existing implementation)
       const monster = this.monsterRepository.getMonster(input.monster_id);
       const environment = this.environmentState.getEnvironment(input.route_id);
 
@@ -76,6 +92,255 @@ export class MonsterAnalyzerTool {
         timestamp: new Date().toISOString()
       };
     }
+  }
+
+  /**
+   * Analyze monster using real AO process integration
+   */
+  private async analyzeWithAOIntegration(input: z.infer<typeof MonsterAnalyzerInput>): Promise<MonsterAnalyzerOutput | null> {
+    try {
+      // Get AO client for this monster
+      const client = aoClientManager.getClient(input.monster_id);
+      if (!client) {
+        // Try to create client if process ID is available (in production, this would come from configuration)
+        return null;
+      }
+
+      // Get comprehensive monster state from AO process
+      const monsterState = await client.getMonsterState();
+      if (!monsterState) {
+        return null;
+      }
+
+      // Perform health check to get additional monitoring data
+      const healthData = await client.healthCheck();
+      
+      return this.generateAOAnalysis(monsterState, healthData);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  /**
+   * Generate analysis from AO process data
+   */
+  private generateAOAnalysis(
+    monsterState: any, 
+    healthData: any
+  ): MonsterAnalyzerOutput {
+    // Convert AO monster state to analysis format
+    const personalityProfile = this.generateAOPersonalityProfile(monsterState);
+    const currentBehavior = this.generateAOCurrentBehaviorAnalysis(monsterState, healthData);
+    const environmentalInteractions = this.generateAOEnvironmentalInteractions(monsterState);
+    const behavioralPredictions = this.generateAOBehavioralPredictions(monsterState);
+    const interactionInsights = this.generateAOInteractionInsights(monsterState);
+    const suggestedActions = this.generateAOSuggestedActions(monsterState, healthData);
+
+    return {
+      monster_id: monsterState.monster_id,
+      species: this.formatSpeciesName(monsterState.species),
+      personalityProfile,
+      currentBehavior,
+      environmentalInteractions,
+      behavioralPredictions,
+      interactionInsights,
+      suggestedActions,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  private generateAOPersonalityProfile(monsterState: any): string {
+    const { aggression, intelligence, pack_tendency, adaptation_rate } = monsterState.personality;
+    
+    let profile = `This ${monsterState.species.replace('_', ' ')} displays `;
+    
+    // Aggression analysis
+    if (aggression > 0.8) {
+      profile += 'extremely aggressive tendencies, often initiating conflicts and defending territory fiercely. ';
+    } else if (aggression > 0.6) {
+      profile += 'moderate aggression, willing to fight when necessary but not overly confrontational. ';
+    } else if (aggression > 0.3) {
+      profile += 'mild aggression, preferring to avoid conflicts but capable of defending itself. ';
+    } else {
+      profile += 'very passive behavior, rarely engaging in confrontations and often fleeing from threats. ';
+    }
+
+    // Intelligence analysis
+    if (intelligence > 0.8) {
+      profile += 'Exceptional intelligence allows it to quickly learn from experiences and adapt to new situations. ';
+    } else if (intelligence > 0.6) {
+      profile += 'Good problem-solving abilities enable it to navigate complex environmental challenges. ';
+    } else if (intelligence > 0.3) {
+      profile += 'Average intelligence with basic pattern recognition and simple decision-making. ';
+    } else {
+      profile += 'Limited intelligence, relying primarily on instinct and basic responses. ';
+    }
+
+    // Pack tendency analysis
+    if (pack_tendency > 0.8) {
+      profile += 'Strong pack instincts drive it to seek group formations and cooperative behaviors. ';
+    } else if (pack_tendency > 0.6) {
+      profile += 'Moderate social tendencies, comfortable in groups but also capable of independent action. ';
+    } else if (pack_tendency > 0.3) {
+      profile += 'Mild social preferences, occasionally interacting with others but generally solitary. ';
+    } else {
+      profile += 'Highly solitary nature, actively avoiding other creatures and preferring isolation. ';
+    }
+
+    // Adaptation rate analysis
+    if (adaptation_rate > 0.8) {
+      profile += 'Rapid adaptation allows it to quickly adjust to new situations and environments.';
+    } else if (adaptation_rate > 0.6) {
+      profile += 'Good adaptation helps it cope with environmental changes over time.';
+    } else {
+      profile += 'Slow adaptation makes it prefer familiar situations and resist change.';
+    }
+
+    return profile;
+  }
+
+  private generateAOCurrentBehaviorAnalysis(monsterState: any, healthData: any): string {
+    const state = monsterState.current_state;
+    const timeSinceLastDecision = Date.now() - monsterState.last_decision * 1000;
+    const minutesAgo = Math.floor(timeSinceLastDecision / 60000);
+    const nextDecisionIn = Math.max(0, monsterState.next_decision_at * 1000 - Date.now()) / 1000;
+
+    let behavior = `Currently ${this.getStateDescription(state as MonsterState)} (last decision made ${minutesAgo} minutes ago, next decision in ${Math.round(nextDecisionIn)} seconds). `;
+
+    // Add health monitoring data if available
+    if (healthData && healthData.health_status) {
+      const healthStatus = healthData.health_status;
+      behavior += `Process has been running for ${healthStatus.uptime_hours} hours with ${healthStatus.error_count} errors. `;
+    }
+
+    // State-specific analysis based on AO data
+    behavior += this.generateStateSpecificAnalysis(state, monsterState.stats, monsterState.personality);
+
+    return behavior;
+  }
+
+  private generateStateSpecificAnalysis(state: string, stats: any, personality: any): string {
+    const { health, hunger, energy } = stats;
+    
+    switch (state) {
+      case 'hunt':
+      case 'hunting':
+        return `With ${Math.round(energy)}% energy and ${Math.round(hunger)}% hunger, this creature is actively pursuing prey. ${
+          personality.aggression > 0.7 ? 'Its aggressive nature makes it a formidable hunter.' : ''
+        }`;
+      
+      case 'rest':
+      case 'resting':
+        return `Recovering with ${Math.round(health)}% health and ${Math.round(energy)}% energy. ${
+          health < 50 ? 'The extended rest suggests it may be injured or stressed.' : ''
+        }`;
+      
+      case 'explore':
+      case 'exploring':
+        return `Exploring the area with ${Math.round(energy)}% energy, driven by ${Math.round(personality.intelligence * 100)}% intelligence.`;
+      
+      case 'patrol_territory':
+        return `Defending territory with ${Math.round(personality.aggression * 100)}% aggression levels.`;
+      
+      default:
+        return `Engaged in ${state} behavior with current stats: ${Math.round(health)}% health, ${Math.round(energy)}% energy, ${Math.round(hunger)}% hunger.`;
+    }
+  }
+
+  private generateAOEnvironmentalInteractions(monsterState: any): string[] {
+    const interactions: string[] = [];
+
+    // Use environmental awareness from AO process
+    if (monsterState.environmental_awareness) {
+      const { detected_structures, weather_adaptation } = monsterState.environmental_awareness;
+      
+      detected_structures.forEach((structure: string) => {
+        interactions.push(`Aware of ${structure} in the environment - ${this.getStructureInteractionDescription(structure)}`);
+      });
+
+      interactions.push(`Weather adaptation level: ${Math.round(weather_adaptation * 100)}% - ${this.getAdaptationDescription(weather_adaptation)}`);
+    }
+
+    return interactions.length > 0 ? interactions : ['Limited environmental interaction data available from AO process'];
+  }
+
+  private generateAOBehavioralPredictions(monsterState: any): string[] {
+    const predictions: string[] = [];
+    const { health, energy } = monsterState.stats;
+    const { aggression, intelligence } = monsterState.personality;
+
+    // Health-based predictions
+    if (health < 30) {
+      predictions.push('Likely to seek shelter and rest until health improves');
+    } else if (health > 80 && energy > 70) {
+      predictions.push('High probability of engaging in active behaviors like hunting or exploration');
+    }
+
+    // Autonomous decision cycle predictions
+    const nextDecisionIn = Math.max(0, monsterState.next_decision_at * 1000 - Date.now()) / 1000;
+    predictions.push(`Next autonomous decision in ${Math.round(nextDecisionIn)} seconds`);
+
+    // Personality-based predictions
+    if (aggression > 0.7 && health > 60) {
+      predictions.push('May initiate territorial disputes or aggressive encounters');
+    }
+
+    if (intelligence > 0.7) {
+      predictions.push('Will adapt quickly to environmental changes based on high intelligence');
+    }
+
+    return predictions;
+  }
+
+  private generateAOInteractionInsights(monsterState: any): string[] {
+    const insights: string[] = [];
+
+    insights.push('Real-time autonomous behavior tracking via AO process integration');
+    
+    if (monsterState.health_status && monsterState.health_status.is_healthy) {
+      insights.push('AO process is healthy and making autonomous decisions');
+    } else {
+      insights.push('⚠️ AO process health issues detected - behavior may be compromised');
+    }
+
+    // Add learning insights if available
+    if (monsterState.environmental_awareness?.detected_structures?.length > 0) {
+      insights.push(`Actively tracking ${monsterState.environmental_awareness.detected_structures.length} environmental features`);
+    }
+
+    return insights;
+  }
+
+  private generateAOSuggestedActions(monsterState: any, healthData: any): string[] {
+    const suggestions: string[] = [];
+
+    // AO-specific suggestions
+    suggestions.push('Monitor AO process health using health_check tool');
+    
+    if (healthData && healthData.health_status && !healthData.health_status.is_healthy) {
+      suggestions.push('⚠️ AO process requires attention - check error logs');
+    }
+
+    // Behavioral suggestions based on real state
+    if (monsterState.stats.health < 50) {
+      suggestions.push('Consider environmental modifications to support creature recovery');
+    }
+
+    if (monsterState.current_state === 'hunt' && monsterState.personality.aggression > 0.7) {
+      suggestions.push('Exercise caution - creature is in aggressive hunting state (confirmed by AO process)');
+    }
+
+    suggestions.push('Use environment modification tools to test real autonomous reactions');
+    suggestions.push('Continue monitoring via AO process for genuine behavioral changes');
+
+    return suggestions;
+  }
+
+  private getAdaptationDescription(adaptation: number): string {
+    if (adaptation > 0.8) return 'excellent adaptation';
+    if (adaptation > 0.6) return 'good adaptation';
+    if (adaptation > 0.4) return 'moderate adaptation';
+    return 'poor adaptation';
   }
 
   private generateAnalysis(monster: Monster, environment: Environment): MonsterAnalyzerOutput {
