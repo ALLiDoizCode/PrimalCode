@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { MockMonsterRepository } from '../ecosystem/monster-state';
 import { MockEnvironmentState } from '../ecosystem/environment-state';
-import { Monster, MonsterState, MonsterSpecies } from '../types/monster-types';
+import { Monster, MonsterState, MonsterSpecies, AdaptationEvent } from '../types/monster-types';
 import { Environment } from '../types/environment-types';
 import { aoClientManager } from '../ao-integration';
 
@@ -587,8 +587,8 @@ export class MonsterAnalyzerTool {
     }
 
     // Adaptation predictions
-    const recentAdaptations = monster.primal_token_resistance.adaptation_history.filter(
-      event => Date.now() - event.timestamp.getTime() < 7 * 24 * 60 * 60 * 1000 // Last week
+    const recentAdaptations = monster.influence_resistance.adaptation_history.filter(
+      (event: AdaptationEvent) => Date.now() - event.timestamp.getTime() < 7 * 24 * 60 * 60 * 1000 // Last week
     );
     
     if (recentAdaptations.length > 0) {
@@ -634,8 +634,8 @@ export class MonsterAnalyzerTool {
     }
 
     // Primal token resistance insights
-    const learnedPatterns = Object.entries(monster.primal_token_resistance.learned_patterns);
-    const strongResistance = learnedPatterns.filter(([, resistance]) => resistance > 0.7);
+    const learnedPatterns = Object.entries(monster.influence_resistance.learned_patterns);
+    const strongResistance = learnedPatterns.filter(([, resistance]: [string, number]) => resistance > 0.7);
     
     if (strongResistance.length > 0) {
       insights.push(`Has developed strong resistance to ${strongResistance.length} Primal token pattern(s) - difficult to manipulate`);
@@ -680,8 +680,8 @@ export class MonsterAnalyzerTool {
     }
 
     // Primal token suggestions
-    const resistancePatterns = Object.entries(monster.primal_token_resistance.learned_patterns);
-    const weakResistance = resistancePatterns.filter(([, resistance]) => resistance < 0.3);
+    const resistancePatterns = Object.entries(monster.influence_resistance.learned_patterns);
+    const weakResistance = resistancePatterns.filter(([, resistance]: [string, number]) => resistance < 0.3);
     
     if (weakResistance.length > 0) {
       suggestions.push(`Creature shows low resistance to ${weakResistance[0][0]} - potential Primal token opportunity`);
