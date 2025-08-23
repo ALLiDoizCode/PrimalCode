@@ -2,12 +2,22 @@
   "mcpServers": {
     "permamind": {
       "command": "npx",
-      "args": [
-        "permamind"
-      ],
-      "env": {
-        "SEED_PHRASE": "siege unit board shop primary border way use blossom curve garlic thrive"
-      }
+      "args": ["permamind"]
+    },
+    "aolite Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/perplex-labs/aolite"
+    },
+    "Tuxemon Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/Tuxemon/Tuxemon"
+    },
+    "Tuxemon-Server Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/Tuxemon/Tuxemon-Server"
+    },
+    "Tuxemon-Website Docs": {
+      "url": "https://gitmcp.io/Tuxemon/Tuxemon-Website"
     }
   }
 }
