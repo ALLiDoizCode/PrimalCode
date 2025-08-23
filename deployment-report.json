@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-08-23T20:00:13.136Z",
+  "environment": "local",
+  "processes": {
+    "world": {
+      "id": "world_1755979212758",
+      "name": "world",
+      "path": "ao-processes/world/src/main.lua",
+      "deployedAt": "2025-08-23T20:00:12.759Z",
+      "status": "active"
+    },
+    "battle": {
+      "id": "battle_1755979212886",
+      "name": "battle",
+      "path": "ao-processes/battle/src/main.lua",
+      "deployedAt": "2025-08-23T20:00:12.886Z",
+      "status": "active"
+    },
+    "registry": {
+      "id": "registry_1755979213009",
+      "name": "registry",
+      "path": "ao-processes/registry/src/main.lua",
+      "deployedAt": "2025-08-23T20:00:13.009Z",
+      "status": "active"
+    },
+    "health-monitor": {
+      "id": "health-monitor_1755979213136",
+      "name": "health-monitor",
+      "path": "ao-processes/health-monitor/src/main.lua",
+      "deployedAt": "2025-08-23T20:00:13.136Z",
+      "status": "active"
+    }
+  },
+  "logs": [
+    "[2025-08-23T20:00:12.294Z] INFO: Starting local deployment of all AO processes...",
+    "[2025-08-23T20:00:12.630Z] INFO: AOS version: 1.0.0",
+    "[2025-08-23T20:00:12.631Z] INFO: Building world process...",
+    "[2025-08-23T20:00:12.758Z] INFO: ✅ world built successfully",
+    "[2025-08-23T20:00:12.758Z] INFO: Deploying world process...",
+    "[2025-08-23T20:00:12.759Z] INFO: ✅ world deployed with ID: world_1755979212758",
+    "[2025-08-23T20:00:12.759Z] INFO: Building battle process...",
+    "[2025-08-23T20:00:12.886Z] INFO: ✅ battle built successfully",
+    "[2025-08-23T20:00:12.886Z] INFO: Deploying battle process...",
+    "[2025-08-23T20:00:12.886Z] INFO: ✅ battle deployed with ID: battle_1755979212886",
+    "[2025-08-23T20:00:12.887Z] INFO: Building registry process...",
+    "[2025-08-23T20:00:13.009Z] INFO: ✅ registry built successfully",
+    "[2025-08-23T20:00:13.009Z] INFO: Deploying registry process...",
+    "[2025-08-23T20:00:13.009Z] INFO: ✅ registry deployed with ID: registry_1755979213009",
+    "[2025-08-23T20:00:13.009Z] INFO: Building health-monitor process...",
+    "[2025-08-23T20:00:13.136Z] INFO: ✅ health-monitor built successfully",
+    "[2025-08-23T20:00:13.136Z] INFO: Deploying health-monitor process...",
+    "[2025-08-23T20:00:13.136Z] INFO: ✅ health-monitor deployed with ID: health-monitor_1755979213136",
+    "[2025-08-23T20:00:13.136Z] INFO: 🎉 All processes deployed successfully!"
+  ]
+}

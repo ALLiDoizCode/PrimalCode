@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-08-23T19:56:13.438Z",
+  "environment": "local",
+  "overall_status": "healthy",
+  "processes": {
+    "world": {
+      "id": "world_1755978968402",
+      "status": "healthy",
+      "responseTime": 127.18693824405275,
+      "checkedAt": "2025-08-23T19:56:12.755Z",
+      "details": "Process responding normally"
+    },
+    "battle": {
+      "id": "battle_1755978968528",
+      "status": "healthy",
+      "responseTime": 55.206122488712886,
+      "checkedAt": "2025-08-23T19:56:13.055Z",
+      "details": "Process responding normally"
+    },
+    "registry": {
+      "id": "registry_1755978968658",
+      "status": "healthy",
+      "responseTime": 54.70250432394725,
+      "checkedAt": "2025-08-23T19:56:13.286Z",
+      "details": "Process responding normally"
+    },
+    "health-monitor": {
+      "id": "health-monitor_1755978968784",
+      "status": "healthy",
+      "responseTime": 75.26561561638599,
+      "checkedAt": "2025-08-23T19:56:13.437Z",
+      "details": "Process responding normally"
+    }
+  },
+  "summary": {
+    "total": 4,
+    "healthy": 4,
+    "unhealthy": 0,
+    "errors": 0
+  }
+}

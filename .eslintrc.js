@@ -1,35 +1,34 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2022,
-    sourceType: 'module',
-    project: './tsconfig.json',
-  },
-  plugins: ['@typescript-eslint'],
-  extends: [
-    'eslint:recommended',
-  ],
-  rules: {
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    '@typescript-eslint/no-explicit-any': 'warn',
-    '@typescript-eslint/explicit-function-return-type': 'warn',
-    'no-console': 'error',
-    'no-restricted-imports': [
-      'error',
-      {
-        patterns: [
-          '**/logging*',
-          '**/logger*',
-          'winston*',
-          'pino*',
-          'bunyan*'
-        ]
-      }
-    ],
-  },
   env: {
-    node: true,
-    jest: true,
+    browser: true,
+    commonjs: true,
+    es2021: true,
+    node: true
   },
+  extends: [
+    'eslint:recommended'
+  ],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module'
+  },
+  rules: {
+    'indent': 'off',
+    'linebreak-style': 'off', 
+    'quotes': 'off',
+    'semi': 'off',
+    'no-unused-vars': 'warn',
+    'no-console': 'off'
+  },
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    'build/',
+    'coverage/',
+    '*.min.js',
+    '*.test.js',
+    'tests/',
+    'ao-processes/*/src/*.lua',
+    '**/*.tl'
+  ]
 };

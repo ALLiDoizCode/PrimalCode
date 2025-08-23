@@ -14,7 +14,7 @@ Based on the PRD analysis and technical requirements, this project builds on exi
 - **Permamind MCP Server**: AI-powered AO development tools including `generateluaprocess`, `queryPermawebdocs`, and other AO domain-specific capabilities for automated code generation and documentation access
 - **AO Process Templates**: Standard AO process patterns enhanced by AI-generated handlers and state management logic
 - **aolite Testing Framework**: Local development environment for AO process testing and validation
-- **ADP v1.0 Compliance**: Arweave Data Protocol specification for standardized message interfaces, with AI assistance for ensuring compliance
+- **ADP v1.0 Compliance**: AO Documentation Protocol v1.0 specification for standardized, self-documenting message interfaces that enable intelligent tool integration and automatic API generation
 - **Existing Tuxemon Assets**: Open-source Pokemon-inspired game mechanics and creature data as reference for game logic implementation
 
 The architecture will build upon AO's native process communication patterns enhanced by AI-assisted development workflows. The permamind MCP server operates as a separate development tool alongside aolite, providing:
@@ -143,7 +143,7 @@ _Rationale:_ Maintains consistency across distributed game processes while suppo
 |----------|------------|---------|---------|-----------|
 | **Primary Language** | Lua | 5.3+ | AO process handler implementation | Native AO runtime language, optimized for process execution |
 | **Process Runtime** | AO (Arweave Operating System) | Latest | Distributed process execution | Provides persistent, verifiable compute with native state management |
-| **Message Protocol** | ADP (Arweave Data Protocol) | v1.0 | Standardized agent communication | Ensures consistent, documented interfaces for external agents |
+| **Message Protocol** | ADP (AO Documentation Protocol) | v1.0 | Self-documenting process interfaces | Enables intelligent tool integration and automatic API discovery through standardized Info handlers |
 | **Local Development** | aolite | Latest | AO process testing framework | Enables rapid local iteration before mainnet deployment |
 | **AI Code Generation** | Permamind MCP Server | Latest | Lua process generation and tooling | Accelerates development with AO-specific code generation |
 | **Development Tools** | Claude Code + MCP | Latest | AI-assisted development environment | Integrated development workflow with specialized AO tooling |
@@ -981,6 +981,101 @@ Implementation-specific security requirements for AO process development:
 - **AO Process Dependencies:** Only use verified AO-compatible Lua libraries
 - **JavaScript Dependencies:** Regular npm audit for tooling and test dependencies
 - **Update Policy:** Monthly dependency updates with testing validation
+
+## AO Documentation Protocol (ADP) v1.0 Compliance
+
+### Overview
+
+All AO processes in the Tuxemon platform MUST implement ADP v1.0 compliance to ensure self-documenting, intelligent tool integration capabilities. ADP v1.0 enables automatic UI generation, real-time tag validation, and dynamic interface discovery without requiring separate API documentation.
+
+### Required Handlers
+
+Every AO process MUST implement these standardized handlers:
+
+#### Info Handler
+**Action:** `Info`  
+**Purpose:** Provides comprehensive process metadata, capabilities, and handler definitions
+
+**Response Format:**
+```json
+{
+  "Name": "Process Name",
+  "Process": "process_id", 
+  "protocolVersion": "1.0",
+  "lastUpdated": timestamp,
+  "handlers": [
+    {
+      "action": "Handler-Name",
+      "pattern": "Action", 
+      "description": "Handler description",
+      "category": "core|utility|custom",
+      "version": "1.0",
+      "tags": [
+        {
+          "name": "TagName",
+          "type": "string|number|boolean|address|json",
+          "required": true|false,
+          "description": "Tag description",
+          "examples": ["example1", "example2"]
+        }
+      ]
+    }
+  ],
+  "capabilities": ["capability1", "capability2"],
+  "state": {
+    "status": "healthy",
+    "uptime": seconds,
+    "timestamp": current_time,
+    "statistics": {...}
+  }
+}
+```
+
+#### Help Handler
+**Action:** `Help`  
+**Purpose:** Provides interactive documentation and usage guidance
+
+#### Get-Metadata Handler  
+**Action:** `Get-Metadata`
+**Purpose:** Returns handler registry and capability information
+
+#### Get-Schema Handler
+**Action:** `Get-Schema`
+**Purpose:** Exports OpenAPI-style schema for external documentation tools
+
+### Implementation Requirements
+
+1. **Handler Metadata Registration:**
+   - Use `HandlerMetadata.register_handler()` for all process handlers
+   - Include comprehensive tag definitions with validation rules
+   - Provide examples for all required and optional parameters
+
+2. **Validation Integration:**
+   - Apply `ADPValidator.validate_message()` to all external message handlers  
+   - Use standardized error responses with proper error codes
+   - Implement input sanitization and range checking
+
+3. **Response Format:**
+   - All responses MUST use `ProcessBase.create_adp_response()` wrapper
+   - Include proper ADP headers: `ADP-Version: "1.0"`, `Content-Type: "application/json"`
+   - Use consistent error response format across all handlers
+
+4. **Documentation Generation:**
+   - Handlers MUST be self-documenting through metadata
+   - No separate API documentation required
+   - Tool integration through standardized schema export
+
+### File Locations
+- **Framework:** `shared/utils/adp-validation.tl`, `shared/utils/handler-metadata.tl`
+- **Process Implementation:** Each process's `main.lua` Info handler
+- **Testing:** `tests/integration/info-handler-compliance.test.js`
+
+### Compliance Testing
+Regular compliance testing ensures all processes maintain ADP v1.0 standards:
+- Automated checks for required handler presence
+- Response format validation  
+- Schema structure verification
+- Handler metadata completeness
 
 ## Next Steps
 

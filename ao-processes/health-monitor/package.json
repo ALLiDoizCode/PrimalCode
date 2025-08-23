@@ -1,0 +1,13 @@
+{
+  "name": "tuxemon-health-monitor-process",
+  "version": "1.0.0",
+  "description": "AO Health Monitoring Process for Tuxemon Gaming Platform",
+  "main": "src/main.lua",
+  "scripts": {
+    "build": "mkdir -p dist && cp src/*.lua dist/",
+    "deploy:local": "aos --load src/main.lua",
+    "test": "find tests -name '*.test.lua' -exec lua {} \\;"
+  },
+  "keywords": ["ao", "health", "monitoring", "tuxemon", "gaming"],
+  "license": "MIT"
+}
