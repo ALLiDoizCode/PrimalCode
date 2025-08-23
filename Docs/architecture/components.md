@@ -1,363 +1,139 @@
 # Components
 
-## FastMCP Server
+Based on our AO process-based microservices architecture and the data models above, the system is organized into discrete AO process components that handle specific game responsibilities while maintaining clear boundaries and interfaces.
 
-**Responsibility:** Hosts MCP tools and manages communication between AI clients and AO processes
+## World Process
 
-**Key Interfaces:**
-- MCP Protocol endpoints for tool execution
-- AO Process communication via message passing
-- Error handling and graceful degradation
-- Real-time ecosystem state synchronization
-
-**Dependencies:** FastMCP framework, AO Client, Winston logging
-
-**Technology Stack:** TypeScript, FastMCP npm package, WebSocket connections
-
-## AO Process Manager
-
-**Responsibility:** Handles deployment, monitoring, and communication with AO processes
+**Responsibility:** Manages individual agent world instances including movement, exploration, Tuxemon encounters, and item collection within a private game environment.
 
 **Key Interfaces:**
-- Process deployment and lifecycle management
-- Message routing between MCP server and AO processes
-- Health monitoring and automatic recovery
-- State synchronization and caching
+- `moveAgent(direction, steps)` - Handle agent movement with collision detection
+- `queryWorldState()` - Return current world state, nearby objects, and available actions
+- `encounterTuxemon(zone_id)` - Initiate wild Tuxemon encounter based on zone configuration
+- `collectItem(item_spawn_id)` - Handle item collection and inventory updates
+- `initiateBattle(target_agent_id)` - Request battle with another agent via battle process
 
-**Dependencies:** AO SDK, Arweave wallet, monitoring services
+**Dependencies:** 
+- Battle Process (for cross-world combat initiation)
+- Agent Registry (for agent discovery and status updates)
 
-**Technology Stack:** TypeScript, AO SDK, Arweave integration
+**Technology Stack:** 
+- Lua 5.3+ for AO process handlers
+- AO Process State for persistent world data storage
+- ADP v1.0 compliant message interfaces for external agent communication
 
-## Monster AI Engine
+## Battle Process
 
-**Responsibility:** Provides intelligent decision-making for autonomous creatures with fallback systems
-
-**Key Interfaces:**
-- AI inference marketplace integration with context optimization
-- Decision caching and pattern recognition
-- Rule-based fallback for marketplace failures
-- Behavioral adaptation and learning
-
-**Dependencies:** Marketplace API, Decision Cache, Monster State
-
-**Technology Stack:** TypeScript, Marketplace API, Redis caching
-
-## Environment Manager
-
-**Responsibility:** Manages route-level environmental state and player modifications
+**Responsibility:** Manages turn-based combat between agents from different world instances, ensuring fair and verifiable battle resolution with complete action logging.
 
 **Key Interfaces:**
-- Environmental modification processing
-- Weather system and timing control
-- Resource management and decay
-- Ecosystem balance monitoring
+- `joinBattle(agent_id, tuxemon_team)` - Add agent to battle with selected Tuxemon team
+- `submitBattleAction(action_type, move_id, target_id)` - Process agent combat actions
+- `getBattleState()` - Return current battle status, turn order, and available actions
+- `resolveTurn()` - Execute all submitted actions and calculate battle outcomes
+- `completeBattle()` - Finalize battle results and update agent world processes
 
-**Dependencies:** AO Processes, Player State, Monster Processes
+**Dependencies:** 
+- World Processes (for agent team data and result propagation)
+- Agent Registry (for participant validation)
 
-**Technology Stack:** Lua (AO Process), TypeScript (MCP integration)
+**Technology Stack:** 
+- Lua 5.3+ with deterministic random number generation for fair combat
+- AO Process State for battle state persistence and action logging
+- Inter-process AO messaging for world state synchronization
 
-## Player State Manager
+## Agent Registry Process
 
-**Responsibility:** Tracks player progress, Primal token balance, and ecosystem mastery
-
-**Key Interfaces:**
-- Wallet authentication and authorization
-- Primal token economy management
-- Progression tracking and tool unlocks
-- Session management and history
-
-**Dependencies:** Arweave wallet, Player AO Process
-
-**Technology Stack:** TypeScript, Arweave SDK, AO integration
-
-## Inference Marketplace Core
-
-**Responsibility:** Manages AI inference marketplace operations including request routing, payment processing, and provider coordination
+**Responsibility:** Central registry for agent discovery, battle matchmaking, and system-wide agent status tracking across all world instances.
 
 **Key Interfaces:**
-- AI inference request processing and routing
-- Token payment validation using Credit-Notice/Debit-Notice handlers
-- Provider discovery and capability matching
-- Request timeout and error handling
-- X-prefix metadata forwarding
+- `registerAgent(agent_id, world_process_id, capabilities)` - Register new agent in system
+- `findBattleOpponent(agent_id, preferences)` - Matchmaking for battle requests
+- `updateAgentStatus(agent_id, status)` - Update agent activity and availability
+- `queryActiveAgents()` - List all active agents and their world processes
+- `getAgentMetadata(agent_id)` - Retrieve agent capabilities and battle history
 
-**Dependencies:** AO Token Blueprint, Provider Registry, Reputation Manager, Primal Token Process
+**Dependencies:** 
+- World Processes (for agent status updates)
+- Battle Process (for battle coordination)
 
-**Technology Stack:** Lua (AO Process), AO Token Blueprint patterns
+**Technology Stack:** 
+- Lua 5.3+ for registry management and matchmaking algorithms
+- AO Process State for agent tracking and metadata storage
+- AO Native Messaging for cross-process agent status synchronization
 
-## Provider Registry
+## Health Monitor Process
 
-**Responsibility:** Maintains registry of AI inference providers with capabilities, pricing, and availability status
-
-**Key Interfaces:**
-- Provider registration and capability advertising
-- Service discovery and provider matching
-- Pricing information management
-- Provider status monitoring and health checks
-- Capability validation and testing
-
-**Dependencies:** Marketplace Core, Reputation Manager
-
-**Technology Stack:** Lua (AO Process), JSON schema validation
-
-## Reputation Manager
-
-**Responsibility:** Tracks provider performance metrics, quality scores, and reputation indicators
+**Responsibility:** System-wide health monitoring and performance tracking for all AO processes, providing debugging interfaces and operational visibility.
 
 **Key Interfaces:**
-- Response time monitoring and averaging
-- Quality score calculation and tracking
-- Completion rate statistics
-- Provider ranking and recommendation
-- Reputation history and trends
+- `healthCheck(process_id)` - Perform health check on specified process
+- `getSystemStatus()` - Return overall system health and performance metrics
+- `logError(process_id, error_details)` - Record process errors and warnings
+- `getPerformanceMetrics(time_range)` - Retrieve system performance data
+- `processHeartbeat(process_id, metrics)` - Receive periodic process status updates
 
-**Dependencies:** Marketplace Core, Provider Registry
+**Dependencies:** 
+- All other processes (for monitoring and health checks)
 
-**Technology Stack:** Lua (AO Process), statistical analysis algorithms
+**Technology Stack:** 
+- Lua 5.3+ for health monitoring logic and metrics collection
+- AO Process State for health data persistence and historical tracking
+- Development tools integration for debugging interface access
 
-## Token Payment Handler
+## Component Diagrams
 
-**Responsibility:** Processes Primal token payments for AI inference services using AO Token Blueprint patterns
-
-**Key Interfaces:**
-- Credit-Notice processing for incoming payments
-- Debit-Notice processing for outgoing payments
-- X-prefix tag forwarding for marketplace context
-- Payment validation and authorization
-- Refund processing for failed requests
-
-**Dependencies:** AO Token Blueprint, Primal Token Process, Marketplace Core
-
-**Technology Stack:** Lua (AO Process), AO Token Blueprint handlers
-
-## Inference Provider Node.js Applications
-
-**Responsibility:** External Node.js applications that provide AI inference services and handle Credit-Notice payments from the marketplace
-
-**Key Interfaces:**
-- Credit-Notice message listener from Primal Token Process
-- AI inference processing (marketplace AI inference, OpenAI, etc.)
-- X-prefix metadata parsing and context extraction
-- Response delivery to requesting Monster Process
-- Service registration with Provider Registry
-- Health monitoring and availability reporting
-
-**Dependencies:** AO SDK, AI Service APIs (Claude, OpenAI), Provider Registry, Reputation Manager
-
-**Technology Stack:** Node.js, TypeScript, AO SDK, AI service clients
-
-**Architecture Pattern:** Event-driven microservice with AO message handling
-
-## Marketplace Service Discovery Enhancement
-
-**Responsibility:** Advanced service discovery and provider matching system that intelligently routes AI inference requests to optimal providers based on requirements, performance history, and real-time availability.
-
-**Key Interfaces:**
-- Intelligent provider matching based on service requirements and constraints
-- Dynamic provider scoring with multi-factor optimization (cost, speed, quality, reliability)
-- Real-time provider availability monitoring and failover routing
-- Historical performance analysis and trend prediction for provider selection
-- Service requirement parsing and capability matching
-- Load balancing and request distribution optimization
-
-**Service Discovery Architecture:**
-```typescript
-// Enhanced Service Discovery with Intelligent Routing
-export class MarketplaceServiceDiscovery {
-  private providerCapabilities: Map<string, ProviderCapability[]> = new Map();
-  private performanceHistory: Map<string, PerformanceData> = new Map();
-  private realTimeMetrics: Map<string, RealTimeMetrics> = new Map();
-  
-  async discoverOptimalProvider(
-    serviceRequest: ServiceRequest
-  ): Promise<ProviderSelection> {
-    // Multi-stage provider discovery process
-    const candidates = await this.findCandidateProviders(serviceRequest);
-    const scored = await this.scoreProviders(candidates, serviceRequest);
-    const optimized = await this.optimizeSelection(scored, serviceRequest);
+```mermaid
+graph TB
+    subgraph "External Agents"
+        A1[Agent 1]
+        A2[Agent 2]
+        A3[Agent N]
+    end
     
-    return {
-      primaryProvider: optimized.primary,
-      backupProviders: optimized.backups,
-      routingReason: optimized.reasoning,
-      expectedPerformance: optimized.performance,
-      costEstimate: optimized.cost,
-      fallbackStrategy: optimized.fallback
-    };
-  }
-  
-  private async findCandidateProviders(
-    request: ServiceRequest
-  ): Promise<ProviderCandidate[]> {
-    const candidates: ProviderCandidate[] = [];
+    subgraph "Core Game Components"
+        WP1[World Process 1]
+        WP2[World Process 2]
+        WPN[World Process N]
+        BP[Battle Process]
+        AR[Agent Registry]
+    end
     
-    for (const [providerId, capabilities] of this.providerCapabilities) {
-      const matchingCapabilities = capabilities.filter(cap => 
-        cap.serviceType === request.serviceType &&
-        this.meetsRequirements(cap, request.requirements)
-      );
-      
-      if (matchingCapabilities.length > 0) {
-        candidates.push({
-          providerId,
-          capabilities: matchingCapabilities,
-          availability: await this.checkProviderAvailability(providerId),
-          currentLoad: await this.getCurrentLoad(providerId)
-        });
-      }
-    }
+    subgraph "System Components"
+        HM[Health Monitor]
+    end
     
-    return candidates;
-  }
-  
-  private async scoreProviders(
-    candidates: ProviderCandidate[],
-    request: ServiceRequest
-  ): Promise<ScoredProvider[]> {
-    const scored: ScoredProvider[] = [];
+    subgraph "Development Components"
+        MT[Monitoring Tools]
+        DI[Debug Interface]
+        PM[Permamind MCP Server]
+    end
     
-    for (const candidate of candidates) {
-      const performance = this.performanceHistory.get(candidate.providerId);
-      const realTime = this.realTimeMetrics.get(candidate.providerId);
-      
-      const qualityScore = this.calculateQualityScore(performance, request);
-      const speedScore = this.calculateSpeedScore(performance, realTime, request);
-      const costScore = this.calculateCostScore(candidate, request);
-      const reliabilityScore = this.calculateReliabilityScore(performance);
-      const availabilityScore = this.calculateAvailabilityScore(candidate, realTime);
-      
-      const totalScore = (
-        qualityScore * request.weights.quality +
-        speedScore * request.weights.speed +
-        costScore * request.weights.cost +
-        reliabilityScore * request.weights.reliability +
-        availabilityScore * request.weights.availability
-      );
-      
-      scored.push({
-        candidate,
-        score: totalScore,
-        breakdown: {
-          quality: qualityScore,
-          speed: speedScore,
-          cost: costScore,
-          reliability: reliabilityScore,
-          availability: availabilityScore
-        }
-      });
-    }
+    A1 <-->|ADP Messages| WP1
+    A2 <-->|ADP Messages| WP2
+    A3 <-->|ADP Messages| WPN
     
-    return scored.sort((a, b) => b.score - a.score);
-  }
-  
-  private async optimizeSelection(
-    scored: ScoredProvider[],
-    request: ServiceRequest
-  ): Promise<OptimizedSelection> {
-    const primary = scored[0];
-    const backups = scored.slice(1, 3);
+    WP1 <-->|Battle Requests| BP
+    WP2 <-->|Battle Requests| BP
+    WPN <-->|Battle Requests| BP
     
-    return {
-      primary: primary.candidate,
-      backups: backups.map(s => s.candidate),
-      reasoning: this.generateSelectionReasoning(primary, request),
-      performance: this.predictPerformance(primary, request),
-      cost: this.calculateExpectedCost(primary, request),
-      fallback: this.createFallbackStrategy(backups, request)
-    };
-  }
-}
+    WP1 <-->|Status Updates| AR
+    WP2 <-->|Status Updates| AR
+    WPN <-->|Status Updates| AR
+    
+    AR <-->|Matchmaking| BP
+    
+    HM --> WP1
+    HM --> WP2
+    HM --> WPN
+    HM --> BP
+    HM --> AR
+    
+    MT --> HM
+    DI --> HM
+    
+    PM -->|Code Generation| WP1
+    PM -->|Code Generation| WP2
+    PM -->|Code Generation| BP
+    PM -->|Code Generation| AR
 ```
-
-**Provider Capability Matching:**
-```typescript
-// Advanced Capability Matching System
-export class ProviderCapabilityMatcher {
-  async matchCapabilities(
-    serviceType: string,
-    requirements: ServiceRequirements
-  ): Promise<CapabilityMatch[]> {
-    const availableProviders = await this.getAvailableProviders();
-    const matches: CapabilityMatch[] = [];
-    
-    for (const provider of availableProviders) {
-      const capability = provider.capabilities.find(c => c.serviceType === serviceType);
-      if (!capability) continue;
-      
-      const compatibilityScore = this.calculateCompatibilityScore(
-        capability,
-        requirements
-      );
-      
-      if (compatibilityScore > 0.7) { // Minimum compatibility threshold
-        matches.push({
-          providerId: provider.id,
-          capability,
-          compatibilityScore,
-          estimatedPerformance: await this.estimatePerformance(provider, requirements),
-          pricing: await this.calculatePricing(provider, requirements)
-        });
-      }
-    }
-    
-    return matches.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
-  }
-  
-  private calculateCompatibilityScore(
-    capability: ProviderCapability,
-    requirements: ServiceRequirements
-  ): number {
-    let score = 0;
-    let maxScore = 0;
-    
-    // Quality tier matching
-    if (requirements.qualityTier) {
-      maxScore += 0.3;
-      if (capability.supportedQualityTiers.includes(requirements.qualityTier)) {
-        score += 0.3;
-      }
-    }
-    
-    // Response time requirements
-    if (requirements.maxResponseTime) {
-      maxScore += 0.2;
-      if (capability.avgResponseTime <= requirements.maxResponseTime) {
-        score += 0.2;
-      }
-    }
-    
-    // Cost constraints
-    if (requirements.maxCost) {
-      maxScore += 0.2;
-      if (capability.pricing <= requirements.maxCost) {
-        score += 0.2;
-      }
-    }
-    
-    // Availability requirements
-    if (requirements.availabilityRequirement) {
-      maxScore += 0.15;
-      if (capability.availability >= requirements.availabilityRequirement) {
-        score += 0.15;
-      }
-    }
-    
-    // Feature compatibility
-    if (requirements.features) {
-      maxScore += 0.15;
-      const matchedFeatures = requirements.features.filter(f => 
-        capability.supportedFeatures.includes(f)
-      );
-      score += 0.15 * (matchedFeatures.length / requirements.features.length);
-    }
-    
-    return maxScore > 0 ? score / maxScore : 0;
-  }
-}
-```
-
-**Dependencies:** Provider Registry, Reputation Manager, Real-time Metrics Collector, Performance Analytics
-
-**Technology Stack:** TypeScript, AO SDK, Performance Analytics, Machine Learning Models
-
-**Architecture Pattern:** Intelligent routing with multi-factor optimization and real-time adaptation

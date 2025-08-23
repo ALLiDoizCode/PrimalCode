@@ -1,43 +1,23 @@
 # Tech Stack
 
+## Cloud Infrastructure
+- **Provider:** Arweave/AO Network
+- **Key Services:** AO Process Runtime, Arweave Storage, AO Message Router
+- **Deployment Regions:** Global (Arweave network nodes)
+
 ## Technology Stack Table
 
 | Category | Technology | Version | Purpose | Rationale |
 |----------|------------|---------|---------|-----------|
-| MCP Server Language | TypeScript | 5.0+ | MCP tool development | Type safety, excellent tooling, FastMCP compatibility |
-| MCP Framework | FastMCP | Latest | MCP server npm package | Rapid development, proven patterns, active community |
-| Monster AI Language | Teal | 0.24+ | AO process implementation | Typed Lua, development safety, professional workflow |
-| AO Process Runtime | Lua | 5.4+ | AO process execution | Native AO runtime, lightweight, proven for blockchain |
-| AI Decision Engine | Marketplace API | Latest | Monster intelligence | Multi-provider AI services, cost optimization, reliability |
-| Persistence Layer | AO Processes | Latest | Autonomous creature state | Decentralized persistence, no gas fees, true autonomy |
-| Permanent Storage | Arweave | Latest | Long-term data backup | Immutable history, decentralized, cost-effective |
-| Client Interface | Claude Desktop | Latest | Player interaction | Native MCP support, natural language interface |
-| Testing Framework | Jest | 29+ | Unit/integration testing | Industry standard, TypeScript support, comprehensive |
-| Build Tool | TypeScript Compiler | 5.0+ | Compilation | Native TypeScript support, fast compilation |
-| Package Manager | npm | 9+ | Dependency management | FastMCP compatibility, standard tooling |
-| Monitoring | Winston | 3.8+ | Logging and debugging | Structured logging, multiple transports |
-| Error Tracking | Custom | 1.0 | Error aggregation | Specialized for AO process errors |
-| Message Schema | JSON Schema | 7.0+ | AO message validation | Standardized validation, TypeScript integration |
-| API Client | Axios | 1.6+ | HTTP communication | Reliable HTTP client, interceptor support |
-| Environment Config | dotenv | 16+ | Configuration management | Standard environment variable handling |
-| Process Management | PM2 | 5.3+ | Production process management | Process monitoring, auto-restart capabilities |
-| Documentation | TypeDoc | 0.25+ | API documentation | TypeScript-native documentation generation |
-| Linting | ESLint | 8.0+ | Code quality | Standard linting, TypeScript support |
-| Formatting | Prettier | 3.0+ | Code formatting | Consistent formatting, team collaboration |
-| **Epic 5 Additions** | | | | |
-| Inference Provider Runtime | Node.js | 18.0+ | Provider applications | LTS support, async performance, container compatibility |
-| Container Platform | Docker | 24.0+ | Provider deployment | Standardized deployment, environment isolation |
-| Container Orchestration | Docker Compose | 2.20+ | Multi-provider deployment | Development orchestration, service coordination |
-| Monitoring Stack | Prometheus | 2.45+ | Metrics collection | Time-series monitoring, alerting, industry standard |
-| Cache Layer | Redis | 7.0+ | Provider performance | High-performance caching, session management |
-| AI Service Integration | OpenAI API | 1.0+ | Alternative AI provider | Competitive AI services, fallback options |
-| Load Balancing | Nginx | 1.25+ | Provider traffic distribution | High availability, request routing |
-| Process Monitoring | Prometheus Client | 15.0+ | Runtime metrics | Application metrics, performance tracking |
-| Configuration Management | Helm | 3.12+ | Kubernetes deployment | Configuration templating, version management |
-| Development Tools | Nodemon | 3.0+ | Development workflow | Auto-restart, development efficiency |
-| **AO Process Development** | | | | |
-| Teal Language | Teal | 0.24+ | AO process development | Typed Lua, compile-time safety, professional workflow |
-| Teal Compiler | Cyan | Latest | Teal compilation | Official Teal compiler, squishy integration |
-| AO Process Builder | Squishy | Latest | File amalgamation | Single-file AO process generation |
-| Lua Package Manager | LuaRocks | 3.9+ | Teal dependencies | Standard Lua package management |
-| AO Development Tools | teal-ao-starter | Latest | AO process templates | Standardized AO development workflow |
+| **Primary Language** | Lua | 5.3+ | AO process handler implementation | Native AO runtime language, optimized for process execution |
+| **Process Runtime** | AO (Arweave Operating System) | Latest | Distributed process execution | Provides persistent, verifiable compute with native state management |
+| **Message Protocol** | ADP (Arweave Data Protocol) | v1.0 | Standardized agent communication | Ensures consistent, documented interfaces for external agents |
+| **Local Development** | aolite | Latest | AO process testing framework | Enables rapid local iteration before mainnet deployment |
+| **AI Code Generation** | Permamind MCP Server | Latest | Lua process generation and tooling | Accelerates development with AO-specific code generation |
+| **Development Tools** | Claude Code + MCP | Latest | AI-assisted development environment | Integrated development workflow with specialized AO tooling |
+| **State Management** | AO Process State | Native | Persistent game state storage | Built-in AO state persistence eliminates external database needs |
+| **Inter-Process Communication** | AO Native Messaging | Native | Process-to-process communication | Leverages AO's built-in message routing for reliable communication |
+| **Testing Framework** | aolite + Custom Test Harness | Latest | Unit and integration testing | Local testing environment with mock agent interactions |
+| **Documentation** | Markdown + Mermaid | Latest | Architecture and API documentation | Standard documentation format with diagram support |
+| **Version Control** | Git | Latest | Source code management | Industry standard for collaborative development |
+| **Deployment** | Arweave Network | Native | Process deployment and hosting | Direct deployment to decentralized compute network |

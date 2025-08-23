@@ -1,247 +1,248 @@
 # Data Models
 
-## Monster
+Based on the PRD requirements for turn-based gameplay, Tuxemon collection, and battle mechanics, I've identified the core business entities that will drive our AO process state management:
 
-**Purpose:** Represents an autonomous creature with persistent state, AI personality, and environmental awareness
+## Agent
 
-**Key Attributes:**
-- id: string - Unique identifier for the monster process
-- species: string - Monster type determining base behavior patterns
-- stats: MonsterStats - Health, hunger, energy, position tracking
-- ai_personality: PersonalityTraits - Aggression, intelligence, pack tendency
-- environmental_awareness: EnvironmentalData - Detected structures, resource memory
-- primal_token_resistance: AdaptationData - Learned patterns, counter-strategies
-
-### TypeScript Interface
-
-```typescript
-interface Monster {
-  id: string;
-  species: MonsterSpecies;
-  stats: {
-    health: number;
-    hunger: number;
-    energy: number;
-    position: {
-      x: number;
-      y: number;
-      route: string;
-    };
-  };
-  ai_personality: {
-    aggression: number;
-    intelligence: number;
-    pack_tendency: number;
-  };
-  environmental_awareness: {
-    detected_structures: string[];
-    resource_memory: ResourceMemory[];
-    weather_adaptation: number;
-  };
-  primal_token_resistance: {
-    learned_patterns: Record<string, number>;
-    adaptation_history: AdaptationEvent[];
-  };
-  state: MonsterState;
-  last_decision: Date;
-}
-```
-
-### Relationships
-- Belongs to Route (1:N)
-- Communicates with other Monsters (N:N)
-- Affected by Environmental Modifications (N:N)
-- Owned by Player through Capture (N:1)
-
-## Environment
-
-**Purpose:** Manages route-level environmental state including structures, resources, and weather conditions
+**Purpose:** Represents an external autonomous agent participating in the game ecosystem
 
 **Key Attributes:**
-- route_id: string - Unique identifier for the habitat area
-- structures: EnvironmentalStructure[] - Active player modifications
-- resources: ResourcePool[] - Food, water, scent markers
-- weather_state: WeatherCondition - Current environmental conditions
-- ecosystem_balance: number - Natural vs artificial balance metric
+- agent_id: string - Unique identifier for the agent
+- world_process_id: string - Reference to agent's individual world process
+- active_tuxemon_team: array[6] - Currently active Tuxemon team (max 6 creatures)
+- position: {x: number, y: number} - Current world coordinates
+- inventory: object - Items and resources owned by agent
+- session_state: string - Current game session status (active, battling, idle)
+- battle_history: array - Record of previous battles for reputation tracking
 
-### TypeScript Interface
+**Relationships:**
+- Has many Tuxemon (owned creatures)
+- Participates in many Battles
+- Belongs to one WorldState (individual world instance)
 
-```typescript
-interface Environment {
-  route_id: string;
-  structures: EnvironmentalStructure[];
-  resources: ResourcePool[];
-  weather_state: WeatherCondition;
-  primal_token_deposits: PrimalTokenDeposit[];
-  ecosystem_balance: number;
-  last_modified: Date;
-}
-```
+## Tuxemon
 
-### Relationships
-- Contains multiple Monsters (1:N)
-- Modified by Player Actions (N:N)
-- Influences Monster Behavior (1:N)
-
-## Player
-
-**Purpose:** Tracks player progression, influence points, and ecosystem management history
+**Purpose:** Individual creatures that agents collect, train, and battle with
 
 **Key Attributes:**
-- wallet_address: string - Arweave wallet for authentication
-- primal_token_balance: number - Available resources for modifications
-- unlocked_tools: string[] - Available environmental modification tools
-- ecosystem_mastery: MasteryLevel[] - Expertise in different routes
-- capture_collection: string[] - Owned monster IDs
+- tuxemon_id: string - Unique identifier for this creature instance
+- species_id: string - Reference to Tuxemon species template
+- owner_agent_id: string - Agent that owns this creature
+- level: number - Current experience level
+- hp_current: number - Current health points
+- hp_max: number - Maximum health points
+- attack: number - Attack stat value
+- defense: number - Defense stat value
+- speed: number - Speed stat value
+- status_effects: array - Current battle status effects
+- experience_points: number - Total XP earned
 
-### TypeScript Interface
+**Relationships:**
+- Belongs to one Agent (owner)
+- Participates in many Battles
+- Based on one TuxemonSpecies (template)
 
-```typescript
-interface Player {
-  wallet_address: string;
-  primal_token_balance: number;
-  unlocked_tools: EnvironmentalTool[];
-  ecosystem_mastery: {
-    route_id: string;
-    mastery_level: number;
-    specialization: string;
-  }[];
-  capture_collection: string[];
-  session_history: SessionData[];
-  token_transaction_history: PrimalTokenTransaction[];
-}
+## Battle
 
-interface PrimalTokenDeposit {
-  amount: number;
-  deposited_by: string;
-  deposited_at: Date;
-  purpose: "environmental_modification" | "future_use";
-}
-
-interface PrimalTokenTransaction {
-  transaction_id: string;
-  amount: number;
-  type: "deduction" | "deposit" | "refund";
-  purpose: string;
-  timestamp: Date;
-  modification_id?: string;
-}
-```
-
-### Relationships
-- Owns multiple Captured Monsters (1:N)
-- Modifies multiple Environments (N:N)
-- Spends Primal Tokens for environmental modifications
-- Participates in Inference Marketplace (1:N)
-
-## Inference Marketplace Provider
-
-**Purpose:** Represents an AI inference service provider in the marketplace with capabilities, pricing, and reputation
+**Purpose:** Turn-based combat encounters between agents' Tuxemon teams
 
 **Key Attributes:**
-- provider_id: string - Unique identifier for the AI service provider
-- capabilities: string[] - Types of AI services offered
-- pricing: PricingModel - Token costs per service type
-- reputation: ReputationMetrics - Quality and performance indicators
-- metadata: ProviderMetadata - Additional provider information
+- battle_id: string - Unique battle identifier
+- participant_agents: array[2] - Two agents participating in battle
+- battle_state: string - Current battle phase (setup, active, resolved)
+- turn_order: array - Calculated turn sequence based on Tuxemon speed
+- current_turn: number - Active turn counter
+- battle_log: array - Complete record of all battle actions
+- victory_condition: string - How battle was resolved
+- winner_agent_id: string - Victorious agent (if resolved)
+- random_seed: number - Deterministic seed for battle calculations
 
-### TypeScript Interface
+**Relationships:**
+- Involves many Agents (participants)
+- Involves many Tuxemon (active teams)
+- Generates many BattleActions (turn log)
 
-```typescript
-interface InferenceProvider {
-  provider_id: string;
-  capabilities: string[];
-  pricing: {
-    [service_type: string]: string; // tokens per request
-  };
-  reputation: {
-    response_time_avg: number;
-    quality_score: number;
-    completion_rate: number;
-    total_requests: number;
-  };
-  metadata: {
-    last_seen: number;
-    x_tags_supported: string[];
-    description: string;
-  };
-  status: "active" | "inactive" | "suspended";
-}
-```
+## WorldState
 
-### Relationships
-- Handles multiple Inference Requests (1:N)
-- Has Reputation History (1:N)
-- Managed by Marketplace Core (N:1)
-
-## Inference Request
-
-**Purpose:** Represents a request for AI inference services with payment and context information
+**Purpose:** Individual game world instance for a single agent to eliminate concurrency issues
 
 **Key Attributes:**
-- request_id: string - Unique identifier for the inference request
-- requester: string - AO process ID making the request
-- provider_id: string - Target AI service provider
-- service_type: string - Type of AI service requested
-- context_data: any - Inference parameters and context
-- payment_amount: string - Token amount for the service
-- x_metadata: XMetadata - X-prefix forwarded tags
+- world_id: string - Unique world instance identifier
+- owner_agent_id: string - Agent that owns this world
+- terrain_map: object - 2D tile-based world representation
+- npc_positions: object - Non-player character locations
+- item_spawns: array - Available items for collection
+- encounter_zones: object - Areas where Tuxemon can be found
+- world_seed: number - Deterministic seed for world generation
+- last_updated: timestamp - State modification timestamp
 
-### TypeScript Interface
+**Relationships:**
+- Belongs to one Agent (owner)
+- Contains many ItemSpawns
+- Contains many EncounterZones
 
-```typescript
-interface InferenceRequest {
-  request_id: string;
-  requester: string;
-  provider_id: string;
-  service_type: string;
-  context_data: any;
-  payment_amount: string;
-  x_metadata: {
-    [key: string]: string; // X-prefixed tags
-  };
-  status: "pending" | "processing" | "completed" | "failed";
-  created_at: number;
-  timeout_at: number;
-}
-```
+## TuxemonSpecies
 
-### Relationships
-- Issued by Monster Process (N:1)
-- Processed by Inference Provider (N:1)
-- Tracked by Marketplace Core (N:1)
-
-## Marketplace Transaction
-
-**Purpose:** Records token transfers and AI service transactions for audit and reputation tracking
+**Purpose:** Static template data defining base characteristics for each Tuxemon species
 
 **Key Attributes:**
-- transaction_id: string - Unique identifier for the transaction
-- request_id: string - Associated inference request
-- from_process: string - Token sender (requester)
-- to_process: string - Token recipient (provider)
-- amount: string - Token amount transferred
-- service_type: string - Type of AI service
-- success: boolean - Transaction completion status
+- species_id: string - Unique species identifier (e.g., "agnite", "bamboon")
+- name: string - Display name of the species
+- type_primary: string - Primary elemental type (fire, water, earth, metal, etc.)
+- type_secondary: string? - Optional secondary type
+- base_stats: object - Base stat template {hp, attack, defense, speed}
+- evolution_chain: array - Species this can evolve from/to
+- learnable_moves: array - Moves this species can learn by level
+- capture_rate: number - Probability modifier for capture attempts
+- experience_type: string - XP curve type (fast, medium, slow)
+- sprite_assets: object - References to visual assets for display tools
 
-### TypeScript Interface
+**Relationships:**
+- Template for many Tuxemon instances
+- Part of SpeciesEvolutionChain
 
-```typescript
-interface MarketplaceTransaction {
-  transaction_id: string;
-  request_id: string;
-  from_process: string;
-  to_process: string;
-  amount: string;
-  service_type: string;
-  success: boolean;
-  timestamp: number;
-  credit_notice_sent: boolean;
-  debit_notice_sent: boolean;
-}
-```
+## ItemSpawn
 
-### Relationships
-- Associated with Inference Request (1:1)
-- Tracked by Reputation Manager (N:1)
-- Logged by Marketplace Core (N:1)
+**Purpose:** Represents collectible items available in the world environment
+
+**Key Attributes:**
+- spawn_id: string - Unique spawn point identifier
+- item_type: string - Type of item (potion, capture_device, food, etc.)
+- position: {x: number, y: number} - World coordinates
+- respawn_timer: number - Time until item respawns after collection
+- spawn_rate: number - Probability of item appearing (0.0-1.0)
+- quantity: number - Number of items available at this spawn
+- conditions: object - Requirements for spawn activation
+
+**Relationships:**
+- Belongs to one WorldState
+- References ItemTemplate (static item data)
+
+## EncounterZone
+
+**Purpose:** Defines areas where wild Tuxemon can be encountered and captured
+
+**Key Attributes:**
+- zone_id: string - Unique encounter zone identifier
+- world_area: object - Rectangular or polygon area definition
+- encounter_table: array - Species and their encounter rates
+- min_level: number - Minimum level for encountered Tuxemon
+- max_level: number - Maximum level for encountered Tuxemon
+- encounter_rate: number - Base probability per step/action
+- zone_type: string - Environment type (grassland, cave, water, etc.)
+- special_conditions: object - Time-based or event-based encounter modifiers
+
+**Relationships:**
+- Belongs to one WorldState
+- References multiple TuxemonSpecies through encounter table
+
+## BattleAction
+
+**Purpose:** Individual actions taken during battle for complete battle logging
+
+**Key Attributes:**
+- action_id: string - Unique action identifier
+- battle_id: string - Parent battle reference
+- turn_number: number - Which turn this action occurred
+- acting_agent_id: string - Agent performing the action
+- acting_tuxemon_id: string - Tuxemon performing the action
+- action_type: string - Type of action (attack, defend, switch, item, etc.)
+- target_tuxemon_id: string? - Target of the action (if applicable)
+- move_used: string? - Specific move/attack used
+- damage_dealt: number? - Damage amount (if applicable)
+- status_effects_applied: array? - Status effects applied by this action
+- random_factors: object - All random values used (for deterministic replay)
+
+**Relationships:**
+- Belongs to one Battle
+- References acting Agent and Tuxemon
+- May reference target Tuxemon
+
+## AgentRegistry
+
+**Purpose:** Central registry for agent discovery and battle matchmaking across the system
+
+**Key Attributes:**
+- registry_id: string - Unique registry instance identifier
+- active_agents: object - Map of agent_id to world_process_id for active agents
+- battle_queue: array - Agents seeking battle opponents
+- agent_metadata: object - Agent capabilities, preferences, and status information
+- matchmaking_rules: object - Configuration for battle pairing algorithms
+- last_heartbeat: object - Map of agent_id to last activity timestamp
+
+**Relationships:**
+- Tracks many Agents across all world instances
+- Facilitates Battle creation between agents
+
+## ProcessHealth
+
+**Purpose:** Monitoring and health status tracking for all AO processes in the system
+
+**Key Attributes:**
+- process_id: string - AO process identifier being monitored
+- process_type: string - Type of process (world, battle, registry, health)
+- status: string - Current health status (healthy, degraded, critical, offline)
+- last_heartbeat: timestamp - Most recent health check
+- performance_metrics: object - Response times, message throughput, error rates
+- resource_usage: object - Memory usage, computational load metrics
+- error_log: array - Recent errors and warnings
+
+**Relationships:**
+- Monitors all AO processes in the ecosystem
+- Referenced by monitoring and debugging tools
+
+## MessageRoute
+
+**Purpose:** State management for inter-process message routing and delivery tracking
+
+**Key Attributes:**
+- route_id: string - Unique message route identifier
+- source_process_id: string - Originating AO process
+- target_process_id: string - Destination AO process
+- message_type: string - Type of message being routed
+- delivery_status: string - Current delivery state (pending, delivered, failed)
+- retry_count: number - Number of delivery attempts
+- created_timestamp: timestamp - When route was established
+- delivered_timestamp: timestamp? - When message was successfully delivered
+
+**Relationships:**
+- Links source and target AO processes
+- Tracks message delivery across the system
+
+## ItemTemplate
+
+**Purpose:** Static reference data for all collectible items in the game
+
+**Key Attributes:**
+- item_id: string - Unique item type identifier
+- name: string - Display name of the item
+- category: string - Item category (healing, capture, battle, quest)
+- effects: object - Mechanical effects when used
+- usage_constraints: object - When/how item can be used
+- stack_limit: number - Maximum quantity per inventory slot
+- rarity: string - Item rarity classification
+- description: string - Item description for agents
+
+**Relationships:**
+- Template for ItemSpawn instances
+- Referenced by Agent inventory systems
+
+## MoveTemplate
+
+**Purpose:** Static reference data for all Tuxemon moves and abilities
+
+**Key Attributes:**
+- move_id: string - Unique move identifier
+- name: string - Display name of the move
+- type: string - Elemental type of the move
+- category: string - Move category (physical, special, status)
+- base_power: number - Base damage value
+- accuracy: number - Hit chance percentage
+- pp_cost: number - Power points consumed per use
+- target_type: string - Who can be targeted (self, enemy, ally, all)
+- effects: array - Status effects or special mechanics
+- learn_requirements: object - Level or conditions needed to learn
+
+**Relationships:**
+- Referenced by TuxemonSpecies.learnable_moves
+- Used in BattleAction.move_used tracking

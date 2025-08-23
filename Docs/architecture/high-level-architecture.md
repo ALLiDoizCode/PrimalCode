@@ -2,168 +2,98 @@
 
 ## Technical Summary
 
-PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP npm package** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. 
+The Tuxemon AO Process system employs a **process-based microservices architecture** built entirely on Arweave's AO (Arweave Operating System) infrastructure. Individual AO processes handle discrete game systems (world management, battle resolution, agent registration) that communicate via inter-process messages using ADP-compliant JSON protocols. The architecture prioritizes **agent-native design** where autonomous agents interact through structured message handlers rather than traditional user interfaces, enabling complex strategic gameplay through verifiable, persistent on-chain computations. This design directly supports the PRD's goal of creating the first gaming platform specifically optimized for autonomous agent research and competition.
 
-**Epic 4 Enhancement:** The architecture now includes an **AI Inference Marketplace** that enables autonomous processes to request AI inference services by transferring Primal tokens to providers, with automated registry and reputation management. This creates a token-based economy for AI services while maintaining the core autonomous creature experience.
+## High Level Overview
 
-This architecture creates a truly unique gaming experience that combines decentralized autonomous agents with natural language interaction patterns and a distributed AI services economy.
+**Architectural Style**: **AO Process-Based Microservices**  
+Each game system operates as an independent AO process with dedicated state management and message handling capabilities.
 
-## Platform and Infrastructure Choice
+**Repository Structure**: **Monorepo** (per PRD)  
+All AO processes, shared utilities, testing infrastructure, and development tooling maintained in a single repository for coordinated development and deployment.
 
-**Platform:** Hybrid Cloud + Arweave/AO Network
+**Service Architecture**: **Individual World Instances + Shared Battle Process** (per PRD)
+- Separate AO processes for each agent's world state to eliminate concurrency complexity
+- Centralized battle resolution process that agents from different worlds connect to for combat
+- Event-driven state synchronization between processes using AO's native message passing
 
-**Key Services:**
-- **MCP Server Hosting:** AWS/Vercel with auto-scaling capabilities
-- **Autonomous Processes:** AO Runtime on Arweave network
-- **AI Integration:** Marketplace API with intelligent fallback systems
-- **Monitoring:** CloudWatch + Custom AO process health monitoring
-- **Storage:** AO process state + Arweave permanent backup
+**Primary Interaction Flow**:
+1. External agents connect to individual world process instances
+2. Agents perform movement, exploration, and Tuxemon collection within their world
+3. When combat is initiated, agents connect to shared battle process
+4. Battle results propagate back to individual world processes for state updates
 
-**Deployment Host and Regions:** 
-- Primary: US-East (Virginia) for low latency to marketplace providers
-- Secondary: EU-West (Ireland) for global accessibility
-- AO Network: Global decentralized deployment
+**Key Architectural Decisions**:
+- **Agent-First Design**: All interfaces optimized for programmatic interaction over human-centric UIs
+- **Deterministic Gameplay**: All random number generation uses seeded algorithms for agent predictability
+- **Persistent Game History**: Complete action history maintained through AO process state persistence
+- **Inter-Process Communication**: Native AO message passing rather than external communication protocols
 
-## Repository Structure
-
-**Structure:** Monorepo with specialized MCP + AO architecture
-
-**Monorepo Tool:** npm workspaces (lightweight, FastMCP compatible)
-
-**Package Organization:**
-- `src/` - MCP server implementation
-- `ao-processes/` - Lua-based monster and environment processes
-- `packages/shared/` - TypeScript types shared between MCP tools
-- `docs/` - Architecture and API documentation
-- `scripts/` - Deployment and AO process management utilities
-
-## High Level Architecture Diagram
+## High Level Project Diagram
 
 ```mermaid
 graph TB
-    subgraph "Player Interface Layer"
-        CD[Claude Desktop]
-        AC[Other AI Clients]
-        WEB[Web MCP Clients]
+    subgraph "External Agents"
+        A1[Agent 1]
+        A2[Agent 2] 
+        A3[Agent N]
     end
     
-    subgraph "MCP Server Layer"
-        MCP[FastMCP Server]
-        
-        subgraph "MCP Tools"
-            OBS[Ecosystem Observer]
-            MOD[Environment Modifier]
-            ANA[Monster Analyzer]
-            CAP[Capture Mechanics]
-            NAV[Route Navigator]
-            INF[Primal Token Tracker]
-            MARKET[Inference Marketplace]
-        end
-        
-        subgraph "Integration Layer"
-            AO_CLIENT[AO Client]
-            AI_CLIENT[AI Integration]
-            CACHE[Decision Cache]
-        end
+    subgraph "Individual World Processes"
+        W1[World Process 1]
+        W2[World Process 2]
+        WN[World Process N]
     end
     
-    subgraph "AO Process Layer"
-        MP1[Monster Process 1]
-        MP2[Monster Process 2]
-        MP3[Monster Process N]
-        ENV[Environment Manager]
-        PLY[Player State Process]
-        MARKETPLACE[Marketplace Core]
-        REGISTRY[Provider Registry]
-        REPUTATION[Reputation Manager]
-        
-        subgraph "Process Communication"
-            MSG[Message Bus]
-            COORD[Coordination Layer]
-        end
+    subgraph "Shared Game Services"
+        BP[Battle Process]
+        AR[Agent Registry]
     end
     
-    subgraph "AI Decision Layer"
-        API[marketplace AI inference]
-        FALLBACK[Rule-based Fallback]
-        STATIC[Static Behaviors]
+    subgraph "Development Tools"
+        MT[Monitoring Tools]
+        DT[Debug Interface]
+        PM[Permamind MCP Server]
     end
     
-    subgraph "Arweave Network"
-        AO[AO Runtime]
-        AR[Permanent Storage]
-        BACKUP[State Backup]
-    end
+    A1 <-->|ADP Messages| W1
+    A2 <-->|ADP Messages| W2
+    A3 <-->|ADP Messages| WN
     
-    CD --> MCP
-    AC --> MCP
-    WEB --> MCP
+    W1 <-->|Battle Requests| BP
+    W2 <-->|Battle Requests| BP
+    WN <-->|Battle Requests| BP
     
-    MCP --> OBS
-    MCP --> MOD
-    MCP --> ANA
-    MCP --> CAP
-    MCP --> NAV
-    MCP --> INF
-    MCP --> MARKET
+    W1 --> AR
+    W2 --> AR
+    WN --> AR
     
-    OBS --> AO_CLIENT
-    MOD --> AO_CLIENT
-    ANA --> AO_CLIENT
-    CAP --> AO_CLIENT
-    NAV --> AO_CLIENT
-    INF --> AO_CLIENT
-    MARKET --> AO_CLIENT
+    MT --> W1
+    MT --> W2 
+    MT --> BP
+    MT --> AR
     
-    AO_CLIENT --> MP1
-    AO_CLIENT --> MP2
-    AO_CLIENT --> MP3
-    AO_CLIENT --> ENV
-    AO_CLIENT --> PLY
-    AO_CLIENT --> MARKETPLACE
-    AO_CLIENT --> REGISTRY
-    AO_CLIENT --> REPUTATION
-    
-    MP1 --> MSG
-    MP2 --> MSG
-    MP3 --> MSG
-    ENV --> MSG
-    PLY --> MSG
-    MARKETPLACE --> MSG
-    REGISTRY --> MSG
-    REPUTATION --> MSG
-    
-    MSG --> COORD
-    
-    MP1 --> AI_CLIENT
-    MP2 --> AI_CLIENT
-    MP3 --> AI_CLIENT
-    
-    AI_CLIENT --> API
-    AI_CLIENT --> CACHE
-    API --> FALLBACK
-    FALLBACK --> STATIC
-    
-    MP1 --> AO
-    MP2 --> AO
-    MP3 --> AO
-    ENV --> AO
-    PLY --> AO
-    MARKETPLACE --> AO
-    REGISTRY --> AO
-    REPUTATION --> AO
-    
-    AO --> AR
-    AO --> BACKUP
+    PM -->|Code Generation| W1
+    PM -->|Code Generation| W2
+    PM -->|Code Generation| BP
 ```
 
-## Architectural Patterns
+## Architectural and Design Patterns
 
-- **Conversational Interface Pattern:** Natural language tool interfaces for complex ecosystem management - _Rationale:_ Enables intuitive interaction with complex autonomous systems without traditional UI complexity
-- **Autonomous Agent Pattern:** Independent AO processes with persistent state and decision-making - _Rationale:_ Creates truly autonomous creatures that operate independently of player presence
-- **Multi-tier Decision Fallback:** Hierarchical AI decision system with graceful degradation - _Rationale:_ Ensures system reliability while maintaining intelligent behavior under various conditions
-- **Event-Driven Communication:** AO message passing for inter-process coordination - _Rationale:_ Enables complex creature interactions while maintaining process isolation
-- **Decentralized Persistence:** State management through AO processes with Arweave backup - _Rationale:_ Provides permanent, tamper-proof game state without traditional database costs
-- **Tool-Based Architecture:** MCP tools as primary interface abstraction - _Rationale:_ Standardizes natural language interactions while maintaining extensibility
-- **Token-Based Marketplace Pattern:** AO Token Blueprint with Credit-Notice/Debit-Notice handlers - _Rationale:_ Creates organic economic activity through AI inference service trading
-- **X-Prefix Forwarding Pattern:** Extensible metadata passing through token transfers - _Rationale:_ Enables contextual information flow in marketplace transactions
+**AO Process Communication Pattern**: Native message passing between AO processes for battle coordination and state synchronization.  
+_Rationale:_ Leverages AO's built-in messaging system for reliable inter-process communication without external dependencies.
+
+**Individual Instance Pattern**: Separate world processes per agent to eliminate concurrency complexity.  
+_Rationale:_ Simplifies game logic by avoiding multi-agent collision detection and state conflicts within single processes.
+
+**Shared Service Pattern**: Centralized battle process for fair, verifiable combat between agents from different worlds.  
+_Rationale:_ Ensures battle fairness and enables cross-world agent competition while maintaining individual world isolation.
+
+**Repository Pattern**: Abstract data access through AO process state management handlers.  
+_Rationale:_ Enables consistent state operations and simplifies testing by encapsulating AO-specific state patterns.
+
+**ADP Message Protocol**: Standardized JSON message structures for all external agent interactions.  
+_Rationale:_ Provides predictable, documented interfaces that agents can rely on regardless of implementation language.
+
+**Event-Driven State Synchronization**: Asynchronous state updates between processes using AO message events.  
+_Rationale:_ Maintains consistency across distributed game processes while supporting agent autonomy and parallel execution.

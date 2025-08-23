@@ -1,3190 +1,1008 @@
-# PrimalCode Fullstack Architecture Document
+# Tuxemon AO Process Architecture Document
 
 ## Introduction
 
-This document outlines the complete fullstack architecture for PrimalCode, including backend systems, frontend implementation, and their integration. It serves as the single source of truth for AI-driven development, ensuring consistency across the entire technology stack.
+This document outlines the overall project architecture for Tuxemon AO Process, including backend systems, shared services, and non-UI specific concerns. Its primary goal is to serve as the guiding architectural blueprint for AI-driven development, ensuring consistency and adherence to chosen patterns and technologies.
 
-This unified approach combines what would traditionally be separate backend and frontend architecture documents, streamlining the development process for modern fullstack applications where these concerns are increasingly intertwined.
+**Relationship to Frontend Architecture:**
+If the project includes a significant user interface, a separate Frontend Architecture Document will detail the frontend-specific design and MUST be used in conjunction with this document. Core technology stack choices documented herein (see "Tech Stack") are definitive for the entire project, including any frontend components.
 
-### Starter Template or Existing Project
+## Starter Template or Existing Project
 
-**Base Framework:** FastMCP npm package (https://www.npmjs.com/package/fastmcp)
+Based on the PRD analysis and technical requirements, this project builds on existing AO (Arweave Operating System) development patterns with specialized AI-assisted tooling. The technical foundation leverages:
 
-The project leverages FastMCP as the foundation for MCP server development, providing:
-- Pre-configured TypeScript setup optimized for MCP tool development
-- Standardized project structure for conversational AI interfaces
-- Built-in MCP protocol handling and Claude Desktop integration
-- Proven patterns for natural language tool development
+- **Permamind MCP Server**: AI-powered AO development tools including `generateluaprocess`, `queryPermawebdocs`, and other AO domain-specific capabilities for automated code generation and documentation access
+- **AO Process Templates**: Standard AO process patterns enhanced by AI-generated handlers and state management logic
+- **aolite Testing Framework**: Local development environment for AO process testing and validation
+- **ADP v1.0 Compliance**: Arweave Data Protocol specification for standardized message interfaces, with AI assistance for ensuring compliance
+- **Existing Tuxemon Assets**: Open-source Pokemon-inspired game mechanics and creature data as reference for game logic implementation
 
-This choice constrains the architecture to TypeScript-based MCP server patterns while enabling rapid development of conversational ecosystem management tools.
+The architecture will build upon AO's native process communication patterns enhanced by AI-assisted development workflows. The permamind MCP server operates as a separate development tool alongside aolite, providing:
 
-### Change Log
+- **Hybrid Code Generation**: Both full process generation and targeted component creation for game handlers
+- **Development-Time Documentation**: Real-time access to Arweave/AO documentation during development phases
+- **Parallel Workflow**: MCP server tools complement rather than replace aolite testing environment
 
+This approach enables rapid prototyping of complex game mechanics while maintaining full control over final implementations.
+
+## Change Log
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
-| 2025-07-15 | 1.0 | Initial architecture document creation | Winston (Architect) |
-| 2025-07-15 | 1.1 | Added Inference Marketplace (Epic 4) architecture | Winston (Architect) |
-| 2025-07-15 | 1.2 | Added Node.js Inference Provider architecture and Credit-Notice flow | Winston (Architect) |
+| 2025-08-23 | v1.0 | Initial architecture document | Winston (Architect Agent) |
 
 ## High Level Architecture
 
 ### Technical Summary
 
-PrimalCode implements a **conversational MCP server architecture** where players interact with autonomous AI creatures through natural language commands via Claude Desktop. The system leverages **AO processes** for persistent, autonomous monster behavior, with each creature running as an independent process on the Arweave network. The **FastMCP npm package** provides the bridge between AI clients and the creature ecosystem, enabling rich text-based ecosystem management without traditional UI complexity. 
+The Tuxemon AO Process system employs a **process-based microservices architecture** built entirely on Arweave's AO (Arweave Operating System) infrastructure. Individual AO processes handle discrete game systems (world management, battle resolution, agent registration) that communicate via inter-process messages using ADP-compliant JSON protocols. The architecture prioritizes **agent-native design** where autonomous agents interact through structured message handlers rather than traditional user interfaces, enabling complex strategic gameplay through verifiable, persistent on-chain computations. This design directly supports the PRD's goal of creating the first gaming platform specifically optimized for autonomous agent research and competition.
 
-**Epic 4 Enhancement:** The architecture now includes an **AI Inference Marketplace** that enables autonomous processes to request AI inference services by transferring Primal tokens to providers, with automated registry and reputation management. This creates a token-based economy for AI services while maintaining the core autonomous creature experience.
+### High Level Overview
 
-This architecture creates a truly unique gaming experience that combines decentralized autonomous agents with natural language interaction patterns and a distributed AI services economy.
+**Architectural Style**: **AO Process-Based Microservices**  
+Each game system operates as an independent AO process with dedicated state management and message handling capabilities.
 
-### Platform and Infrastructure Choice
+**Repository Structure**: **Monorepo** (per PRD)  
+All AO processes, shared utilities, testing infrastructure, and development tooling maintained in a single repository for coordinated development and deployment.
 
-**Platform:** Hybrid Cloud + Arweave/AO Network
+**Service Architecture**: **Individual World Instances + Shared Battle Process** (per PRD)
+- Separate AO processes for each agent's world state to eliminate concurrency complexity
+- Centralized battle resolution process that agents from different worlds connect to for combat
+- Event-driven state synchronization between processes using AO's native message passing
 
-**Key Services:**
-- **MCP Server Hosting:** AWS/Vercel with auto-scaling capabilities
-- **Autonomous Processes:** AO Runtime on Arweave network
-- **AI Integration:** Marketplace AI inference with intelligent fallback systems
-- **Monitoring:** CloudWatch + Custom AO process health monitoring
-- **Storage:** AO process state + Arweave permanent backup
+**Primary Interaction Flow**:
+1. External agents connect to individual world process instances
+2. Agents perform movement, exploration, and Tuxemon collection within their world
+3. When combat is initiated, agents connect to shared battle process
+4. Battle results propagate back to individual world processes for state updates
 
-**Deployment Host and Regions:** 
-- Primary: US-East (Virginia) for low latency to marketplace AI inference
-- Secondary: EU-West (Ireland) for global accessibility
-- AO Network: Global decentralized deployment
+**Key Architectural Decisions**:
+- **Agent-First Design**: All interfaces optimized for programmatic interaction over human-centric UIs
+- **Deterministic Gameplay**: All random number generation uses seeded algorithms for agent predictability
+- **Persistent Game History**: Complete action history maintained through AO process state persistence
+- **Inter-Process Communication**: Native AO message passing rather than external communication protocols
 
-### Repository Structure
-
-**Structure:** Monorepo with specialized MCP + AO architecture
-
-**Monorepo Tool:** npm workspaces (lightweight, FastMCP compatible)
-
-**Package Organization:**
-- `src/` - MCP server implementation
-- `ao-processes/` - Lua-based monster and environment processes
-- `packages/shared/` - TypeScript types shared between MCP tools
-- `docs/` - Architecture and API documentation
-- `scripts/` - Deployment and AO process management utilities
-
-### High Level Architecture Diagram
+### High Level Project Diagram
 
 ```mermaid
 graph TB
-    subgraph "Player Interface Layer"
-        CD[Claude Desktop]
-        AC[Other AI Clients]
-        WEB[Web MCP Clients]
+    subgraph "External Agents"
+        A1[Agent 1]
+        A2[Agent 2] 
+        A3[Agent N]
     end
     
-    subgraph "MCP Server Layer"
-        MCP[FastMCP Server]
-        
-        subgraph "MCP Tools"
-            OBS[Ecosystem Observer]
-            MOD[Environment Modifier]
-            ANA[Monster Analyzer]
-            CAP[Capture Mechanics]
-            NAV[Route Navigator]
-            INF[Influence Tracker]
-            MARKET[Inference Marketplace]
-        end
-        
-        subgraph "Integration Layer"
-            AO_CLIENT[AO Client]
-            AI_CLIENT[AI Integration]
-            CACHE[Decision Cache]
-        end
+    subgraph "Individual World Processes"
+        W1[World Process 1]
+        W2[World Process 2]
+        WN[World Process N]
     end
     
-    subgraph "AO Process Layer"
-        MP1[Monster Process 1]
-        MP2[Monster Process 2]
-        MP3[Monster Process N]
-        ENV[Environment Manager]
-        PLY[Player State Process]
-        MARKETPLACE[Marketplace Core]
-        REGISTRY[Provider Registry]
-        REPUTATION[Reputation Manager]
-        
-        subgraph "Process Communication"
-            MSG[Message Bus]
-            COORD[Coordination Layer]
-        end
+    subgraph "Shared Game Services"
+        BP[Battle Process]
+        AR[Agent Registry]
     end
     
-    subgraph "AI Decision Layer"
-        API[Marketplace AI Inference]
-        FALLBACK[Rule-based Fallback]
-        STATIC[Static Behaviors]
+    subgraph "Development Tools"
+        MT[Monitoring Tools]
+        DT[Debug Interface]
+        PM[Permamind MCP Server]
     end
     
-    subgraph "Arweave Network"
-        AO[AO Runtime]
-        AR[Permanent Storage]
-        BACKUP[State Backup]
-    end
+    A1 <-->|ADP Messages| W1
+    A2 <-->|ADP Messages| W2
+    A3 <-->|ADP Messages| WN
     
-    CD --> MCP
-    AC --> MCP
-    WEB --> MCP
+    W1 <-->|Battle Requests| BP
+    W2 <-->|Battle Requests| BP
+    WN <-->|Battle Requests| BP
     
-    MCP --> OBS
-    MCP --> MOD
-    MCP --> ANA
-    MCP --> CAP
-    MCP --> NAV
-    MCP --> INF
-    MCP --> MARKET
+    W1 --> AR
+    W2 --> AR
+    WN --> AR
     
-    OBS --> AO_CLIENT
-    MOD --> AO_CLIENT
-    ANA --> AO_CLIENT
-    CAP --> AO_CLIENT
-    NAV --> AO_CLIENT
-    INF --> AO_CLIENT
-    MARKET --> AO_CLIENT
+    MT --> W1
+    MT --> W2 
+    MT --> BP
+    MT --> AR
     
-    AO_CLIENT --> MP1
-    AO_CLIENT --> MP2
-    AO_CLIENT --> MP3
-    AO_CLIENT --> ENV
-    AO_CLIENT --> PLY
-    AO_CLIENT --> MARKETPLACE
-    AO_CLIENT --> REGISTRY
-    AO_CLIENT --> REPUTATION
-    
-    MP1 --> MSG
-    MP2 --> MSG
-    MP3 --> MSG
-    ENV --> MSG
-    PLY --> MSG
-    MARKETPLACE --> MSG
-    REGISTRY --> MSG
-    REPUTATION --> MSG
-    
-    MSG --> COORD
-    
-    MP1 --> AI_CLIENT
-    MP2 --> AI_CLIENT
-    MP3 --> AI_CLIENT
-    
-    AI_CLIENT --> API
-    AI_CLIENT --> CACHE
-    API --> FALLBACK
-    FALLBACK --> STATIC
-    
-    MP1 --> AO
-    MP2 --> AO
-    MP3 --> AO
-    ENV --> AO
-    PLY --> AO
-    MARKETPLACE --> AO
-    REGISTRY --> AO
-    REPUTATION --> AO
-    
-    AO --> AR
-    AO --> BACKUP
+    PM -->|Code Generation| W1
+    PM -->|Code Generation| W2
+    PM -->|Code Generation| BP
 ```
 
-### Architectural Patterns
+### Architectural and Design Patterns
 
-- **Conversational Interface Pattern:** Natural language tool interfaces for complex ecosystem management - _Rationale:_ Enables intuitive interaction with complex autonomous systems without traditional UI complexity
-- **Autonomous Agent Pattern:** Independent AO processes with persistent state and decision-making - _Rationale:_ Creates truly autonomous creatures that operate independently of player presence
-- **Multi-tier Decision Fallback:** Hierarchical AI decision system with graceful degradation - _Rationale:_ Ensures system reliability while maintaining intelligent behavior under various conditions
-- **Event-Driven Communication:** AO message passing for inter-process coordination - _Rationale:_ Enables complex creature interactions while maintaining process isolation
-- **Decentralized Persistence:** State management through AO processes with Arweave backup - _Rationale:_ Provides permanent, tamper-proof game state without traditional database costs
-- **Tool-Based Architecture:** MCP tools as primary interface abstraction - _Rationale:_ Standardizes natural language interactions while maintaining extensibility
-- **Token-Based Marketplace Pattern:** AO Token Blueprint with Credit-Notice/Debit-Notice handlers - _Rationale:_ Creates organic economic activity through AI inference service trading
-- **X-Prefix Forwarding Pattern:** Extensible metadata passing through token transfers - _Rationale:_ Enables contextual information flow in marketplace transactions
+**AO Process Communication Pattern**: Native message passing between AO processes for battle coordination and state synchronization.  
+_Rationale:_ Leverages AO's built-in messaging system for reliable inter-process communication without external dependencies.
+
+**Individual Instance Pattern**: Separate world processes per agent to eliminate concurrency complexity.  
+_Rationale:_ Simplifies game logic by avoiding multi-agent collision detection and state conflicts within single processes.
+
+**Shared Service Pattern**: Centralized battle process for fair, verifiable combat between agents from different worlds.  
+_Rationale:_ Ensures battle fairness and enables cross-world agent competition while maintaining individual world isolation.
+
+**Repository Pattern**: Abstract data access through AO process state management handlers.  
+_Rationale:_ Enables consistent state operations and simplifies testing by encapsulating AO-specific state patterns.
+
+**ADP Message Protocol**: Standardized JSON message structures for all external agent interactions.  
+_Rationale:_ Provides predictable, documented interfaces that agents can rely on regardless of implementation language.
+
+**Event-Driven State Synchronization**: Asynchronous state updates between processes using AO message events.  
+_Rationale:_ Maintains consistency across distributed game processes while supporting agent autonomy and parallel execution.
 
 ## Tech Stack
+
+### Cloud Infrastructure
+- **Provider:** Arweave/AO Network
+- **Key Services:** AO Process Runtime, Arweave Storage, AO Message Router
+- **Deployment Regions:** Global (Arweave network nodes)
 
 ### Technology Stack Table
 
 | Category | Technology | Version | Purpose | Rationale |
 |----------|------------|---------|---------|-----------|
-| MCP Server Language | TypeScript | 5.0+ | MCP tool development | Type safety, excellent tooling, FastMCP compatibility |
-| MCP Framework | FastMCP | Latest | MCP server npm package | Rapid development, proven patterns, active community |
-| Monster AI Language | Lua | 5.4+ | AO process implementation | Native AO language, lightweight, proven for blockchain |
-| AI Decision Engine | Marketplace AI Inference | 3.5+ | Monster intelligence | Superior reasoning, context awareness, cost-effective |
-| Persistence Layer | AO Processes | Latest | Autonomous creature state | Decentralized persistence, no gas fees, true autonomy |
-| Permanent Storage | Arweave | Latest | Long-term data backup | Immutable history, decentralized, cost-effective |
-| Client Interface | Claude Desktop | Latest | Player interaction | Native MCP support, natural language interface |
-| Testing Framework | Jest | 29+ | Unit/integration testing | Industry standard, TypeScript support, comprehensive |
-| Build Tool | TypeScript Compiler | 5.0+ | Compilation | Native TypeScript support, fast compilation |
-| Package Manager | npm | 9+ | Dependency management | FastMCP compatibility, standard tooling |
-| Monitoring | Winston | 3.8+ | Logging and debugging | Structured logging, multiple transports |
-| Error Tracking | Custom | 1.0 | Error aggregation | Specialized for AO process errors |
-| Message Schema | JSON Schema | 7.0+ | AO message validation | Standardized validation, TypeScript integration |
-| API Client | Axios | 1.6+ | HTTP communication | Reliable HTTP client, interceptor support |
-| Environment Config | dotenv | 16+ | Configuration management | Standard environment variable handling |
-| Process Management | PM2 | 5.3+ | Production process management | Process monitoring, auto-restart capabilities |
-| Documentation | TypeDoc | 0.25+ | API documentation | TypeScript-native documentation generation |
-| Linting | ESLint | 8.0+ | Code quality | Standard linting, TypeScript support |
-| Formatting | Prettier | 3.0+ | Code formatting | Consistent formatting, team collaboration |
-| **Epic 5 Additions** | | | | |
-| Inference Provider Runtime | Node.js | 18.0+ | Provider applications | LTS support, async performance, container compatibility |
-| Container Platform | Docker | 24.0+ | Provider deployment | Standardized deployment, environment isolation |
-| Container Orchestration | Docker Compose | 2.20+ | Multi-provider deployment | Development orchestration, service coordination |
-| Monitoring Stack | Prometheus | 2.45+ | Metrics collection | Time-series monitoring, alerting, industry standard |
-| Cache Layer | Redis | 7.0+ | Provider performance | High-performance caching, session management |
-| AI Service Integration | OpenAI API | 1.0+ | Alternative AI provider | Competitive AI services, fallback options |
-| Load Balancing | Nginx | 1.25+ | Provider traffic distribution | High availability, request routing |
-| Process Monitoring | Prometheus Client | 15.0+ | Runtime metrics | Application metrics, performance tracking |
-| Configuration Management | Helm | 3.12+ | Kubernetes deployment | Configuration templating, version management |
-| Development Tools | Nodemon | 3.0+ | Development workflow | Auto-restart, development efficiency |
+| **Primary Language** | Lua | 5.3+ | AO process handler implementation | Native AO runtime language, optimized for process execution |
+| **Process Runtime** | AO (Arweave Operating System) | Latest | Distributed process execution | Provides persistent, verifiable compute with native state management |
+| **Message Protocol** | ADP (Arweave Data Protocol) | v1.0 | Standardized agent communication | Ensures consistent, documented interfaces for external agents |
+| **Local Development** | aolite | Latest | AO process testing framework | Enables rapid local iteration before mainnet deployment |
+| **AI Code Generation** | Permamind MCP Server | Latest | Lua process generation and tooling | Accelerates development with AO-specific code generation |
+| **Development Tools** | Claude Code + MCP | Latest | AI-assisted development environment | Integrated development workflow with specialized AO tooling |
+| **State Management** | AO Process State | Native | Persistent game state storage | Built-in AO state persistence eliminates external database needs |
+| **Inter-Process Communication** | AO Native Messaging | Native | Process-to-process communication | Leverages AO's built-in message routing for reliable communication |
+| **Testing Framework** | aolite + Custom Test Harness | Latest | Unit and integration testing | Local testing environment with mock agent interactions |
+| **Documentation** | Markdown + Mermaid | Latest | Architecture and API documentation | Standard documentation format with diagram support |
+| **Version Control** | Git | Latest | Source code management | Industry standard for collaborative development |
+| **Deployment** | Arweave Network | Native | Process deployment and hosting | Direct deployment to decentralized compute network |
 
 ## Data Models
 
-### Monster
+Based on the PRD requirements for turn-based gameplay, Tuxemon collection, and battle mechanics, I've identified the core business entities that will drive our AO process state management:
 
-**Purpose:** Represents an autonomous creature with persistent state, AI personality, and environmental awareness
+### Agent
 
-**Key Attributes:**
-- id: string - Unique identifier for the monster process
-- species: string - Monster type determining base behavior patterns
-- stats: MonsterStats - Health, hunger, energy, position tracking
-- ai_personality: PersonalityTraits - Aggression, intelligence, pack tendency
-- environmental_awareness: EnvironmentalData - Detected structures, resource memory
-- influence_resistance: AdaptationData - Learned patterns, counter-strategies
-
-#### TypeScript Interface
-
-```typescript
-interface Monster {
-  id: string;
-  species: MonsterSpecies;
-  stats: {
-    health: number;
-    hunger: number;
-    energy: number;
-    position: {
-      x: number;
-      y: number;
-      route: string;
-    };
-  };
-  ai_personality: {
-    aggression: number;
-    intelligence: number;
-    pack_tendency: number;
-  };
-  environmental_awareness: {
-    detected_structures: string[];
-    resource_memory: ResourceMemory[];
-    weather_adaptation: number;
-  };
-  influence_resistance: {
-    learned_patterns: Record<string, number>;
-    adaptation_history: AdaptationEvent[];
-  };
-  state: MonsterState;
-  last_decision: Date;
-}
-```
-
-#### Relationships
-- Belongs to Route (1:N)
-- Communicates with other Monsters (N:N)
-- Affected by Environmental Modifications (N:N)
-- Owned by Player through Capture (N:1)
-
-### Environment
-
-**Purpose:** Manages route-level environmental state including structures, resources, and weather conditions
+**Purpose:** Represents an external autonomous agent participating in the game ecosystem
 
 **Key Attributes:**
-- route_id: string - Unique identifier for the habitat area
-- structures: EnvironmentalStructure[] - Active player modifications
-- resources: ResourcePool[] - Food, water, scent markers
-- weather_state: WeatherCondition - Current environmental conditions
-- ecosystem_balance: number - Natural vs artificial balance metric
+- agent_id: string - Unique identifier for the agent
+- world_process_id: string - Reference to agent's individual world process
+- active_tuxemon_team: array[6] - Currently active Tuxemon team (max 6 creatures)
+- position: {x: number, y: number} - Current world coordinates
+- inventory: object - Items and resources owned by agent
+- session_state: string - Current game session status (active, battling, idle)
+- battle_history: array - Record of previous battles for reputation tracking
 
-#### TypeScript Interface
+**Relationships:**
+- Has many Tuxemon (owned creatures)
+- Participates in many Battles
+- Belongs to one WorldState (individual world instance)
 
-```typescript
-interface Environment {
-  route_id: string;
-  structures: EnvironmentalStructure[];
-  resources: ResourcePool[];
-  weather_state: WeatherCondition;
-  influence_points: InfluencePoint[];
-  ecosystem_balance: number;
-  last_modified: Date;
-}
-```
+### Tuxemon
 
-#### Relationships
-- Contains multiple Monsters (1:N)
-- Modified by Player Actions (N:N)
-- Influences Monster Behavior (1:N)
-
-### Player
-
-**Purpose:** Tracks player progression, Primal tokens, and ecosystem management history
+**Purpose:** Individual creatures that agents collect, train, and battle with
 
 **Key Attributes:**
-- wallet_address: string - Arweave wallet for authentication
-- influence_points: number - Available resources for modifications
-- unlocked_tools: string[] - Available environmental modification tools
-- ecosystem_mastery: MasteryLevel[] - Expertise in different routes
-- capture_collection: string[] - Owned monster IDs
+- tuxemon_id: string - Unique identifier for this creature instance
+- species_id: string - Reference to Tuxemon species template
+- owner_agent_id: string - Agent that owns this creature
+- level: number - Current experience level
+- hp_current: number - Current health points
+- hp_max: number - Maximum health points
+- attack: number - Attack stat value
+- defense: number - Defense stat value
+- speed: number - Speed stat value
+- status_effects: array - Current battle status effects
+- experience_points: number - Total XP earned
 
-#### TypeScript Interface
+**Relationships:**
+- Belongs to one Agent (owner)
+- Participates in many Battles
+- Based on one TuxemonSpecies (template)
 
-```typescript
-interface Player {
-  wallet_address: string;
-  influence_points: number;
-  unlocked_tools: EnvironmentalTool[];
-  ecosystem_mastery: {
-    route_id: string;
-    mastery_level: number;
-    specialization: string;
-  }[];
-  capture_collection: string[];
-  session_history: SessionData[];
-}
-```
+### Battle
 
-#### Relationships
-- Owns multiple Captured Monsters (1:N)
-- Modifies multiple Environments (N:N)
-- Earns Primal tokens through successful management
-- Participates in Inference Marketplace (1:N)
-
-### Inference Marketplace Provider
-
-**Purpose:** Represents an AI inference service provider in the marketplace with capabilities, pricing, and reputation
+**Purpose:** Turn-based combat encounters between agents' Tuxemon teams
 
 **Key Attributes:**
-- provider_id: string - Unique identifier for the AI service provider
-- capabilities: string[] - Types of AI services offered
-- pricing: PricingModel - Token costs per service type
-- reputation: ReputationMetrics - Quality and performance indicators
-- metadata: ProviderMetadata - Additional provider information
+- battle_id: string - Unique battle identifier
+- participant_agents: array[2] - Two agents participating in battle
+- battle_state: string - Current battle phase (setup, active, resolved)
+- turn_order: array - Calculated turn sequence based on Tuxemon speed
+- current_turn: number - Active turn counter
+- battle_log: array - Complete record of all battle actions
+- victory_condition: string - How battle was resolved
+- winner_agent_id: string - Victorious agent (if resolved)
+- random_seed: number - Deterministic seed for battle calculations
 
-#### TypeScript Interface
+**Relationships:**
+- Involves many Agents (participants)
+- Involves many Tuxemon (active teams)
+- Generates many BattleActions (turn log)
 
-```typescript
-interface InferenceProvider {
-  provider_id: string;
-  capabilities: string[];
-  pricing: {
-    [service_type: string]: string; // tokens per request
-  };
-  reputation: {
-    response_time_avg: number;
-    quality_score: number;
-    completion_rate: number;
-    total_requests: number;
-  };
-  metadata: {
-    last_seen: number;
-    x_tags_supported: string[];
-    description: string;
-  };
-  status: "active" | "inactive" | "suspended";
-}
-```
+### WorldState
 
-#### Relationships
-- Handles multiple Inference Requests (1:N)
-- Has Reputation History (1:N)
-- Managed by Marketplace Core (N:1)
-
-### Inference Request
-
-**Purpose:** Represents a request for AI inference services with payment and context information
+**Purpose:** Individual game world instance for a single agent to eliminate concurrency issues
 
 **Key Attributes:**
-- request_id: string - Unique identifier for the inference request
-- requester: string - AO process ID making the request
-- provider_id: string - Target AI service provider
-- service_type: string - Type of AI service requested
-- context_data: any - Inference parameters and context
-- payment_amount: string - Token amount for the service
-- x_metadata: XMetadata - X-prefix forwarded tags
+- world_id: string - Unique world instance identifier
+- owner_agent_id: string - Agent that owns this world
+- terrain_map: object - 2D tile-based world representation
+- npc_positions: object - Non-player character locations
+- item_spawns: array - Available items for collection
+- encounter_zones: object - Areas where Tuxemon can be found
+- world_seed: number - Deterministic seed for world generation
+- last_updated: timestamp - State modification timestamp
 
-#### TypeScript Interface
+**Relationships:**
+- Belongs to one Agent (owner)
+- Contains many ItemSpawns
+- Contains many EncounterZones
 
-```typescript
-interface InferenceRequest {
-  request_id: string;
-  requester: string;
-  provider_id: string;
-  service_type: string;
-  context_data: any;
-  payment_amount: string;
-  x_metadata: {
-    [key: string]: string; // X-prefixed tags
-  };
-  status: "pending" | "processing" | "completed" | "failed";
-  created_at: number;
-  timeout_at: number;
-}
-```
+### TuxemonSpecies
 
-#### Relationships
-- Issued by Monster Process (N:1)
-- Processed by Inference Provider (N:1)
-- Tracked by Marketplace Core (N:1)
-
-### Marketplace Transaction
-
-**Purpose:** Records token transfers and AI service transactions for audit and reputation tracking
+**Purpose:** Static template data defining base characteristics for each Tuxemon species
 
 **Key Attributes:**
-- transaction_id: string - Unique identifier for the transaction
-- request_id: string - Associated inference request
-- from_process: string - Token sender (requester)
-- to_process: string - Token recipient (provider)
-- amount: string - Token amount transferred
-- service_type: string - Type of AI service
-- success: boolean - Transaction completion status
+- species_id: string - Unique species identifier (e.g., "agnite", "bamboon")
+- name: string - Display name of the species
+- type_primary: string - Primary elemental type (fire, water, earth, metal, etc.)
+- type_secondary: string? - Optional secondary type
+- base_stats: object - Base stat template {hp, attack, defense, speed}
+- evolution_chain: array - Species this can evolve from/to
+- learnable_moves: array - Moves this species can learn by level
+- capture_rate: number - Probability modifier for capture attempts
+- experience_type: string - XP curve type (fast, medium, slow)
+- sprite_assets: object - References to visual assets for display tools
 
-#### TypeScript Interface
+**Relationships:**
+- Template for many Tuxemon instances
+- Part of SpeciesEvolutionChain
 
-```typescript
-interface MarketplaceTransaction {
-  transaction_id: string;
-  request_id: string;
-  from_process: string;
-  to_process: string;
-  amount: string;
-  service_type: string;
-  success: boolean;
-  timestamp: number;
-  credit_notice_sent: boolean;
-  debit_notice_sent: boolean;
-}
-```
+### ItemSpawn
 
-#### Relationships
-- Associated with Inference Request (1:1)
-- Tracked by Reputation Manager (N:1)
-- Logged by Marketplace Core (N:1)
+**Purpose:** Represents collectible items available in the world environment
 
-## API Specification
+**Key Attributes:**
+- spawn_id: string - Unique spawn point identifier
+- item_type: string - Type of item (potion, capture_device, food, etc.)
+- position: {x: number, y: number} - World coordinates
+- respawn_timer: number - Time until item respawns after collection
+- spawn_rate: number - Probability of item appearing (0.0-1.0)
+- quantity: number - Number of items available at this spawn
+- conditions: object - Requirements for spawn activation
 
-### MCP Tool Specification
+**Relationships:**
+- Belongs to one WorldState
+- References ItemTemplate (static item data)
 
-The API follows MCP (Model Context Protocol) tool patterns for natural language interaction:
+### EncounterZone
 
-```typescript
-// MCP Tool Schema
-interface MCPTool {
-  name: string;
-  description: string;
-  inputSchema: {
-    type: "object";
-    properties: Record<string, any>;
-    required: string[];
-  };
-}
+**Purpose:** Defines areas where wild Tuxemon can be encountered and captured
 
-// Ecosystem Observer Tool
-const observeEcosystemTool: MCPTool = {
-  name: "observe_ecosystem",
-  description: "Get detailed natural language description of current ecosystem state",
-  inputSchema: {
-    type: "object",
-    properties: {
-      route_id: { type: "string", description: "Route/habitat to observe" },
-      focus: { type: "string", description: "Specific aspect to focus on (monsters, environment, interactions)" }
-    },
-    required: ["route_id"]
-  }
-};
+**Key Attributes:**
+- zone_id: string - Unique encounter zone identifier
+- world_area: object - Rectangular or polygon area definition
+- encounter_table: array - Species and their encounter rates
+- min_level: number - Minimum level for encountered Tuxemon
+- max_level: number - Maximum level for encountered Tuxemon
+- encounter_rate: number - Base probability per step/action
+- zone_type: string - Environment type (grassland, cave, water, etc.)
+- special_conditions: object - Time-based or event-based encounter modifiers
 
-// Environment Modifier Tool
-const modifyEnvironmentTool: MCPTool = {
-  name: "modify_environment",
-  description: "Make strategic environmental changes to influence monster behavior",
-  inputSchema: {
-    type: "object",
-    properties: {
-      route_id: { type: "string", description: "Route to modify" },
-      modification_type: { type: "string", enum: ["shelter", "food", "barrier", "weather"] },
-      location: { type: "object", properties: { x: { type: "number" }, y: { type: "number" } } },
-      parameters: { type: "object", description: "Modification-specific parameters" }
-    },
-    required: ["route_id", "modification_type", "location"]
-  }
-};
+**Relationships:**
+- Belongs to one WorldState
+- References multiple TuxemonSpecies through encounter table
 
-// Inference Marketplace Tool
-const inferenceMarketplaceTool: MCPTool = {
-  name: "inference_marketplace",
-  description: "Interact with AI inference marketplace - discover providers, request services, check reputation",
-  inputSchema: {
-    type: "object",
-    properties: {
-      action: { type: "string", enum: ["discover_providers", "request_inference", "check_reputation", "view_transactions"] },
-      service_type: { type: "string", description: "Type of AI service needed" },
-      provider_id: { type: "string", description: "Specific provider ID (optional)" },
-      context_data: { type: "object", description: "Inference parameters and context" },
-      max_cost: { type: "string", description: "Maximum tokens willing to spend" }
-    },
-    required: ["action"]
-  }
-};
-```
+### BattleAction
 
-### AO Message Schemas
+**Purpose:** Individual actions taken during battle for complete battle logging
 
-Inter-process communication follows standardized message formats:
+**Key Attributes:**
+- action_id: string - Unique action identifier
+- battle_id: string - Parent battle reference
+- turn_number: number - Which turn this action occurred
+- acting_agent_id: string - Agent performing the action
+- acting_tuxemon_id: string - Tuxemon performing the action
+- action_type: string - Type of action (attack, defend, switch, item, etc.)
+- target_tuxemon_id: string? - Target of the action (if applicable)
+- move_used: string? - Specific move/attack used
+- damage_dealt: number? - Damage amount (if applicable)
+- status_effects_applied: array? - Status effects applied by this action
+- random_factors: object - All random values used (for deterministic replay)
 
-```typescript
-// Monster Decision Request
-interface MonsterDecisionMessage {
-  Action: "Make-Decision";
-  Data: {
-    monster_id: string;
-    context: {
-      current_state: MonsterState;
-      environment: EnvironmentalContext;
-      nearby_monsters: MonsterInfo[];
-      player_influences: PlayerInfluence[];
-    };
-    decision_urgency: "low" | "medium" | "high";
-  };
-}
+**Relationships:**
+- Belongs to one Battle
+- References acting Agent and Tuxemon
+- May reference target Tuxemon
 
-// Environment Modification Message
-interface EnvironmentModificationMessage {
-  Action: "Environment-Change";
-  Data: {
-    route_id: string;
-    modification: {
-      type: string;
-      location: { x: number; y: number };
-      parameters: Record<string, any>;
-      duration: number;
-    };
-    player_id: string;
-  };
-}
+### AgentRegistry
 
-// Monster Communication Message
-interface MonsterCommunicationMessage {
-  Action: "Monster-Communication";
-  Data: {
-    message_type: "territory_claim" | "threat_warning" | "resource_share";
-    sender_id: string;
-    target_id?: string;
-    content: Record<string, any>;
-    urgency: "low" | "medium" | "high";
-  };
-}
+**Purpose:** Central registry for agent discovery and battle matchmaking across the system
 
-// AI Inference Request Message
-interface AIInferenceRequestMessage {
-  Action: "AI-Inference-Request";
-  Data: {
-    request_id: string;
-    service_type: string;
-    context_data: any;
-    payment_amount: string;
-    timeout: number;
-  };
-  Tags: {
-    "X-Service-Type": string;
-    "X-Request-ID": string;
-    "X-Provider-ID": string;
-    "X-Context-Data": string;
-    "X-Quality-Tier": string;
-    "X-Timeout": string;
-  };
-}
+**Key Attributes:**
+- registry_id: string - Unique registry instance identifier
+- active_agents: object - Map of agent_id to world_process_id for active agents
+- battle_queue: array - Agents seeking battle opponents
+- agent_metadata: object - Agent capabilities, preferences, and status information
+- matchmaking_rules: object - Configuration for battle pairing algorithms
+- last_heartbeat: object - Map of agent_id to last activity timestamp
 
-// AI Inference Response Message  
-interface AIInferenceResponseMessage {
-  Action: "AI-Inference-Response";
-  Data: {
-    request_id: string;
-    inference_result: any;
-    quality_score: number;
-    response_time: number;
-  };
-  Tags: {
-    "X-Request-ID": string;
-    "X-Provider-ID": string;
-    "X-Quality-Score": string;
-  };
-}
+**Relationships:**
+- Tracks many Agents across all world instances
+- Facilitates Battle creation between agents
 
-// Provider Registration Message
-interface ProviderRegistrationMessage {
-  Action: "Provider-Registration";
-  Data: {
-    provider_id: string;
-    capabilities: string[];
-    pricing: Record<string, string>;
-    description: string;
-    x_tags_supported: string[];
-  };
-}
+### ProcessHealth
 
-// Credit-Notice Message (AO Token Blueprint)
-interface CreditNoticeMessage {
-  Action: "Credit-Notice";
-  Data: {
-    sender: string;
-    quantity: string;
-    message: string;
-  };
-  Tags: {
-    "X-Service-Type"?: string;
-    "X-Request-ID"?: string;
-    "X-Provider-ID"?: string;
-    [key: string]: string | undefined; // Additional X-prefixed tags
-  };
-}
+**Purpose:** Monitoring and health status tracking for all AO processes in the system
 
-// Debit-Notice Message (AO Token Blueprint)
-interface DebitNoticeMessage {
-  Action: "Debit-Notice";
-  Data: {
-    recipient: string;
-    quantity: string;
-    message: string;
-  };
-  Tags: {
-    "X-Service-Type"?: string;
-    "X-Request-ID"?: string;
-    "X-Provider-ID"?: string;
-    [key: string]: string | undefined; // Additional X-prefixed tags
-  };
-}
-```
+**Key Attributes:**
+- process_id: string - AO process identifier being monitored
+- process_type: string - Type of process (world, battle, registry, health)
+- status: string - Current health status (healthy, degraded, critical, offline)
+- last_heartbeat: timestamp - Most recent health check
+- performance_metrics: object - Response times, message throughput, error rates
+- resource_usage: object - Memory usage, computational load metrics
+- error_log: array - Recent errors and warnings
+
+**Relationships:**
+- Monitors all AO processes in the ecosystem
+- Referenced by monitoring and debugging tools
+
+### MessageRoute
+
+**Purpose:** State management for inter-process message routing and delivery tracking
+
+**Key Attributes:**
+- route_id: string - Unique message route identifier
+- source_process_id: string - Originating AO process
+- target_process_id: string - Destination AO process
+- message_type: string - Type of message being routed
+- delivery_status: string - Current delivery state (pending, delivered, failed)
+- retry_count: number - Number of delivery attempts
+- created_timestamp: timestamp - When route was established
+- delivered_timestamp: timestamp? - When message was successfully delivered
+
+**Relationships:**
+- Links source and target AO processes
+- Tracks message delivery across the system
+
+### ItemTemplate
+
+**Purpose:** Static reference data for all collectible items in the game
+
+**Key Attributes:**
+- item_id: string - Unique item type identifier
+- name: string - Display name of the item
+- category: string - Item category (healing, capture, battle, quest)
+- effects: object - Mechanical effects when used
+- usage_constraints: object - When/how item can be used
+- stack_limit: number - Maximum quantity per inventory slot
+- rarity: string - Item rarity classification
+- description: string - Item description for agents
+
+**Relationships:**
+- Template for ItemSpawn instances
+- Referenced by Agent inventory systems
+
+### MoveTemplate
+
+**Purpose:** Static reference data for all Tuxemon moves and abilities
+
+**Key Attributes:**
+- move_id: string - Unique move identifier
+- name: string - Display name of the move
+- type: string - Elemental type of the move
+- category: string - Move category (physical, special, status)
+- base_power: number - Base damage value
+- accuracy: number - Hit chance percentage
+- pp_cost: number - Power points consumed per use
+- target_type: string - Who can be targeted (self, enemy, ally, all)
+- effects: array - Status effects or special mechanics
+- learn_requirements: object - Level or conditions needed to learn
+
+**Relationships:**
+- Referenced by TuxemonSpecies.learnable_moves
+- Used in BattleAction.move_used tracking
 
 ## Components
 
-### FastMCP Server
+Based on our AO process-based microservices architecture and the data models above, the system is organized into discrete AO process components that handle specific game responsibilities while maintaining clear boundaries and interfaces.
 
-**Responsibility:** Hosts MCP tools and manages communication between AI clients and AO processes
+### World Process
 
-**Key Interfaces:**
-- MCP Protocol endpoints for tool execution
-- AO Process communication via message passing
-- Error handling and graceful degradation
-- Real-time ecosystem state synchronization
-
-**Dependencies:** FastMCP framework, AO Client, Winston logging
-
-**Technology Stack:** TypeScript, FastMCP npm package, WebSocket connections
-
-### AO Process Manager
-
-**Responsibility:** Handles deployment, monitoring, and communication with AO processes
+**Responsibility:** Manages individual agent world instances including movement, exploration, Tuxemon encounters, and item collection within a private game environment.
 
 **Key Interfaces:**
-- Process deployment and lifecycle management
-- Message routing between MCP server and AO processes
-- Health monitoring and automatic recovery
-- State synchronization and caching
+- `moveAgent(direction, steps)` - Handle agent movement with collision detection
+- `queryWorldState()` - Return current world state, nearby objects, and available actions
+- `encounterTuxemon(zone_id)` - Initiate wild Tuxemon encounter based on zone configuration
+- `collectItem(item_spawn_id)` - Handle item collection and inventory updates
+- `initiateBattle(target_agent_id)` - Request battle with another agent via battle process
 
-**Dependencies:** AO SDK, Arweave wallet, monitoring services
+**Dependencies:** 
+- Battle Process (for cross-world combat initiation)
+- Agent Registry (for agent discovery and status updates)
 
-**Technology Stack:** TypeScript, AO SDK, Arweave integration
+**Technology Stack:** 
+- Lua 5.3+ for AO process handlers
+- AO Process State for persistent world data storage
+- ADP v1.0 compliant message interfaces for external agent communication
 
-### Monster AI Engine
+### Battle Process
 
-**Responsibility:** Provides intelligent decision-making for autonomous creatures with fallback systems
-
-**Key Interfaces:**
-- Marketplace AI inference integration with context optimization
-- Decision caching and pattern recognition
-- Rule-based fallback for API failures
-- Behavioral adaptation and learning
-
-**Dependencies:** Marketplace AI Inference, Decision Cache, Monster State
-
-**Technology Stack:** TypeScript, Marketplace AI Inference, Redis caching
-
-### Environment Manager
-
-**Responsibility:** Manages route-level environmental state and player modifications
+**Responsibility:** Manages turn-based combat between agents from different world instances, ensuring fair and verifiable battle resolution with complete action logging.
 
 **Key Interfaces:**
-- Environmental modification processing
-- Weather system and timing control
-- Resource management and decay
-- Ecosystem balance monitoring
+- `joinBattle(agent_id, tuxemon_team)` - Add agent to battle with selected Tuxemon team
+- `submitBattleAction(action_type, move_id, target_id)` - Process agent combat actions
+- `getBattleState()` - Return current battle status, turn order, and available actions
+- `resolveTurn()` - Execute all submitted actions and calculate battle outcomes
+- `completeBattle()` - Finalize battle results and update agent world processes
 
-**Dependencies:** AO Processes, Player State, Monster Processes
+**Dependencies:** 
+- World Processes (for agent team data and result propagation)
+- Agent Registry (for participant validation)
 
-**Technology Stack:** Lua (AO Process), TypeScript (MCP integration)
+**Technology Stack:** 
+- Lua 5.3+ with deterministic random number generation for fair combat
+- AO Process State for battle state persistence and action logging
+- Inter-process AO messaging for world state synchronization
 
-### Player State Manager
+### Agent Registry Process
 
-**Responsibility:** Tracks player progress, Primal tokens, and ecosystem mastery
-
-**Key Interfaces:**
-- Wallet authentication and authorization
-- Primal token economy management
-- Progression tracking and tool unlocks
-- Session management and history
-
-**Dependencies:** Arweave wallet, Player AO Process
-
-**Technology Stack:** TypeScript, Arweave SDK, AO integration
-
-### Inference Marketplace Core
-
-**Responsibility:** Manages AI inference marketplace operations including request routing, payment processing, and provider coordination
+**Responsibility:** Central registry for agent discovery, battle matchmaking, and system-wide agent status tracking across all world instances.
 
 **Key Interfaces:**
-- AI inference request processing and routing
-- Token payment validation using Credit-Notice/Debit-Notice handlers
-- Provider discovery and capability matching
-- Request timeout and error handling
-- X-prefix metadata forwarding
+- `registerAgent(agent_id, world_process_id, capabilities)` - Register new agent in system
+- `findBattleOpponent(agent_id, preferences)` - Matchmaking for battle requests
+- `updateAgentStatus(agent_id, status)` - Update agent activity and availability
+- `queryActiveAgents()` - List all active agents and their world processes
+- `getAgentMetadata(agent_id)` - Retrieve agent capabilities and battle history
 
-**Dependencies:** AO Token Blueprint, Provider Registry, Reputation Manager, Primal Token Process
+**Dependencies:** 
+- World Processes (for agent status updates)
+- Battle Process (for battle coordination)
 
-**Technology Stack:** Lua (AO Process), AO Token Blueprint patterns
+**Technology Stack:** 
+- Lua 5.3+ for registry management and matchmaking algorithms
+- AO Process State for agent tracking and metadata storage
+- AO Native Messaging for cross-process agent status synchronization
 
-### Provider Registry
+### Health Monitor Process
 
-**Responsibility:** Maintains registry of AI inference providers with capabilities, pricing, and availability status
-
-**Key Interfaces:**
-- Provider registration and capability advertising
-- Service discovery and provider matching
-- Pricing information management
-- Provider status monitoring and health checks
-- Capability validation and testing
-
-**Dependencies:** Marketplace Core, Reputation Manager
-
-**Technology Stack:** Lua (AO Process), JSON schema validation
-
-### Reputation Manager
-
-**Responsibility:** Tracks provider performance metrics, quality scores, and reputation indicators
+**Responsibility:** System-wide health monitoring and performance tracking for all AO processes, providing debugging interfaces and operational visibility.
 
 **Key Interfaces:**
-- Response time monitoring and averaging
-- Quality score calculation and tracking
-- Completion rate statistics
-- Provider ranking and recommendation
-- Reputation history and trends
+- `healthCheck(process_id)` - Perform health check on specified process
+- `getSystemStatus()` - Return overall system health and performance metrics
+- `logError(process_id, error_details)` - Record process errors and warnings
+- `getPerformanceMetrics(time_range)` - Retrieve system performance data
+- `processHeartbeat(process_id, metrics)` - Receive periodic process status updates
 
-**Dependencies:** Marketplace Core, Provider Registry
+**Dependencies:** 
+- All other processes (for monitoring and health checks)
 
-**Technology Stack:** Lua (AO Process), statistical analysis algorithms
+**Technology Stack:** 
+- Lua 5.3+ for health monitoring logic and metrics collection
+- AO Process State for health data persistence and historical tracking
+- Development tools integration for debugging interface access
 
-### Token Payment Handler
-
-**Responsibility:** Processes Primal token payments for AI inference services using AO Token Blueprint patterns
-
-**Key Interfaces:**
-- Credit-Notice processing for incoming payments
-- Debit-Notice processing for outgoing payments
-- X-prefix tag forwarding for marketplace context
-- Payment validation and authorization
-- Refund processing for failed requests
-
-**Dependencies:** AO Token Blueprint, Primal Token Process, Marketplace Core
-
-**Technology Stack:** Lua (AO Process), AO Token Blueprint handlers
-
-### Inference Provider Node.js Applications
-
-**Responsibility:** External Node.js applications that provide AI inference services and handle Credit-Notice payments from the marketplace
-
-**Key Interfaces:**
-- Credit-Notice message listener from Primal Token Process
-- AI inference processing (marketplace AI inference, OpenAI, etc.)
-- X-prefix metadata parsing and context extraction
-- Response delivery to requesting Monster Process
-- Service registration with Provider Registry
-- Health monitoring and availability reporting
-
-**Dependencies:** AO SDK, AI Service APIs (Claude, OpenAI), Provider Registry, Reputation Manager
-
-**Technology Stack:** Node.js, TypeScript, AO SDK, AI service clients
-
-**Architecture Pattern:** Event-driven microservice with AO message handling
-
-### Marketplace Service Discovery Enhancement
-
-**Responsibility:** Advanced service discovery and provider matching system that intelligently routes AI inference requests to optimal providers based on requirements, performance history, and real-time availability.
-
-**Key Interfaces:**
-- Intelligent provider matching based on service requirements and constraints
-- Dynamic provider scoring with multi-factor optimization (cost, speed, quality, reliability)
-- Real-time provider availability monitoring and failover routing
-- Historical performance analysis and trend prediction for provider selection
-- Service requirement parsing and capability matching
-- Load balancing and request distribution optimization
-
-**Service Discovery Architecture:**
-```typescript
-// Enhanced Service Discovery with Intelligent Routing
-export class MarketplaceServiceDiscovery {
-  private providerCapabilities: Map<string, ProviderCapability[]> = new Map();
-  private performanceHistory: Map<string, PerformanceData> = new Map();
-  private realTimeMetrics: Map<string, RealTimeMetrics> = new Map();
-  
-  async discoverOptimalProvider(
-    serviceRequest: ServiceRequest
-  ): Promise<ProviderSelection> {
-    // Multi-stage provider discovery process
-    const candidates = await this.findCandidateProviders(serviceRequest);
-    const scored = await this.scoreProviders(candidates, serviceRequest);
-    const optimized = await this.optimizeSelection(scored, serviceRequest);
-    
-    return {
-      primaryProvider: optimized.primary,
-      backupProviders: optimized.backups,
-      routingReason: optimized.reasoning,
-      expectedPerformance: optimized.performance,
-      costEstimate: optimized.cost,
-      fallbackStrategy: optimized.fallback
-    };
-  }
-  
-  private async findCandidateProviders(
-    request: ServiceRequest
-  ): Promise<ProviderCandidate[]> {
-    const candidates: ProviderCandidate[] = [];
-    
-    for (const [providerId, capabilities] of this.providerCapabilities) {
-      const matchingCapabilities = capabilities.filter(cap => 
-        cap.serviceType === request.serviceType &&
-        this.meetsRequirements(cap, request.requirements)
-      );
-      
-      if (matchingCapabilities.length > 0) {
-        candidates.push({
-          providerId,
-          capabilities: matchingCapabilities,
-          availability: await this.checkProviderAvailability(providerId),
-          currentLoad: await this.getCurrentLoad(providerId)
-        });
-      }
-    }
-    
-    return candidates;
-  }
-  
-  private async scoreProviders(
-    candidates: ProviderCandidate[],
-    request: ServiceRequest
-  ): Promise<ScoredProvider[]> {
-    const scored: ScoredProvider[] = [];
-    
-    for (const candidate of candidates) {
-      const performance = this.performanceHistory.get(candidate.providerId);
-      const realTime = this.realTimeMetrics.get(candidate.providerId);
-      
-      const qualityScore = this.calculateQualityScore(performance, request);
-      const speedScore = this.calculateSpeedScore(performance, realTime, request);
-      const costScore = this.calculateCostScore(candidate, request);
-      const reliabilityScore = this.calculateReliabilityScore(performance);
-      const availabilityScore = this.calculateAvailabilityScore(candidate, realTime);
-      
-      const totalScore = (
-        qualityScore * request.weights.quality +
-        speedScore * request.weights.speed +
-        costScore * request.weights.cost +
-        reliabilityScore * request.weights.reliability +
-        availabilityScore * request.weights.availability
-      );
-      
-      scored.push({
-        candidate,
-        score: totalScore,
-        breakdown: {
-          quality: qualityScore,
-          speed: speedScore,
-          cost: costScore,
-          reliability: reliabilityScore,
-          availability: availabilityScore
-        }
-      });
-    }
-    
-    return scored.sort((a, b) => b.score - a.score);
-  }
-  
-  private async optimizeSelection(
-    scored: ScoredProvider[],
-    request: ServiceRequest
-  ): Promise<OptimizedSelection> {
-    const primary = scored[0];
-    const backups = scored.slice(1, 3);
-    
-    return {
-      primary: primary.candidate,
-      backups: backups.map(s => s.candidate),
-      reasoning: this.generateSelectionReasoning(primary, request),
-      performance: this.predictPerformance(primary, request),
-      cost: this.calculateExpectedCost(primary, request),
-      fallback: this.createFallbackStrategy(backups, request)
-    };
-  }
-}
-```
-
-**Provider Capability Matching:**
-```typescript
-// Advanced Capability Matching System
-export class ProviderCapabilityMatcher {
-  async matchCapabilities(
-    serviceType: string,
-    requirements: ServiceRequirements
-  ): Promise<CapabilityMatch[]> {
-    const availableProviders = await this.getAvailableProviders();
-    const matches: CapabilityMatch[] = [];
-    
-    for (const provider of availableProviders) {
-      const capability = provider.capabilities.find(c => c.serviceType === serviceType);
-      if (!capability) continue;
-      
-      const compatibilityScore = this.calculateCompatibilityScore(
-        capability,
-        requirements
-      );
-      
-      if (compatibilityScore > 0.7) { // Minimum compatibility threshold
-        matches.push({
-          providerId: provider.id,
-          capability,
-          compatibilityScore,
-          estimatedPerformance: await this.estimatePerformance(provider, requirements),
-          pricing: await this.calculatePricing(provider, requirements)
-        });
-      }
-    }
-    
-    return matches.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
-  }
-  
-  private calculateCompatibilityScore(
-    capability: ProviderCapability,
-    requirements: ServiceRequirements
-  ): number {
-    let score = 0;
-    let maxScore = 0;
-    
-    // Quality tier matching
-    if (requirements.qualityTier) {
-      maxScore += 0.3;
-      if (capability.supportedQualityTiers.includes(requirements.qualityTier)) {
-        score += 0.3;
-      }
-    }
-    
-    // Response time requirements
-    if (requirements.maxResponseTime) {
-      maxScore += 0.2;
-      if (capability.avgResponseTime <= requirements.maxResponseTime) {
-        score += 0.2;
-      }
-    }
-    
-    // Cost constraints
-    if (requirements.maxCost) {
-      maxScore += 0.2;
-      if (capability.pricing <= requirements.maxCost) {
-        score += 0.2;
-      }
-    }
-    
-    // Availability requirements
-    if (requirements.availabilityRequirement) {
-      maxScore += 0.15;
-      if (capability.availability >= requirements.availabilityRequirement) {
-        score += 0.15;
-      }
-    }
-    
-    // Feature compatibility
-    if (requirements.features) {
-      maxScore += 0.15;
-      const matchedFeatures = requirements.features.filter(f => 
-        capability.supportedFeatures.includes(f)
-      );
-      score += 0.15 * (matchedFeatures.length / requirements.features.length);
-    }
-    
-    return maxScore > 0 ? score / maxScore : 0;
-  }
-}
-```
-
-**Dependencies:** Provider Registry, Reputation Manager, Real-time Metrics Collector, Performance Analytics
-
-**Technology Stack:** TypeScript, AO SDK, Performance Analytics, Machine Learning Models
-
-**Architecture Pattern:** Intelligent routing with multi-factor optimization and real-time adaptation
-
-## Components Diagrams
+### Component Diagrams
 
 ```mermaid
 graph TB
-    subgraph "MCP Server Components"
-        MCP[FastMCP Server]
-        TOOLS[MCP Tools]
-        AOC[AO Client]
-        AI[AI Engine]
-        CACHE[Cache Layer]
+    subgraph "External Agents"
+        A1[Agent 1]
+        A2[Agent 2]
+        A3[Agent N]
     end
     
-    subgraph "AO Process Components"
-        MP[Monster Processes]
-        ENV[Environment Manager]
-        PLY[Player State]
-        MARKETPLACE[Marketplace Core]
-        REGISTRY[Provider Registry]
-        REPUTATION[Reputation Manager]
-        TOKEN[Token Payment Handler]
-        MSG[Message Router]
+    subgraph "Core Game Components"
+        WP1[World Process 1]
+        WP2[World Process 2]
+        WPN[World Process N]
+        BP[Battle Process]
+        AR[Agent Registry]
     end
     
-    subgraph "External Inference Providers"
-        PROVIDER1[AI Provider 1 - Node.js]
-        PROVIDER2[AI Provider 2 - Node.js]
-        PROVIDER3[AI Provider N - Node.js]
+    subgraph "System Components"
+        HM[Health Monitor]
     end
     
-    subgraph "External Services"
-        CLAUDE[Marketplace AI Inference]
-        OPENAI[OpenAI API]
-        ARWEAVE[Arweave Network]
-        CLIENTS[AI Clients]
-        PRIMAL_TOKEN[Primal Token Process]
+    subgraph "Development Components"
+        MT[Monitoring Tools]
+        DI[Debug Interface]
+        PM[Permamind MCP Server]
     end
     
-    CLIENTS --> MCP
-    MCP --> TOOLS
-    TOOLS --> AOC
-    TOOLS --> AI
-    TOOLS --> CACHE
+    A1 <-->|ADP Messages| WP1
+    A2 <-->|ADP Messages| WP2
+    A3 <-->|ADP Messages| WPN
     
-    AOC --> MSG
-    MSG --> MP
-    MSG --> ENV
-    MSG --> PLY
-    MSG --> MARKETPLACE
-    MSG --> REGISTRY
-    MSG --> REPUTATION
-    MSG --> TOKEN
+    WP1 <-->|Battle Requests| BP
+    WP2 <-->|Battle Requests| BP
+    WPN <-->|Battle Requests| BP
     
-    AI --> CLAUDE
-    AI --> CACHE
+    WP1 <-->|Status Updates| AR
+    WP2 <-->|Status Updates| AR
+    WPN <-->|Status Updates| AR
     
-    MARKETPLACE --> REGISTRY
-    MARKETPLACE --> REPUTATION
-    MARKETPLACE --> TOKEN
-    REGISTRY --> REPUTATION
-    TOKEN --> MARKETPLACE
+    AR <-->|Matchmaking| BP
     
-    %% Token Payment Flow
-    MP --> PRIMAL_TOKEN
-    PRIMAL_TOKEN --> PROVIDER1
-    PRIMAL_TOKEN --> PROVIDER2
-    PRIMAL_TOKEN --> PROVIDER3
+    HM --> WP1
+    HM --> WP2
+    HM --> WPN
+    HM --> BP
+    HM --> AR
     
-    %% Inference Provider Connections
-    PROVIDER1 --> CLAUDE
-    PROVIDER2 --> OPENAI
-    PROVIDER3 --> CLAUDE
+    MT --> HM
+    DI --> HM
     
-    PROVIDER1 --> REGISTRY
-    PROVIDER2 --> REGISTRY
-    PROVIDER3 --> REGISTRY
-    
-    PROVIDER1 --> MP
-    PROVIDER2 --> MP
-    PROVIDER3 --> MP
-    
-    MP --> ARWEAVE
-    ENV --> ARWEAVE
-    PLY --> ARWEAVE
-    MARKETPLACE --> ARWEAVE
-    REGISTRY --> ARWEAVE
-    REPUTATION --> ARWEAVE
-    TOKEN --> ARWEAVE
-    PRIMAL_TOKEN --> ARWEAVE
+    PM -->|Code Generation| WP1
+    PM -->|Code Generation| WP2
+    PM -->|Code Generation| BP
+    PM -->|Code Generation| AR
 ```
 
 ## Core Workflows
 
-### Monster Decision-Making Workflow
+The following sequence diagrams illustrate key system workflows that clarify component interactions and complex processes:
+
+### Agent World Exploration and Tuxemon Encounter
 
 ```mermaid
 sequenceDiagram
-    participant MP as Monster Process
-    participant AI as AI Engine
-    participant CLAUDE as Marketplace AI Inference
-    participant CACHE as Decision Cache
-    participant ENV as Environment
-    participant OTHER as Other Monsters
+    participant A as External Agent
+    participant WP as World Process
+    participant AR as Agent Registry
     
-    Note over MP: Decision Timer Triggers (30-60s)
-    MP->>ENV: Query environmental state
-    ENV-->>MP: Current conditions, modifications
-    MP->>OTHER: Scan for nearby monsters
-    OTHER-->>MP: Position, status, communications
-    MP->>AI: Request decision with context
-    AI->>CACHE: Check for similar situations
-    alt Cache Hit
-        CACHE-->>AI: Cached decision
-        AI-->>MP: Decision with confidence score
-    else Cache Miss
-        AI->>CLAUDE: Request intelligent decision
-        alt API Success
-            CLAUDE-->>AI: Contextual decision
-            AI->>CACHE: Store decision pattern
-        else API Failure
-            AI->>AI: Fallback to rule-based system
-        end
-        AI-->>MP: Decision with fallback indicator
-    end
-    MP->>MP: Execute decision, update state
-    MP->>OTHER: Broadcast relevant state changes
-    MP->>ENV: Report environmental interactions
+    A->>WP: moveAgent("north", 3)
+    WP->>WP: validate movement & check collision
+    WP->>WP: update agent position
+    WP-->>A: movement confirmed + new position
+    
+    A->>WP: queryWorldState()
+    WP->>WP: check encounter zones at position
+    WP-->>A: world state + encounter opportunity
+    
+    A->>WP: encounterTuxemon("grassland_zone_1")
+    WP->>WP: roll encounter based on zone config
+    WP->>WP: generate wild Tuxemon with seeded RNG
+    WP-->>A: encounter details + capture opportunity
+    
+    A->>WP: attemptCapture(item_id: "pokeball")
+    WP->>WP: calculate capture success with deterministic RNG
+    WP->>WP: add Tuxemon to agent inventory if successful
+    WP->>AR: updateAgentStatus("tuxemon_captured")
+    WP-->>A: capture result + updated team
 ```
 
-### Environmental Modification Workflow
+### Cross-World Battle Initiation and Resolution
 
 ```mermaid
 sequenceDiagram
-    participant CLIENT as AI Client
-    participant MCP as MCP Server
-    participant PLAYER as Player State
-    participant ENV as Environment
-    participant MONSTERS as Monster Processes
+    participant A1 as Agent 1
+    participant WP1 as World Process 1
+    participant AR as Agent Registry
+    participant BP as Battle Process
+    participant WP2 as World Process 2
+    participant A2 as Agent 2
     
-    CLIENT->>MCP: modify_environment tool call
-    MCP->>PLAYER: Validate Primal tokens
-    PLAYER-->>MCP: Authorization status
-    alt Insufficient Points
-        MCP-->>CLIENT: Error: insufficient resources
-    else Authorized
-        MCP->>ENV: Apply modification
-        ENV->>ENV: Update environmental state
-        ENV->>MONSTERS: Broadcast environment change
-        MONSTERS->>MONSTERS: Adapt behavior to change
-        ENV-->>MCP: Modification confirmation
-        MCP->>PLAYER: Deduct Primal tokens
-        MCP-->>CLIENT: Success with impact preview
+    A1->>WP1: initiateBattle("find_opponent")
+    WP1->>AR: requestBattleOpponent(agent_1_id, preferences)
+    AR->>AR: find suitable opponent from battle queue
+    AR-->>WP1: opponent found (agent_2_id)
+    
+    WP1->>BP: createBattle(agent_1_id, agent_2_id)
+    BP->>WP2: requestBattleParticipation(agent_2_id)
+    WP2->>A2: battleInvitation(agent_1_id, battle_id)
+    
+    A2->>WP2: acceptBattle(battle_id, selected_team)
+    WP2->>BP: joinBattle(agent_2_id, tuxemon_team)
+    A1->>WP1: confirmBattle(battle_id, selected_team)
+    WP1->>BP: joinBattle(agent_1_id, tuxemon_team)
+    
+    BP->>BP: calculate turn order based on Tuxemon speed
+    BP->>A1: battleStart(turn_order, current_state)
+    BP->>A2: battleStart(turn_order, current_state)
+    
+    loop Battle Turns
+        A1->>BP: submitBattleAction("attack", move_id, target_id)
+        A2->>BP: submitBattleAction("attack", move_id, target_id)
+        BP->>BP: resolve turn with deterministic calculations
+        BP->>A1: turnResult(battle_state, damage_dealt)
+        BP->>A2: turnResult(battle_state, damage_dealt)
     end
     
-    Note over MONSTERS: Ongoing adaptation to modification
-    MONSTERS->>MONSTERS: Learn modification patterns
-    MONSTERS->>ENV: React to environmental cues
-```
-
-### AI Inference Marketplace Workflow
-
-```mermaid
-sequenceDiagram
-    participant MONSTER as Monster Process
-    participant TOKEN as Primal Token Process
-    participant REGISTRY as Provider Registry
-    participant PROVIDER as AI Provider Node.js App
-    participant AI_SERVICE as AI Service (Claude/OpenAI)
-    participant REPUTATION as Reputation Manager
-    
-    Note over MONSTER: Monster needs AI inference for decision
-    MONSTER->>REGISTRY: Query providers for service_type
-    REGISTRY-->>MONSTER: Available providers with pricing
-    MONSTER->>MONSTER: Select provider based on cost/reputation
-    
-    MONSTER->>TOKEN: Transfer(Provider, Amount, X-Service-Type="ai-inference")
-    TOKEN->>PROVIDER: Credit-Notice(X-Service-Type, X-Request-ID, X-Context-Data)
-    TOKEN->>MONSTER: Debit-Notice(X-Service-Type, X-Request-ID)
-    
-    Note over PROVIDER: Credit-Notice received by Node.js app
-    PROVIDER->>PROVIDER: Parse X-prefix metadata
-    PROVIDER->>PROVIDER: Extract context data and service type
-    PROVIDER->>AI_SERVICE: Process AI inference request
-    
-    alt Successful Inference
-        AI_SERVICE-->>PROVIDER: AI inference results
-        PROVIDER->>MONSTER: AI-Inference-Response(results, quality_score)
-        PROVIDER->>REPUTATION: Report successful completion
-    else Timeout or Failure
-        PROVIDER->>TOKEN: Initiate refund via Transfer
-        TOKEN->>MONSTER: Credit-Notice(refund)
-        TOKEN->>PROVIDER: Debit-Notice(refund)
-        PROVIDER->>REPUTATION: Report failure
-    end
-    
-    MONSTER->>MONSTER: Use inference results for decision
-    REPUTATION->>REGISTRY: Update provider rankings
+    BP->>BP: determine battle winner
+    BP->>WP1: battleComplete(winner, experience_gained)
+    BP->>WP2: battleComplete(winner, experience_gained)
+    BP->>AR: updateAgentBattleHistory(participants, result)
 ```
 
 ## Database Schema
 
-### AO Process State Schema
+Since our tech stack uses AO Process State for data persistence rather than traditional databases, our "schema" consists of JSON data structures stored within each AO process:
 
-Since PrimalCode uses AO processes for state management, the "database" is actually process variable state:
+### World Process State Structure
 
-```lua
--- Monster Process State Variables
-Monster = {
-    -- Core Identity
-    id = "monster_12345",
-    species = "hunter_wolf",
-    created_at = 1640995200,
-    
-    -- Dynamic Stats
-    stats = {
-        health = 100,
-        hunger = 50,
-        energy = 80,
-        position = {
-            x = 150,
-            y = 200,
-            route = "forest_path"
-        },
-        last_updated = 1640995800
+```json
+{
+  "world_id": "world_001",
+  "owner_agent_id": "agent_123",
+  "terrain_map": {
+    "width": 100,
+    "height": 100,
+    "tiles": [
+      {"x": 0, "y": 0, "type": "grass", "passable": true},
+      {"x": 1, "y": 0, "type": "water", "passable": false}
+    ]
+  },
+  "agent_state": {
+    "agent_id": "agent_123",
+    "position": {"x": 50, "y": 50},
+    "active_tuxemon_team": ["tux_001", "tux_002"],
+    "inventory": {
+      "items": [
+        {"item_id": "potion", "quantity": 5},
+        {"item_id": "pokeball", "quantity": 10}
+      ]
     },
-    
-    -- AI Personality (stable traits)
-    ai_personality = {
-        aggression = 0.7,
-        intelligence = 0.6,
-        pack_tendency = 0.8,
-        adaptation_rate = 0.4
-    },
-    
-    -- Environmental Awareness (dynamic)
-    environmental_awareness = {
-        detected_structures = {},
-        resource_memory = {},
-        weather_adaptation = 0.3,
-        scent_trail_following = nil
-    },
-    
-    -- Learning and Adaptation
-    influence_resistance = {
-        learned_patterns = {},
-        adaptation_history = {},
-        counter_strategies = {}
-    },
-    
-    -- Current State
-    state = "hunting",
-    last_decision = 1640995700,
-    next_decision_at = 1640995760
-}
-
--- Environment Process State Variables
-Environment = {
-    route_id = "forest_path",
-    structures = {
-        {
-            id = "shelter_001",
-            type = "shelter_node",
-            position = {x = 100, y = 150},
-            effectiveness = 0.8,
-            decay_rate = 0.1,
-            created_at = 1640995000
-        }
-    },
-    resources = {
-        {
-            id = "food_cache_001",
-            type = "meat_cache",
-            position = {x = 75, y = 125},
-            quantity = 50,
-            decay_rate = 0.05
-        }
-    },
-    weather_state = {
-        condition = "clear",
-        temperature = 22,
-        humidity = 0.6,
-        next_change_at = 1640999400
-    },
-    ecosystem_balance = 0.5,
-    last_modified = 1640995800
-}
-
--- Player Process State Variables
-Player = {
-    wallet_address = "arweave_wallet_address",
-    influence_points = 150,
-    unlocked_tools = {
-        "place_food",
-        "build_shelter",
-        "modify_weather"
-    },
-    ecosystem_mastery = {
-        {
-            route_id = "forest_path",
-            mastery_level = 3,
-            specialization = "predator_management"
-        }
-    },
-    capture_collection = {
-        "monster_12345",
-        "monster_67890"
-    },
-    session_history = {},
-    last_active = 1640995800
-}
-
--- Inference Marketplace Provider Process State Variables
-InferenceProvider = {
-    provider_id = "ai_provider_001",
-    capabilities = {
-        "text-generation",
-        "image-analysis",
-        "decision-making"
-    },
-    pricing = {
-        ["text-generation"] = "100",
-        ["image-analysis"] = "500",
-        ["decision-making"] = "250"
-    },
-    reputation = {
-        response_time_avg = 2.5,
-        quality_score = 0.92,
-        completion_rate = 0.98,
-        total_requests = 1250
-    },
-    metadata = {
-        last_seen = 1640995800,
-        x_tags_supported = {"X-Context-Data", "X-Quality-Tier", "X-Timeout"},
-        description = "High-performance AI inference provider"
-    },
-    status = "active"
-}
-
--- Marketplace Core Process State Variables
-MarketplaceCore = {
-    active_requests = {
-        ["req_12345"] = {
-            request_id = "req_12345",
-            requester = "monster_12345",
-            provider_id = "ai_provider_001",
-            service_type = "decision-making",
-            payment_amount = "250",
-            x_metadata = {
-                ["X-Service-Type"] = "ai-inference",
-                ["X-Request-ID"] = "req_12345",
-                ["X-Context-Data"] = "hunting_decision_context"
-            },
-            status = "processing",
-            created_at = 1640995700,
-            timeout_at = 1640995730
-        }
-    },
-    transaction_history = {
-        {
-            transaction_id = "txn_67890",
-            request_id = "req_12345",
-            from_process = "monster_12345",
-            to_process = "ai_provider_001",
-            amount = "250",
-            service_type = "decision-making",
-            success = true,
-            timestamp = 1640995700,
-            credit_notice_sent = true,
-            debit_notice_sent = true
-        }
-    },
-    provider_registry = {
-        ["ai_provider_001"] = {
-            last_heartbeat = 1640995800,
-            request_count = 1250,
-            avg_response_time = 2.5
-        }
-    }
-}
-
--- Reputation Manager Process State Variables
-ReputationManager = {
-    provider_metrics = {
-        ["ai_provider_001"] = {
-            response_times = {2.1, 2.3, 2.8, 2.2, 2.7}, -- Last 5 responses
-            quality_scores = {0.95, 0.88, 0.92, 0.94, 0.89}, -- Last 5 quality scores
-            completion_history = {
-                total_requests = 1250,
-                successful_requests = 1225,
-                failed_requests = 25,
-                timeout_requests = 15
-            },
-            reputation_trend = {
-                {date = 1640995200, score = 0.90},
-                {date = 1640995500, score = 0.91},
-                {date = 1640995800, score = 0.92}
-            }
-        }
-    },
-    ranking_cache = {
-        ["text-generation"] = {
-            {provider_id = "ai_provider_001", score = 0.92},
-            {provider_id = "ai_provider_002", score = 0.88}
-        }
-    }
-}
-```
-
-## Frontend Architecture
-
-### Component Architecture
-
-PrimalCode uses a **conversational interface architecture** rather than traditional components:
-
-#### Component Organization
-```
-src/tools/
-├── ecosystem-observer.ts      # Natural language ecosystem descriptions
-├── environment-modifier.ts    # Environmental change tools
-├── monster-analyzer.ts       # Individual creature analysis
-├── route-manager.ts          # Multi-habitat navigation
-├── influence-tracker.ts      # Resource management
-├── capture-mechanics.ts      # Monster collection tools
-└── inference-marketplace.ts  # AI inference marketplace interaction
-```
-
-#### Component Template
-```typescript
-// MCP Tool Component Pattern
-export class EcosystemObserverTool {
-  name = "observe_ecosystem";
-  description = "Get detailed natural language description of current ecosystem state";
-  
-  async execute(params: ObserveEcosystemParams): Promise<EcosystemObservation> {
-    const { route_id, focus } = params;
-    
-    // Query AO processes for current state
-    const environment = await this.aoClient.queryEnvironment(route_id);
-    const monsters = await this.aoClient.queryMonsters(route_id);
-    
-    // Generate natural language description
-    const observation = this.generateNarrativeDescription(environment, monsters, focus);
-    
-    return {
-      currentState: observation.narrative,
-      monsterBehaviors: observation.behaviors,
-      environmentalEffects: observation.effects,
-      suggestedActions: observation.suggestions,
-      timestamp: new Date()
-    };
-  }
-  
-  private generateNarrativeDescription(environment: Environment, monsters: Monster[], focus?: string): ObservationNarrative {
-    // Transform raw data into engaging narrative
-    const narrative = this.createEngagingNarrative(environment, monsters);
-    const behaviors = this.analyzeBehaviorPatterns(monsters);
-    const effects = this.describeEnvironmentalEffects(environment);
-    const suggestions = this.generateStrategicSuggestions(environment, monsters);
-    
-    return { narrative, behaviors, effects, suggestions };
-  }
-}
-```
-
-### State Management Architecture
-
-#### State Structure
-```typescript
-// MCP Server State Management
-interface ServerState {
-  // AO Process Connections
-  aoProcesses: Map<string, AOProcessConnection>;
-  
-  // AI Integration State
-  aiClients: {
-    claude: ClaudeClient;
-    fallback: RuleBasedAI;
-  };
-  
-  // Caching Layer
-  cache: {
-    decisions: Map<string, CachedDecision>;
-    environments: Map<string, CachedEnvironment>;
-    monsters: Map<string, CachedMonster>;
-  };
-  
-  // Active Sessions
-  sessions: Map<string, PlayerSession>;
-  
-  // System Health
-  health: {
-    aoConnections: boolean;
-    aiServices: boolean;
-    cacheStatus: boolean;
-  };
-}
-```
-
-#### State Management Patterns
-- **Reactive State Updates:** Real-time synchronization with AO processes
-- **Caching Strategy:** Intelligent caching to reduce AI API costs
-- **Session Management:** Track player interactions and context
-- **Health Monitoring:** Continuous system health assessment
-
-### Routing Architecture
-
-#### Route Organization
-```
-MCP Tools (No traditional routing - tool-based architecture)
-├── observe_ecosystem          # Ecosystem observation and monitoring
-├── modify_environment         # Environmental modifications
-├── analyze_monster           # Individual creature analysis
-├── manage_weather            # Weather control systems
-├── track_influence           # Resource and point management
-├── capture_creature          # Monster collection mechanics
-└── navigate_routes           # Multi-habitat management
-```
-
-#### Protected Route Pattern
-```typescript
-// Tool Authorization Pattern
-export class ToolAuthorization {
-  async validatePlayerAccess(walletAddress: string, toolName: string): Promise<boolean> {
-    const player = await this.aoClient.getPlayerState(walletAddress);
-    
-    // Check if player has unlocked this tool
-    if (!player.unlocked_tools.includes(toolName)) {
-      return false;
-    }
-    
-    // Check Primal tokens for resource-consuming tools
-    if (this.isResourceTool(toolName)) {
-      const cost = this.getToolCost(toolName);
-      return player.influence_points >= cost;
-    }
-    
-    return true;
-  }
-}
-```
-
-### Frontend Services Layer
-
-#### API Client Setup
-```typescript
-// AO Process Communication Client
-export class AOClient {
-  private wallet: ArweaveWallet;
-  private processConnections: Map<string, AOProcess>;
-  
-  constructor(walletAddress: string) {
-    this.wallet = new ArweaveWallet(walletAddress);
-    this.processConnections = new Map();
-  }
-  
-  async queryMonsterState(monsterId: string): Promise<Monster> {
-    const process = this.processConnections.get(monsterId);
-    const result = await process.dryRun({
-      Action: "Get-State",
-      Data: { query: "full_state" }
-    });
-    
-    return JSON.parse(result.Messages[0].Data);
-  }
-  
-  async sendEnvironmentalModification(routeId: string, modification: EnvironmentalModification): Promise<void> {
-    const envProcess = this.processConnections.get(`env_${routeId}`);
-    await envProcess.message({
-      Action: "Environment-Change",
-      Data: modification
-    });
-  }
-}
-```
-
-#### Service Example
-```typescript
-// Ecosystem Management Service
-export class EcosystemService {
-  constructor(private aoClient: AOClient, private aiClient: AIClient) {}
-  
-  async observeEcosystem(routeId: string, focus?: string): Promise<EcosystemObservation> {
-    // Gather raw data from AO processes
-    const environment = await this.aoClient.queryEnvironment(routeId);
-    const monsters = await this.aoClient.queryMonsters(routeId);
-    
-    // Generate natural language description
-    const narrative = await this.generateNarrative(environment, monsters, focus);
-    
-    return {
-      currentState: narrative.description,
-      monsterBehaviors: narrative.behaviors,
-      environmentalEffects: narrative.effects,
-      suggestedActions: narrative.suggestions,
-      timestamp: new Date()
-    };
-  }
-  
-  private async generateNarrative(environment: Environment, monsters: Monster[], focus?: string): Promise<NarrativeDescription> {
-    // Use AI to create engaging descriptions
-    const context = this.buildNarrativeContext(environment, monsters, focus);
-    const description = await this.aiClient.generateEcosystemDescription(context);
-    
-    return {
-      description: description.narrative,
-      behaviors: description.monsterBehaviors,
-      effects: description.environmentalEffects,
-      suggestions: description.strategicSuggestions
-    };
-  }
-}
-```
-
-## Node.js Inference Provider Architecture
-
-### Credit-Notice Flow Implementation
-
-**Architecture Pattern:** Event-driven microservice that listens for Credit-Notice messages from the Primal Token Process and provides AI inference services.
-
-#### Core Components
-
-**1. Credit-Notice Message Handler**
-```typescript
-// Credit-Notice Handler for Inference Providers
-export class CreditNoticeHandler {
-  constructor(
-    private aoClient: AOClient,
-    private aiClient: AIClient,
-    private serviceRegistry: ServiceRegistry
-  ) {}
-
-  async handleCreditNotice(message: CreditNoticeMessage): Promise<void> {
-    try {
-      // Parse X-prefix metadata
-      const metadata = this.parseXMetadata(message.Tags);
-      
-      // Validate payment amount
-      if (!this.validatePayment(message.Data.quantity, metadata.serviceType)) {
-        await this.initiateRefund(message.Data.sender, message.Data.quantity);
-        return;
-      }
-
-      // Process inference request
-      const inferenceResult = await this.processInferenceRequest(
-        metadata.serviceType,
-        metadata.contextData,
-        metadata.requestId
-      );
-
-      // Send response to monster process
-      await this.sendInferenceResponse(
-        message.Data.sender,
-        metadata.requestId,
-        inferenceResult
-      );
-
-      // Report successful completion
-      await this.reportCompletion(metadata.requestId, true);
-    } catch (error) {
-      await this.handleError(message, error);
-    }
-  }
-
-  private parseXMetadata(tags: Record<string, string>): InferenceMetadata {
-    return {
-      serviceType: tags["X-Service-Type"],
-      requestId: tags["X-Request-ID"],
-      contextData: JSON.parse(tags["X-Context-Data"] || "{}"),
-      qualityTier: tags["X-Quality-Tier"] || "standard",
-      timeout: parseInt(tags["X-Timeout"] || "30000")
-    };
-  }
-
-  private async processInferenceRequest(
-    serviceType: string,
-    contextData: any,
-    requestId: string
-  ): Promise<InferenceResult> {
-    // Process based on service type
-    switch (serviceType) {
-      case "decision-making":
-        return await this.aiClient.generateDecision(contextData);
-      case "text-generation":
-        return await this.aiClient.generateText(contextData);
-      case "image-analysis":
-        return await this.aiClient.analyzeImage(contextData);
-      default:
-        throw new Error(`Unsupported service type: ${serviceType}`);
-    }
-  }
-}
-```
-
-**2. AI Service Integration**
-```typescript
-// Claude Client for Inference Providers
-export class ClaudeInferenceClient {
-  constructor(private apiKey: string) {}
-
-  async generateDecision(context: MonsterDecisionContext): Promise<DecisionResult> {
-    const prompt = this.buildDecisionPrompt(context);
-    
-    const response = await this.claude.messages.create({
-      model: "claude-3-sonnet-20240229",
-      max_tokens: 1000,
-      messages: [{ role: "user", content: prompt }]
-    });
-
-    return this.parseDecisionResponse(response.content[0].text);
-  }
-
-  private buildDecisionPrompt(context: MonsterDecisionContext): string {
-    return `
-      You are an AI helping a monster make a decision in PrimalCode.
-      
-      Monster State: ${JSON.stringify(context.monsterState)}
-      Environment: ${JSON.stringify(context.environment)}
-      Nearby Monsters: ${JSON.stringify(context.nearbyMonsters)}
-      
-      Based on this context, what should the monster do next?
-      Respond with a JSON object containing:
-      - action: string (hunt, rest, explore, flee, etc.)
-      - reasoning: string
-      - confidence: number (0-1)
-      - duration: number (seconds)
-    `;
-  }
-}
-```
-
-**3. Service Registration**
-```typescript
-// Service Registry Integration
-export class InferenceProviderRegistry {
-  async registerProvider(config: ProviderConfig): Promise<void> {
-    const registrationMessage = {
-      Action: "Provider-Registration",
-      Data: {
-        provider_id: config.providerId,
-        capabilities: config.capabilities,
-        pricing: config.pricing,
-        description: config.description,
-        x_tags_supported: config.supportedXTags
-      }
-    };
-
-    await this.aoClient.sendMessage(
-      config.registryProcessId,
-      registrationMessage
-    );
-  }
-
-  async sendHeartbeat(providerId: string): Promise<void> {
-    const heartbeatMessage = {
-      Action: "Provider-Heartbeat",
-      Data: {
-        provider_id: providerId,
-        timestamp: Date.now(),
-        status: "active"
-      }
-    };
-
-    await this.aoClient.sendMessage(
-      this.registryProcessId,
-      heartbeatMessage
-    );
-  }
-}
-```
-
-**4. Main Application Structure**
-```typescript
-// Main Inference Provider Application
-export class InferenceProviderApp {
-  private creditNoticeHandler: CreditNoticeHandler;
-  private serviceRegistry: InferenceProviderRegistry;
-  private aoClient: AOClient;
-
-  constructor(config: InferenceProviderConfig) {
-    this.aoClient = new AOClient(config.walletPath);
-    this.creditNoticeHandler = new CreditNoticeHandler(
-      this.aoClient,
-      new ClaudeInferenceClient(config.claudeApiKey),
-      this.serviceRegistry
-    );
-  }
-
-  async start(): Promise<void> {
-    // Register with the marketplace
-    await this.serviceRegistry.registerProvider({
-      providerId: this.config.providerId,
-      capabilities: ["decision-making", "text-generation"],
-      pricing: {
-        "decision-making": "250",
-        "text-generation": "100"
-      },
-      description: "High-quality AI inference using marketplace AI inference",
-      supportedXTags: ["X-Context-Data", "X-Quality-Tier", "X-Timeout"]
-    });
-
-    // Start listening for Credit-Notice messages
-    await this.aoClient.subscribe({
-      Action: "Credit-Notice",
-      Handler: this.creditNoticeHandler.handleCreditNotice.bind(this.creditNoticeHandler)
-    });
-
-    // Start heartbeat
-    setInterval(async () => {
-      await this.serviceRegistry.sendHeartbeat(this.config.providerId);
-    }, 30000);
-
-    console.log(`Inference Provider ${this.config.providerId} started`);
-  }
-}
-```
-
-### Deployment Architecture
-
-**Container Structure:**
-```dockerfile
-# Inference Provider Dockerfile
-FROM node:18-alpine
-
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-RUN npm ci --only=production
-
-# Copy source code
-COPY dist/ ./dist/
-COPY config/ ./config/
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/health || exit 1
-
-EXPOSE 3000
-
-CMD ["node", "dist/index.js"]
-```
-
-**Kubernetes Deployment:**
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: claude-inference-provider
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: claude-inference-provider
-  template:
-    metadata:
-      labels:
-        app: claude-inference-provider
-    spec:
-      containers:
-      - name: provider
-        image: primalcode/claude-inference-provider:latest
-        ports:
-        - containerPort: 3000
-        env:
-        - name: CLAUDE_API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: claude-api-secret
-              key: api-key
-        - name: PROVIDER_ID
-          value: "claude-provider-001"
-        - name: ARWEAVE_WALLET_PATH
-          value: "/app/wallet/wallet.json"
-        volumeMounts:
-        - name: wallet-volume
-          mountPath: /app/wallet
-          readOnly: true
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-      volumes:
-      - name: wallet-volume
-        secret:
-          secretName: arweave-wallet-secret
-```
-
-### Error Handling and Resilience
-
-**Timeout Handling:**
-```typescript
-export class TimeoutManager {
-  private activeRequests: Map<string, NodeJS.Timeout> = new Map();
-
-  async processWithTimeout<T>(
-    requestId: string,
-    timeout: number,
-    operation: () => Promise<T>
-  ): Promise<T> {
-    return new Promise((resolve, reject) => {
-      const timeoutId = setTimeout(() => {
-        this.activeRequests.delete(requestId);
-        reject(new Error(`Request ${requestId} timed out after ${timeout}ms`));
-      }, timeout);
-
-      this.activeRequests.set(requestId, timeoutId);
-
-      operation()
-        .then(result => {
-          clearTimeout(timeoutId);
-          this.activeRequests.delete(requestId);
-          resolve(result);
-        })
-        .catch(error => {
-          clearTimeout(timeoutId);
-          this.activeRequests.delete(requestId);
-          reject(error);
-        });
-    });
-  }
-}
-```
-
-**Retry Logic:**
-```typescript
-export class RetryManager {
-  async executeWithRetry<T>(
-    operation: () => Promise<T>,
-    maxRetries: number = 3,
-    baseDelay: number = 1000
-  ): Promise<T> {
-    let lastError: Error;
-
-    for (let attempt = 0; attempt <= maxRetries; attempt++) {
-      try {
-        return await operation();
-      } catch (error) {
-        lastError = error;
-        
-        if (attempt === maxRetries) {
-          throw lastError;
-        }
-
-        // Exponential backoff
-        const delay = baseDelay * Math.pow(2, attempt);
-        await new Promise(resolve => setTimeout(resolve, delay));
+    "owned_tuxemon": {
+      "tux_001": {
+        "tuxemon_id": "tux_001",
+        "species_id": "agnite",
+        "level": 12,
+        "hp_current": 45,
+        "hp_max": 45,
+        "stats": {"attack": 28, "defense": 22, "speed": 18},
+        "experience_points": 1250
       }
     }
-
-    throw lastError;
-  }
+  },
+  "encounter_zones": [
+    {
+      "zone_id": "grassland_1",
+      "area": {"x": 40, "y": 40, "width": 20, "height": 20},
+      "encounter_table": [
+        {"species_id": "agnite", "rate": 0.4, "min_level": 8, "max_level": 15},
+        {"species_id": "bamboon", "rate": 0.3, "min_level": 10, "max_level": 18}
+      ]
+    }
+  ],
+  "item_spawns": [
+    {
+      "spawn_id": "item_spawn_001",
+      "item_type": "potion",
+      "position": {"x": 25, "y": 75},
+      "respawn_timer": 3600,
+      "available": true
+    }
+  ],
+  "world_seed": 987654321,
+  "last_updated": "2025-08-23T10:30:00Z"
 }
 ```
 
-## Backend Architecture
+### Battle Process State Structure
 
-### Service Architecture
-
-PrimalCode uses a **hybrid serverless + AO process architecture**:
-
-#### Function Organization
-```
-src/
-├── tools/                    # MCP tool implementations (serverless functions)
-│   ├── ecosystem-observer.ts
-│   ├── environment-modifier.ts
-│   └── monster-analyzer.ts
-├── ao-integration/          # AO process communication layer
-│   ├── ao-client.ts
-│   ├── message-schemas.ts
-│   └── process-manager.ts
-└── ecosystem/              # Game logic and state management
-    ├── monster-state.ts
-    ├── environment-state.ts
-    └── game-logic.ts
-```
-
-#### Function Template
-```typescript
-// MCP Tool Function Pattern
-export async function observeEcosystemHandler(request: MCPToolRequest): Promise<MCPToolResponse> {
-  try {
-    // Validate request and extract parameters
-    const params = validateObserveEcosystemParams(request.params);
-    
-    // Initialize AO client connection
-    const aoClient = new AOClient(params.playerWallet);
-    
-    // Query current ecosystem state
-    const environment = await aoClient.queryEnvironment(params.route_id);
-    const monsters = await aoClient.queryMonsters(params.route_id);
-    
-    // Generate natural language response
-    const narrative = await generateEcosystemNarrative(environment, monsters, params.focus);
-    
-    return {
-      content: [{
-        type: "text",
-        text: narrative.description
-      }],
-      isError: false
-    };
-  } catch (error) {
-    return {
-      content: [{
-        type: "text", 
-        text: `Error observing ecosystem: ${error.message}`
-      }],
-      isError: true
-    };
-  }
+```json
+{
+  "battle_id": "battle_456",
+  "participants": ["agent_123", "agent_789"],
+  "battle_state": "active",
+  "current_turn": 3,
+  "turn_order": [
+    {"agent_id": "agent_789", "tuxemon_id": "tux_003", "speed": 35},
+    {"agent_id": "agent_123", "tuxemon_id": "tux_001", "speed": 18}
+  ],
+  "participant_teams": {
+    "agent_123": [
+      {
+        "tuxemon_id": "tux_001",
+        "species_id": "agnite",
+        "hp_current": 30,
+        "hp_max": 45,
+        "status_effects": ["burned"]
+      }
+    ],
+    "agent_789": [
+      {
+        "tuxemon_id": "tux_003",
+        "species_id": "bamboon",
+        "hp_current": 52,
+        "hp_max": 60,
+        "status_effects": []
+      }
+    ]
+  },
+  "battle_log": [
+    {
+      "action_id": "action_001",
+      "turn_number": 1,
+      "acting_agent_id": "agent_789",
+      "action_type": "attack",
+      "move_used": "flame_burst",
+      "target_tuxemon_id": "tux_001",
+      "damage_dealt": 15,
+      "random_factors": {"critical_hit_roll": 0.85, "damage_variance": 0.92}
+    }
+  ],
+  "random_seed": 123456789,
+  "created_timestamp": "2025-08-23T10:15:00Z"
 }
 ```
 
-### Database Architecture
+### Agent Registry State Structure
 
-#### Schema Design
-```lua
--- AO Process Schema (Lua state variables)
-
--- Monster Process Schema
-local monster_schema = {
-  id = "string",
-  species = "string",
-  stats = {
-    health = "number",
-    hunger = "number", 
-    energy = "number",
-    position = {
-      x = "number",
-      y = "number",
-      route = "string"
+```json
+{
+  "registry_id": "main_registry",
+  "active_agents": {
+    "agent_123": {
+      "world_process_id": "world_001",
+      "status": "active",
+      "last_heartbeat": "2025-08-23T10:30:00Z",
+      "capabilities": ["battle", "exploration", "collection"],
+      "battle_preferences": {
+        "max_level_difference": 5,
+        "preferred_battle_types": ["standard", "tournament"]
+      }
     }
   },
-  ai_personality = {
-    aggression = "number",
-    intelligence = "number",
-    pack_tendency = "number"
-  },
-  environmental_awareness = {
-    detected_structures = "table",
-    resource_memory = "table",
-    weather_adaptation = "number"
-  },
-  influence_resistance = {
-    learned_patterns = "table",
-    adaptation_history = "table"
-  },
-  state = "string",
-  last_decision = "number"
-}
-
--- Environment Process Schema
-local environment_schema = {
-  route_id = "string",
-  structures = "table",
-  resources = "table", 
-  weather_state = {
-    condition = "string",
-    temperature = "number",
-    humidity = "number"
-  },
-  ecosystem_balance = "number",
-  last_modified = "number"
-}
-```
-
-#### Data Access Layer
-```typescript
-// Repository Pattern for AO Process Access
-export class MonsterRepository {
-  constructor(private aoClient: AOClient) {}
-  
-  async findById(monsterId: string): Promise<Monster | null> {
-    try {
-      const process = await this.aoClient.getProcess(monsterId);
-      const result = await process.dryRun({
-        Action: "Get-State",
-        Data: { query: "full_state" }
-      });
-      
-      return this.deserializeMonster(result.Messages[0].Data);
-    } catch (error) {
-      console.error(`Error fetching monster ${monsterId}:`, error);
-      return null;
+  "battle_queue": [
+    {
+      "agent_id": "agent_456",
+      "queue_timestamp": "2025-08-23T10:28:00Z",
+      "preferences": {"max_level_difference": 3}
     }
-  }
-  
-  async updateState(monsterId: string, stateUpdate: Partial<Monster>): Promise<void> {
-    const process = await this.aoClient.getProcess(monsterId);
-    await process.message({
-      Action: "Update-State",
-      Data: stateUpdate
-    });
-  }
-  
-  async findByRoute(routeId: string): Promise<Monster[]> {
-    const monsters = await this.aoClient.queryProcessesByTag("route", routeId);
-    return Promise.all(monsters.map(id => this.findById(id)));
+  ],
+  "matchmaking_rules": {
+    "level_tolerance": 5,
+    "queue_timeout": 300,
+    "min_active_time": 60
   }
 }
-```
 
-### Authentication and Authorization
+## Source Tree
 
-#### Auth Flow
-```mermaid
-sequenceDiagram
-    participant CLIENT as AI Client
-    participant MCP as MCP Server
-    participant WALLET as Arweave Wallet
-    participant PLAYER as Player Process
-    
-    CLIENT->>MCP: Tool call with wallet signature
-    MCP->>WALLET: Verify signature
-    WALLET-->>MCP: Signature valid
-    MCP->>PLAYER: Query player state
-    PLAYER-->>MCP: Player permissions & resources
-    MCP->>MCP: Authorize tool access
-    alt Authorized
-        MCP->>MCP: Execute tool
-        MCP-->>CLIENT: Tool response
-    else Unauthorized
-        MCP-->>CLIENT: Authorization error
-    end
-```
-
-#### Auth Middleware
-```typescript
-// Authentication and Authorization Middleware
-export class AuthMiddleware {
-  async validateWalletSignature(signature: string, message: string, address: string): Promise<boolean> {
-    try {
-      const arweave = Arweave.init({});
-      const publicKey = await arweave.wallets.getPublicKey(address);
-      
-      const isValid = await arweave.crypto.verify(
-        publicKey,
-        message,
-        signature
-      );
-      
-      return isValid;
-    } catch (error) {
-      console.error('Signature validation failed:', error);
-      return false;
-    }
-  }
-  
-  async authorizeToolAccess(walletAddress: string, toolName: string): Promise<AuthResult> {
-    const player = await this.getPlayerState(walletAddress);
-    
-    if (!player) {
-      return { authorized: false, reason: "Player not found" };
-    }
-    
-    if (!player.unlocked_tools.includes(toolName)) {
-      return { authorized: false, reason: "Tool not unlocked" };
-    }
-    
-    const toolCost = this.getToolCost(toolName);
-    if (player.influence_points < toolCost) {
-      return { authorized: false, reason: "Insufficient Primal tokens" };
-    }
-    
-    return { authorized: true };
-  }
-}
-```
-
-## Unified Project Structure
+Based on our monorepo structure and AO process-based microservices architecture:
 
 ```
-PrimalCode/
-├── .github/                    # CI/CD workflows
-│   └── workflows/
-│       ├── test.yml
-│       ├── deploy-mcp.yml
-│       └── deploy-ao.yml
-├── src/                        # MCP Server Implementation
-│   ├── tools/                  # MCP tool implementations
-│   │   ├── ecosystem-observer.ts
-│   │   ├── environment-modifier.ts
-│   │   ├── monster-analyzer.ts
-│   │   ├── route-manager.ts
-│   │   ├── influence-tracker.ts
-│   │   ├── capture-mechanics.ts
-│   │   └── inference-marketplace.ts
-│   ├── ao-integration/         # AO process communication
-│   │   ├── ao-client.ts
-│   │   ├── message-schemas.ts
-│   │   ├── process-manager.ts
-│   │   └── wallet-integration.ts
-│   ├── ecosystem/              # Game logic and state management
-│   │   ├── monster-state.ts
-│   │   ├── environment-state.ts
-│   │   ├── game-logic.ts
-│   │   └── adaptation-engine.ts
-│   ├── marketplace/            # Inference marketplace components
-│   │   ├── marketplace-client.ts
-│   │   ├── provider-registry.ts
-│   │   ├── reputation-manager.ts
-│   │   └── token-handler.ts
-│   ├── ai-integration/         # AI decision systems
-│   │   ├── claude-client.ts
-│   │   ├── decision-cache.ts
-│   │   ├── fallback-ai.ts
-│   │   └── prompt-optimizer.ts
-│   ├── types/                  # TypeScript definitions
-│   │   ├── monster-types.ts
-│   │   ├── environment-types.ts
-│   │   ├── mcp-tool-types.ts
-│   │   ├── ao-message-types.ts
-│   │   └── marketplace-types.ts
-│   ├── utils/                  # Shared utilities
-│   │   ├── logging.ts
-│   │   ├── validation.ts
-│   │   └── error-handling.ts
-│   └── index.ts               # MCP server entry point
-├── inference-providers/       # External Node.js Inference Provider Apps
-│   ├── claude-provider/       # Claude-based inference provider
+tuxemon-ao-process/
+├── ao-processes/                   # AO process implementations
+│   ├── world/                      # Individual world process
 │   │   ├── src/
-│   │   │   ├── index.ts       # Main application entry point
-│   │   │   ├── credit-notice-handler.ts # Credit-Notice message handler
-│   │   │   ├── marketplace-client.ts # Marketplace AI inference integration
-│   │   │   ├── ao-client.ts    # AO process communication
-│   │   │   ├── service-registry.ts # Registry integration
-│   │   │   └── types.ts       # Provider-specific types
+│   │   │   ├── handlers/
+│   │   │   │   ├── movement.tl     # Agent movement and collision
+│   │   │   │   ├── encounters.tl   # Tuxemon encounter mechanics
+│   │   │   │   ├── items.tl        # Item collection and inventory
+│   │   │   │   └── world-state.tl  # World state queries
+│   │   │   ├── utils/
+│   │   │   │   ├── collision.tl    # Collision detection utilities
+│   │   │   │   ├── seeded-rng.tl   # Deterministic random generation
+│   │   │   │   └── state-manager.tl # World state persistence
+│   │   │   └── main.tl             # Process entry point and routing
 │   │   ├── package.json
-│   │   └── README.md
-│   ├── openai-provider/       # OpenAI-based inference provider
+│   │   └── tlconfig.lua            # Teal configuration
+│   ├── battle/                     # Shared battle process
 │   │   ├── src/
-│   │   │   ├── index.ts
-│   │   │   ├── credit-notice-handler.ts
-│   │   │   ├── openai-client.ts
-│   │   │   ├── ao-client.ts
-│   │   │   ├── service-registry.ts
-│   │   │   └── types.ts
+│   │   │   ├── handlers/
+│   │   │   │   ├── battle-setup.tl    # Battle initialization
+│   │   │   │   ├── turn-resolution.tl  # Combat mechanics
+│   │   │   │   ├── damage-calc.tl      # Damage calculations
+│   │   │   │   └── battle-end.tl       # Battle completion
+│   │   │   ├── utils/
+│   │   │   │   ├── move-effects.tl     # Move and status effects
+│   │   │   │   ├── type-effectiveness.tl # Elemental type system
+│   │   │   │   └── battle-logger.tl    # Action logging
+│   │   │   └── main.tl
 │   │   ├── package.json
-│   │   └── README.md
-│   └── provider-template/     # Template for new inference providers
+│   │   └── tlconfig.lua
+│   ├── registry/                   # Agent registry process
+│   │   ├── src/
+│   │   │   ├── handlers/
+│   │   │   │   ├── agent-registration.tl # Agent discovery
+│   │   │   │   ├── matchmaking.tl        # Battle opponent matching
+│   │   │   │   └── status-tracking.tl    # Agent status updates
+│   │   │   ├── utils/
+│   │   │   │   └── matching-algorithm.tl # Matchmaking logic
+│   │   │   └── main.tl
+│   │   ├── package.json
+│   │   └── tlconfig.lua
+│   └── health-monitor/             # System monitoring process
 │       ├── src/
-│       │   ├── index.ts
-│       │   ├── credit-notice-handler.ts
-│       │   ├── ai-client.ts
-│       │   ├── ao-client.ts
-│       │   ├── service-registry.ts
-│       │   └── types.ts
+│       │   ├── handlers/
+│       │   │   ├── health-check.tl      # Process health monitoring
+│       │   │   ├── metrics-collection.tl # Performance tracking
+│       │   │   └── error-logging.tl     # Error aggregation
+│       │   ├── utils/
+│       │   │   └── monitoring-utils.tl  # Health check utilities
+│       │   └── main.tl
 │       ├── package.json
-│       └── README.md
-├── ao-processes/              # AO process implementations
-│   ├── monster-process.lua
-│   ├── environment-process.lua
-│   ├── player-process.lua
-│   ├── marketplace-core.lua
-│   ├── provider-registry.lua
-│   ├── reputation-manager.lua
-│   ├── token-payment-handler.lua
-│   └── shared/
-│       ├── message-handlers.lua
-│       ├── ai-integration.lua
-│       ├── token-blueprint.lua
-│       └── utils.lua
-├── tests/                     # Comprehensive test suite
-│   ├── unit/
-│   │   ├── tools/
-│   │   ├── ao-integration/
-│   │   └── ecosystem/
-│   ├── integration/
-│   │   ├── mcp-tools.test.ts
-│   │   └── ao-communication.test.ts
-│   └── e2e/
-│       └── ecosystem-workflows.test.ts
-├── scripts/                   # Deployment and utility scripts
-│   ├── deploy-ao-processes.js
-│   ├── setup-development.js
-│   └── monitor-health.js
-├── docs/                      # Documentation
-│   ├── architecture.md
-│   ├── prd.md
-│   ├── api-documentation.md
-│   ├── tool-usage-examples.md
-│   └── deployment-guide.md
-├── config/                    # Configuration files
-│   ├── development.json
-│   ├── staging.json
-│   └── production.json
-├── .env.example              # Environment template
-├── package.json              # Project dependencies
-├── tsconfig.json             # TypeScript configuration
-├── jest.config.js            # Testing configuration
-└── README.md                 # Project overview
+│       └── tlconfig.lua
+├── shared/                         # Shared utilities and types
+│   ├── types/
+│   │   ├── agent.d.tl              # Agent data types
+│   │   ├── tuxemon.d.tl            # Tuxemon data types
+│   │   ├── battle.d.tl             # Battle data types
+│   │   └── world.d.tl              # World data types
+│   ├── utils/
+│   │   ├── adp-validation.tl       # ADP message validation
+│   │   ├── error-handling.tl       # Standardized error handling
+│   │   └── json-utils.tl           # JSON serialization utilities
+│   └── data/
+│       ├── tuxemon-species.json    # Static species reference data
+│       ├── move-templates.json     # Static move reference data
+│       └── item-templates.json     # Static item reference data
+├── scripts/                        # Development and deployment scripts
+│   ├── build-all.js                # Build all AO processes
+│   ├── deploy-local.js             # Local aolite deployment
+│   ├── deploy-mainnet.js           # Mainnet deployment
+│   └── test-runner.js              # Test execution coordination
+├── tests/                          # Testing infrastructure
+│   ├── unit/                       # Unit tests for individual processes
+│   │   ├── world/
+│   │   ├── battle/
+│   │   ├── registry/
+│   │   └── health-monitor/
+│   ├── integration/                # Inter-process integration tests
+│   │   ├── battle-workflow.test.js
+│   │   ├── agent-registration.test.js
+│   │   └── world-exploration.test.js
+│   └── mock-agents/                # Mock external agents for testing
+│       ├── basic-explorer.js
+│       ├── battle-seeker.js
+│       └── tuxemon-collector.js
+├── development/                    # Development and monitoring tools
+│   ├── monitoring-dashboard/       # Process health visualization
+│   ├── debug-interface/            # Interactive debugging tools
+│   └── agent-simulator/            # Agent behavior simulation
+├── docs/                          # Documentation
+│   ├── architecture.md            # This document
+│   ├── api-reference.md           # ADP message specifications
+│   └── development-guide.md       # Developer onboarding
+├── package.json                   # Root monorepo configuration
+└── README.md                      # Project overview and setup
 ```
 
-## Development Workflow
+## Infrastructure and Deployment
 
-### Local Development Setup
-
-#### Prerequisites
-```bash
-# Install Node.js and npm
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Install Arweave CLI
-npm install -g arweave
-
-# Install AO CLI
-npm install -g @permaweb/ao-cli
-```
-
-#### Initial Setup
-```bash
-# Clone project and install dependencies
-git clone <repository-url> PrimalCode
-cd PrimalCode
-npm install
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your configuration
-
-# Initialize AO processes
-npm run deploy:ao:dev
-
-# Start development server
-npm run dev
-```
-
-#### Development Commands
-```bash
-# Start MCP server in development mode
-npm run dev
-
-# Run tests
-npm run test
-npm run test:watch
-npm run test:e2e
-
-# Deploy AO processes
-npm run deploy:ao:dev
-npm run deploy:ao:staging
-npm run deploy:ao:production
-
-# Monitor system health
-npm run monitor:health
-npm run monitor:monsters
-```
-
-### Environment Configuration
-
-#### Required Environment Variables
-```bash
-# MCP Server Configuration
-MCP_SERVER_PORT=3000
-MCP_SERVER_HOST=localhost
-NODE_ENV=development
-
-# AO Integration
-ARWEAVE_WALLET_PATH=./wallet.json
-AO_SCHEDULER_URL=https://scheduler.ao.dev
-AO_MESSENGER_URL=https://messenger.ao.dev
-
-# AI Integration
-CLAUDE_API_KEY=your_claude_api_key
-CLAUDE_MODEL=claude-3-sonnet-20240229
-AI_DECISION_TIMEOUT=5000
-FALLBACK_AI_ENABLED=true
-
-# Caching
-REDIS_URL=redis://localhost:6379
-CACHE_TTL=300
-
-# Monitoring
-LOG_LEVEL=debug
-WINSTON_LOG_FILE=./logs/primalcode.log
-HEALTH_CHECK_INTERVAL=30000
-```
-
-## Deployment Architecture
+### Infrastructure as Code
+- **Tool:** Native AO Process Deployment (no traditional IaC required)
+- **Location:** `scripts/` directory for deployment automation
+- **Approach:** Direct deployment to Arweave/AO network using AO-specific tooling
 
 ### Deployment Strategy
-
-**MCP Server Deployment:**
-- **Platform:** AWS Lambda + API Gateway (serverless)
-- **Build Command:** `npm run build:mcp`
-- **Output Directory:** `dist/`
-- **CDN/Edge:** CloudFront for global distribution
-
-**AO Process Deployment:**
-- **Platform:** Arweave Network via AO CLI
-- **Build Command:** `npm run build:ao`
-- **Deployment Method:** Automated via CI/CD pipeline
-
-### CI/CD Pipeline
-```yaml
-name: Deploy PrimalCode
-
-on:
-  push:
-    branches: [main, staging]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm ci
-      - run: npm run test
-      - run: npm run lint
-
-  deploy-mcp:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy MCP Server
-        run: |
-          npm run build:mcp
-          aws lambda update-function-code \
-            --function-name primalcode-mcp \
-            --zip-file fileb://dist/mcp-server.zip
-
-  deploy-ao:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy AO Processes
-        run: |
-          npm run deploy:ao:${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
-```
+- **Strategy:** Direct AO Process Deployment with aolite local testing
+- **CI/CD Platform:** GitHub Actions with AO deployment integration
+- **Pipeline Configuration:** `.github/workflows/` for automated testing and deployment
 
 ### Environments
+- **Development:** Local aolite simulation environment for rapid iteration
+- **Testing:** Dedicated AO testnet processes for integration validation  
+- **Production:** Mainnet AO processes for live agent interactions
 
-| Environment | MCP Server URL | AO Network | Purpose |
-|-------------|---------------|------------|---------|
-| Development | http://localhost:3000 | AO Testnet | Local development |
-| Staging | https://staging-mcp.primalcode.ai | AO Testnet | Pre-production testing |
-| Production | https://mcp.primalcode.ai | AO Mainnet | Live environment |
-
-## Security and Performance
-
-### Security Requirements
-
-**MCP Server Security:**
-- Input Validation: Comprehensive parameter validation for all MCP tools
-- Rate Limiting: Tool-specific rate limits to prevent abuse
-- Authentication: Arweave wallet signature verification
-- Authorization: Role-based access control for advanced tools
-
-**AO Process Security:**
-- Message Validation: Schema validation for all inter-process messages
-- State Protection: Immutable state updates with rollback capabilities
-- Access Control: Wallet-based ownership verification
-- Audit Trail: Complete history of all state changes
-
-**AI Integration Security:**
-- API Key Management: Secure storage and rotation of AI API keys
-- Prompt Injection Prevention: Input sanitization and context isolation
-- Cost Protection: Budget limits and usage monitoring
-- Fallback Security: Secure rule-based systems for AI failures
-
-### Performance Optimization
-
-**MCP Server Performance:**
-- Response Time Target: <2 seconds for all tool calls
-- Caching Strategy: Intelligent caching of ecosystem state and AI decisions
-- Connection Pooling: Efficient AO process connection management
-- Load Balancing: Horizontal scaling for high user demand
-
-**AO Process Performance:**
-- Decision Efficiency: Optimized AI decision cycles with staggered timing
-- State Optimization: Efficient state storage and retrieval patterns
-- Message Batching: Grouped communications to reduce network overhead
-- Resource Management: Automatic cleanup of expired environmental modifications
-
-**AI Integration Performance:**
-- Token Optimization: Efficient prompt design to minimize API costs
-- Response Caching: Intelligent caching of similar decision contexts
-- Batch Processing: Grouped API calls where possible
-- Fallback Speed: <100ms rule-based decisions for system reliability
-
-## Testing Strategy
-
-### Testing Pyramid
+### Environment Promotion Flow
 ```
-                  E2E Tests
-                 /        \
-            Integration Tests
-               /            \
-          MCP Tool Tests  AO Process Tests
+Local aolite → Testnet AO → Mainnet AO
+     ↓              ↓            ↓
+Unit Tests → Integration → Live Agents
 ```
 
-### Test Organization
-
-#### MCP Tool Tests
-```
-tests/unit/tools/
-├── ecosystem-observer.test.ts
-├── environment-modifier.test.ts
-├── monster-analyzer.test.ts
-├── route-manager.test.ts
-├── influence-tracker.test.ts
-└── capture-mechanics.test.ts
-```
-
-#### AO Process Tests
-```
-tests/unit/ao-processes/
-├── monster-process.test.lua
-├── environment-process.test.lua
-├── player-process.test.lua
-└── message-handlers.test.lua
-```
-
-#### Integration Tests
-```
-tests/integration/
-├── mcp-ao-communication.test.ts
-├── ai-decision-flow.test.ts
-├── ecosystem-workflows.test.ts
-└── player-progression.test.ts
-```
-
-### Test Examples
-
-#### MCP Tool Test
-```typescript
-describe('EcosystemObserver', () => {
-  let tool: EcosystemObserverTool;
-  let mockAOClient: jest.Mocked<AOClient>;
-  
-  beforeEach(() => {
-    mockAOClient = createMockAOClient();
-    tool = new EcosystemObserverTool(mockAOClient);
-  });
-  
-  it('should generate engaging ecosystem description', async () => {
-    // Arrange
-    const mockEnvironment = createMockEnvironment();
-    const mockMonsters = createMockMonsters();
-    mockAOClient.queryEnvironment.mockResolvedValue(mockEnvironment);
-    mockAOClient.queryMonsters.mockResolvedValue(mockMonsters);
-    
-    // Act
-    const result = await tool.execute({ route_id: 'forest_path' });
-    
-    // Assert
-    expect(result.currentState).toContain('forest path');
-    expect(result.monsterBehaviors).toHaveLength(mockMonsters.length);
-    expect(result.suggestedActions).toBeInstanceOf(Array);
-  });
-});
-```
-
-#### AO Process Test
-```lua
--- Monster Process Test
-local monster = require('./monster-process')
-
-describe("Monster Decision Making", function()
-  it("should make hunting decision when hungry", function()
-    -- Arrange
-    local test_monster = {
-      stats = { hunger = 80, energy = 60, health = 100 },
-      ai_personality = { aggression = 0.7 },
-      environmental_awareness = { detected_prey = {"small_creature"} }
-    }
-    
-    -- Act
-    local decision = monster.make_decision(test_monster)
-    
-    -- Assert
-    assert.equal(decision.action, "hunt")
-    assert.equal(decision.target, "small_creature")
-  end)
-end)
-```
-
-#### E2E Test
-```typescript
-describe('Complete Ecosystem Management Flow', () => {
-  it('should allow player to modify environment and observe monster adaptation', async () => {
-    // Arrange
-    const player = await setupTestPlayer();
-    const route = await setupTestRoute();
-    
-    // Act - Place food in ecosystem
-    await mcpClient.callTool('modify_environment', {
-      route_id: route.id,
-      modification_type: 'food',
-      location: { x: 100, y: 100 }
-    });
-    
-    // Wait for monster adaptation
-    await wait(30000);
-    
-    // Observe ecosystem changes
-    const observation = await mcpClient.callTool('observe_ecosystem', {
-      route_id: route.id
-    });
-    
-    // Assert
-    expect(observation.currentState).toContain('food source');
-    expect(observation.monsterBehaviors).toContain('foraging');
-  });
-});
-```
-
-## Coding Standards
-
-### Critical Fullstack Rules
-
-- **Type Safety:** All AO message schemas must have corresponding TypeScript interfaces
-- **Error Handling:** Every MCP tool must implement comprehensive error handling with user-friendly messages
-- **State Consistency:** AO process state updates must be atomic and include rollback mechanisms
-- **Natural Language:** All MCP tool responses must be engaging, narrative-driven descriptions
-- **Performance Budgets:** AI API calls must complete within 5 seconds or fall back to cached decisions
-- **Security First:** All player inputs must be validated and sanitized before AO process communication
-- **Autonomous Integrity:** Monster decisions must never be directly controlled by players
-- **Resource Management:** Primal token economy must be enforced at every environmental modification
-
-### Naming Conventions
-
-| Element | MCP Server | AO Process | Example |
-|---------|------------|------------|---------|
-| Tools | snake_case | - | `observe_ecosystem` |
-| Functions | camelCase | snake_case | `generateNarrative` / `make_decision` |
-| Types | PascalCase | snake_case | `MonsterState` / `monster_state` |
-| Constants | UPPER_SNAKE_CASE | UPPER_SNAKE_CASE | `MAX_INFLUENCE_POINTS` |
-| Variables | camelCase | snake_case | `ecosystemState` / `ecosystem_state` |
-| AO Messages | kebab-case | kebab-case | `Environment-Change` |
-
-### Terminology Standardization
-
-**Core Terminology Alignment Between Architecture and PRD:**
-
-**MCP Tools (consistent snake_case naming):**
-- `observe_ecosystem` - Primary ecosystem observation tool
-- `modify_environment` - Environmental modification tool
-- `analyze_monster` - Individual monster analysis tool
-- `navigate_routes` - Route management and navigation tool
-- `track_primal_tokens` - Primal token tracking and management tool
-- `capture_creature` - Monster capture mechanics tool
-- `inference_marketplace` - AI marketplace interaction tool
-
-**Component Naming (consistent PascalCase):**
-- `EcosystemObserverTool` - Ecosystem observation component
-- `EnvironmentModifierTool` - Environmental modification component
-- `MonsterAnalyzerTool` - Monster analysis component
-- `RouteNavigatorTool` - Route management component
-- `InfluenceTrackerTool` - Influence tracking component
-- `CaptureCaptureTool` - Capture mechanics component
-- `InferenceMarketplaceTool` - Marketplace interaction component
-
-**Process Naming (consistent kebab-case for AO messages):**
-- `Monster-Decision` - Monster AI decision requests
-- `Environment-Change` - Environmental modification events
-- `Player-Action` - Player interaction events
-- `Process-Health` - Process health monitoring
-- `AI-Inference-Request` - AI marketplace service requests
-- `Provider-Registration` - Provider service registration
-- `Credit-Notice` / `Debit-Notice` - Token transfer notifications
-
-**File Structure Naming (consistent kebab-case):**
-- `ecosystem-observer.ts` - Ecosystem observation implementation
-- `environment-modifier.ts` - Environmental modification implementation
-- `monster-analyzer.ts` - Monster analysis implementation
-- `route-navigator.ts` - Route management implementation
-- `influence-tracker.ts` - Influence tracking implementation
-- `capture-mechanics.ts` - Capture mechanics implementation
-- `inference-marketplace.ts` - Marketplace interaction implementation
-
-**Epic and Story Terminology:**
-- **Epic 1**: "MCP Foundation & Proof of Concept" 
-- **Epic 2**: "Autonomous Monster Integration"
-- **Epic 3**: "Full Ecosystem Experience"
-- **Epic 5**: "Inference Provider Infrastructure"
-
-**Technical Stack Terminology:**
-- **MCP Server**: FastMCP-based TypeScript application
-- **AO Processes**: Lua-based autonomous processes on Arweave
-- **Inference Providers**: Node.js applications handling AI marketplace requests
-- **Service Discovery**: Intelligent provider matching and routing system
-
-**Quality Assurance Terminology:**
-- **Integration Verification (IV)**: Acceptance criteria validation points
-- **Performance Benchmarks**: Quantified performance requirements
-- **Fallback Hierarchy**: AI service degradation levels
-- **Error Recovery**: Graceful degradation and recovery mechanisms
-
-This standardization ensures consistent terminology across all documentation, code, and communication, supporting clear development workflows and reducing confusion between architecture and PRD specifications.
+### Rollback Strategy
+- **Primary Method:** AO Process State Snapshots with rollback capability
+- **Trigger Conditions:** Health check failures, performance degradation, agent interaction errors
+- **Recovery Time Objective:** < 5 minutes for critical processes
 
 ## Error Handling Strategy
 
-### Error Flow
-```mermaid
-sequenceDiagram
-    participant CLIENT as AI Client
-    participant MCP as MCP Server
-    participant AO as AO Process
-    participant AI as AI Service
-    
-    CLIENT->>MCP: Tool call
-    MCP->>AO: Process message
-    AO-->>MCP: Process error
-    MCP->>MCP: Log error details
-    MCP->>MCP: Generate user-friendly message
-    MCP-->>CLIENT: Helpful error response
-    
-    Note over MCP: Concurrent error handling
-    MCP->>AI: Fallback decision request
-    AI-->>MCP: Fallback response
-    MCP->>CLIENT: Degraded functionality notice
-```
+### General Approach
+- **Error Model:** ADP-compliant error responses with structured error codes
+- **Exception Hierarchy:** Process-specific error types with standardized format
+- **Error Propagation:** Local process error handling with inter-process error notification
 
-### Error Response Format
-```typescript
-interface MCPError {
-  error: {
-    code: string;
-    message: string;
-    details?: Record<string, any>;
-    timestamp: string;
-    toolName: string;
-    userMessage: string;
-  };
-}
-```
+### Logging Standards
+- **Library:** Native AO Process Logging
+- **Format:** Structured JSON logging for agent analysis and debugging
+- **Levels:** ERROR, WARN, INFO, DEBUG with process-specific context
+- **Required Context:**
+  - Correlation ID: `${process_id}_${timestamp}_${sequence}`
+  - Service Context: Process type, handler name, operation
+  - Agent Context: Agent ID and session information (never sensitive data)
 
-### MCP Tool Error Handling
-```typescript
-export class MCPToolErrorHandler {
-  async handleToolError(error: Error, toolName: string, context: any): Promise<MCPToolResponse> {
-    // Log detailed error for debugging
-    this.logger.error(`Tool ${toolName} failed:`, {
-      error: error.message,
-      stack: error.stack,
-      context,
-      timestamp: new Date().toISOString()
-    });
-    
-    // Generate user-friendly error message
-    const userMessage = this.generateUserFriendlyMessage(error, toolName);
-    
-    return {
-      content: [{
-        type: "text",
-        text: userMessage
-      }],
-      isError: true
-    };
-  }
-  
-  private generateUserFriendlyMessage(error: Error, toolName: string): string {
-    const errorMappings = {
-      'AOProcessTimeout': 'The ecosystem is currently processing other changes. Please try again in a moment.',
-      'InsufficientPrimalTokens': 'You need more Primal tokens to make this environmental change. Try observing the ecosystem to earn more tokens.',
-      'MonsterNotFound': 'That creature seems to have moved to a different area. Use observe_ecosystem to get the current status.',
-      'WeatherSystemBusy': 'The weather system is currently active. Please wait for the current weather event to complete.'
-    };
-    
-    return errorMappings[error.name] || `An unexpected issue occurred with ${toolName}. The ecosystem management system is working to resolve this.`;
-  }
-}
-```
+### Error Handling Patterns
 
-### AO Process Error Handling
-```lua
--- AO Process Error Handler
-local function handle_process_error(error_type, error_data, context)
-  -- Log error details
-  local error_log = {
-    error_type = error_type,
-    error_data = error_data,
-    context = context,
-    timestamp = os.time(),
-    process_id = ao.id
-  }
-  
-  -- Store error in process state for debugging
-  ErrorLog = ErrorLog or {}
-  table.insert(ErrorLog, error_log)
-  
-  -- Send error response
-  ao.send({
-    Target = context.sender,
-    Action = "Error-Response",
-    Data = {
-      error = error_type,
-      message = get_user_friendly_message(error_type),
-      timestamp = os.time()
-    }
-  })
-  
-  -- Attempt graceful recovery
-  if error_type == "ai_decision_timeout" then
-    -- Fall back to rule-based decision
-    local fallback_decision = make_rule_based_decision(context)
-    execute_monster_action(fallback_decision)
-  end
-end
-```
+#### External Agent Communication Errors
+- **Retry Policy:** Exponential backoff for temporary failures (network, rate limits)
+- **Circuit Breaker:** Disable problematic agents after repeated failures
+- **Timeout Configuration:** 2-second handler timeout per NFR requirements
+- **Error Translation:** Convert AO internal errors to agent-friendly ADP responses
 
-## Monitoring and Observability
+#### Business Logic Errors  
+- **Custom Exceptions:** Game-specific error types (InvalidMove, TuxemonNotFound, BattleInProgress)
+- **User-Facing Errors:** Clear, actionable error messages for agent developers
+- **Error Codes:** Structured error code system (WORLD_001, BATTLE_002, etc.)
 
-### Monitoring Stack
-- **MCP Server Monitoring:** Winston logging with CloudWatch integration
-- **AO Process Monitoring:** Custom health checks and state monitoring
-- **AI Service Monitoring:** API response time and error rate tracking
-- **Performance Monitoring:** Response time metrics and resource usage
+#### Data Consistency
+- **Transaction Strategy:** AO Process atomic state updates with rollback capability
+- **Compensation Logic:** Battle result compensation if process failures occur
+- **Idempotency:** All message handlers support safe retry without side effects
 
-### Key Metrics
+## Coding Standards
 
-**MCP Server Metrics:**
-- Tool call success rate
-- Average response time per tool
-- AI client connection status
-- Error rate by tool type
+These standards are MANDATORY for AI agents and human developers. Focus on project-specific conventions that prevent common mistakes:
 
-**AO Process Metrics:**
-- Monster decision cycle completion rate
-- Inter-process message success rate
-- State synchronization latency
-- Process health and uptime
+### Core Standards
+- **Languages & Runtimes:** Lua 5.3+ for AO processes, JavaScript for tooling and tests
+- **Style & Linting:** Teal type checking for Lua code, ESLint for JavaScript components
+- **Test Organization:** `*.test.tl` for Lua tests, `*.test.js` for JavaScript integration tests
 
-**AI Integration Metrics:**
-- Marketplace AI inference response time
-- Fallback activation rate
-- Decision cache hit rate
-- API cost per decision
+### Critical Rules
+- **No console.log in AO processes:** Use structured logging via AO process logging only
+- **All message handlers must validate ADP compliance:** Use `shared/utils/adp-validation.tl` for all external messages
+- **Deterministic random generation required:** Always use seeded RNG from `shared/utils/seeded-rng.tl`, never Lua's math.random()
+- **State mutations must be atomic:** All AO process state changes within single handler execution
+- **Agent data isolation:** World processes must never access other agents' data directly
 
-**Ecosystem Health Metrics:**
-- Active monster count per route
-- Environmental modification success rate
-- Player engagement metrics
-- Ecosystem balance indicators
+## Security
 
-## Epic 5: Inference Provider Infrastructure
+Implementation-specific security requirements for AO process development:
 
-### Provider Application Architecture
+### Input Validation
+- **Validation Library:** Custom ADP validation in `shared/utils/adp-validation.tl`
+- **Validation Location:** All external message handlers must validate before processing
+- **Required Rules:**
+  - All agent messages MUST be validated against ADP v1.0 specification
+  - Numeric inputs must have range validation (position coordinates, damage values, etc.)
+  - String inputs must have length limits and character whitelisting
 
-**Overview:** Epic 5 extends the inference marketplace with comprehensive Node.js-based inference provider applications that can be independently deployed and operated by third-party providers or the PrimalCode team.
+### Authentication & Authorization  
+- **Auth Method:** AO Process message sender verification (built-in AO capability)
+- **Session Management:** Agent session state tracked in individual world processes
+- **Required Patterns:**
+  - Verify message sender matches registered agent ID for all operations
+  - Validate agent ownership before accessing Tuxemon or inventory data
 
-#### Core Provider Application Components
+### Secrets Management
+- **Development:** No secrets required for local aolite development
+- **Production:** AO process deployment keys managed via deployment scripts
+- **Code Requirements:**
+  - No hardcoded process IDs or agent identifiers
+  - Configuration via process initialization messages only
+  - No sensitive game data in error messages or logs
 
-**1. Provider Application Framework**
-```typescript
-// Multi-Provider Application Architecture
-export class InferenceProviderFramework {
-  private providers: Map<string, InferenceProvider> = new Map();
-  private aoClient: AOClient;
-  private marketplaceClient: MarketplaceClient;
-  
-  constructor(config: ProviderFrameworkConfig) {
-    this.aoClient = new AOClient(config.walletPath);
-    this.marketplaceClient = new MarketplaceClient(config.marketplaceConfig);
-  }
-  
-  async registerProvider(provider: InferenceProvider): Promise<void> {
-    await provider.initialize();
-    this.providers.set(provider.id, provider);
-    
-    // Register with marketplace
-    await this.marketplaceClient.registerProvider({
-      providerId: provider.id,
-      capabilities: provider.capabilities,
-      pricing: provider.pricing,
-      qualityTier: provider.qualityTier
-    });
-  }
-  
-  async startAllProviders(): Promise<void> {
-    for (const [id, provider] of this.providers) {
-      await provider.start();
-      console.log(`Provider ${id} started successfully`);
-    }
-  }
-}
-```
+### Data Protection
+- **Agent Data Isolation:** Each world process stores only single agent's data
+- **Battle Privacy:** Battle process purges detailed logs after completion
+- **PII Handling:** No personally identifiable information stored in any process
+- **Logging Restrictions:** Never log agent strategies, detailed battle plans, or sensitive game state
 
-**2. Multi-AI Service Support**
-```typescript
-// Pluggable AI Service Architecture
-export interface AIServiceAdapter {
-  name: string;
-  supportedServiceTypes: string[];
-  costPerRequest: Record<string, number>;
-  
-  generateDecision(context: DecisionContext): Promise<DecisionResult>;
-  generateText(context: TextContext): Promise<TextResult>;
-  analyzeImage(context: ImageContext): Promise<AnalysisResult>;
-}
+### Dependency Security
+- **AO Process Dependencies:** Only use verified AO-compatible Lua libraries
+- **JavaScript Dependencies:** Regular npm audit for tooling and test dependencies
+- **Update Policy:** Monthly dependency updates with testing validation
 
-export class ClaudeServiceAdapter implements AIServiceAdapter {
-  name = "claude-3-sonnet";
-  supportedServiceTypes = ["decision-making", "text-generation"];
-  costPerRequest = { "decision-making": 0.015, "text-generation": 0.01 };
-  
-  async generateDecision(context: DecisionContext): Promise<DecisionResult> {
-    // Claude-specific implementation
-  }
-}
+## Next Steps
 
-export class OpenAIServiceAdapter implements AIServiceAdapter {
-  name = "gpt-4";
-  supportedServiceTypes = ["decision-making", "text-generation", "image-analysis"];
-  costPerRequest = { "decision-making": 0.03, "text-generation": 0.02, "image-analysis": 0.04 };
-  
-  async generateDecision(context: DecisionContext): Promise<DecisionResult> {
-    // OpenAI-specific implementation
-  }
-}
-```
+After completing this architecture document:
 
-**3. Provider Economics and Optimization**
-```typescript
-// Dynamic Pricing and Cost Optimization
-export class ProviderEconomics {
-  private demandHistory: DemandDataPoint[] = [];
-  private competitorPricing: Map<string, PricingData> = new Map();
-  
-  async optimizePricing(serviceType: string): Promise<OptimizedPricing> {
-    const demand = this.analyzeDemand(serviceType);
-    const competition = this.analyzeCompetition(serviceType);
-    const costs = this.calculateOperationalCosts(serviceType);
-    
-    return {
-      basePrice: costs.operational * 1.2, // 20% margin
-      demandMultiplier: demand.multiplier,
-      competitiveAdjustment: competition.adjustment,
-      finalPrice: this.calculateFinalPrice(costs, demand, competition)
-    };
-  }
-  
-  private analyzeDemand(serviceType: string): DemandAnalysis {
-    // Implement demand analysis logic
-    return {
-      currentDemand: 1.0,
-      trendMultiplier: 1.1,
-      multiplier: 1.05
-    };
-  }
-}
-```
+1. **Begin Implementation with AI-Assisted Development:**
+   - Use permamind MCP Server tools for initial AO process generation
+   - Start with World Process as it has the most complex game logic
+   - Leverage AI code generation for battle mechanics and deterministic systems
 
-#### Provider Deployment Architecture
+2. **Set up Development Environment:**
+   - Configure aolite local testing environment
+   - Implement basic mock agents for testing
+   - Set up CI/CD pipeline with GitHub Actions
 
-**Container-Based Multi-Provider Deployment**
-```yaml
-# docker-compose.yml for Provider Infrastructure
-version: '3.8'
-services:
-  claude-provider:
-    build: ./inference-providers/claude-provider
-    environment:
-      - PROVIDER_ID=claude-provider-001
-      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
-      - ARWEAVE_WALLET_PATH=/app/wallet/wallet.json
-    volumes:
-      - ./wallets/claude-provider:/app/wallet:ro
-    depends_on:
-      - redis
-      - prometheus
-    
-  openai-provider:
-    build: ./inference-providers/openai-provider
-    environment:
-      - PROVIDER_ID=openai-provider-001
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - ARWEAVE_WALLET_PATH=/app/wallet/wallet.json
-    volumes:
-      - ./wallets/openai-provider:/app/wallet:ro
-    depends_on:
-      - redis
-      - prometheus
-    
-  local-llm-provider:
-    build: ./inference-providers/local-llm-provider
-    environment:
-      - PROVIDER_ID=local-llm-provider-001
-      - MODEL_PATH=/app/models/llama-2-7b
-    volumes:
-      - ./models:/app/models:ro
-      - ./wallets/local-provider:/app/wallet:ro
-    runtime: nvidia
-    
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
-    
-  prometheus:
-    image: prom/prometheus:latest
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
-```
+3. **Iterative Development Approach:**
+   - Epic 1: Foundation & Core Infrastructure (health checks, basic handlers)
+   - Epic 2: Observability & Developer Tooling (monitoring, debugging interfaces)  
+   - Epic 3: Agent World Management (movement, encounters, state management)
+   - Epic 4: Tuxemon Collection System (creature mechanics, inventory)
+   - Epic 5: Battle Resolution Engine (turn-based combat, cross-world battles)
 
-#### Provider Monitoring and Analytics
+**Architecture Document Status: ✅ COMPLETE**
 
-**Comprehensive Provider Metrics**
-```typescript
-// Provider Performance Monitoring
-export class ProviderMetrics {
-  private metrics: Map<string, MetricData> = new Map();
-  
-  async recordInferenceRequest(
-    providerId: string,
-    serviceType: string,
-    responseTime: number,
-    quality: number,
-    cost: number
-  ): Promise<void> {
-    const key = `${providerId}-${serviceType}`;
-    const existing = this.metrics.get(key) || this.createEmptyMetrics();
-    
-    existing.requestCount++;
-    existing.totalResponseTime += responseTime;
-    existing.avgResponseTime = existing.totalResponseTime / existing.requestCount;
-    existing.qualityScores.push(quality);
-    existing.totalCost += cost;
-    
-    this.metrics.set(key, existing);
-    
-    // Send to monitoring system
-    await this.sendToMonitoring(providerId, serviceType, existing);
-  }
-  
-  async generatePerformanceReport(providerId: string): Promise<ProviderReport> {
-    const providerMetrics = Array.from(this.metrics.entries())
-      .filter(([key]) => key.startsWith(providerId))
-      .map(([key, data]) => ({ serviceType: key.split('-')[1], ...data }));
-    
-    return {
-      providerId,
-      totalRequests: providerMetrics.reduce((sum, m) => sum + m.requestCount, 0),
-      avgResponseTime: this.calculateWeightedAverage(providerMetrics, 'avgResponseTime'),
-      avgQuality: this.calculateWeightedAverage(providerMetrics, 'avgQuality'),
-      totalRevenue: providerMetrics.reduce((sum, m) => sum + m.totalCost, 0),
-      serviceBreakdown: providerMetrics
-    };
-  }
-}
-```
-
-### Service Discovery and Registry Enhancement
-
-**Advanced Service Discovery**
-```typescript
-// Enhanced Service Discovery with Intelligent Matching
-export class EnhancedServiceDiscovery {
-  private providerRegistry: Map<string, EnhancedProviderInfo> = new Map();
-  private requestHistory: RequestHistoryEntry[] = [];
-  
-  async findOptimalProvider(
-    serviceType: string,
-    requirements: ServiceRequirements
-  ): Promise<ProviderRecommendation> {
-    const candidates = this.filterProviders(serviceType, requirements);
-    const scored = await this.scoreProviders(candidates, requirements);
-    
-    return {
-      primaryProvider: scored[0],
-      backupProviders: scored.slice(1, 3),
-      reasoning: this.generateRecommendationReasoning(scored[0], requirements)
-    };
-  }
-  
-  private async scoreProviders(
-    providers: EnhancedProviderInfo[],
-    requirements: ServiceRequirements
-  ): Promise<ScoredProvider[]> {
-    const scored: ScoredProvider[] = [];
-    
-    for (const provider of providers) {
-      const score = await this.calculateProviderScore(provider, requirements);
-      scored.push({ provider, score, breakdown: score.breakdown });
-    }
-    
-    return scored.sort((a, b) => b.score.total - a.score.total);
-  }
-  
-  private async calculateProviderScore(
-    provider: EnhancedProviderInfo,
-    requirements: ServiceRequirements
-  ): Promise<ProviderScore> {
-    const qualityScore = provider.reputation.quality_score * 0.3;
-    const speedScore = this.calculateSpeedScore(provider, requirements) * 0.25;
-    const costScore = this.calculateCostScore(provider, requirements) * 0.20;
-    const reliabilityScore = provider.reputation.completion_rate * 0.15;
-    const availabilityScore = provider.metadata.availability * 0.10;
-    
-    return {
-      total: qualityScore + speedScore + costScore + reliabilityScore + availabilityScore,
-      breakdown: {
-        quality: qualityScore,
-        speed: speedScore,
-        cost: costScore,
-        reliability: reliabilityScore,
-        availability: availabilityScore
-      }
-    };
-  }
-}
-```
-
-### Provider Template System
-
-**Standardized Provider Templates**
-```typescript
-// Provider Template Generator
-export class ProviderTemplateGenerator {
-  async generateProviderTemplate(
-    aiService: string,
-    capabilities: string[],
-    config: ProviderTemplateConfig
-  ): Promise<GeneratedProviderCode> {
-    const template = await this.loadTemplate(aiService);
-    const customized = await this.customizeTemplate(template, capabilities, config);
-    
-    return {
-      sourceCode: customized.sourceCode,
-      dockerfile: customized.dockerfile,
-      packageJson: customized.packageJson,
-      configFiles: customized.configFiles,
-      documentation: customized.documentation
-    };
-  }
-  
-  private async loadTemplate(aiService: string): Promise<ProviderTemplate> {
-    const templatePath = `./provider-templates/${aiService}-template`;
-    return await this.loadTemplateFiles(templatePath);
-  }
-  
-  private async customizeTemplate(
-    template: ProviderTemplate,
-    capabilities: string[],
-    config: ProviderTemplateConfig
-  ): Promise<CustomizedTemplate> {
-    // Template customization logic
-    return {
-      sourceCode: this.generateSourceCode(template, capabilities),
-      dockerfile: this.generateDockerfile(template, config),
-      packageJson: this.generatePackageJson(template, config),
-      configFiles: this.generateConfigFiles(template, config),
-      documentation: this.generateDocumentation(template, capabilities)
-    };
-  }
-}
-```
-
-This architecture document provides the complete technical foundation for building PrimalCode's autonomous monster ecosystem game. The design prioritizes natural language interaction, autonomous creature behavior, and decentralized persistence while maintaining system reliability and engaging gameplay.
+This architecture provides the definitive technical blueprint for building the Tuxemon AO Process autonomous agent gaming platform. All subsequent development must reference and follow the patterns, technologies, and standards defined in this document.
