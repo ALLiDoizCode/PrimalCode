@@ -1,776 +1,427 @@
-# PrimalCode Brownfield Enhancement PRD
+# Tuxemon AO Process Product Requirements Document (PRD)
 
-## Intro Project Analysis and Context
+## Goals and Background Context
 
-### Existing Project Overview
+### Goals
+- Create the first agent-native gaming platform where autonomous agents engage in complex strategic gameplay entirely through message-based interactions
+- Transform Tuxemon into a fully decentralized gaming experience with all mechanics implemented as AO processes  
+- Establish a sophisticated research environment for multi-agent strategic behavior studies with verifiable, reproducible experimental conditions
+- Enable blockchain gaming developers to reference complete implementations of complex on-chain gaming architecture
+- Build persistent gaming economies where agents can compete, evolve strategies, and participate without human intervention
+- Generate substantial academic impact through a platform that supports agent research publications and cross-validation
 
-**Analysis Source:** IDE-based fresh analysis combined with user-provided DRAFT_PRD
+### Background Context
 
-**Current Project State:** 
-PrimalCode is an innovative autonomous monster ecosystem game being built as a text-based MCP (Model Context Protocol) server on the Permaweb (Arweave/AO) platform. The project creates the first truly autonomous ecosystem management game where AI-driven creatures live, hunt, battle, and evolve independently, while players interact with the ecosystem through natural language commands via AI clients like Claude Desktop.
+Current blockchain gaming suffers from a fundamental architectural flaw: while tokens and NFTs exist on-chain, the actual game logic remains centralized on traditional servers. This creates significant barriers for AI researchers who need sophisticated strategic environments for testing autonomous agents, while also limiting the potential for truly decentralized gaming economies.
 
-### Available Documentation Analysis
-
-**Available Documentation:**
-✓ Comprehensive DRAFT_PRD with technical specifications  
-✓ Game concept and mechanics detailed  
-✓ Technical architecture defined (AO processes + MCP server)  
-✓ AI integration framework specified  
-✗ API Documentation (needs creation)  
-✗ UX/UI Guidelines (needs creation)  
-✗ Technical Debt Documentation (needs creation)  
-✗ Coding Standards (needs creation)  
-
-### Enhancement Scope Definition
-
-**Enhancement Type:**
-✓ New Feature Addition  
-✓ Major Feature Modification  
-✓ Integration with New Systems  
-
-**Enhancement Description:**
-Converting a detailed draft PRD into a structured, actionable product requirements document with MCP server architecture and proper epic/story breakdown for development execution. This involves architectural pivot from visual game client to text-based MCP interactions, formalizing requirements, and creating development workflows.
-
-**Impact Assessment:**
-✓ Significant Impact (substantial existing code changes)
-
-### Goals and Background Context
-
-**Goals:**
-• Transform comprehensive draft documentation into actionable development requirements
-• Establish clear epic and story structure for autonomous monster ecosystem implementation  
-• Define technical constraints and integration requirements for Permaweb/AO platform
-• Create structured development approach for MCP-based autonomous ecosystem interactions
-• Define natural language interface patterns for ecosystem management through AI clients
-• Establish success metrics and risk mitigation strategies for innovative game concept
-
-**Background Context:**
-The draft PRD reveals an ambitious and innovative game concept that leverages cutting-edge technologies (AO processes, AI decision-making, MCP protocol, Permaweb persistence) to create a new genre of autonomous ecosystem games accessible through conversational AI interfaces. The enhancement needed is to structure this comprehensive vision into executable development phases with MCP server architecture, clear technical requirements, story breakdowns, and implementation strategies. This is critical because the project involves novel technical challenges around autonomous AI creatures, MCP tool design, cross-process communication on AO, and natural language ecosystem management that requires careful planning and risk management.
+The Tuxemon AO Process addresses this by completely decoupling game state management from client applications, rebuilding all mechanics as AO processes on Arweave. This creates the first gaming platform designed specifically for autonomous agents, enabling complex strategic gameplay through structured message protocols rather than human-centric visual interfaces, while ensuring permanent game history and verifiable fairness through on-chain computation.
 
 ### Change Log
-| Change | Date | Version | Description | Author |
-|--------|------|---------|-------------|--------|
-| Initial PRD Creation | 2025-07-15 | 1.0 | Conversion from DRAFT_PRD to structured brownfield enhancement PRD | John (PM Agent) |
-| Architecture Pivot | 2025-07-15 | 1.1 | Revised architecture from Excalibur.js client to MCP server with text-based AI client interactions | John (PM Agent) |
+| Date | Version | Description | Author |
+|------|---------|-------------|--------|
+| 2025-08-23 | v1.0 | Initial PRD creation from Project Brief | PM Agent |
 
 ## Requirements
 
-### Functional Requirements
+### Functional
 
-**FR1:** The system shall implement autonomous monster processes where each creature operates as an independent AO process with persistent state including health, hunger, energy, position, and AI personality traits.
+1. **FR1:** The game processes shall provide turn-based discrete movement handlers that accept ADP-compliant messages for position updates and collision detection
 
-**FR2:** Monster processes shall make autonomous decisions every 30-60 seconds using AI integration (marketplace AI inference with fallback to rule-based systems) for behaviors including hunting, fleeing, resting, and territorial actions.
+2. **FR2:** The system shall implement tile-based collision detection preventing agents from occupying the same space or moving through obstacles
 
-**FR3:** The system shall support 3-5 distinct monster types with unique AI personalities (Aggressive Hunter, Cautious Forager, Pack Leader, Opportunistic Scavenger, Territorial Guardian) in the MVP phase.
+3. **FR3:** The system shall provide individual world instances where each agent operates in a separate game environment to eliminate concurrency issues
 
-**FR4:** Players shall influence monster behavior through environmental design tools including shelter nodes, observation towers, barrier walls, food/water source control, weather manipulation, and scent trail networks.
+4. **FR4:** The system shall implement basic battle mechanics with turn-based combat including attack calculations, health management, and victory conditions as deterministic AO process handlers
 
-**FR5:** The system shall implement route-based habitats (2-3 areas in MVP) where monsters spawn, roam, and interact within defined territorial boundaries.
+5. **FR5:** The system shall provide a shared battle process that manages fair, verifiable combat when agents from different world instances initiate battles
 
-**FR6:** Monster processes shall communicate with each other via AO message passing for territorial disputes, pack coordination, and environmental awareness.
+6. **FR6:** The system shall implement basic Tuxemon collection mechanics allowing agents to capture, store, and manage teams of up to 6 active creatures
 
-**FR7:** The MCP server shall provide text-based descriptions of monster positions, actions, and environmental changes through natural language MCP tools accessible to AI clients.
+7. **FR7:** The system shall maintain essential Tuxemon stats (HP, Attack, Defense, Speed) with persistent storage across agent sessions
 
-**FR8:** The system shall implement Primal token economy for players to manage environmental modification costs and strategic resource allocation.
+8. **FR8:** The system shall provide world state query handlers allowing agents to examine their environment, nearby objects, and available actions
 
-**FR9:** Monster AI shall develop adaptation patterns and resistance to repeated player strategies through learning mechanisms and behavioral counter-adaptation.
+9. **FR9:** The system shall implement deterministic random number generation for encounters, battle outcomes, and loot drops using seeded algorithms that agents can predict and validate
 
-**FR10:** The system shall support monster capture mechanics through strategic environmental setup rather than direct player control.
+10. **FR10:** The game processes shall expose standardized ADP-compliant message handlers for all game interactions
 
-### Non Functional Requirements
+11. **FR11:** The system shall maintain persistent agent state across sessions including position, inventory, and Tuxemon collection
 
-**NFR1:** Monster decision-making shall complete within 3 seconds to maintain real-time gameplay experience, with graceful degradation to rule-based fallback when AI API is unavailable.
+12. **FR12:** The system shall maintain comprehensive game state history through AO process state persistence, enabling verification and replay of all agent actions and game outcomes
 
-**NFR2:** The system shall maintain 95% uptime for autonomous monster operations, ensuring creatures continue functioning when players are offline.
+### Non Functional
 
-**NFR3:** AO process state persistence shall handle automatic data backup to Arweave without requiring manual blockchain transactions for routine gameplay state updates.
+1. **NFR1:** The system must handle 1000+ concurrent agent messages per hour without performance degradation
 
-**NFR4:** The MCP server shall support natural language descriptions of 10+ simultaneous monsters per route without response time degradation above 2 seconds.
+2. **NFR2:** AO process handlers must respond to agent messages within 2 seconds average response time
 
-**NFR5:** AI API costs shall be managed through decision rate limiting, prompt optimization, and batched calls to maintain sustainable operational expenses.
+3. **NFR3:** The system must maintain 99.9% uptime ensuring consistent agent access to game processes
 
-**NFR6:** The system shall handle network connectivity issues gracefully with offline state preservation and resynchronization capabilities.
+4. **NFR4:** All game mechanics must be deterministic and verifiable, eliminating trust requirements between agents
 
-**NFR7:** Monster behavior shall appear varied and unpredictable to players while maintaining logical consistency within AI personality frameworks.
+5. **NFR5:** The game processes must provide ADP-compliant interfaces that external agents can interact with regardless of agent implementation language
 
-### Compatibility Requirements
+6. **NFR6:** All game process handlers must be fully documented with ADP metadata including action patterns, validation rules, and usage examples
 
-**CR1:** AO Process Integration - All monster state management must use AO process variables and message handlers, maintaining compatibility with AO runtime persistence mechanisms.
+7. **NFR7:** The system must achieve zero state corruption or rollback events in critical game mechanics
 
-**CR2:** Permaweb Infrastructure - Game data persistence must leverage AO's automatic Arweave backup without requiring direct blockchain interaction for routine operations.
+8. **NFR8:** External agents must be able to successfully interact with game processes and complete basic gameplay loops within 24 hours of game deployment
 
-**CR3:** MCP Client Compatibility - MCP server must function with Claude Desktop and other MCP-compatible AI clients following standard MCP protocol specifications.
+9. **NFR9:** All AO processes must conform to the Arweave Data Protocol (ADP) specification v1.0, including:
+   - Protocol version identification and JSON content-type headers
+   - Standardized handler metadata with action names, routing patterns, and validation rules
+   - Comprehensive input validation with type checking, regex patterns, and bounds enforcement
+   - Graceful error handling for invalid JSON, missing fields, and validation failures
+   - Self-documenting handler interfaces with examples and capability declarations
 
-**CR4:** AI Service Integration - System must support multiple AI providers with fallback mechanisms to ensure continued operation during service disruptions.
+## User Interface Design Goals
 
-**FR11:** The system shall implement player wallet-based authentication using Arweave wallet integration for persistent identity and ownership tracking.
+### Overall UX Vision
+The Tuxemon AO Process game prioritizes **API-first design** over traditional visual interfaces. The primary "user experience" is programmatic interaction through ADP-compliant message handlers. Any visual interfaces serve as **development and debugging tools** rather than primary interaction methods.
 
-**FR12:** Environmental modifications shall have defined duration, decay rates, and stacking effects with specific behavioral impact percentages on monster decision weights.
+### Key Interaction Paradigms
+- **Message-Driven Architecture**: All game interactions occur through structured ADP messages rather than visual UI elements
+- **State Query Pattern**: External agents query game state through dedicated handler endpoints rather than real-time displays  
+- **Asynchronous Command Processing**: Game processes handle agent commands and return structured responses, eliminating need for real-time UI updates
+- **Developer-Focused Tooling**: Visual interfaces exist primarily for process monitoring, state inspection, and development debugging
 
-**FR13:** Monster processes shall implement discovery radius (configurable per monster type) for detecting other monsters, environmental changes, and player influences.
+### Core Screens and Views
+- **Process Status Dashboard**: Monitor health and performance of individual game processes (world-state, battle-engine)
+- **Game State Inspector**: View current world state, active battles, and agent positions for debugging
+- **Message Log Viewer**: Inspect incoming/outgoing ADP messages for process testing and troubleshooting
+- **Handler Documentation Interface**: Interactive ADP handler reference with example usage patterns
 
-**FR14:** The system shall define standardized AO message schemas for monster-to-monster communication including position updates, threat warnings, and resource claims.
+### Accessibility: None
+No traditional accessibility requirements since primary interaction is programmatic. ADP message schemas provide structured, machine-readable interfaces that external agents can consume regardless of implementation.
 
-**FR15:** Player progression data including Primal tokens, unlocked tools, and ecosystem mastery levels shall persist in player-owned AO processes.
+### Branding  
+Minimal branding focused on developer tooling aesthetics. Clean, technical interface design emphasizing data clarity and process transparency. No game-specific visual themes since agents don't require visual feedback.
 
-**NFR1-Revised:** Monster decision-making shall occur in 30-60 second intervals with AI processing completing within 5 seconds of decision trigger, falling back to cached decisions if AI unavailable.
+### Target Device and Platforms: Web Responsive
+Development and monitoring tools accessible via web browsers for cross-platform compatibility. No mobile-specific requirements since tools are for developers, not end users.
 
-**NFR8:** The system shall support graceful scaling from 5 monsters (MVP) to 50+ monsters per route through staggered decision cycles and efficient message batching.
+## Technical Assumptions
 
-**NFR9:** Environmental system changes shall persist for defined durations (1-24 hours) with automatic cleanup to prevent unlimited state growth.
+### Repository Structure: Monorepo
+The project will use a monorepo structure containing all AO processes (world-state, battle-engine, agent-registry) with shared utilities and testing infrastructure. This enables coordinated development of inter-process communication patterns while maintaining clear separation of concerns.
 
-**CR5:** Monster-to-monster messaging shall handle network partitions and delayed message delivery through eventual consistency patterns and timeout mechanisms.
+### Service Architecture
+**AO Process-Based Microservices**: Individual AO processes handle discrete game systems (world management, battle resolution, agent registration) that communicate via inter-process messages. Each process maintains its own state and exposes ADP-compliant handlers for external agent interaction.
 
-**CR6:** Player progression and environmental state shall remain consistent across multiple client sessions and device switches through AO process state synchronization.
+### Testing Requirements
+**Unit + Integration Testing**: Comprehensive testing pyramid including:
+- Unit tests for individual handler logic using aolite local testing
+- Integration tests validating inter-process message communication  
+- End-to-end agent interaction tests using mock external agents
+- Performance benchmarking against AO process computational limits
 
-## Requirements Analysis - Team Perspective Integration
+### Additional Technical Assumptions and Requests
 
-Based on comprehensive team review, the following critical requirements additions and revisions address implementation, testing, and business value concerns:
+**Development Platform**: 
+- **Primary Language**: Lua for AO process handlers following AO development patterns
+- **Local Development**: aolite for rapid iteration and testing before mainnet deployment
+- **Message Protocol**: ADP v1.0 compliant JSON message structures for all external interfaces
 
-### Additional Functional Requirements
-
-**FR16:** The system shall implement AO process health monitoring with automatic restart capabilities for corrupted or unresponsive monster processes.
-
-**FR17:** Monster AI shall support test mode with deterministic behavior patterns and seeded decision trees for automated testing and development.
-
-**FR18:** The MCP server shall implement graceful degradation with cached monster states and queue player actions for synchronization when AO connectivity is restored.
-
-**FR19:** MCP tools shall provide immediate text-based feedback with status descriptions during monster decision processing delays.
-
-**FR20:** The system shall implement monster process versioning and hot-swapping for updates without ecosystem disruption.
-
-### Enhanced Non-Functional Requirements
-
-**NFR10:** The system shall support incremental scaling with performance benchmarks: 5 monsters (MVP), 15 monsters (Beta), 50+ monsters (Production) with defined infrastructure requirements for each tier.
-
-**NFR11:** AI integration shall implement response time SLA with fallback hierarchy: Marketplace AI inference (5s) → Cached decisions (1s) → Rule-based AI (0.1s) → Static behavior (immediate).
-
-**NFR12:** Monster behavior shall maintain deterministic replay capability for debugging with logging of all decision inputs and AI responses.
-
-### Development & Testing Requirements
-
-**FR21:** The system shall provide monster behavior mocking interfaces for MCP tool development and automated testing without requiring full AO infrastructure.
-
-**FR22:** Environmental modifications shall include sandbox mode for testing complex interactions without affecting persistent game state.
-
-**FR23:** The system shall implement gradual AI complexity introduction: Rule-based → Simple AI → Full Claude integration with rollback capabilities at each stage.
-
-### Operational Requirements
-
-**FR24:** Monster processes shall expose health metrics, decision latency, and communication success rates for operational monitoring.
-
-**FR25:** The system shall implement cost tracking and budgeting controls for AI API usage with automatic throttling when limits are approached.
-
-**FR26:** Environmental and monster state shall support point-in-time recovery with automated backup validation and corruption detection.
-
-### Revised Development Approach
-
-Based on team analysis, development phases have been restructured to deliver earlier user value while managing technical risk:
-
-**Phase 1a - Proof of Concept (2 weeks)**
-- Single monster process with mock AI decisions
-- Basic MCP tool for environmental modification (food placement)
-- Text-based monster status reports through MCP tools
-- Manual testing through Claude Desktop integration
-
-**Phase 1b - Minimal Viable Experience (3 weeks)**
-- Rule-based monster AI with 3 behavior types
-- 2-3 MCP tools for environmental modifications
-- Basic player Primal token tracking via MCP tools
-- Route navigation through text-based MCP commands
-
-**Phase 2 - AI Integration Foundation (4 weeks)**
-- Marketplace AI inference integration with comprehensive fallback for monster AI
-- Monster adaptation patterns accessible through MCP monitoring tools
-- Enhanced MCP tool descriptions and natural language interaction
-- Cross-monster communication observable through MCP ecosystem tools
-
-**Phase 3 - Ecosystem Complexity (4 weeks)**
-- Full autonomous decision systems
-- Environmental persistence and decay tracking through MCP tools
-- Advanced monster interaction monitoring and analysis tools
-- Capture mechanics implementation via strategic MCP tool usage
-
-This revised approach addresses team concerns by: providing early user value, enabling incremental testing, reducing risk concentration, and supporting parallel development workstreams.
-
-## MCP Tool Interface Design Goals
-
-### Natural Language Interaction Patterns
-
-**Conversational Interface Design:**
-The MCP server will provide natural language tools that enable intuitive ecosystem management through AI clients like Claude Desktop. Key design approaches:
-
-- **Natural Language Commands:** All ecosystem interactions use conversational language (e.g., "Place food near the aggressive hunter in the forest route")
-- **Rich Text Descriptions:** MCP tools return detailed, engaging descriptions of monster behaviors and ecosystem states
-- **Context-Aware Responses:** Tools understand previous actions and provide relevant follow-up suggestions
-- **Progressive Disclosure:** Complex ecosystem information is revealed gradually based on user interest and expertise level
-
-### MCP Tool Categories
-
-**Core MCP Tool Functions:**
-1. **Ecosystem Observation Tools** - Natural language descriptions of current monster states, positions, and behaviors
-2. **Environmental Modification Tools** - Commands for placing structures, managing resources, and triggering weather events
-3. **Monster Analysis Tools** - Detailed reports on individual creature AI personality traits and behavioral patterns
-4. **Route Management Tools** - Navigation and ecosystem switching commands for different habitats and biomes
-5. **Primal Token Tools** - Resource tracking and allocation management for environmental modifications
-6. **Adaptation Monitoring Tools** - Analysis of monster learning patterns and counter-adaptation strategies
-7. **Capture Mechanics Tools** - Strategic guidance and execution for monster collection activities
-
-### Conversational Consistency Requirements
-
-**Natural Language Standards:**
-- **Tone and Voice:** Engaging, informative scientific observer style that makes autonomous creatures feel alive and interesting
-- **Response Structure:** Consistent format with current state, action results, and suggested next steps
-- **Error Handling:** Helpful, contextual guidance when commands cannot be executed or ecosystem constraints are violated
-- **Progressive Complexity:** Simple commands for beginners, advanced strategic options for experienced ecosystem managers
-
-**MCP Tool Design Principles:**
-- **Immediate Feedback:** All environmental modifications provide instant confirmation and preview of expected effects
-- **Natural Discovery:** Tool descriptions guide users toward effective ecosystem management strategies
-- **Adaptive Assistance:** MCP tools learn user preferences and suggest personalized management approaches
-- **Immersive Storytelling:** Descriptions emphasize the autonomous nature of creatures and make ecosystem feel alive
-
-## Technical Constraints and Integration Requirements
-
-### Existing Technology Stack - MCP Server Architecture
-
-**Languages:** TypeScript/JavaScript (MCP server using FastMCP npm package), Lua (AO processes)  
-**Backend Framework:** FastMCP npm package (https://www.npmjs.com/package/fastmcp)  
-**AI Client Interface:** Claude Desktop, potentially other MCP-compatible AI clients  
-**Database/Persistence:** AO process state management  
-**Infrastructure:** Arweave/AO network + MCP server hosting  
-**External Dependencies:** MCP protocol, FastMCP framework, AO message passing, potential AI fallback APIs  
-
-### Integration Approach - MCP SERVER ARCHITECTURE
-
-**MCP Server Integration Strategy:** 
-- Build on FastMCP npm package (https://www.npmjs.com/package/fastmcp) providing ecosystem management tools and monster observation functions
-- Define MCP tools for environmental modification, monster querying, and ecosystem state management
-- Leverage FastMCP's TypeScript framework for rapid MCP tool development
-- Create natural language interfaces for all game interactions through MCP protocol
-
-**AO Backend Integration Strategy:**
-- AO processes continue handling monster autonomy and persistence
-- MCP server acts as bridge between AI clients and AO ecosystem
-- Standardized AO message schemas for MCP tool implementations
-
-**AI Client Integration Strategy:**
-- Text-based game interactions through Claude Desktop MCP integration
-- Natural language commands for environmental modifications
-- Conversational monster observation and ecosystem analysis
-- Support for multiple simultaneous AI client connections
-
-**Testing Integration Strategy:**
-- MCP tool testing through direct server calls
-- AI client behavior simulation for automated testing
-- Mock AO process integration for development environments
-
-### Code Organization and Standards - FastMCP Structure
-
-**File Structure Approach (based on FastMCP npm package):**
-```
-/src/
-  /tools/           # MCP tool implementations (FastMCP structure)
-    ecosystem-observer.ts
-    environment-modifier.ts
-    monster-analyzer.ts
-    route-manager.ts
-    influence-tracker.ts
-  /ao-integration/  # AO process communication
-    ao-client.ts
-    message-schemas.ts
-    process-manager.ts
-  /ecosystem/       # Game logic and state management
-    monster-state.ts
-    environment-state.ts
-    game-logic.ts
-  /types/          # TypeScript definitions
-    monster-types.ts
-    mcp-tool-types.ts
-/ao-processes/     # Monster and environment processes
-  monster-process.lua
-  environment-process.lua
-/docs/            # MCP tool documentation and examples
-  tool-usage-examples.md
-  api-documentation.md
-package.json      # FastMCP dependencies and scripts
-```
-
-**Naming Conventions:** MCP tool naming follows natural language patterns (observe_ecosystem, modify_environment, analyze_monster_behavior)  
-**Coding Standards:** TypeScript with strict typing for MCP server, comprehensive JSDoc for MCP tool descriptions, Lua coding standards for AO processes  
-**Documentation Standards:** MCP tool documentation includes usage examples, parameter descriptions, expected natural language responses, and integration guides  
-
-### Deployment and Operations - MCP Architecture
-
-**Build Process Integration:** FastMCP build pipeline + AO process deployment scripts + MCP tool registration  
-**Deployment Strategy:** MCP server deployment (cloud hosting) + AO process registration on Arweave network + Claude Desktop configuration  
-**Monitoring and Logging:** MCP server request logging + AO process health monitoring + AI client usage analytics + monster behavior tracking  
-**Configuration Management:** Environment-based MCP server config + AO process parameter management + AI client integration settings  
-
-### Risk Assessment and Mitigation - MCP SPECIFIC
-
-**Technical Risks:**
-- MCP protocol adoption and client compatibility limitations
-- Text-based interaction complexity for sophisticated ecosystem management
-- AO process communication latency affecting natural language responsiveness
-- FastMCP npm package dependency and maintenance concerns
-
-**Integration Risks:**
-- MCP server downtime affecting all AI client access to ecosystem
-- AO network issues disrupting backend monster autonomy
-- Limited MCP client ecosystem for user adoption and testing
-- Claude Desktop configuration complexity for end users
-
-**Deployment Risks:**
-- MCP server scaling under multiple AI client connections
-- AO process cost management for persistent monster operations
-- Cross-platform MCP client support variations
-- FastMCP framework updates breaking existing tool implementations
-
-**Mitigation Strategies:**
-- Implement comprehensive MCP tool fallback options and graceful degradation
-- Design text interactions that feel engaging and provide rich ecosystem information
-- Create robust AO process error handling and recovery systems
-- Develop clear MCP tool documentation and setup guides for various AI clients
-- Use FastMCP npm package with project-specific customizations
-- Implement extensive automated testing for MCP tool functionality
-
-## Epic and Story Structure
-
-Based on my analysis of your existing project and the MCP server architectural approach, I believe this enhancement should be structured as a **single comprehensive epic** because the autonomous monster ecosystem represents a cohesive feature set where all components (MCP tools, monster AI, environmental systems, AO processes) are interdependent and work together to create the unique text-based autonomous gaming experience.
-
-### Epic Approach
-
-**Epic Structure Decision:** Revised to Five-Epic Structure based on expanded scope and technical requirements:
-
-**Epic 1: MCP Foundation & Proof of Concept (3-4 weeks)**
-- Validate MCP architecture and natural language interactions with mock data
-- Establish FastMCP npm package foundation and Claude Desktop integration
-
-**Epic 2: Autonomous Monster Integration (4-5 weeks)**  
-- Prove autonomous creature + MCP tool integration with single monster
-- Establish AO process communication patterns
-
-**Epic 3: Full Ecosystem Experience (4-6 weeks)**
-- Deliver complete autonomous ecosystem management experience
-- Multiple monsters, advanced features, and ecosystem complexity
-
-**Epic 4: AI Inference Marketplace Core (3-4 weeks)**
-- Implement foundational AI inference marketplace with token-based payments
-- Provider registry, reputation management, and service discovery
-
-**Epic 5: Inference Provider Infrastructure (4-5 weeks)**
-- Develop comprehensive Node.js-based inference provider applications
-- Enable competitive AI services marketplace for monster processes
-
-**Rationale:** Team analysis revealed that while the autonomous ecosystem is conceptually cohesive, implementation complexity and risk management necessitate incremental validation of critical technical assumptions (MCP protocol, AO integration, AI costs) while providing earlier user value and parallel development opportunities. The addition of Epics 4 and 5 addresses the need for sustainable AI inference economics and provider infrastructure to support the autonomous creature ecosystem long-term.
-
-## Epic Details
-
-### Epic 1: MCP Foundation & Proof of Concept
-
-**Epic Goal:** Establish FastMCP-based conversational interface foundation and validate natural language ecosystem management patterns through mock data, proving the MCP architecture approach before committing to complex AO process integration.
-
-**Integration Requirements:** FastMCP npm package setup, Claude Desktop configuration, mock data systems for ecosystem testing, and foundational MCP tool architecture that will support real monster integration in Epic 2.
-
-#### Story 1.1: FastMCP Server Setup and Configuration
-
-As a developer,
-I want to set up the FastMCP npm package with PrimalCode-specific configurations,
-so that I have a solid foundation for building ecosystem management MCP tools.
-
-**Acceptance Criteria:**
-1. FastMCP npm package successfully installed and configured for PrimalCode project
-2. Basic TypeScript project structure established with ecosystem-specific directories
-3. Development environment configured with proper build and test scripts
-4. Initial package.json configured with FastMCP dependencies and project metadata
-5. Basic health check MCP tool implemented to validate server functionality
-
-**Integration Verification:**
-- IV1: FastMCP server starts without errors and responds to health check requests
-- IV2: TypeScript compilation works correctly with ecosystem-specific type definitions
-- IV3: Development workflow (build, test, lint) functions properly
-
-#### Story 1.2: Mock Monster Data System
-
-As a developer,
-I want to create realistic mock monster data and behavior simulation,
-so that I can develop and test MCP tools without requiring functional AO processes.
-
-**Acceptance Criteria:**
-1. Mock monster data system with 3 distinct personality types (Aggressive Hunter, Cautious Forager, Pack Leader)
-2. Simulated monster states including health, hunger, energy, position, and behavioral patterns
-3. Mock ecosystem state with environmental conditions and route information
-4. Time-based simulation that updates monster states on configurable intervals
-5. Mock monster decision-making that provides realistic but deterministic responses
-
-**Integration Verification:**
-- IV1: Mock system generates consistent, realistic monster behavior patterns
-- IV2: Mock data integrates cleanly with MCP tool architecture
-- IV3: Simulation performance supports 5+ simultaneous mock monsters without degradation
-
-#### Story 1.3: Core Ecosystem Observation MCP Tools
-
-As a player,
-I want to observe monster behaviors and ecosystem states through natural language commands,
-so that I can understand the autonomous ecosystem and plan environmental modifications.
-
-**Acceptance Criteria:**
-1. "observe_ecosystem" MCP tool providing natural language descriptions of current ecosystem state
-2. "analyze_monster" MCP tool giving detailed behavioral analysis for individual creatures
-3. "check_environment" MCP tool describing current environmental conditions and modifications
-4. Rich, engaging text descriptions that make autonomous creatures feel alive and interesting
-5. Consistent response format with current state, interesting observations, and suggested actions
-
-**Integration Verification:**
-- IV1: MCP tools integrate properly with Claude Desktop and provide engaging conversational experience
-- IV2: Tool responses are informative, entertaining, and encourage further ecosystem interaction
-- IV3: Natural language descriptions accurately reflect mock monster states and behaviors
-
-#### Story 1.4: Basic Environmental Modification MCP Tools
-
-As a player,
-I want to place environmental modifications through natural language commands,
-so that I can begin influencing monster behavior patterns in the ecosystem.
-
-**Acceptance Criteria:**
-1. "place_food" MCP tool for adding food sources at specified locations
-2. "modify_weather" MCP tool for triggering basic weather changes (rain, heat)
-3. "build_shelter" MCP tool for creating safe zones that monsters can utilize
-4. Immediate feedback on environmental changes with descriptions of expected monster responses
-5. Mock system integration showing how environmental changes affect monster behavior
-
-**Integration Verification:**
-- IV1: Environmental modifications integrate with mock monster behavior simulation
-- IV2: MCP tools provide clear feedback on successful modifications and their effects
-- IV3: System demonstrates how environmental changes influence mock monster decision patterns
-
-### Epic 2: Autonomous Monster Integration
-
-**Epic Goal:** Replace mock monster system with real AO processes featuring AI-driven autonomous decision-making, establishing the core technical architecture for authentic autonomous creature behavior while maintaining the conversational MCP interface.
-
-**Integration Requirements:** AO process development and deployment, AI integration with marketplace AI inference, real-time communication between MCP server and AO monster processes, and robust fallback systems for AI service disruptions.
-
-#### Story 2.1: Single AO Monster Process Implementation
-
-As a system architect,
-I want to implement a functional AO process that maintains persistent monster state and makes autonomous decisions,
-so that the foundation for real autonomous creature behavior is established.
-
-**Acceptance Criteria:**
-1. AO process template with monster state variables (health, hunger, energy, position, personality)
-2. Basic autonomous decision cycle triggering every 60 seconds
-3. Monster state persistence through AO process memory with automatic Arweave backup
-4. Message handlers for external communication and state queries
-5. Process health monitoring and automatic restart capabilities
-
-**Integration Verification:**
-- IV1: AO process maintains stable operation for 24+ hours without manual intervention
-- IV2: Monster state persists correctly across process restarts and network interruptions
-- IV3: Process responds reliably to external state query messages
-
-#### Story 2.2: AI Decision Integration with Fallback Systems
-
-As a monster AI system,
-I want to make intelligent autonomous decisions using marketplace AI inference with robust fallback mechanisms,
-so that creature behavior remains engaging and logical even during AI service disruptions.
-
-**Acceptance Criteria:**
-1. Marketplace AI inference integration for monster decision-making with contextual prompts
-2. Decision fallback hierarchy: Marketplace AI inference → Cached decisions → Rule-based AI → Static behavior
-3. AI prompt optimization for cost efficiency and response quality
-4. Decision logging and replay capability for debugging and analysis
-5. Configurable decision frequency and AI complexity levels
-
-**Integration Verification:**
-- IV1: AI decisions complete within 5-second timeout with graceful fallback activation
-- IV2: Monster behavior remains logical and engaging across all fallback levels
-- IV3: AI cost tracking accurately monitors and controls API usage expenses
-
-#### Story 2.3: MCP Server to AO Process Communication
-
-As an MCP server,
-I want to communicate reliably with AO monster processes to provide real-time ecosystem information,
-so that players receive accurate, up-to-date information about autonomous creature states.
-
-**Acceptance Criteria:**
-1. Standardized AO message schemas for monster state queries and environmental updates
-2. Real-time communication layer between MCP server and AO processes
-3. Error handling for network partitions and delayed message delivery
-4. State synchronization ensuring MCP tools reflect current AO process states
-5. Performance optimization supporting multiple simultaneous monster queries
-
-**Integration Verification:**
-- IV1: MCP tools consistently receive accurate monster state information within 2 seconds
-- IV2: Communication layer handles AO network issues gracefully without crashing MCP server
-- IV3: System performance supports querying 5+ monsters simultaneously without degradation
-
-#### Story 2.4: Enhanced MCP Tools with Real Monster Data
-
-As a player,
-I want to interact with real autonomous monsters through MCP tools with the same conversational interface,
-so that the ecosystem management experience feels authentic and engaging.
-
-**Acceptance Criteria:**
-1. Update existing MCP tools to use real AO monster data instead of mock system
-2. Enhanced natural language descriptions reflecting actual AI decision-making patterns
-3. Real environmental modifications that trigger observable changes in monster behavior
-4. Integration with AI decision logging to provide insights into monster reasoning
-5. Performance optimization ensuring responsive conversational experience
-
-**Integration Verification:**
-- IV1: MCP tools seamlessly transition from mock to real monster data without interface changes
-- IV2: Environmental modifications create observable, logical responses in monster AI behavior
-- IV3: Conversational interface remains responsive despite real-time AO process communication
-
-### Epic 3: Full Ecosystem Experience
-
-**Epic Goal:** Deliver complete autonomous ecosystem management experience with multiple monster types, advanced environmental tools, inter-monster communication, adaptation learning, and capture mechanics, creating the full vision of the autonomous creature ecosystem game.
-
-**Integration Requirements:** Multi-monster AO process coordination, advanced MCP tool development, monster adaptation and learning systems, complex environmental persistence, and comprehensive ecosystem monitoring capabilities.
-
-#### Story 3.1: Multiple Monster Types and Inter-Process Communication
-
-As an ecosystem,
-I want multiple monster types to interact autonomously with each other through AO message passing,
-so that complex territorial dynamics and pack behaviors emerge naturally.
-
-**Acceptance Criteria:**
-1. Implementation of 5 distinct monster personality types with unique AI decision patterns
-2. AO message passing system for monster-to-monster communication
-3. Territorial behavior system with conflict resolution and pack coordination
-4. Population management preventing ecosystem overcrowding or collapse
-5. Inter-monster relationship tracking and social dynamics
-
-**Integration Verification:**
-- IV1: Multiple monsters interact logically with emergent territorial and social behaviors
-- IV2: Inter-process communication performs reliably with 10+ simultaneous monsters
-- IV3: Ecosystem maintains balance without manual intervention for 48+ hours
-
-#### Story 3.2: Advanced Environmental Modification Tools
-
-As a player,
-I want sophisticated environmental tools for complex ecosystem management strategies,
-so that I can create intricate influence chains and adapt to monster counter-strategies.
-
-**Acceptance Criteria:**
-1. Advanced MCP tools: observation towers, barrier walls, scent trail networks, weather control
-2. Environmental effect duration and decay systems with automatic cleanup
-3. Tool combination effects and strategic interaction patterns
-4. Primal token economy for resource management and strategic planning
-5. Environmental persistence across player sessions and monster adaptations
-
-**Integration Verification:**
-- IV1: Advanced tools create meaningful strategic choices and complex ecosystem interactions
-- IV2: Environmental modifications persist correctly with defined duration and decay patterns
-- IV3: Primal token economy balances strategic depth with accessibility
-
-#### Story 3.3: Monster Adaptation and Learning Systems
-
-As a monster AI,
-I want to learn from and adapt to repeated player strategies,
-so that the ecosystem remains challenging and engaging through counter-adaptation.
-
-**Acceptance Criteria:**
-1. Monster learning system tracking player environmental modification patterns
-2. Adaptation mechanisms developing resistance to overused strategies
-3. Behavioral counter-adaptation that maintains ecosystem challenge
-4. Learning data persistence across AO process restarts and updates
-5. Adaptive difficulty scaling based on player expertise level
-
-**Integration Verification:**
-- IV1: Monsters demonstrate observable learning and counter-adaptation to player strategies
-- IV2: Adaptation systems maintain game balance without making strategies ineffective
-- IV3: Learning data persists correctly across process restarts and system updates
-
-#### Story 3.4: Capture Mechanics and Route Management
-
-As a player,
-I want to capture monsters through strategic environmental setup and manage multiple ecosystem routes,
-so that I can build a collection while maintaining thriving autonomous ecosystems.
-
-**Acceptance Criteria:**
-1. Capture mechanics requiring strategic environmental manipulation rather than direct control
-2. Route management system supporting 3+ distinct monster habitats
-3. Capture collection tracking with monster progression and mastery systems
-4. Cross-route monster interaction and ecosystem balancing
-5. Advanced MCP tools for multi-route ecosystem monitoring and management
-
-**Integration Verification:**
-- IV1: Capture mechanics require strategic thinking and environmental mastery
-- IV2: Multi-route system supports complex ecosystem management without performance degradation
-- IV3: Collection and progression systems encourage long-term engagement and mastery development
-
-### Epic 4: AI Inference Marketplace Core
-
-**Epic Goal:** Implement the foundational AI inference marketplace with token-based payments, provider registry, reputation management, and service discovery, enabling autonomous monster processes to request and pay for AI services while creating a sustainable economic ecosystem for AI inference providers.
-
-**Integration Requirements:** AO Token Blueprint integration, Credit-Notice/Debit-Notice message handlers, marketplace core AO processes, provider registry with service discovery, reputation tracking and quality metrics, and MCP marketplace interaction tools.
-
-#### Story 4.1: Marketplace Core Process Implementation
-
-As a marketplace system,
-I want to implement the core marketplace AO process that handles AI inference requests and coordinates provider selection,
-so that autonomous monsters can request AI services through a standardized marketplace interface.
-
-**Acceptance Criteria:**
-1. AO marketplace core process with request routing and provider matching logic
-2. Standardized AI inference request message schema with X-prefix metadata support
-3. Provider selection algorithm based on capability matching and availability
-4. Request queuing and timeout handling for provider response management
-5. Integration with token payment system for service transaction processing
-
-**Integration Verification:**
-- IV1: Marketplace process successfully receives and routes AI inference requests to appropriate providers
-- IV2: Provider selection algorithm efficiently matches requests with optimal providers based on capabilities
-- IV3: Request handling maintains performance with 10+ concurrent AI inference requests
-
-#### Story 4.2: Provider Registry and Service Discovery
-
-As an AI inference provider,
-I want to register my services with capability descriptions and pricing information,
-so that the marketplace can discover and route appropriate requests to my inference services.
-
-**Acceptance Criteria:**
-1. Provider registry AO process with capability registration and service discovery
-2. Standardized provider capability schema including AI service types and pricing tiers
-3. Heartbeat system for provider availability monitoring and status updates
-4. Service discovery optimization with capability-based filtering and provider matching
-5. Dynamic provider ranking based on availability, performance, and reputation metrics
-
-**Integration Verification:**
-- IV1: Provider registration enables accurate service discovery and request routing
-- IV2: Heartbeat system maintains real-time provider availability status
-- IV3: Service discovery performs efficiently with 20+ registered providers
-
-#### Story 4.3: Reputation Management and Quality Tracking
-
-As a marketplace consumer,
-I want provider reputation and quality metrics to influence service selection,
-so that I receive reliable, high-quality AI inference services with predictable performance.
-
-**Acceptance Criteria:**
-1. Reputation manager AO process with provider quality scoring and history tracking
-2. Request outcome tracking including response time, accuracy, and service completion rates
-3. Reputation scoring algorithm incorporating historical performance and user feedback
-4. Quality metrics dashboard accessible through MCP tools for provider performance analysis
-5. Reputation-based provider ranking and selection bias in marketplace routing
-
-**Integration Verification:**
-- IV1: Reputation system accurately reflects provider performance through quality metrics
-- IV2: Provider selection incorporates reputation scores for improved service quality
-- IV3: Quality tracking provides meaningful insights for marketplace optimization
-
-#### Story 4.4: Credit-Notice Payment Processing Integration
-
-As a marketplace transaction system,
-I want to process Credit-Notice payments from consumers and Debit-Notice payments to providers,
-so that AI inference services operate within a token-based economic model.
-
-**Acceptance Criteria:**
-1. Credit-Notice message handlers for incoming AI service payments with X-prefix metadata parsing
-2. Debit-Notice processing for provider payment distribution and marketplace fee collection
-3. Payment validation and fraud prevention with automatic refund processing for failed services
-4. Transaction logging and audit trail for marketplace financial operations
-5. Integration with Primal token processes for seamless payment flow and balance management
-
-**Integration Verification:**
-- IV1: Credit-Notice processing correctly handles AI service payments with metadata preservation
-- IV2: Provider payment distribution operates reliably with appropriate fee collection
-- IV3: Payment validation prevents fraud while maintaining efficient transaction processing
-
-#### Story 4.5: MCP Marketplace Interaction Tools
-
-As a player,
-I want to interact with the AI inference marketplace through natural language MCP tools,
-so that I can monitor marketplace activity, provider performance, and Primal token spending on AI services.
-
-**Acceptance Criteria:**
-1. "marketplace_status" MCP tool providing natural language marketplace activity summaries
-2. "provider_analysis" MCP tool with provider performance metrics and reputation insights
-3. "ai_service_request" MCP tool for manually triggering AI inference requests for testing
-4. "marketplace_economics" MCP tool showing token flows, costs, and marketplace financial health
-5. Integration with existing Primal token tracking for marketplace transaction monitoring
-
-**Integration Verification:**
-- IV1: MCP marketplace tools provide engaging, informative natural language marketplace insights
-- IV2: Tools integrate seamlessly with existing MCP ecosystem observation and management tools
-- IV3: Marketplace interaction tools maintain responsive performance despite complex backend operations
-
-### Epic 5: Inference Provider Infrastructure
-
-**Epic Goal:** Develop comprehensive Node.js-based inference provider applications that participate in the AI marketplace, offering various AI services (decision-making, text generation, image analysis) to monster processes and other AO consumers while maintaining competitive pricing and service quality.
-
-**Integration Requirements:** Epic 4 marketplace core completion, Credit-Notice message handling, AI service integration (marketplace AI inference), service registration and discovery, provider reputation management, Docker containerization, and marketplace economics optimization.
-
-#### Story 5.1: Core Inference Provider Application
-
-As a service provider,
-I want to deploy a functional inference provider application that can receive and process Credit-Notice messages,
-so that I can participate in the AI marketplace and earn tokens for AI services.
-
-**Acceptance Criteria:**
-1. Node.js application framework with Credit-Notice message handling
-2. Integration with AO Client for message processing and token operations
-3. Standardized X-prefix metadata parsing for service requests
-4. Error handling and automatic refund processing for invalid requests
-5. Service type routing for different AI inference capabilities
-
-**Integration Verification:**
-- IV1: Application successfully processes Credit-Notice messages and executes AI inference requests
-- IV2: Provider correctly handles payment validation and refund processing
-- IV3: Service routing accurately directs requests to appropriate AI processing modules
-
-#### Story 5.2: AI Service Integration and Quality Management
-
-As an inference provider,
-I want to integrate with marketplace AI inference and other AI services with quality tiers and optimization,
-so that I can deliver high-quality AI inference while managing costs and response times.
-
-**Acceptance Criteria:**
-1. Marketplace AI inference integration with context-aware prompt generation
-2. Quality tier system (standard, premium, enterprise) with differentiated pricing
-3. Response time optimization and timeout handling
-4. Cost management and API usage tracking
-5. AI service fallback mechanisms for availability issues
-
-**Integration Verification:**
-- IV1: AI integration delivers consistent, high-quality inference results across service types
-- IV2: Quality tiers provide meaningful differentiation in response quality and speed
-- IV3: Cost management maintains profitable operations while offering competitive pricing
-
-#### Story 5.3: Service Registration and Marketplace Integration
-
-As a marketplace participant,
-I want to register my inference provider with the marketplace registry and maintain service discovery,
-so that monster processes and other consumers can find and utilize my services.
-
-**Acceptance Criteria:**
-1. Service registration with capability description and pricing information
-2. Heartbeat system for provider availability monitoring
-3. Reputation tracking and service quality metrics
-4. Dynamic pricing adjustment based on demand and competition
-5. Service discovery optimization for consumer matching
-
-**Integration Verification:**
-- IV1: Provider registration enables successful service discovery by AI marketplace consumers
-- IV2: Heartbeat system maintains accurate provider availability status
-- IV3: Reputation system reflects service quality and influences consumer selection
-
-#### Story 5.4: Provider Operations and Deployment Infrastructure
-
-As a provider operator,
-I want containerized deployment with monitoring and scaling capabilities,
-so that I can maintain reliable service operations and scale based on demand.
-
-**Acceptance Criteria:**
-1. Docker containerization with environment configuration management
-2. Service monitoring with metrics collection and alerting
-3. Horizontal scaling capabilities for high-demand periods
-4. Log aggregation and debugging tools for operational support
-5. Automated deployment and update processes
-
-**Integration Verification:**
-- IV1: Containerized deployment supports reliable service operation across environments
-- IV2: Monitoring systems provide actionable insights for service optimization
-- IV3: Scaling infrastructure handles demand fluctuations without service disruption
+**Process Communication Patterns**:
+- **Individual World Instances**: Separate AO processes for each agent's world state to eliminate concurrency complexity
+- **Shared Battle Process**: Centralized battle resolution process that agents from different worlds connect to for combat
+- **State Synchronization**: Event-driven state updates between processes using AO's native message passing
+
+**Performance Architecture**:
+- **Computational Limits**: Design handlers to operate within AO process execution constraints per message
+- **State Management**: Optimize for AO's persistent state patterns rather than traditional database approaches  
+- **Message Throughput**: Handler design optimized for 1000+ messages/hour target with <2s response times
+
+**Deployment Strategy**:
+- **Local Testing**: Full aolite simulation environment for development and CI/CD
+- **Mainnet Deployment**: Direct deployment to Arweave/AO network without traditional server infrastructure
+- **Process Management**: Automated process spawning and configuration management for game instances
+
+## Epic List
+
+**Epic 1: Foundation & Core Infrastructure**  
+Establish AO process architecture, ADP-compliant message handlers, and basic world state management with functional health checks and process monitoring.
+
+**Epic 2: Observability & Developer Tooling**  
+Implement comprehensive logging, monitoring, and debugging interfaces to track agent interactions, process performance, and system health across all game processes.
+
+**Epic 3: Agent World Management**  
+Create individual world instances for agents with movement mechanics, collision detection, and persistent state management across sessions.
+
+**Epic 4: Tuxemon Collection System**  
+Implement creature encounter mechanics, capture system, inventory management, and basic Tuxemon stats tracking within agent world instances.
+
+**Epic 5: Battle Resolution Engine**  
+Develop shared battle process that enables turn-based combat between agents from different world instances with deterministic outcomes and fair resolution.
+
+## Epic 1: Foundation & Core Infrastructure
+
+**Epic Goal**: Establish the foundational AO process architecture with ADP-compliant interfaces, project infrastructure, and basic health validation to prove the technical viability of agent-native gaming on AO while delivering a minimal but functional system that external agents can interact with.
+
+### Story 1.1: Project Setup & Development Environment
+As a **developer**,  
+I want **a complete development environment with aolite testing infrastructure**,  
+so that **I can develop, test, and deploy AO processes locally before mainnet deployment**.
+
+#### Acceptance Criteria
+1. aolite development environment configured with proper AO process templates
+2. Project repository structure established with separate directories for each game process type
+3. Local testing framework implemented for AO process handler validation
+4. CI/CD pipeline configured with permaweb-deploy integration for automated AO process deployment to Arweave
+5. Development documentation created for onboarding additional developers
+
+### Story 1.2: Core AO Process Framework
+As an **external agent**,  
+I want **standardized ADP-compliant message handlers across all game processes**,  
+so that **I can interact with the game using predictable, documented interfaces**.
+
+#### Acceptance Criteria  
+1. Base AO process template created with ADP v1.0 compliance (protocol version, content-type headers)
+2. Standardized error handling implemented across all process handlers
+3. Input validation framework established with type checking and bounds enforcement
+4. Handler metadata system implemented with action names, routing patterns, and validation rules
+5. Self-documenting handler interfaces provide usage examples and capability declarations
+
+### Story 1.3: Process Health & Status System
+As a **developer**,  
+I want **health check and status monitoring for all AO processes**,  
+so that **I can verify system functionality and diagnose issues during development and operation**.
+
+#### Acceptance Criteria
+1. Health check handler implemented for each process type returning status and performance metrics
+2. Process registry system tracks active game processes and their current state
+3. Basic performance metrics collected (message processing time, error rates, active connections)
+4. Status endpoints provide process uptime, memory usage, and handler availability
+5. Integration tests validate health check functionality across all process types
+
+### Story 1.4: Basic Message Routing Infrastructure
+As an **external agent**,  
+I want **reliable message routing between different game processes**,  
+so that **I can initiate actions that span multiple game systems (like transitioning from world to battle)**.
+
+#### Acceptance Criteria
+1. Inter-process message passing implemented using AO's native communication patterns
+2. Message routing logic handles process discovery and message forwarding
+3. Error handling for failed inter-process communications with appropriate agent feedback
+4. Message queuing system prevents loss of agent commands during process transitions
+5. Integration tests validate message flow between different process types
+
+## Epic 2: Observability & Developer Tooling
+
+**Epic Goal**: Implement comprehensive logging, monitoring, and debugging interfaces that provide complete visibility into agent interactions, process performance, and system health across all game processes, enabling developers to troubleshoot issues and optimize performance before building complex game mechanics.
+
+### Story 2.1: Message Tracing & Logging System
+As a **developer**,  
+I want **comprehensive logging of all agent message interactions with detailed tracing**,  
+so that **I can debug agent behavior, track message flow, and identify performance bottlenecks across the system**.
+
+#### Acceptance Criteria
+1. Message logging system captures all incoming and outgoing ADP messages with timestamps and process IDs
+2. Trace ID system enables following message flow across multiple processes during agent actions
+3. Log levels implemented (DEBUG, INFO, WARN, ERROR) with configurable filtering
+4. Message payload logging includes sanitized request/response data for debugging without exposing sensitive information
+5. Log retention and rotation system prevents unbounded storage growth during testing
+
+### Story 2.2: Process Performance Monitoring
+As a **developer**,  
+I want **real-time performance metrics for all AO processes**,  
+so that **I can identify performance issues, validate scalability assumptions, and optimize handler implementations**.
+
+#### Acceptance Criteria
+1. Performance metrics collection tracks message processing time, memory usage, and handler execution time
+2. Process load monitoring tracks concurrent message handling and queue depths
+3. Real-time dashboard displays key performance indicators across all active processes
+4. Alert system triggers notifications when performance thresholds are exceeded
+5. Historical performance data storage enables trend analysis and capacity planning
+
+### Story 2.3: Game State Inspector Interface
+As a **developer**,  
+I want **visual interfaces to inspect current game state across all processes**,  
+so that **I can validate game logic correctness and debug agent interaction issues**.
+
+#### Acceptance Criteria
+1. Web-based interface displays current state for individual world instances and battle processes
+2. Agent position and inventory visualization shows current game state for debugging
+3. Process state explorer allows drilling down into specific process data structures
+4. Real-time state updates reflect changes as agents interact with the system
+5. State comparison tools enable before/after analysis of agent actions
+
+### Story 2.4: Handler Documentation Interface
+As a **developer and external agent creator**,  
+I want **interactive documentation for all ADP handlers with live testing capabilities**,  
+so that **I can understand available game actions and test message formats without reading source code**.
+
+#### Acceptance Criteria
+1. Auto-generated handler documentation from ADP metadata with examples and validation rules
+2. Interactive testing interface allows sending test messages to handlers from web browser
+3. Schema validation preview shows message format requirements before sending
+4. Response format documentation with example payloads for each handler
+5. Handler versioning support tracks changes and maintains backward compatibility documentation
+
+## Epic 3: Agent World Management
+
+**Epic Goal**: Create individual world instances for agents with complete movement mechanics, collision detection, and persistent state management, enabling agents to navigate and interact with their game environment through ADP-compliant message handlers while maintaining state across sessions.
+
+### Story 3.1: World Instance Creation & Management
+As an **external agent**,  
+I want **a dedicated world instance that persists my game state**,  
+so that **I can maintain consistent gameplay progress across multiple sessions**.
+
+#### Acceptance Criteria
+1. World instance spawning system creates unique AO processes for each agent registration
+2. Agent-to-world mapping system ensures agents always connect to their designated world instance
+3. World state persistence maintains agent position, inventory, and progress across process restarts
+4. World instance lifecycle management handles creation, activation, and cleanup of inactive worlds
+5. Agent authentication system prevents unauthorized access to other agents' world instances
+
+### Story 3.2: Tile-Based Movement System
+As an **external agent**,  
+I want **discrete movement controls with collision detection**,  
+so that **I can navigate the game world predictably and plan movement strategies**.
+
+#### Acceptance Criteria
+1. Move handler accepts directional commands (north, south, east, west) and updates agent position
+2. Collision detection prevents movement into walls, obstacles, or invalid coordinates
+3. Position query handler returns current agent coordinates and surrounding tile information
+4. Movement validation ensures agents can only move to adjacent tiles in single actions
+5. Movement history tracking maintains record of agent paths for analysis and debugging
+
+### Story 3.3: World State Query System
+As an **external agent**,  
+I want **comprehensive information about my current environment**,  
+so that **I can make informed decisions about movement and actions**.
+
+#### Acceptance Criteria
+1. Environment scanner returns information about visible tiles, objects, and interactive elements within agent's vicinity
+2. Object inspection handler provides detailed information about specific world objects and their properties
+3. Available actions query lists all possible interactions available at agent's current position
+4. World boundaries handler informs agents of map limits and navigable area dimensions
+5. Dynamic state updates reflect changes in world state (spawned items, environmental changes) to agents
+
+### Story 3.4: Session Management & State Persistence
+As an **external agent**,  
+I want **reliable session management with automatic state saving**,  
+so that **I can disconnect and reconnect without losing progress or world state**.
+
+#### Acceptance Criteria
+1. Session initialization handler restores agent to last known position and state upon connection
+2. Automatic state checkpointing saves world state at regular intervals and after significant actions
+3. Session timeout handling gracefully manages agent disconnections without data loss
+4. State recovery system handles process crashes and restores world instances from persistent storage
+5. Session query handler provides agents with information about their current session status and last save time
+
+## Epic 4: Tuxemon Collection System
+
+**Epic Goal**: Implement creature encounter mechanics, capture system, inventory management, and basic Tuxemon stats tracking that enables agents to discover, collect, and manage teams of creatures within their individual world instances, providing the strategic depth needed for meaningful gameplay.
+
+### Story 4.1: Random Encounter System
+As an **external agent**,  
+I want **predictable but varied creature encounters while exploring**,  
+so that **I can develop strategies for finding and capturing specific Tuxemon types**.
+
+#### Acceptance Criteria
+1. Encounter handler triggers creature appearances based on agent movement and location with deterministic seeded randomness
+2. Encounter probability system varies by world location and provides agents with encounter rate information
+3. Creature type distribution follows configurable spawn tables that agents can query for strategic planning
+4. Encounter initiation handler starts capture sequences when agents choose to engage with discovered creatures
+5. Encounter avoidance system allows agents to flee from unwanted encounters with success probability calculations
+
+### Story 4.2: Creature Capture Mechanics
+As an **external agent**,  
+I want **deterministic capture mechanics with clear success probabilities**,  
+so that **I can make strategic decisions about capture attempts and resource allocation**.
+
+#### Acceptance Criteria
+1. Capture handler calculates success probability based on creature stats, agent inventory, and capture method used
+2. Capture attempt system processes agent capture actions and returns deterministic outcomes with detailed results
+3. Capture item management tracks usage of capture tools and their effectiveness against different creature types
+4. Failed capture handling provides feedback on why attempts failed and suggestions for improvement
+5. Successful capture integration automatically adds new creatures to agent's collection with proper stat initialization
+
+### Story 4.3: Tuxemon Inventory & Team Management
+As an **external agent**,  
+I want **comprehensive creature collection management with team composition controls**,  
+so that **I can organize my creatures strategically and prepare optimal teams for different scenarios**.
+
+#### Acceptance Criteria
+1. Creature storage system maintains unlimited collection storage with detailed creature information and stats
+2. Active team management allows agents to select up to 6 creatures for their current active roster
+3. Creature stats tracking maintains HP, Attack, Defense, Speed, and other essential attributes for each collected creature
+4. Team composition query handler provides information about current active team and their combat readiness
+5. Creature information system allows agents to query detailed stats, abilities, and combat effectiveness of their collection
+
+### Story 4.4: Basic Creature Stats & Progression
+As an **external agent**,  
+I want **transparent creature stat systems with clear progression mechanics**,  
+so that **I can understand creature capabilities and make informed strategic decisions about team composition**.
+
+#### Acceptance Criteria
+1. Stat calculation system determines creature combat effectiveness based on base stats, level, and individual variations
+2. Creature comparison tools allow agents to evaluate relative strengths and weaknesses between different creatures
+3. Health management system tracks creature HP, healing, and combat readiness across sessions
+4. Creature level tracking maintains experience and progression state for future evolution mechanics
+5. Stat query handlers provide detailed information about creature capabilities and combat potential
+
+## Epic 5: Battle Resolution Engine
+
+**Epic Goal**: Develop a shared battle process that enables turn-based combat between agents from different world instances with deterministic outcomes, fair resolution, and complete strategic depth, completing the MVP by allowing agents to engage in meaningful competitive gameplay.
+
+### Story 5.1: Battle Initiation & Matchmaking
+As an **external agent**,  
+I want **the ability to challenge other agents to battles and be matched fairly**,  
+so that **I can test my strategic decisions and creature teams against other agents**.
+
+#### Acceptance Criteria
+1. Battle request handler allows agents to initiate challenge requests to specific agents or join matchmaking queue
+2. Battle acceptance system enables agents to accept or decline battle invitations with timeout handling
+3. Matchmaking service pairs agents seeking battles with configurable criteria (skill level, availability)
+4. Battle process spawning creates dedicated shared battle instances when agents are matched
+5. Agent notification system informs agents of battle requests, matches, and battle readiness
+
+### Story 5.2: Turn-Based Combat System
+As an **external agent**,  
+I want **strategic turn-based combat with clear rules and deterministic outcomes**,  
+so that **I can make tactical decisions and understand battle results**.
+
+#### Acceptance Criteria
+1. Turn management system enforces alternating agent actions with configurable time limits for decision-making
+2. Action resolution handler processes combat actions (attack, defend, switch creatures) with transparent damage calculations
+3. Combat state tracking maintains health, status effects, and battle conditions for all participating creatures
+4. Victory condition detection determines battle outcomes based on creature health and team composition
+5. Battle result system provides comprehensive battle summaries with action history and outcome analysis
+
+### Story 5.3: Creature Combat Mechanics
+As an **external agent**,  
+I want **detailed combat mechanics that utilize creature stats meaningfully**,  
+so that **my team composition and creature selection decisions have strategic impact**.
+
+#### Acceptance Criteria
+1. Damage calculation system uses creature Attack/Defense stats with transparent formulas agents can predict
+2. Speed-based turn order determines action sequence within each battle turn based on creature Speed stats
+3. Creature switching mechanics allow agents to change active creatures with strategic timing considerations
+4. Health management system tracks creature HP, applies damage, and handles creature knockouts
+5. Combat effectiveness system provides agents with damage previews and tactical analysis during battles
+
+### Story 5.4: Battle State Synchronization
+As a **developer**,  
+I want **reliable state synchronization between agent world instances and the shared battle process**,  
+so that **agents maintain accurate creature data and battle outcomes persist correctly**.
+
+#### Acceptance Criteria
+1. Creature data synchronization transfers current creature stats from world instances to battle process
+2. Battle outcome integration updates agent world instances with post-battle creature states and experience
+3. Concurrent access handling prevents data corruption when multiple processes access creature information
+4. State consistency validation ensures battle results match actual combat calculations
+5. Error recovery system handles network failures and process crashes during battle state transfers
+
+## Checklist Results Report
+
+*[To be populated after checklist execution]*
+
+## Next Steps
+
+### UX Expert Prompt
+*[Not applicable - system is API-first with no traditional UX requirements]*
+
+### Architect Prompt
+"Please review this PRD and create a comprehensive technical architecture for the Tuxemon AO Process gaming platform. Focus on the AO process architecture, inter-process communication patterns, ADP compliance implementation, and scalable deployment strategies for agent-native gaming on Arweave."
