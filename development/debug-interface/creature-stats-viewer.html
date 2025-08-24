@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creature Stats & Progression Debug Interface</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            color: #333;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input, select, button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        button.secondary {
+            background-color: #6c757d;
+        }
+        
+        button.secondary:hover {
+            background-color: #545b62;
+        }
+        
+        .output {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #28a745;
+            transition: width 0.3s ease;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        .advantage {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .disadvantage {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .health-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .health-excellent { background-color: #d4edda; color: #155724; }
+        .health-good { background-color: #d1ecf1; color: #0c5460; }
+        .health-moderate { background-color: #fff3cd; color: #856404; }
+        .health-low { background-color: #f8d7da; color: #721c24; }
+        .health-critical { background-color: #f5c6cb; color: #721c24; }
+        .health-fainted { background-color: #6c757d; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐾 Creature Stats & Progression Debug Interface</h1>
+        <p>Development tool for testing creature stat calculations, comparisons, health management, and progression tracking (Story 4.4)</p>
+        
+        <!-- Stat Calculation Section -->
+        <div class="section">
+            <h2>📊 Stat Calculation</h2>
+            <div class="input-group">
+                <label for="creature-id">Creature ID:</label>
+                <input type="text" id="creature-id" placeholder="e.g., creature_12345" />
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" id="include-modifiers" />
+                    Include Temporary Modifiers
+                </label>
+            </div>
+            <button onclick="calculateStats()">Calculate Stats</button>
+            <div id="stat-output" class="output" style="display: none;"></div>
+            <div id="stat-visual" class="stat-grid" style="display: none;"></div>
+        </div>
+        
+        <!-- Creature Comparison Section -->
+        <div class="section">
+            <h2>⚔️ Creature Comparison</h2>
+            <div class="input-group">
+                <label for="creature1-id">First Creature ID:</label>
+                <input type="text" id="creature1-id" placeholder="e.g., creature_001" />
+            </div>
+            <div class="input-group">
+                <label for="creature2-id">Second Creature ID:</label>
+                <input type="text" id="creature2-id" placeholder="e.g., creature_002" />
+            </div>
+            <div class="input-group">
+                <label for="scenario">Battle Scenario:</label>
+                <select id="scenario">
+                    <option value="balanced">Balanced</option>
+                    <option value="offense_focused">Offense Focused</option>
+                    <option value="defense_focused">Defense Focused</option>
+                    <option value="speed_focused">Speed Focused</option>
+                </select>
+            </div>
+            <button onclick="compareCreatures()">Compare Creatures</button>
+            <div id="comparison-output" class="output" style="display: none;"></div>
+            <div id="comparison-visual" style="display: none;"></div>
+        </div>
+        
+        <!-- Health Analysis Section -->
+        <div class="section">
+            <h2>💚 Health Analysis</h2>
+            <div class="input-group">
+                <label for="health-creature-id">Creature ID:</label>
+                <input type="text" id="health-creature-id" placeholder="e.g., creature_12345" />
+            </div>
+            <button onclick="analyzeHealth()">Analyze Health</button>
+            <div id="health-output" class="output" style="display: none;"></div>
+            <div id="health-visual" style="display: none;"></div>
+        </div>
+        
+        <!-- Progression Analysis Section -->
+        <div class="section">
+            <h2>📈 Progression Analysis</h2>
+            <div class="input-group">
+                <label for="progression-creature-id">Creature ID:</label>
+                <input type="text" id="progression-creature-id" placeholder="e.g., creature_12345" />
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" id="include-projections" checked />
+                    Include Long-term Projections
+                </label>
+            </div>
+            <button onclick="analyzeProgression()">Analyze Progression</button>
+            <div id="progression-output" class="output" style="display: none;"></div>
+            <div id="progression-visual" style="display: none;"></div>
+        </div>
+        
+        <!-- Experience Award Section -->
+        <div class="section">
+            <h2>⭐ Experience Management</h2>
+            <div class="input-group">
+                <label for="exp-creature-id">Creature ID:</label>
+                <input type="text" id="exp-creature-id" placeholder="e.g., creature_12345" />
+            </div>
+            <div class="input-group">
+                <label for="exp-amount">Experience Amount:</label>
+                <input type="number" id="exp-amount" placeholder="50" min="1" max="1000" />
+            </div>
+            <div class="input-group">
+                <label for="exp-source">Experience Source:</label>
+                <select id="exp-source">
+                    <option value="battle">Battle</option>
+                    <option value="training">Training</option>
+                    <option value="exploration">Exploration</option>
+                    <option value="quest">Quest</option>
+                    <option value="manual">Manual</option>
+                </select>
+            </div>
+            <button onclick="awardExperience()">Award Experience</button>
+            <div id="exp-output" class="output" style="display: none;"></div>
+        </div>
+        
+        <!-- Quick Actions Section -->
+        <div class="section">
+            <h2>🚀 Quick Actions</h2>
+            <button onclick="generateTestCreature()">Generate Test Creature</button>
+            <button onclick="simulateProgression()" class="secondary">Simulate Progression</button>
+            <button onclick="resetTestData()" class="secondary">Reset Test Data</button>
+            <div id="quick-output" class="output" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Configuration
+        const WORLD_PROCESS_ID = 'world_process_test'; // Would be configured in actual deployment
+        
+        // Utility function to display results
+        function displayResult(outputId, visualId, data, formatter) {
+            const outputElement = document.getElementById(outputId);
+            const visualElement = document.getElementById(visualId);
+            
+            outputElement.textContent = JSON.stringify(data, null, 2);
+            outputElement.style.display = 'block';
+            
+            if (formatter && visualElement) {
+                visualElement.innerHTML = formatter(data);
+                visualElement.style.display = 'block';
+            }
+        }
+        
+        // Mock API call function (in real implementation, would make actual AO message calls)
+        async function mockApiCall(action, data) {
+            console.log(`Mock API Call: ${action}`, data);
+            
+            // Simulate API response delay
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Return mock data based on action
+            switch (action) {
+                case 'Calculate-Creature-Stats':
+                    return {
+                        creature_id: data.creature_id,
+                        final_stats: {
+                            hp_max: 85,
+                            hp_current: 85,
+                            attack: 62,
+                            defense: 58,
+                            speed: 71
+                        },
+                        combat_effectiveness: 78,
+                        individual_values: {
+                            hp: 28, attack: 31, defense: 15, speed: 29
+                        },
+                        stat_analysis: {
+                            total_stat_points: 276,
+                            dominant_stat: 'speed',
+                            growth_potential: 'high'
+                        }
+                    };
+                    
+                case 'Compare-Creatures':
+                    return {
+                        creature1: {id: data.creature1_id, level: 15},
+                        creature2: {id: data.creature2_id, level: 12},
+                        stat_comparison: {
+                            overall_winner: 'creature1',
+                            creature1_advantages: ['level', 'attack', 'speed'],
+                            creature2_advantages: ['defense']
+                        },
+                        recommendations: {
+                            preferred_choice: 'creature1',
+                            confidence_level: 75
+                        }
+                    };
+                    
+                case 'Analyze-Creature-Health':
+                    return {
+                        creature_id: data.creature_id,
+                        health_stats: {
+                            current_hp: 65,
+                            max_hp: 85,
+                            health_percentage: 76.5
+                        },
+                        health_status: {
+                            status: 'good',
+                            action_required: 'none'
+                        },
+                        combat_readiness: {
+                            readiness_score: 85,
+                            battle_ready: true
+                        }
+                    };
+                    
+                case 'Query-Creature-Progression':
+                    return {
+                        creature_id: data.creature_id,
+                        current_progression: {
+                            current_level: 15,
+                            current_experience: 3375,
+                            level_progress: {
+                                progress_percentage: 62.5,
+                                experience_needed_for_next: 1125
+                            },
+                            milestones: [
+                                {level: 20, reward: 'stat_boost'},
+                                {level: 25, reward: 'evolution_check'}
+                            ]
+                        }
+                    };
+                    
+                case 'Award-Creature-Experience':
+                    return {
+                        success: true,
+                        experience_awarded: data.experience_amount,
+                        old_level: 15,
+                        new_level: data.experience_amount > 100 ? 16 : 15,
+                        leveled_up: data.experience_amount > 100
+                    };
+                    
+                default:
+                    return {error: 'Unknown action'};
+            }
+        }
+        
+        // Stat calculation
+        async function calculateStats() {
+            const creatureId = document.getElementById('creature-id').value;
+            const includeModifiers = document.getElementById('include-modifiers').checked;
+            
+            if (!creatureId) {
+                alert('Please enter a Creature ID');
+                return;
+            }
+            
+            try {
+                const result = await mockApiCall('Calculate-Creature-Stats', {
+                    creature_id: creatureId,
+                    include_modifiers: includeModifiers
+                });
+                
+                displayResult('stat-output', 'stat-visual', result, formatStatVisual);
+            } catch (error) {
+                document.getElementById('stat-output').textContent = 'Error: ' + error.message;
+                document.getElementById('stat-output').style.display = 'block';
+            }
+        }
+        
+        // Format stat visual display
+        function formatStatVisual(data) {
+            if (!data.final_stats) return '';
+            
+            const stats = data.final_stats;
+            const total = stats.hp_max + stats.attack + stats.defense + stats.speed;
+            
+            return `
+                <div class="stat-card">
+                    <div class="stat-value">${stats.hp_max}/${stats.hp_current}</div>
+                    <div class="stat-label">HP</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.attack}</div>
+                    <div class="stat-label">Attack</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.defense}</div>
+                    <div class="stat-label">Defense</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.speed}</div>
+                    <div class="stat-label">Speed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${total}</div>
+                    <div class="stat-label">Total Stats</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${data.combat_effectiveness || 0}%</div>
+                    <div class="stat-label">Combat Effectiveness</div>
+                </div>
+            `;
+        }
+        
+        // Creature comparison
+        async function compareCreatures() {
+            const creature1Id = document.getElementById('creature1-id').value;
+            const creature2Id = document.getElementById('creature2-id').value;
+            const scenario = document.getElementById('scenario').value;
+            
+            if (!creature1Id || !creature2Id) {
+                alert('Please enter both Creature IDs');
+                return;
+            }
+            
+            try {
+                const result = await mockApiCall('Compare-Creatures', {
+                    creature1_id: creature1Id,
+                    creature2_id: creature2Id,
+                    scenario: scenario
+                });
+                
+                displayResult('comparison-output', 'comparison-visual', result, formatComparisonVisual);
+            } catch (error) {
+                document.getElementById('comparison-output').textContent = 'Error: ' + error.message;
+                document.getElementById('comparison-output').style.display = 'block';
+            }
+        }
+        
+        // Format comparison visual
+        function formatComparisonVisual(data) {
+            return `
+                <table class="comparison-table">
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Creature 1</th>
+                        <th>Creature 2</th>
+                        <th>Winner</th>
+                    </tr>
+                    <tr>
+                        <td>Level</td>
+                        <td>${data.creature1?.level || 'N/A'}</td>
+                        <td>${data.creature2?.level || 'N/A'}</td>
+                        <td class="${data.stat_comparison?.overall_winner === 'creature1' ? 'advantage' : 'disadvantage'}">
+                            ${data.stat_comparison?.overall_winner || 'Tie'}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Recommendation</td>
+                        <td colspan="2">${data.recommendations?.preferred_choice || 'No preference'}</td>
+                        <td>${data.recommendations?.confidence_level || 0}% confidence</td>
+                    </tr>
+                </table>
+            `;
+        }
+        
+        // Health analysis
+        async function analyzeHealth() {
+            const creatureId = document.getElementById('health-creature-id').value;
+            
+            if (!creatureId) {
+                alert('Please enter a Creature ID');
+                return;
+            }
+            
+            try {
+                const result = await mockApiCall('Analyze-Creature-Health', {
+                    creature_id: creatureId
+                });
+                
+                displayResult('health-output', 'health-visual', result, formatHealthVisual);
+            } catch (error) {
+                document.getElementById('health-output').textContent = 'Error: ' + error.message;
+                document.getElementById('health-output').style.display = 'block';
+            }
+        }
+        
+        // Format health visual
+        function formatHealthVisual(data) {
+            const health = data.health_stats;
+            const status = data.health_status;
+            const readiness = data.combat_readiness;
+            
+            return `
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">${health?.current_hp || 0}/${health?.max_hp || 0}</div>
+                        <div class="stat-label">Current HP</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${health?.health_percentage || 0}%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="health-status health-${status?.status || 'unknown'}">
+                            ${status?.status || 'Unknown'}
+                        </div>
+                        <div class="stat-label">Health Status</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${readiness?.readiness_score || 0}%</div>
+                        <div class="stat-label">Battle Readiness</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Progression analysis
+        async function analyzeProgression() {
+            const creatureId = document.getElementById('progression-creature-id').value;
+            const includeProjections = document.getElementById('include-projections').checked;
+            
+            if (!creatureId) {
+                alert('Please enter a Creature ID');
+                return;
+            }
+            
+            try {
+                const result = await mockApiCall('Query-Creature-Progression', {
+                    creature_id: creatureId,
+                    include_projections: includeProjections
+                });
+                
+                displayResult('progression-output', 'progression-visual', result, formatProgressionVisual);
+            } catch (error) {
+                document.getElementById('progression-output').textContent = 'Error: ' + error.message;
+                document.getElementById('progression-output').style.display = 'block';
+            }
+        }
+        
+        // Format progression visual
+        function formatProgressionVisual(data) {
+            const progression = data.current_progression;
+            
+            return `
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">${progression?.current_level || 0}</div>
+                        <div class="stat-label">Current Level</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${progression?.current_experience || 0}</div>
+                        <div class="stat-label">Total Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${progression?.level_progress?.progress_percentage?.toFixed(1) || 0}%</div>
+                        <div class="stat-label">Level Progress</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progression?.level_progress?.progress_percentage || 0}%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${progression?.level_progress?.experience_needed_for_next || 0}</div>
+                        <div class="stat-label">EXP to Next Level</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Award experience
+        async function awardExperience() {
+            const creatureId = document.getElementById('exp-creature-id').value;
+            const expAmount = parseInt(document.getElementById('exp-amount').value);
+            const expSource = document.getElementById('exp-source').value;
+            
+            if (!creatureId || !expAmount) {
+                alert('Please enter Creature ID and Experience Amount');
+                return;
+            }
+            
+            try {
+                const result = await mockApiCall('Award-Creature-Experience', {
+                    creature_id: creatureId,
+                    experience_amount: expAmount,
+                    experience_source: expSource
+                });
+                
+                displayResult('exp-output', null, result);
+            } catch (error) {
+                document.getElementById('exp-output').textContent = 'Error: ' + error.message;
+                document.getElementById('exp-output').style.display = 'block';
+            }
+        }
+        
+        // Quick actions
+        function generateTestCreature() {
+            const testCreatureId = 'test_creature_' + Date.now();
+            document.getElementById('creature-id').value = testCreatureId;
+            document.getElementById('health-creature-id').value = testCreatureId;
+            document.getElementById('progression-creature-id').value = testCreatureId;
+            document.getElementById('exp-creature-id').value = testCreatureId;
+            
+            document.getElementById('quick-output').textContent = `Generated test creature ID: ${testCreatureId}`;
+            document.getElementById('quick-output').style.display = 'block';
+        }
+        
+        function simulateProgression() {
+            // Simulate multiple level ups
+            const creatureId = document.getElementById('exp-creature-id').value || 'test_creature_simulation';
+            document.getElementById('exp-creature-id').value = creatureId;
+            document.getElementById('exp-amount').value = '150';
+            document.getElementById('exp-source').value = 'battle';
+            
+            document.getElementById('quick-output').textContent = 'Simulation setup complete. Click "Award Experience" to simulate level up.';
+            document.getElementById('quick-output').style.display = 'block';
+        }
+        
+        function resetTestData() {
+            // Clear all input fields
+            const inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+            inputs.forEach(input => input.value = '');
+            
+            // Clear all outputs
+            const outputs = document.querySelectorAll('.output');
+            outputs.forEach(output => output.style.display = 'none');
+            
+            const visuals = document.querySelectorAll('[id$="-visual"]');
+            visuals.forEach(visual => visual.style.display = 'none');
+            
+            document.getElementById('quick-output').textContent = 'All test data cleared.';
+            document.getElementById('quick-output').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
