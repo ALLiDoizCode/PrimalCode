@@ -7,6 +7,21 @@ local ProcessBase = require('shared.utils.process-base')
 -- local ADPValidator = require('shared.utils.adp-validation')
 local HandlerMetadata = require('shared.utils.handler-metadata')
 local SelfDocumenting = require('shared.utils.self-documenting')
+-- Load message routing utilities
+local MessageRouter = require('shared.utils.message-router')
+local ProcessDiscovery = require('shared.utils.process-discovery')
+local InterProcessErrors = require('shared.utils.inter-process-errors')
+local MessageQueue = require('shared.utils.message-queue')
+
+-- Load logging and tracing utilities
+local MessageLogger = require('shared.utils.message-logger')
+local TraceManager = require('shared.utils.trace-manager')
+local LogRetention = require('shared.utils.log-retention')
+
+-- Load performance monitoring utilities
+local PerformanceMonitor = require('shared.utils.performance-monitor')
+local PerformanceAlerts = require('shared.utils.performance-alerts')
+local PerformanceHistory = require('shared.utils.performance-history')
 -- Process state initialization
 if not State then
     State = {
@@ -19,6 +34,71 @@ if not State then
         }
     }
 end
+
+-- Initialize routing systems
+MessageRouter:initialize("registry")
+ProcessDiscovery:initialize("registry", {"agent-registration", "process-discovery", "matchmaking"}, {capacity = 10000})
+InterProcessErrors:initialize({max_retries = 3, agent_feedback_enabled = true})
+MessageQueue:initialize({max_queue_size = 2000, persistence_enabled = false})
+
+-- Initialize logging and tracing systems
+MessageLogger:initialize(ao.id or "registry-process", "registry", {
+    log_level = "INFO",
+    retention_hours = 48,
+    max_payload_size = 2048,
+    sanitization_enabled = true
+})
+TraceManager:initialize(ao.id or "registry-process", "registry", {
+    max_trace_depth = 10,
+    trace_retention_minutes = 60,
+    sample_rate = 1.0
+})
+LogRetention:initialize(ao.id or "registry-process", {
+    retention_hours = 48,
+    max_log_entries = 20000,
+    max_storage_mb = 200,
+    rotation_interval_hours = 6,
+    archive_enabled = true
+}, {
+    max_total_storage_mb = 1000,
+    quota_warning_threshold = 0.8
+})
+
+-- Initialize performance monitoring systems
+State.performance_monitor = PerformanceMonitor.new({
+    collection_interval_ms = 1000,
+    max_metrics_buffer = 2000,
+    enable_memory_tracking = true,
+    enable_throughput_tracking = true,
+    load_thresholds = {
+        idle_threshold = 5,
+        active_threshold = 25,
+        overload_threshold = 50,
+        max_queue_depth = 100
+    }
+})
+
+State.performance_alerts = PerformanceAlerts.new({
+    max_active_alerts = 40,
+    alert_cooldown_ms = 30000,
+    auto_resolve_after_ms = 180000,
+    notification_enabled = true,
+    correlation_enabled = true
+})
+
+State.performance_history = PerformanceHistory.new({
+    minute_retention_hours = 48,
+    hour_retention_days = 14,
+    day_retention_months = 6,
+    enable_trend_analysis = true,
+    trend_analysis_window = 336, -- 14 days in hours
+    auto_cleanup_enabled = true
+})
+
+-- Link performance monitoring with trace system
+State.performance_monitor:set_correlation_tracer(TraceManager)
+State.performance_alerts:set_correlation_tracer(TraceManager)
+
 -- Initialize metadata system
 HandlerMetadata.init("registry", State.process_id or "registry_process")
 -- Handler for initialization messages
@@ -155,6 +235,107 @@ Handlers.add("discover", "Action", "Discover",
                 total_results = #results
             })
         })
+    end
+)
+
+-- Handler for battle matchmaking with routing
+Handlers.add("request-battle-opponent", "Action", "Request-Battle-Opponent",
+    function(msg)
+        local agent_id = msg.From
+        local battle_type = msg.Tags.BattleType or "standard"
+        local agent_skill_level = msg.Tags.SkillLevel or "novice"
+        
+        -- Check if agent is registered
+        if not State.registered_agents[agent_id] then
+            local response = ProcessBase.create_error_response(
+                msg.From,
+                "REGISTRY_001",
+                "Agent must be registered before requesting battle opponents"
+            )
+            ao.send(response)
+            return
+        end
+        
+        -- Find potential opponents
+        local potential_opponents = {}
+        for opponent_id, opponent_data in pairs(State.registered_agents) do
+            if opponent_id ~= agent_id and opponent_data.status == "active" then
+                -- Simple matching logic (can be enhanced)
+                table.insert(potential_opponents, {
+                    id = opponent_id,
+                    name = opponent_data.name,
+                    type = opponent_data.type
+                })
+            end
+        end
+        
+        if #potential_opponents == 0 then
+            local response = ProcessBase.create_error_response(
+                msg.From,
+                "REGISTRY_002",
+                "No suitable opponents available at this time"
+            )
+            ao.send(response)
+            return
+        end
+        
+        -- Select random opponent (basic matchmaking)
+        local selected_opponent = potential_opponents[math.random(#potential_opponents)]
+        
+        print("Matchmaking: " .. agent_id .. " vs " .. selected_opponent.id)
+        
+        -- Route battle initiation to battle process
+        local battle_request = {
+            initiator = agent_id,
+            opponent = selected_opponent.id,
+            battle_type = battle_type,
+            matched_by = "registry",
+            timestamp = msg.Timestamp
+        }
+        
+        local routing_result = MessageRouter:send_to_process_type(
+            "battle",
+            "Start-Battle",
+            battle_request,
+            {
+                ["Match-Type"] = "registry_matched",
+                ["Battle-Type"] = battle_type
+            }
+        )
+        
+        if routing_result.success then
+            -- Queue notifications for both participants
+            MessageQueue:enqueue_message(
+                agent_id,
+                "Battle-Match-Found",
+                {
+                    opponent = selected_opponent,
+                    battle_type = battle_type,
+                    match_id = routing_result.route_id
+                },
+                {priority = MessageQueue.PRIORITY_HIGH}
+            )
+            
+            MessageQueue:enqueue_message(
+                selected_opponent.id,
+                "Battle-Match-Invitation",
+                {
+                    challenger = {id = agent_id, name = State.registered_agents[agent_id].name},
+                    battle_type = battle_type,
+                    match_id = routing_result.route_id
+                },
+                {priority = MessageQueue.PRIORITY_HIGH}
+            )
+            
+            print("Battle matchmaking routed successfully: " .. routing_result.route_id)
+        else
+            local response = ProcessBase.create_error_response(
+                msg.From,
+                routing_result.error_code,
+                "Failed to initiate battle: " .. routing_result.error_message
+            )
+            ao.send(response)
+        end
     end
 )
 -- Handler for health checks and heartbeats
@@ -346,5 +527,46 @@ Handlers.add("info", "Action", "Info",
         ao.send(response)
     end
 )
+-- Handler for incoming routed messages
+Handlers.add("routed-message", "Route-ID", "*", function(msg)
+    local handled = MessageRouter:handle_incoming_message(msg)
+    if handled then
+        print("Processed routed message: " .. (msg.Tags["Route-ID"] or "unknown"))
+    end
+end)
+
+-- Handler for process discovery messages
+Handlers.add("discovery-ping", "Action", "DiscoveryPing", function(msg)
+    ProcessDiscovery:handle_discovery_ping(msg)
+end)
+
+Handlers.add("discovery-response", "Action", "DiscoveryResponse", function(msg)
+    ProcessDiscovery:handle_discovery_response(msg)
+end)
+
+Handlers.add("process-heartbeat", "Action", "ProcessHeartbeat", function(msg)
+    ProcessDiscovery:handle_heartbeat(msg)
+end)
+
+-- Periodic tasks for message processing and cleanup
+local function periodic_maintenance()
+    -- Process pending queued messages
+    MessageQueue:process_pending_messages(20)
+    
+    -- Cleanup timed out processing messages
+    MessageQueue:cleanup_timed_out_messages()
+    
+    -- Cleanup inactive processes from router
+    MessageRouter:cleanup_inactive_processes()
+    
+    -- Cleanup old errors
+    InterProcessErrors:cleanup_old_errors(24)
+    
+    -- Send heartbeat for process discovery
+    ProcessDiscovery:send_heartbeat()
+    
+    print("Registry process maintenance cycle completed")
+end
+
 -- Main process entry point
-print("Tuxemon Registry Process loaded with ADP v1.0 framework")
+print("Tuxemon Registry Process loaded with ADP v1.0 framework and message routing")

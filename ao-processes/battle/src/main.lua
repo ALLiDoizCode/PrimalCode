@@ -7,6 +7,21 @@ local ErrorHandler = require('shared.utils.error-handling')
 local ADPValidator = require('shared.utils.adp-validation')
 local HandlerMetadata = require('shared.utils.handler-metadata')
 local SelfDocumenting = require('shared.utils.self-documenting')
+-- Load message routing utilities
+local MessageRouter = require('shared.utils.message-router')
+local ProcessDiscovery = require('shared.utils.process-discovery')
+local InterProcessErrors = require('shared.utils.inter-process-errors')
+local MessageQueue = require('shared.utils.message-queue')
+
+-- Load logging and tracing utilities
+local MessageLogger = require('shared.utils.message-logger')
+local TraceManager = require('shared.utils.trace-manager')
+local LogRetention = require('shared.utils.log-retention')
+
+-- Load performance monitoring utilities
+local PerformanceMonitor = require('shared.utils.performance-monitor')
+local PerformanceAlerts = require('shared.utils.performance-alerts')
+local PerformanceHistory = require('shared.utils.performance-history')
 -- Process state initialization
 if not State then
     State = {
@@ -18,7 +33,6 @@ if not State then
             total_battles = 0,
             battles_today = 0
         },
-        health_monitor = "",
         performance_metrics = {
             message_processing_time = 0,
             message_throughput = 0,
@@ -36,6 +50,71 @@ if not State then
         uptime_start = 0
     }
 end
+
+-- Initialize routing systems
+MessageRouter:initialize("battle")
+ProcessDiscovery:initialize("battle", {"combat", "turn-resolution", "battle-management"}, {battle_capacity = 100})
+InterProcessErrors:initialize({max_retries = 3, agent_feedback_enabled = true})
+MessageQueue:initialize({max_queue_size = 500, persistence_enabled = false})
+
+-- Initialize logging and tracing systems
+MessageLogger:initialize(ao.id or "battle-process", "battle", {
+    log_level = "INFO",
+    retention_hours = 24,
+    max_payload_size = 2048,
+    sanitization_enabled = true
+})
+TraceManager:initialize(ao.id or "battle-process", "battle", {
+    max_trace_depth = 10,
+    trace_retention_minutes = 60,
+    sample_rate = 1.0
+})
+LogRetention:initialize(ao.id or "battle-process", {
+    retention_hours = 24,
+    max_log_entries = 5000,
+    max_storage_mb = 50,
+    rotation_interval_hours = 6,
+    archive_enabled = true
+}, {
+    max_total_storage_mb = 250,
+    quota_warning_threshold = 0.8
+})
+
+-- Initialize performance monitoring systems
+State.performance_monitor = PerformanceMonitor.new({
+    collection_interval_ms = 1000,
+    max_metrics_buffer = 500,
+    enable_memory_tracking = true,
+    enable_throughput_tracking = true,
+    load_thresholds = {
+        idle_threshold = 3,
+        active_threshold = 15,
+        overload_threshold = 25,
+        max_queue_depth = 60
+    }
+})
+
+State.performance_alerts = PerformanceAlerts.new({
+    max_active_alerts = 30,
+    alert_cooldown_ms = 45000,
+    auto_resolve_after_ms = 240000,
+    notification_enabled = true,
+    correlation_enabled = true
+})
+
+State.performance_history = PerformanceHistory.new({
+    minute_retention_hours = 12,
+    hour_retention_days = 3,
+    day_retention_months = 2,
+    enable_trend_analysis = true,
+    trend_analysis_window = 72,
+    auto_cleanup_enabled = true
+})
+
+-- Link performance monitoring with trace system
+State.performance_monitor:set_correlation_tracer(TraceManager)
+State.performance_alerts:set_correlation_tracer(TraceManager)
+
 -- Initialize metadata system
 HandlerMetadata.init("battle", State.process_id or "battle_process")
 -- Handler for initialization messages
@@ -100,36 +179,81 @@ local init_handler = HandlerMetadata.create_handler("init", {
     ao.send(response)
 end)
 Handlers.add("init", "Action", "Init", init_handler)
--- Handler for battle initiation
+-- Handler for battle initiation (enhanced with routing support)
 Handlers.add("start-battle", "Action", "Start-Battle",
     function(msg)
+        if ErrorHandler.is_agent_blocked(msg.From) then
+            local response = ProcessBase.create_error_response(
+                msg.From,
+                "RATE_LIMITED",
+                "Agent is temporarily blocked due to repeated failures"
+            )
+            ao.send(response)
+            return
+        end
+        
         local battle_id = "battle_" .. tostring(msg.Timestamp)
-        local participant1 = msg.From
-        local participant2 = msg.Tags.Opponent or ""
+        local battle_data = msg.Data and json.decode(msg.Data)
+        
+        -- Handle both direct and routed battle requests
+        local participant1, participant2, world_id
+        if battle_data then
+            -- Routed request from world process
+            participant1 = battle_data.initiator or msg.From
+            participant2 = battle_data.opponent or msg.Tags.Opponent or ""
+            world_id = battle_data.world_id
+        else
+            -- Direct request
+            participant1 = msg.From
+            participant2 = msg.Tags.Opponent or ""
+            world_id = msg.Tags.WorldId
+        end
+        
         State.active_battles[battle_id] = {
             id = battle_id,
             participants = {participant1, participant2},
             status = "active",
             turn = 1,
             current_player = participant1,
-            started_at = msg.Timestamp
+            started_at = msg.Timestamp,
+            world_id = world_id,
+            battle_type = (battle_data and battle_data.battle_type) or msg.Tags.BattleType or "standard"
         }
         State.stats.total_battles = State.stats.total_battles + 1
         print("Battle started: " .. battle_id)
-        -- Notify both participants
+        
+        -- Queue notifications for participants
         for _, participant in ipairs({participant1, participant2}) do
             if participant ~= "" then
-                ao.send({
-                    Target = participant,
-                    Action = "Battle-Started",
-                    BattleId = battle_id,
-                    Data = json.encode({
+                MessageQueue:enqueue_message(
+                    participant,
+                    "Battle-Started",
+                    {
                         battle_id = battle_id,
                         participants = State.active_battles[battle_id].participants,
-                        your_turn = participant == participant1
-                    })
-                })
+                        your_turn = participant == participant1,
+                        world_id = world_id
+                    },
+                    {
+                        priority = MessageQueue.PRIORITY_HIGH,
+                        tags = {BattleId = battle_id}
+                    }
+                )
             end
+        end
+        
+        -- If this was a routed request, notify the world process of battle creation
+        if msg.Tags["Source-World"] then
+            MessageRouter:send_message(
+                msg.Tags["Source-World"],
+                "Battle-Created-Notification",
+                {
+                    battle_id = battle_id,
+                    participants = {participant1, participant2},
+                    status = "active"
+                },
+                {["Battle-ID"] = battle_id}
+            )
         end
     end
 )
@@ -187,6 +311,86 @@ Handlers.add("battle-action", "Action", "Battle-Action",
                 })
             })
         end
+    end
+)
+
+-- Handler for battle completion with result routing
+Handlers.add("complete-battle", "Action", "Complete-Battle",
+    function(msg)
+        local battle_id = msg.Tags.BattleId
+        local winner = msg.Tags.Winner
+        
+        if not battle_id or not State.active_battles[battle_id] then
+            local response = ProcessBase.create_error_response(
+                msg.From,
+                "BATTLE_101",
+                "Invalid battle ID or battle not found"
+            )
+            ao.send(response)
+            return
+        end
+        
+        local battle = State.active_battles[battle_id]
+        battle.status = "completed"
+        battle.completed_at = msg.Timestamp
+        battle.winner = winner
+        
+        -- Move to battle history
+        State.battle_history[battle_id] = battle
+        State.active_battles[battle_id] = nil
+        
+        print("Battle completed: " .. battle_id .. " Winner: " .. (winner or "draw"))
+        
+        local battle_result = {
+            battle_id = battle_id,
+            participants = battle.participants,
+            winner = winner,
+            completed_at = msg.Timestamp,
+            world_id = battle.world_id,
+            battle_type = battle.battle_type
+        }
+        
+        -- Route completion notification to world process
+        if battle.world_id then
+            local routing_result = MessageRouter:send_message(
+                battle.world_id,
+                "Battle-Complete",
+                battle_result,
+                {
+                    ["Battle-ID"] = battle_id,
+                    ["Battle-Result"] = "completed"
+                }
+            )
+            
+            if not routing_result.success then
+                print("Failed to route battle completion to world: " .. routing_result.error_message)
+            end
+        end
+        
+        -- Queue notifications for participants
+        for _, participant in ipairs(battle.participants) do
+            MessageQueue:enqueue_message(
+                participant,
+                "Battle-Completed",
+                battle_result,
+                {
+                    priority = MessageQueue.PRIORITY_HIGH,
+                    tags = {BattleId = battle_id, Winner = winner or "draw"}
+                }
+            )
+        end
+        
+        -- Send confirmation to requester
+        local response = ProcessBase.create_adp_response(
+            msg.From,
+            "Battle-Complete-Response",
+            {
+                status = "completed",
+                battle_id = battle_id,
+                result = battle_result
+            }
+        )
+        ao.send(response)
     end
 )
 -- Handler for health checks
@@ -405,5 +609,46 @@ Handlers.add("info", "Action", "Info",
         ao.send(response)
     end
 )
+-- Handler for incoming routed messages
+Handlers.add("routed-message", "Route-ID", "*", function(msg)
+    local handled = MessageRouter:handle_incoming_message(msg)
+    if handled then
+        print("Processed routed message: " .. (msg.Tags["Route-ID"] or "unknown"))
+    end
+end)
+
+-- Handler for process discovery messages
+Handlers.add("discovery-ping", "Action", "DiscoveryPing", function(msg)
+    ProcessDiscovery:handle_discovery_ping(msg)
+end)
+
+Handlers.add("discovery-response", "Action", "DiscoveryResponse", function(msg)
+    ProcessDiscovery:handle_discovery_response(msg)
+end)
+
+Handlers.add("process-heartbeat", "Action", "ProcessHeartbeat", function(msg)
+    ProcessDiscovery:handle_heartbeat(msg)
+end)
+
+-- Periodic tasks for message processing and cleanup
+local function periodic_maintenance()
+    -- Process pending queued messages
+    MessageQueue:process_pending_messages(5)
+    
+    -- Cleanup timed out processing messages
+    MessageQueue:cleanup_timed_out_messages()
+    
+    -- Cleanup inactive processes from router
+    MessageRouter:cleanup_inactive_processes()
+    
+    -- Cleanup old errors
+    InterProcessErrors:cleanup_old_errors(24)
+    
+    -- Send heartbeat for process discovery
+    ProcessDiscovery:send_heartbeat()
+    
+    print("Battle process maintenance cycle completed")
+end
+
 -- Main process entry point
-print("Tuxemon Battle Process loaded with ADP v1.0 framework")
+print("Tuxemon Battle Process loaded with ADP v1.0 framework and message routing")
